@@ -12,16 +12,16 @@
       "$menu" = "rofi -show drun -show-icons";
       "$browser" = "brave";
       "$lock" = "hyprlock";
-      "$w1" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/random.jpg"'';
-      "$w2" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/hut.jpg"'';
-      "$w3" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/car.jpg"'';
-      "$w4" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/sky.jpg"'';
-      "$w5" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/nord_roads.png"'';
-      "$w6" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/nord_lake.png"'';
-      "$w7" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/ledge_gruvbox.png"'';
-      "$w8" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/hyprland.png"'';
-      "$w9" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/ghibli_insider.jpeg"'';
-      "$w0" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/Pictures/Wallpapers/wind_rises.jpeg"'';
+      "$w1" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/random.jpg"'';
+      "$w2" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/hut.jpg"'';
+      "$w3" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/car.jpg"'';
+      "$w4" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/sky.jpg"'';
+      "$w5" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/nord_roads.png"'';
+      "$w6" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/nord_lake.png"'';
+      "$w7" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/ledge_gruvbox.png"'';
+      "$w8" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/hyprland.png"'';
+      "$w9" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/ghibli_insider.jpeg"'';
+      "$w0" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/wind_rises.jpeg"'';
       
 
       monitor = [

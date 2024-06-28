@@ -4,7 +4,7 @@
 		extraConfig = ''
 			background {
     monitor =
-    path = $HOME/Pictures/Wallpapers/hyprland.png   # only png supported for now
+    path = $HOME/setup/modules/wallpapers/hyprland.png   # only png supported for now
 
 
     blur_passes = 3 # 0 disables blurring
