@@ -2,8 +2,8 @@
   imports = [
 
     # terminals
-    #./terminals/alacritty.nix
-    ./terminals/kitty.nix
+    ./terminals/alacritty.nix
+    #./terminals/kitty.nix
 
     # cool
     ./git/git.nix

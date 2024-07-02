@@ -93,6 +93,7 @@
     gcc
     codeblocks
     tldr
+    pmbootstrap
 
   ];
 
