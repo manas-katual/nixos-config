@@ -11,7 +11,8 @@
     neofetch
     fastfetch
     #htop
-    brave
+    #brave
+    firefox
     #kitty
     wget
     wl-clipboard
@@ -94,6 +95,8 @@
     codeblocks
     tldr
     pmbootstrap
+    virt-viewer
+    tmux
 
   ];
 
@@ -111,4 +114,6 @@
 
 	programs.adb.enable = true;
 	services.acpid.enable = true;
+  
+  virtualisation.incus.clientPackage = config.virtualisation.incus.package.client;
 }

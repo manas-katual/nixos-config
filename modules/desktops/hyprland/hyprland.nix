@@ -7,10 +7,10 @@
     settings = {
 
       "$mainMod" = "SUPER";
-      "$terminal" = "kitty";
+      "$terminal" = "alacritty";
       "$fileManager" = "nemo";
       "$menu" = "rofi -show drun -show-icons";
-      "$browser" = "brave";
+      "$browser" = "firefox";
       "$lock" = "hyprlock";
       "$w1" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/random.jpg"'';
       "$w2" = ''hyprctl hyprpaper wallpaper "LVDS-1,~/setup/modules/wallpapers/hut.jpg"'';
