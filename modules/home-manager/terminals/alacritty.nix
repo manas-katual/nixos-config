@@ -20,7 +20,7 @@
       cursor = {
         style = {
           shape = "Beam";
-          blinking = "On";
+          blinking = "Always";
         };  
       };
 

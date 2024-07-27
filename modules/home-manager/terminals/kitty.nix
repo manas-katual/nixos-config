@@ -1,6 +1,6 @@
 {
   programs.kitty = {
-    enable = false;
+    enable = true;
     font = {
       name = "Intel One Mono";
       size = 14;

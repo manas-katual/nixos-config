@@ -1,16 +1,34 @@
 { config, pkgs, ... }:
+
 {
-  boot.initrd.kernelModules = [ "amdgpu" ]; 
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  
+  # Basic setup
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  # for Southern Islands (SI i.e. GCN 1) cards
   boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" ];
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  ];
 
+  # AMDVLK
   hardware.opengl.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
+    amdvlk
+  ];
+  # For 32 bit applications 
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
   ];
 
-  hardware.opengl.driSupport = true; # This is already enabled by default
-  hardware.opengl.driSupport32Bit = true; # For 32 bit applications
+  # GUI Tools
+  environment.systemPackages = with pkgs; [                                                                               lact                                                                                                                ];                                                                                                                                                                                                                     
+  systemd.services.lactd = {
+    description = "AMDGPU Control Daemon";
+    enable = true;  
+    serviceConfig = {
+      ExecStart = "${pkgs.lact}/bin/lact daemon";
+    };
+    wantedBy = ["multi-user.target"];
+  };
+
 }

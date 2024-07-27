@@ -1,13 +1,16 @@
-{ config, ... }:
+{ config, lib, options, ... }:
 {
-	wayland.windowManager.hyprland.systemd.variables = ["--all"];
+
+options = lib.mkIf (config.my.desktop.option == "hyprland") {
+	
+  wayland.windowManager.hyprland.systemd.variables = ["--all"];
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
     settings = {
 
       "$mainMod" = "SUPER";
-      "$terminal" = "alacritty";
+      "$terminal" = "kitty";
       "$fileManager" = "nemo";
       "$menu" = "rofi -show drun -show-icons";
       "$browser" = "firefox";
@@ -25,7 +28,8 @@
       
 
       monitor = [
-				"HDMI-A-1,preferred,auto,1,mirror,LVDS-1"
+				#"HDMI-A-1,preferred,auto,1,mirror,LVDS-1"
+				"HDMI-A-1,1366x768,auto,1,mirror,LVDS-1"
 			];
       exec-once = [
         "hyprpaper"
@@ -35,6 +39,7 @@
 	      "swaync"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
+        #"nwg-dock-hyprland -r"
       ];
 
       env = [
@@ -45,7 +50,7 @@
         "XDG_SESSION_DESKTOP,Hyprland"
         "XCURSOR_SIZE,36"
         "QT_QPA_PLATFORM,wayland"
-	"QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+	      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 				#"GTK2_RC_FILES,/home/smaalks/.config/gtk-2.0/gtkrc"
 				"QT_QPA_PLATFORMTHEME,qtct"
 				"QT_AUTO_SCREEN_SCALE_FACTOR,1"
@@ -94,7 +99,7 @@
 
         layout = "master";
 
-        no_cursor_warps = false;
+        #no_cursor_warps = false;
       };
 
       decoration = {
@@ -104,7 +109,7 @@
           enabled = true;
           size = 16;
           passes = 2;
-	  vibrancy = 0.5;
+	        vibrancy = 0.5;
           new_optimizations = true;
         };
 
@@ -144,9 +149,9 @@
         preserve_split = true; # you probably want this
       };
 
-      master = {
-        new_is_master = true;
-      };
+      #master = {
+      #  new_is_master = true;
+      #};
 
       gestures = {
         workspace_swipe = true;
@@ -291,4 +296,5 @@
       ];
     };
   };
+};
 }

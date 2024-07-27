@@ -2,20 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, options, userSettings, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/nixos/center.nix
-      #../../modules/nixos/pkgs/packages.nix
+      ../../modules/nixos/custom-options/nixos-options.nix
     ];
 
   # Bootloader.
   #boot.loader.systemd-boot.enable = true;
   #boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "hyprdell"; # Define your hostname.
+  networking.hostName = "${userSettings.host}"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -51,7 +51,7 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.smaalks = {
+  users.users.${userSettings.username} = {
     isNormalUser = true;
     description = "Manas Katual";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
@@ -80,8 +80,8 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-   networking.firewall.allowedTCPPorts = [ 4242 ];
-   networking.firewall.allowedUDPPorts = [ 4242 ];
+  # networking.firewall.allowedTCPPorts = [ 4242 ];
+  # networking.firewall.allowedUDPPorts = [ 4242 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -120,6 +120,18 @@
 
   # gdm
   #services.xserver.displayManager.gdm.enable = true;
+
+  security.polkit.enable = true;
+
+#  services.greetd = {                                                      
+#  enable = true;                                                         
+#  settings = {                                                           
+#    default_session = {                                                  
+#      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+#      user = "greeter";                                                  
+#    };                                                                   
+#  };                                                                     
+#};
 
 
 }

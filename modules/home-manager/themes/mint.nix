@@ -2,7 +2,7 @@
 {
   # qt theme
   qt.enable = true;
-  qt.platformTheme.name = "qtct";
+  qt.platformTheme.name = "adwaita";
   qt.style.name = "adwaita-dark";
   qt.style.package = pkgs.adwaita-qt;
 

@@ -1,5 +1,7 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, lib, config, inputs, options, ... }:
 {
+ 
+ options = lib.mkIf (config.my.desktop.option == "hyprland") {
 	
 	# hyprland cachix
   nix.settings = {
@@ -12,5 +14,5 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
-
+};
 }

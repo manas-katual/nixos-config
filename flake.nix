@@ -41,17 +41,23 @@
       system = "x86_64-linux";
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${system};
-			username = "smaalks";
-			host = "hyprdell";
+      
+      userSettings = {
+			  username = "smaalks";
+			  host = "hyprdell";
+        desktop = "hyprland";
+      };
+
     in {
     # nixos - system hostname
-    nixosConfigurations.hyprdell = lib.nixosSystem {
+    nixosConfigurations.${userSettings.host} = lib.nixosSystem {
       specialArgs = {
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
         inherit inputs system;
+        inherit userSettings;
       };
       modules = [
         ./hosts/dell/configuration.nix
@@ -59,8 +65,11 @@
 				home-manager.nixosModules.home-manager {
 	  			home-manager.useGlobalPkgs = true;
 	  			home-manager.useUserPackages = true;
-	  			home-manager.users.smaalks = import ./hosts/dell/home.nix;
-	  		  home-manager.extraSpecialArgs = {inherit inputs;};
+	  			home-manager.users.${userSettings.username} = import ./hosts/dell/home.nix;
+	  		  home-manager.extraSpecialArgs = {
+            inherit inputs; 
+            inherit userSettings;
+          };
 				}
       ];
     };

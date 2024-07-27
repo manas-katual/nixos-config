@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, lib, ... }: 
 
 {
   nixpkgs.config = {
@@ -17,10 +17,8 @@
     wget
     wl-clipboard
     cliphist
-    hyprpaper
-    hypridle
-    hyprlock
-    rofi-wayland
+    #rofi-wayland
+   # hyprpaper
 
     python3
     python312Packages.pip
@@ -30,7 +28,7 @@
     
     pamixer
     pavucontrol
-    gnome.nautilus
+    nautilus
     libsForQt5.dolphin
     tree
     vscodium-fhs
@@ -62,23 +60,21 @@
     mpv
     eww
     libnotify
-    pcmanfm
-		lxmenu-data
-		shared-mime-info
-		fragments
+		#fragments
 		libsForQt5.ark
 		disfetch
 
 		libsForQt5.kdenlive
 		glaxnimate
 		obs-studio
+    davinci-resolve
 
 		discordo
 		ripcord
 		cinnamon.nemo
 		cinnamon.nemo-with-extensions
 		bat
-		gnome.eog
+		eog
 		scrcpy
 		acpi
 		lan-mouse
@@ -97,10 +93,18 @@
     pmbootstrap
     virt-viewer
     tmux
+    mission-center
 
-  ];
+  ] 
+   ++ (if (config.programs.hyprland.enable == true) || (config.programs.sway.enable == true) || (config.programs.wayfire.enable == true)
+           then [pkgs.rofi-wayland]
+         else 
+           (if (config.services.xserver.windowManager.dwm.enable == true)
+             then [pkgs.rofi]
+         else []));
 
   fonts.packages = with pkgs; [
+    intel-one-mono
     jetbrains-mono
     noto-fonts
     noto-fonts-emoji
@@ -115,5 +119,4 @@
 	programs.adb.enable = true;
 	services.acpid.enable = true;
   
-  virtualisation.incus.clientPackage = config.virtualisation.incus.package.client;
 }

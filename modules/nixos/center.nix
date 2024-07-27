@@ -1,10 +1,10 @@
 {
   imports = [
     ./broadcom/broadcom.nix
-    ./hyprland.nix
     ./sound/sound.nix
-    #./gpu/intel-amd.nix
-    ./gpu/amd.nix
+    #./gpu/intel-drivers.nix
+    #./gpu/amd-drivers.nix
+    ./gpu/intel.nix
     ./env.nix
     ./zram/zram.nix
     ./vm/virtmanager.nix
@@ -16,6 +16,10 @@
 		#./nur.nix
     #./stylix/stylix.nix
 		./flatpak/flatpak.nix
+    ./pcmanfm/pcmanfm.nix
+
+    # distrobox
+    ./distrobox-podman/distrobox-podman.nix
 
     # bootloader
     #./bootloader/systemd.nix
@@ -27,5 +31,13 @@
     #../games/steam.nix
     #../games/games.nix
     ../games/center.nix
+
+    # desktop/window
+    ./desktops/hyprland/nix-hyprland.nix
+    ../desktops/gnome/gnome.nix
+    ../desktops/pantheon/pantheon.nix
+    ../desktops/kde/kde.nix
+    ../desktops/sway/sway.nix
+    ../desktops/dwm/dwm.nix
   ];
 }
