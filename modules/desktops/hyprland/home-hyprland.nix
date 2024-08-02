@@ -1,12 +1,15 @@
-{ config, lib, options, ... }:
+{ config, pkgs, lib, inputs, options, ... }:
 {
 
-options = lib.mkIf (config.my.desktop.option == "hyprland") {
-	
-  wayland.windowManager.hyprland.systemd.variables = ["--all"];
+#options = lib.mkIf (config.my.desktop.option == "hyprland") {
+
   wayland.windowManager.hyprland = {
     enable = true;
+    #plugins = [
+    #  inputs.hyprland-plugins.packages."${pkgs.system}".hyprbars
+    #];
     xwayland.enable = true;
+    systemd.variables = ["--all"];
     settings = {
 
       "$mainMod" = "SUPER";
@@ -40,21 +43,22 @@ options = lib.mkIf (config.my.desktop.option == "hyprland") {
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         #"nwg-dock-hyprland -r"
+        "pypr"
       ];
 
       env = [
-      	#"WLR_DRM_DEVICES,$HOME/.config/hypr/card"
+        "AQ_DRM_DEVICES,/dev/dri/card1" #:/dev/dri/card1
 				"WLR_NO_HARDWARE_CURSORS,1"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
-        "XCURSOR_SIZE,36"
-        "QT_QPA_PLATFORM,wayland"
+        #"XCURSOR_SIZE,36"
+        "QT_QPA_PLATFORM,wayland;xcb"
 	      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
 				#"GTK2_RC_FILES,/home/smaalks/.config/gtk-2.0/gtkrc"
-				"QT_QPA_PLATFORMTHEME,qtct"
+				"QT_QPA_PLATFORMTHEME,qt5ct"
 				"QT_AUTO_SCREEN_SCALE_FACTOR,1"
-				"QT_STYLE_OVERRIDE,kvantum"
+				#"QT_STYLE_OVERRIDE,kvantum"
         #"XDG_SCREENSHOTS_DIR,~/screens"
       ];
 
@@ -80,7 +84,7 @@ options = lib.mkIf (config.my.desktop.option == "hyprland") {
 
       general = {
         gaps_in = 5;
-        gaps_out = 10;
+        gaps_out = 5;
         border_size = 3;
         # col.active_border = rgba(7aa2f7ee) rgba(87aaf8ee) 45deg # tokyonight
         # col.inactive_border = rgba(32344aaa) # tokyonight 
@@ -196,6 +200,10 @@ options = lib.mkIf (config.my.desktop.option == "hyprland") {
         "$mainMod, F, fullscreen # dwindle"
         "Alt, F4, exec, wlogout -b 2 # wlogout"
 
+        # pypr
+        "$mainMod, A, exec, pypr toggle term && hyprctl dispatch bringactivetotop"
+        "$mainMod, I, exec, pypr toggle volume && hyprctl dispatch bringactivetotop"
+
         # waybar
         "$mainMod SHIFT, C, exec, pkill waybar && waybar"
 
@@ -296,5 +304,5 @@ options = lib.mkIf (config.my.desktop.option == "hyprland") {
       ];
     };
   };
-};
+#};
 }

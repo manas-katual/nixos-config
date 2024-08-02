@@ -231,6 +231,7 @@
         #custom-wmname,
         #clock,
         #idle_inhibitor,
+        #bluetooth
         #language,
         #pulseaudio,
         #backlight,
@@ -293,6 +294,11 @@
         }
 
         #custom-fans {
+          padding: 0 10px;
+          color: @blue;
+        }
+
+        #bluetooth {
           padding: 0 10px;
           color: @blue;
         }
@@ -401,7 +407,7 @@
 
         modules-left = ["custom/wmname" "hyprland/workspaces" "backlight" "memory" "idle_inhibitor"];
         modules-center = ["clock"];
-        modules-right = ["network" "battery" "cpu" "pulseaudio" "tray" "custom/notification" "custom/powermenu"];
+        modules-right = ["network" "bluetooth" "battery" "cpu" "pulseaudio" "custom/notification" "tray" "custom/powermenu"];
 
       /* Modules configuration */
 
@@ -485,6 +491,18 @@
           tooltip-format = "{essid} {signalStrength}%";
         };
 
+        "bluetooth"= {
+          "format" = "{icon}";
+          "format-alt" = "bluetooth= {status}";
+          "interval" = 30;
+          "on-click-right" = "pypr toggle bluetooth && hyprctl dispatch bringactivetotop";
+          "format-icons" = {
+            "enabled" = "";
+            "disabled" = "󰂲";  
+          };
+          "tooltip-format" = "{status}";
+        };
+
         "pulseaudio" = {
           format = "{icon}{volume}% {format_source}";
           format-bluetooth = "{icon} {volume}%";
@@ -505,7 +523,7 @@
           on-click = "pamixer -t";
           on-scroll-up = "pamixer -i 1";
           on-scroll-down = "pamixer -d 1";
-          on-click-middle = "pavucontrol";
+          on-click-middle = "pypr toggle volume && hyprctl dispatch bringactivetotop";
           on-click-middle-release = "sleep 0";
         };
 

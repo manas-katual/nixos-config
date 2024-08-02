@@ -19,6 +19,11 @@
 # }
 #   '';
 
+  services.swaync = {
+    enable = true;
+    package = pkgs.swaynotificationcenter;
+  };
+
   home.file.".config/swaync/style.css".text = ''
 * {
   all: unset;

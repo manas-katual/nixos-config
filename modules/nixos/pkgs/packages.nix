@@ -13,12 +13,9 @@
     #htop
     #brave
     firefox
-    #kitty
     wget
     wl-clipboard
     cliphist
-    #rofi-wayland
-   # hyprpaper
 
     python3
     python312Packages.pip
@@ -44,10 +41,6 @@
     spice-gtk
     blueberry
     lxde.lxsession
-    unetbootin
-    xorg.xhost
-    isoimagewriter
-    gparted
     mediawriter
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
@@ -64,21 +57,20 @@
 		libsForQt5.ark
 		disfetch
 
-		libsForQt5.kdenlive
+    olive-editor
+		#libsForQt5.kdenlive
+    kdePackages.kdenlive
 		glaxnimate
 		obs-studio
-    davinci-resolve
 
-		discordo
-		ripcord
-		cinnamon.nemo
-		cinnamon.nemo-with-extensions
+		nemo
+		nemo-with-extensions
 		bat
 		eog
 		scrcpy
 		acpi
 		lan-mouse
-		swaynotificationcenter
+		#swaynotificationcenter
 		
 		ripgrep
 		fd

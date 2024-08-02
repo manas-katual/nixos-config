@@ -33,6 +33,15 @@
 		# hyprland
 		hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
+    # hyprland plugins
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    # pyprland
+    pyprland.url = "github:hyprland-community/pyprland";
+
   };
 
   outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
@@ -61,7 +70,8 @@
       };
       modules = [
         ./hosts/dell/configuration.nix
-				inputs.nur.nixosModules.nur
+        #hyprland.homeManagerModules.default
+        #{wayland.windowManager.hyprland.enable = true;}
 				home-manager.nixosModules.home-manager {
 	  			home-manager.useGlobalPkgs = true;
 	  			home-manager.useUserPackages = true;

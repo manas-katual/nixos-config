@@ -1,6 +1,6 @@
 {
   hardware.pulseaudio.enable = false;
-  sound.enable = true;
+  #sound.enable = true;
 
   # rtkit is optional but recommended
   security.rtkit.enable = true;
@@ -13,6 +13,6 @@
     pulse.enable = true;
 
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
   };
 }

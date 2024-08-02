@@ -1,39 +1,44 @@
 { config, pkgs, ... }:
+
 {
+  
   # qt theme
-  qt.enable = true;
-  qt.platformTheme.name = "adwaita";
-  qt.style.name = "adwaita-dark";
-  qt.style.package = pkgs.adwaita-qt;
+  qt = {
+    enable = true;
+    platformTheme.name = "adwaita";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
+  };
 
   # gtk theme
-  gtk.enable = true;
   gtk = {    
+    enable = true;
     font = {
-    name = "Intel One Mono";
-    size = 12;
-    package = pkgs.intel-one-mono;
+      name = "Intel One Mono";
+      size = 14;
+      package = pkgs.intel-one-mono;
+    };
+    theme = {
+      package = pkgs.mint-themes;
+      name = "Mint-Y-Dark-Teal";
+    };
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
+    gtk3 = {
+      extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
+    };
+    gtk4 = {
+      extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
     };
   }; 
-
-
-  gtk.theme.package = pkgs.cinnamon.mint-themes;
-  gtk.theme.name = "Mint-Y-Dark-Teal";
-
-  gtk.iconTheme.package = pkgs.papirus-icon-theme;
-  gtk.iconTheme.name = "Papirus-Dark";
-	
-      gtk.gtk3 = {
-        extraConfig = {
-          gtk-application-prefer-dark-theme = 1;
-        };
-      };
-      gtk.gtk4 = {
-        extraConfig = {
-          gtk-application-prefer-dark-theme = 1;
-        };
-      };
-
 
 	# Now symlink the `~/.config/gtk-4.0/` folder declaratively:
 #  xdg.configFile = {

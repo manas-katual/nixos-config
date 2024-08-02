@@ -7,5 +7,6 @@
 		./hyprlock.nix
 		./home-hyprland.nix
 		./hyprpaper.nix
+    ./pypr.nix
 	];
 }

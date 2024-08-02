@@ -5,7 +5,7 @@
     #./terminals/alacritty.nix
     ./terminals/kitty.nix
 
-    # cool
+    # main
     ./git/git.nix
     ./htop/htop.nix
     ./shells/bash.nix
@@ -17,9 +17,10 @@
     ./zathura/zathura.nix
     ./vm/vm.nix
     ./emacs/emacs.nix
-		./nur.nix
+		./nur/nur.nix
 		#./eww/eww.nix
     ./neovim/neovim.nix
+    ./pkgs/packages.nix
 
     ./waybar/waybar-gruvbox.nix
     ./rofi/rofi-gruvbox.nix
@@ -28,12 +29,12 @@
     # desktops
     ../desktops/hyprland/center.nix
     #../desktops/sway/center.nix
-    #../desktops/sway/swayconf.nix
+    #../desktops/sway/config.nix
     ../desktops/wayfire/wayfire-config.nix
 
     # themes
     ./themes/mint.nix
-    ./cusrors/google-dot.nix
+    ./cursors/google-dot.nix
 
 		
 

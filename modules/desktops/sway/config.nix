@@ -1,3 +1,8 @@
+{ pkgs, config, lib, ... }:
+{
+    #xdg.configFile."sway/config".source = pkgs.lib.mkOverride 0 "/home/smaalks/setup/modules/desktops/sway/config";
+
+    home.file.".config/sway/config".text = ''
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -216,3 +221,6 @@ bar {
 }
 
 include @sysconfdir@/sway/config.d/*
+    
+    '';
+}

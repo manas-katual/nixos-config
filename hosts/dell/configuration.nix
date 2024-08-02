@@ -100,16 +100,6 @@
   # flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # sddm
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "catppuccin-sddm-corners";
-    #theme = "Elegant-sddm";
-    #theme = "sddm-chili";
-    autoNumlock = true;
-  };
-
   # numlock
   services.xserver.displayManager.setupCommands = ''
     ${pkgs.numlockx}/bin/numlockx on

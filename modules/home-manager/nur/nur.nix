@@ -5,6 +5,5 @@
 	];
 
   home.packages = with pkgs; [
-	  config.nur.repos.ataraxiasjel.waydroid-script
   ];
 }
