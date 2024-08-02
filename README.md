@@ -1,6 +1,6 @@
 # ❄️ My NixOS Config
 
-⬇ steps for reinstalling 
+## ⬇ steps for reinstalling 
 
 Run this command to ensure Git & Vim are installed:
 
