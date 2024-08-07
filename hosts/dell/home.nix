@@ -5,7 +5,6 @@
   imports = [
     #inputs.stylix.homeManagerModules.stylix
     ../../modules/home-manager/center.nix
-    ../../modules/home-manager/custom-options/home-options.nix
   ];
 
   home = {

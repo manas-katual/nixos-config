@@ -88,12 +88,15 @@
     mission-center
 
   ] 
-   ++ (if (config.programs.hyprland.enable == true) || (config.programs.sway.enable == true) || (config.programs.wayfire.enable == true)
-           then [pkgs.rofi-wayland]
+   ++ (if (config.programs.hyprland.enable == true)
+          then [pkgs.rofi-wayland]
+         else 
+           (if (config.programs.wayfire.enable == true) || (config.programs.sway.enable == true)
+             then [pkgs.rofi-wayland pkgs.swayidle pkgs.swaylock pkgs.swaybg]
          else 
            (if (config.services.xserver.windowManager.dwm.enable == true)
              then [pkgs.rofi]
-         else []));
+       else [])));
 
   fonts.packages = with pkgs; [
     intel-one-mono

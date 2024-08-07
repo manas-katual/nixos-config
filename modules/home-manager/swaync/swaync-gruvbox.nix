@@ -1,24 +1,9 @@
-{ pkgs, config, ... }:
-{
-#   home.file.".config/swaync/config.json".text = ''
-# {
-#     "scripts": {
-#         "soundsLow": {
-#             "exec": "play /home/smaalks/setup/modules/home-manager/swaync/desktop-login.oga",
-#             "urgency": "Low"
-#         },
-#         "soundsNorm": {
-#             "exec": "play /home/smaalks/setup/modules/home-manager/swaync/desktop-login.oga",
-#             "urgency": "Normal"
-#         },
-#         "soundsCrit": {
-#             "exec": "play /home/smaalks/setup/modules/home-manager/swaync/dialog-question.oga",
-#             "urgency": "Critical"
-#         }
-#     }
-# }
-#   '';
+{ pkgs, config, userSettings, lib, options, ... }:
 
+{
+	config = lib.mkIf (config.programs.hyprland.enable == true || config.programs.sway.enable == true || config.programs.wayfire.enable == true) {
+  home-manager.users.${userSettings.username} = 
+  {
   services.swaync = {
     enable = true;
     package = pkgs.swaynotificationcenter;
@@ -377,4 +362,6 @@ slider {
   margin-right: 10px;
 }
   '';
+	};
+	};
 }  

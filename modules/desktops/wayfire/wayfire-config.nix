@@ -24,7 +24,9 @@ zoom_enabled_for = none
 
 [autostart]
 autostart_wf_shell = false
-command_bar = waybar
+bar = waybar &
+set_wallpaper = swaybg --output '*' --mode fill --image /home/smaalks/setup/modules/wallpapers/night_hut.jpeg &
+#dock = wf-dock
 gamma = wlsunset
 idle = swayidle before-sleep swaylock
 notifications = swaync
@@ -57,7 +59,7 @@ binding_mute = KEY_MUTE
 binding_screenshot = KEY_PRINT
 binding_screenshot_interactive = <shift> KEY_PRINT
 binding_terminal = <super> KEY_ENTER
-command_launcher = rofi -show drun -show-icons
+command_launcher = rofi -show drun -show-icons -disable-history
 command_light_down = light -U 5
 command_light_up = light -A 5
 command_lock = swaylock
@@ -108,10 +110,10 @@ zoom = 0.100000
 active_color = \#222222AA
 border_size = 4
 button_order = minimize maximize close
-font = sans-serif
+font = intel-one-mono
 ignore_views = none
 inactive_color = \#333333DD
-title_height = 30
+title_height = 0
 
 [expo]
 background = \#1A1A1AFF
@@ -192,7 +194,7 @@ modifier_binding_timeout = 400
 mouse_accel_profile = default
 mouse_cursor_speed = 0.000000
 mouse_scroll_speed = 1.000000
-natural_scroll = false
+natural_scroll = true
 scroll_method = default
 tablet_motion_mode = default
 tap_to_click = true

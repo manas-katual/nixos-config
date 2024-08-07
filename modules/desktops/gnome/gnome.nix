@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  options = lib.mkIf (config.my.desktop.option == "gnome") {
+  config = lib.mkIf (config.my.desktop.option == "gnome") {
   
   services.xserver.desktopManager.gnome.enable = true;
   

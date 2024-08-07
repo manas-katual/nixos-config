@@ -1,3 +1,5 @@
+{ config, lib, options, ... }:
+
 {
   environment.variables = {
     EDITOR = "nvim";

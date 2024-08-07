@@ -27,8 +27,22 @@
 					};
 
 				lualine.enable = true;
-				chadtree.enable = true;
+				#chadtree.enable = true;
+				neo-tree.enable = true;
 			};
+			
+    	globals = {
+      	mapleader = " ";
+      	maplocalleader = " ";
+    	};
+
+			keymaps = [
+				{
+        	key = "<leader>e";
+        	action = "<CMD>Neotree toggle<CR>";
+        	options.desc = "Toggle NeoTree";
+      	}
+			];
     };
 
 }

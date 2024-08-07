@@ -42,6 +42,9 @@
     # pyprland
     pyprland.url = "github:hyprland-community/pyprland";
 
+		# grub-themes
+		nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
+
   };
 
   outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:

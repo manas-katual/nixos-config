@@ -1,3 +1,5 @@
+{ config, lib, options, ... }:
+
 {
   imports = [
     ./broadcom/broadcom.nix
@@ -8,7 +10,6 @@
     ./vm/vm.nix
     ./essential/essential.nix
     ./appimage/appimage.nix
-    #./nixvim/nixvim.nix
     ./pkgs/packages.nix
 		./waydroid/waydroid.nix
 		./nur/nur.nix
@@ -28,16 +29,34 @@
     #./appimage/app.nix
 
     # games
-    #../games/steam.nix
-    #../games/games.nix
-    ../games/center.nix
+    ../games/games.nix
+    
+    # terminals
+    ./terminals/kitty.nix
+    
+    # shell
+    ../shell/bash.nix
+    
+    # editors
+    ../editors/emacs/emacs.nix
+    ../editors/nixvim/nixvim.nix
 
     # desktop/window
-    ../desktops/hyprland/nix-hyprland.nix
+    ../desktops/hyprland/hyprland.nix
     ../desktops/gnome/gnome.nix
     ../desktops/pantheon/pantheon.nix
     ../desktops/kde/kde.nix
     ../desktops/sway/sway.nix
     ../desktops/dwm/dwm.nix
-  ];
+		../desktops/wayfire/wayfire.nix
+
+    ../home-manager/swaync/swaync-gruvbox.nix 
+    ./wlogout/wlogout.nix 
+  
+  ]; 
+  #++
+  #  (if (config.programs.hyprland.enable == true) || (config.programs.sway.enable == true) || (config.programs.wayfire.enable == true)
+  #   then [ ../home-manager/swaync/swaync-gruvbox.nix ]
+  #  else []);
+  
 }

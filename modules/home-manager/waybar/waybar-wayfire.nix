@@ -33,7 +33,7 @@
           /* Catppuccin Mocha palette*/ 
           
           /*
-	  @define-color foreground #cdd6f4;
+	        @define-color foreground #cdd6f4;
           @define-color background #181825;
           @define-color alt_background #1e1e2e;
           @define-color accent #89b4fa;
@@ -55,7 +55,7 @@
           @define-color alt_magenta #f5c2e7;
           @define-color alt_cyan #94e2d5;
           @define-color alt_white #a6adc8;
-	  */
+	        */
 
           /* Kanagawa Palette */ 
 
@@ -85,7 +85,8 @@
 	  */
 
           /* Gruvbox Palette */ 
-
+          
+          /*
           @define-color foreground #ebdbb2;
           @define-color background #1d2021;
           @define-color alt_background #282828;
@@ -108,7 +109,8 @@
           @define-color alt_magenta #d3869b;
           @define-color alt_cyan #8ec07c;
           @define-color alt_white #ebdbb2;
-
+          */
+          
           /* OxoCarbon Palette */ 
           
 	  /* 
@@ -165,8 +167,8 @@
 
           /* Everblush Palette */ 
           
-	  /*
-	  @define-color foreground #dadada;
+	  
+	        @define-color foreground #dadada;
           @define-color background #141b1e;
           @define-color alt_background #182024;
           @define-color accent #67cbe7; 
@@ -188,7 +190,7 @@
           @define-color alt_magenta #ce89df;
           @define-color alt_cyan #67cbe7;
           @define-color alt_white #bdc3c2;
-	  */
+
           
 	  /* style.css */
 
@@ -215,7 +217,7 @@
           opacity: 0.2;
         }
 
-        window#hyprland-window {
+        window#wlr-window {
           background-color: @background;
         }
 
@@ -401,20 +403,20 @@
     settings = {
       mainBar = {
         #margin = "8px 10px -2px 10px";
-        margin = "7 7 3 7";
+        #margin = "7 7 3 7";
         layer = "top";
 	height = 35;
 
-        modules-left = ["custom/wmname" "hyprland/workspaces" "backlight" "memory" "idle_inhibitor"];
+        modules-left = ["custom/wmname" "backlight" "memory" "cpu" "bluetooth" "idle_inhibitor"];
         modules-center = ["clock"];
-        modules-right = ["network" "bluetooth" "battery" "cpu" "pulseaudio" "custom/notification" "tray" "custom/powermenu"];
+        modules-right = ["network" "battery" "pulseaudio" "custom/notification" "tray" "custom/powermenu"];
 
       /* Modules configuration */
 
-      "hyprland/workspaces" = {
+      "wlr/workspaces" = {
           active-only = "false";
-          on-scroll-up = "hyprctl dispatch workspace e-1";
-          on-scroll-down = "hyprctl dispatch workspace e+1";
+          #on-scroll-up = "hyprctl dispatch workspace e-1";
+          #on-scroll-down = "hyprctl dispatch workspace e+1";
           disable-scroll = "false";
           all-outputs = "true";
           format = "{icon}";
@@ -435,10 +437,10 @@
           };
 
         "idle_inhibitor"= {
-           "format"= "{icon}";
-           "format-icons"= {
-             "activated"= "󰅶";
-             "deactivated"= "󰾪";
+           format = "{icon}";
+           format-icons = {
+             activated = "󰅶";
+             deactivated = "󰾪";
             };
         };
 
@@ -492,15 +494,15 @@
         };
 
         "bluetooth"= {
-          "format" = "{icon}";
-          "format-alt" = "bluetooth= {status}";
-          "interval" = 30;
-          on-click-right = "pypr toggle bluetooth && hyprctl dispatch bringactivetotop";
+          format = "{icon}";
+          format-alt = "bluetooth= {status}";
+          interval = 30;
+          on-click-right = "blueberry";
           "format-icons" = {
-            "enabled" = "";
-            "disabled" = "󰂲";  
+            enabled = "";
+            disabled = "󰂲";  
           };
-          "tooltip-format" = "{status}";
+          tooltip-format = "{status}";
         };
 
         "pulseaudio" = {
@@ -523,7 +525,7 @@
           on-click = "pamixer -t";
           on-scroll-up = "pamixer -i 1";
           on-scroll-down = "pamixer -d 1";
-          "on-click-middle" = "pypr toggle volume && hyprctl dispatch bringactivetotop";
+          on-click-middle = "pavucontrol";
           on-click-middle-release = "sleep 0";
         };
 

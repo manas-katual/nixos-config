@@ -1,0 +1,2 @@
+# Aliases for emacs commands
+alias ff find-file $1

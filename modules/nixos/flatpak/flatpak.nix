@@ -10,7 +10,15 @@
 		"io.mrarm.mcpelauncher"
 		"com.github.tchx84.Flatseal"
 		"org.polymc.PolyMC"
+    "org.freedownloadmanager.Manager"
+    "org.jdownloader.JDownloader"
   ];
+
+  # auto updates
+  services.flatpak.update.auto = {
+    enable = true;
+    onCalendar = "weekly"; # Default value
+  };
 
 	xdg.portal.enable = true; # for flatpak
 	xdg.portal.wlr.enable = true;
