@@ -13,4 +13,7 @@
 	./rofi/rofi-gruvbox.nix
 	./packages.nix
 	./thunar.nix
+	./zathura.nix
+	#./eww/eww.nix
+	./htop.nix
 ]
