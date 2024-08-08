@@ -7,9 +7,15 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../modules/nixos/center.nix
-      ../../modules/nixos/custom-options/nixos-options.nix
-    ];
+    ] ++ 
+    (import ../../modules/programs) ++ 
+    (import ../../modules/services) ++ 
+    (import ../../modules/hardware) ++
+    (import ../../modules/themes) ++
+    (import ../../modules/shell) ++
+    (import ../../modules/editors) ++
+    (import ../../modules/games) ++
+    (import ../../modules/desktops);
 
   # Bootloader.
   #boot.loader.systemd-boot.enable = true;
