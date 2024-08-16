@@ -10,6 +10,7 @@
 	./wlogout/wlogout.nix
 	./appimage.nix
 	./waybar/waybar-gruvbox.nix
+  ./waybar/waybar-wayfire.nix
 	./rofi/rofi-gruvbox.nix
 	./packages.nix
 	./thunar.nix

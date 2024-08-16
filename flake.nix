@@ -19,7 +19,7 @@
     };
 
     # stylix
-    #stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix";
 
     # nix colors
     nix-colors.url = "github:misterio77/nix-colors";
@@ -58,6 +58,7 @@
 			  username = "smaalks";
 			  host = "hyprdell";
         desktop = "hyprland";
+        theme = "gruvbox-dark-medium";
       };
 
     in {

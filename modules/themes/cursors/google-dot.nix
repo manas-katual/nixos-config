@@ -1,4 +1,4 @@
-{ pkgs, userSettings, ... }:
+{ pkgs, userSettings, lib, ... }:
 
 {
 
@@ -6,9 +6,9 @@
 		home.pointerCursor = {
 			gtk.enable = true;
 			#x11.enable = true;
-			package = pkgs.google-cursor;
-			name = "GoogleDot-Black";
-			size = 24;
+			package = lib.mkForce pkgs.google-cursor;
+			name = lib.mkForce "GoogleDot-Black";
+			size = lib.mkForce 24;
 		};
 	};
 }

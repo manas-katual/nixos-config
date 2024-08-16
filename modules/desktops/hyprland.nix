@@ -17,10 +17,16 @@
 		};
     
 		environment.systemPackages = with pkgs; [
+			lxde.lxsession
+			slurp
+			grim
+			brightnessctl
+			pamixer
+			wl-clipboard
+			cliphist
 			#nwg-dock-hyprland
 			#nwg-drawer
 			pyprland
-			
 		];
 
 		home-manager.users.${userSettings.username} = {
@@ -39,21 +45,10 @@
 				  $mainMod = SUPER
 					$terminal = kitty
 					$fileManager = nemo
-					$menu = rofi -show drun -show-icons
+					$menu = rofi -show drun -show-icons -disable-history
 					$browser = firefox
 					$lock = hyprlock
-					$w1 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/random.jpg
-					$w2 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/hut.jpg
-					$w3 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/car.jpg
-					$w4 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/sky.jpg
-					$w5 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/nord_roads.png
-					$w6 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/nord_lake.png
-					$w7 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/ledge_gruvbox.png
-					$w8 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/hyprland.png
-					$w9 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/ghibli_insider.jpeg
-					$w0 = hyprctl hyprpaper wallpaper LVDS-1,~/setup/modules/wallpapers/wind_rises.jpeg
 					
-
 					#monitor = HDMI-A-1,preferred,auto,1,mirror,LVDS-1
 					monitor = HDMI-A-1,1366x768,auto,1,mirror,LVDS-1
 					
@@ -66,20 +61,18 @@
 					exec-once = wl-paste --type image --watch cliphist store
 					#exec-once = nwg-dock-hyprland -r
 					exec-once = pypr
+          exec-once = emacs --daemon
 
-					env = AQ_DRM_DEVICES,/dev/dri/card1 #:/dev/dri/card1
-					env = 	WLR_NO_HARDWARE_CURSORS,1
-					env =  XDG_CURRENT_DESKTOP,Hyprland
+					env = AQ_DRM_DEVICES,/dev/dri/card1 
+					env = WLR_NO_HARDWARE_CURSORS,1
+					env = XDG_CURRENT_DESKTOP,Hyprland
 					env = XDG_SESSION_TYPE,wayland
 					env = XDG_SESSION_DESKTOP,Hyprland
-					#env = XCURSOR_SIZE,36
 					env = QT_QPA_PLATFORM,wayland;xcb
 					env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-					#env = GTK2_RC_FILES,/home/smaalks/.config/gtk-2.0/gtkrc
 					env = QT_QPA_PLATFORMTHEME,qt5ct
 					env = QT_AUTO_SCREEN_SCALE_FACTOR,1
-					#env = QT_STYLE_OVERRIDE,kvantum
-					#env = XDG_SCREENSHOTS_DIR,~/screens
+					env = QT_STYLE_OVERRIDE,kde
 
 					debug {
 						disable_logs = false
@@ -105,20 +98,9 @@
 						gaps_in = 5
 						gaps_out = 5
 						border_size = 3
-						# col.active_border = rgba(7aa2f7ee) rgba(87aaf8ee) 45deg # tokyonight
-						# col.inactive_border = rgba(32344aaa) # tokyonight 
-						# col.active_border = rgba(89b4faee) rgba(89b4faee) 45deg # catppuccin-mocha
-						# col.inactive_border = rgba(1e1e2eaa) # catppuccin-mocha
-						# col.active_border = rgba(7aa89faa) rgba(7fb4caaa) 45deg #kanagawa 
-						# col.inactive_border = rgba(25252faa) #kanagawa
-						col.active_border = rgba(8ec07caa) rgba(8ec07caa) 45deg #gruvbox
-						col.inactive_border = rgba(3c3836aa) #gruvbox
-						# col.active_border = rgba(3ddbd9aa) rgba(82cfffaa) 45deg #oxocarbon
-						# col.inactive_border = rgba(262626aa) #oxocarbon
-						# col.active_border = rgba(8baff1aa) rgba(86aaecaa) 45deg #decay
-						# col.inactive_border = rgba(151720aa) #decay
-						# col.active_border = rgba(67cbe7aa) rgba(96d988aa) 45deg #everblush
-						# col.inactive_border = rgba(2d3437aa) #everblush
+            col.active_border = 0xff'' + config.lib.stylix.colors.base08 + " " + ''0xff'' + config.lib.stylix.colors.base09 + " " + ''0xff'' + config.lib.stylix.colors.base0A + " " + ''0xff'' + config.lib.stylix.colors.base0B + " " + ''0xff'' + config.lib.stylix.colors.base0C + " " + ''0xff'' + config.lib.stylix.colors.base0D + " " + ''0xff'' + config.lib.stylix.colors.base0E + " " + ''0xff'' + config.lib.stylix.colors.base0F + " " + ''270deg
+
+            col.inactive_border = 0xaa'' + config.lib.stylix.colors.base02 + ''
 
 						layout = master
 
@@ -137,10 +119,7 @@
 						drop_shadow = true
 						shadow_range = 4
 						shadow_render_power = 3
-						# col.shadow = rgba(1c1e27ee) #decayce
-						col.shadow = rgba(282828ee) #gruvbox
-						# col.shadow = rgba(25252fee) #kanagawa
-						# col.shadow = rgba(232a2daa)
+						col.shadow = 0xaa'' + config.lib.stylix.colors.base01 + ''
 						active_opacity = 0.9
 						inactive_opacity = 0.8
 					}
@@ -189,8 +168,12 @@
 					windowrule = float, ^(mpv)$
 					windowrule = float, ^(eog)$
 
-					windowrulev2 = float, class:(brave),title:(Save File)
 					windowrulev2 = float, class:(kitty),title:(nmtui)
+					
+					windowrulev2 = opacity 1.0,class:^(Brave-browser),fullscreen:1
+					#windowrulev2 = float, class:(brave),title:(Save File)
+
+					windowrulev2 = opacity 1.0,class:^(firefox),fullscreen:1
 
 					windowrulev2 = float,title:^(Save to Disk)$
 					windowrulev2 = size 70% 75%,title:^(Save to Disk)$
@@ -216,19 +199,6 @@
 
 					# waybar
 					bind =  $mainMod SHIFT, C, exec, pkill waybar && waybar
-
-
-					# hyprpaper
-					bind =  $mainMod SHIFT, Q, exec, $w1
-					bind =  $mainMod SHIFT, W, exec, $w2
-					bind =  $mainMod SHIFT, E, exec, $w3
-					bind =  $mainMod SHIFT, R, exec, $w4
-					bind =  $mainMod SHIFT, T, exec, $w5
-					bind =  $mainMod SHIFT, Y, exec, $w6
-					bind =  $mainMod SHIFT, U, exec, $w7
-					bind =  $mainMod SHIFT, I, exec, $w8
-					bind =  $mainMod SHIFT, O, exec, $w9
-					bind =  $mainMod SHIFT, P, exec, $w0
 
 					# Move focus with mainMod + arrow keys
 					bind =  $mainMod, left,  movefocus, l
@@ -319,33 +289,41 @@
 					ipc = "on";
 					splash = false;
 				preload = [
-					"~/setup/modules/wallpapers/random.jpg"
-					"~/setup/modules/wallpapers/hut.jpg"
-					"~/setup/modules/wallpapers/car.jpg"
-					"~/setup/modules/wallpapers/sky.jpg"
-					"~/setup/modules/wallpapers/nord_roads.png"
-					"~/setup/modules/wallpapers/nord_lake.png"
-					"~/setup/modules/wallpapers/nord_bridge.png"
-					"~/setup/modules/wallpapers/nixos.png"
-					"~/setup/modules/wallpapers/ledge_gruvbox.png"
-					"~/setup/modules/wallpapers/hyprland.png"
-					"~/setup/modules/wallpapers/wind_rises.jpeg"
-					"~/setup/modules/wallpapers/ghibli_insider.jpeg"
+				# 	(if (userSettings.theme == "gruvbox-dark-hard") 
+        #     then "~/setup/modules/wallpapers/car.jpg" 
+				# 	else if (userSettings.theme == "gruvbox-dark-medium") 
+        #     then "~/setup/modules/wallpapers/gruvbox-car.jpg" 
+        #    else if (userSettings.theme == "solarized-dark") 
+        #      then "~/setup/modules/wallpapers/solarized-dark.jpg"
+        #    else if (userSettings.theme == "nord") 
+        #      then "~/setup/modules/wallpapers/nord_bridge.png"
+        #    else if (userSettings.theme == "uwunicorn") 
+        #      then "~/setup/modules/wallpapers/pink_house.jpg"
+        #    else if (userSettings.theme == "everforest") 
+        #      then "~/setup/modules/wallpapers/everforest.png"
+        #    else 
+				# 	 "~/setup/modules/wallpapers/sky.jpg"
+				# 	 )
+          ''+config.stylix.image+''
 				];
 
 				wallpaper = [
-					"LVDS-1,~/setup/modules/wallpapers/random.jpg"
-					"LVDS-1,~/setup/modules/wallpapers/hut.jpg"
-					"LVDS-1,~/setup/modules/wallpapers/car.jpg"
-					"LVDS-1,~/setup/modules/wallpapers/sky.jpg"
-					"LVDS-1,~/setup/modules/wallpapers/nord_roads.png"
-					"LVDS-1,~/setup/modules/wallpapers/nord_lake.png"
-					"LVDS-1,~/setup/modules/wallpapers/nord_bridge.png"
-					"LVDS-1,~/setup/modules/wallpapers/nixos.png"
-					"LVDS-1,~/setup/modules/wallpapers/ledge_gruvbox.png"
-					"LVDS-1,~/setup/modules/wallpapers/hyprland.png"
-					"LVDS-1,~/setup/modules/wallpapers/wind_rises.jpeg"
-					"LVDS-1,~/setup/modules/wallpapers/ghibli_insider.jpeg"
+					# (if (userSettings.theme == "gruvbox-dark-hard") 
+          #    then "LVDS-1,~/setup/modules/wallpapers/car.jpg" 
+					# else if (userSettings.theme == "gruvbox-dark-medium") 
+          #    then "LVDS-1,~/setup/modules/wallpapers/gruvbox-car.jpg" 
+          #  else if (userSettings.theme == "solarized-dark") 
+          #    then "LVDS-1,~/setup/modules/wallpapers/solarized-dark.jpg" 
+          #  else if (userSettings.theme == "nord") 
+          #    then "LVDS-1,~/setup/modules/wallpapers/nord_bridge.png"
+          #  else if (userSettings.theme == "uwunicorn") 
+          #    then "LVDS-1,~/setup/modules/wallpapers/pink_house.jpg"
+          #  else if (userSettings.theme == "everforest") 
+          #    then "LVDS-1,~/setup/modules/wallpapers/everforest.png"
+          #  else 
+					#  "LVDS-1,~/setup/modules/wallpapers/sky.jpg"
+					#  )
+          ''+config.stylix.image+''
 				];
 				};
 			};

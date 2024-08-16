@@ -24,7 +24,7 @@
 #};
 
   boot.loader.grub = {
-    theme = inputs.nixos-grub-themes.packages.${pkgs.system}.nixos;
+    theme = lib.mkForce inputs.nixos-grub-themes.packages.${pkgs.system}.nixos;
   };
 
 

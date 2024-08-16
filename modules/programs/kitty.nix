@@ -1,12 +1,12 @@
-{ userSettings, ... }:
+{ lib, userSettings, ... }:
 
 {
   home-manager.users.${userSettings.username} = {
     programs.kitty = {
       enable = true;
       font = {
-        name = "Intel One Mono";
-        size = 14;
+        name = lib.mkForce "Intel One Mono";
+        size = lib.mkForce 14;
       };
       theme = "Gruvbox Dark Soft";
       settings = {
@@ -14,7 +14,7 @@
         wheel_scroll_min_lines = 1;
         window_padding_width = 2;
         confirm_os_window_close = 0;
-        background_opacity = "0.90";
+        background_opacity = lib.mkForce "0.90";
       }; 
       extraConfig = ''
         #modify_font cell_height 110% 

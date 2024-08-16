@@ -1,4 +1,4 @@
-{ userSettings, ... }:
+{ userSettings, lib, config, ... }:
 
 {
 	 home-manager.users.${userSettings.username} = {
@@ -113,19 +113,19 @@
 		 '';
 
 		 home.file.".config/rofi/theme.rasi".text = ''
-			* {
-			bg-col:  #1d2021;
-			bg-col-light: #689d6a;
-			border-col: #689d6a;
-			selected-col: #689d6a;
-			tab: #689d6a;
-			tab-selected: #1d2021;
-			fg-col: #ebdbb2;
-			fg-col2: #1d2021;
-			bubble: #689d6a;
 
-			width: 600;
-	}
+			* {
+				bg-col: #'' + config.lib.stylix.colors.base00 + ''; 
+				bg-col-light: #'' + config.lib.stylix.colors.base0B + '';
+				border-col: #'' + config.lib.stylix.colors.base0B + '';
+				selected-col: #'' + config.lib.stylix.colors.base0B + '';
+				tab: #'' + config.lib.stylix.colors.base0B + '';
+				tab-selected: #'' + config.lib.stylix.colors.base00 + '';
+				fg-col: #'' + config.lib.stylix.colors.base05 + '';
+				fg-col2: #'' + config.lib.stylix.colors.base00 + '';
+				bubble: #'' + config.lib.stylix.colors.base0B + '';
+				width: 600;
+			}
 		 '';
 	};
 }

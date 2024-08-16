@@ -1,4 +1,4 @@
-{ config, lib, options, userSettings, ... }:
+{ config, lib, userSettings, ... }:
 
 {
 	config = lib.mkIf (config.programs.hyprland.enable == true || config.programs.sway.enable == true || config.programs.wayfire.enable == true) {

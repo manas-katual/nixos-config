@@ -14,8 +14,6 @@
     #brave
     firefox
     wget
-    wl-clipboard
-    cliphist
 
     python3
     python312Packages.pip
@@ -23,7 +21,6 @@
     espeak
     pylint
     
-    pamixer
     pavucontrol
     nautilus
     libsForQt5.dolphin
@@ -33,14 +30,10 @@
     vesktop
     tgpt
     neovide
-    slurp
-    grim
-    brightnessctl
     spice
     spice-protocol
     spice-gtk
     blueberry
-    lxde.lxsession
     mediawriter
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
@@ -80,6 +73,7 @@
 		luajitPackages.luacheck
     imv
     gcc
+
     codeblocks
     tldr
     pmbootstrap

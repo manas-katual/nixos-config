@@ -1,4 +1,4 @@
-{ config, pkgs, userSettings, ... }:
+{ config, pkgs, lib, userSettings, ... }:
 
 {
   
@@ -16,15 +16,15 @@
 		# gtk theme
 		gtk = {    
 			enable = true;
-			font = {
-				name = "Intel One Mono";
-				size = 14;
-				package = pkgs.intel-one-mono;
-			};
-			theme = {
-				package = pkgs.mint-themes;
-				name = "Mint-Y-Dark-Teal";
-			};
+			#font = {
+			#	name = "Intel One Mono";
+			#	size = 14;
+			#	package = pkgs.intel-one-mono;
+			#};
+			#theme = {
+			#	package = pkgs.mint-themes;
+			#	name = "Mint-Y-Dark-Teal";
+			#};
 			iconTheme = {
 				package = pkgs.papirus-icon-theme;
 				name = "Papirus-Dark";

@@ -2,7 +2,7 @@
   ./essential.nix
   ./sddm.nix
   ./zram.nix
-  ./notification/swaync/swaync-gruvbox.nix
+  ./swaync.nix
 	./bootloader/grub.nix
 	./env.nix
 ]
