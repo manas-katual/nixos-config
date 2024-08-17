@@ -17,7 +17,8 @@
 		};
     
 		environment.systemPackages = with pkgs; [
-			lxde.lxsession
+			#lxde.lxsession
+			lxqt.lxqt-policykit
 			slurp
 			grim
 			brightnessctl
@@ -28,6 +29,8 @@
 			#nwg-drawer
 			pyprland
 		];
+
+		security.polkit.enable = true;
 
 		home-manager.users.${userSettings.username} = {
 			wayland.windowManager.hyprland = {
@@ -42,9 +45,24 @@
 				};
 				settings = { };
 				extraConfig = ''
+
+					env = AQ_DRM_DEVICES,/dev/dri/card1 
+          env = NIXOS_OZONE_WL, 1
+          env = NIXPKGS_ALLOW_UNFREE, 1
+          env = XDG_CURRENT_DESKTOP, Hyprland
+          env = XDG_SESSION_TYPE, wayland
+          env = XDG_SESSION_DESKTOP, Hyprland
+          #env = GDK_BACKEND, wayland, x11
+          env = CLUTTER_BACKEND, wayland
+          env = QT_QPA_PLATFORM=wayland;xcb
+          env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
+          env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
+          #env = SDL_VIDEODRIVER, x11
+          env = MOZ_ENABLE_WAYLAND, 1
+
 				  $mainMod = SUPER
 					$terminal = kitty
-					$fileManager = nemo
+					$fileManager = nautilus
 					$menu = rofi -show drun -show-icons -disable-history
 					$browser = firefox
 					$lock = hyprlock
@@ -55,24 +73,15 @@
 					exec-once = hyprpaper
 					exec-once = waybar
 					exec-once = hypridle
-					exec-once = lxsession
+					#exec-once = lxsession
+					exec-once = lxqt-policykit-agent
+					exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 					exec-once = swaync
 					exec-once = wl-paste --type text --watch cliphist store
 					exec-once = wl-paste --type image --watch cliphist store
 					#exec-once = nwg-dock-hyprland -r
 					exec-once = pypr
           exec-once = emacs --daemon
-
-					env = AQ_DRM_DEVICES,/dev/dri/card1 
-					env = WLR_NO_HARDWARE_CURSORS,1
-					env = XDG_CURRENT_DESKTOP,Hyprland
-					env = XDG_SESSION_TYPE,wayland
-					env = XDG_SESSION_DESKTOP,Hyprland
-					env = QT_QPA_PLATFORM,wayland;xcb
-					env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-					env = QT_QPA_PLATFORMTHEME,qt5ct
-					env = QT_AUTO_SCREEN_SCALE_FACTOR,1
-					env = QT_STYLE_OVERRIDE,kde
 
 					debug {
 						disable_logs = false
@@ -167,14 +176,11 @@
 					windowrule = float, ^(imv)$
 					windowrule = float, ^(mpv)$
 					windowrule = float, ^(eog)$
-
+					windowrulev2 = float, class:(),title:(Authentication Required)
 					windowrulev2 = float, class:(kitty),title:(nmtui)
-					
 					windowrulev2 = opacity 1.0,class:^(Brave-browser),fullscreen:1
 					#windowrulev2 = float, class:(brave),title:(Save File)
-
 					windowrulev2 = opacity 1.0,class:^(firefox),fullscreen:1
-
 					windowrulev2 = float,title:^(Save to Disk)$
 					windowrulev2 = size 70% 75%,title:^(Save to Disk)$
 					windowrulev2 = center,title:^(Save to Disk)$

@@ -13,7 +13,7 @@
   ./waybar/waybar-wayfire.nix
 	./rofi/rofi-gruvbox.nix
 	./packages.nix
-	./thunar.nix
+	./nautilus.nix
 	./zathura.nix
 	#./eww/eww.nix
 	./htop.nix

@@ -310,7 +310,7 @@
                 warning = "30";
                 critical = "15";
             };
-                format = "{icon} {capacity}%";
+                format = "{icon}{capacity}%";
                 tooltip-format = "{timeTo} {capacity}%";
                 format-charging = "󱐋 {capacity}%";
                 format-plugged = " ";
@@ -341,7 +341,7 @@
             };
 
             "pulseaudio" = {
-                format = "{icon} {volume}% {format_source}";
+                format = "{icon}{volume}% {format_source}";
                 format-bluetooth = "{icon} {volume}%";
                 format-bluetooth-muted = "   {volume}%";
                 format-source = "";

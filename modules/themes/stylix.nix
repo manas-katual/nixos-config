@@ -45,7 +45,7 @@
 
   stylix.fonts = {
     monospace = {
-      package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+      package = pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];};
       name = "JetBrainsMono Nerd Font Mono";
     };
     sansSerif = {
@@ -74,34 +74,26 @@
     desktop = 1.0;
     popups = 1.0;
   };
-  
  
- home-manager.users.${userSettings.username} = {
-    qt = {
-      enable = true;
-      style.package = pkgs.libsForQt5.breeze-qt5;
-      style.name = "breeze-dark";
-      platformTheme.name = "kde";
-    };
-    
-    gtk = {    
-			enable = true;
+	home-manager.users.${userSettings.username} = {
+		gtk = {
 			iconTheme = {
-				package = pkgs.papirus-icon-theme;
 				name = "Papirus-Dark";
+				package = pkgs.papirus-icon-theme;
 			};
-      gtk3 = {
-			  extraConfig = {
-				  gtk-application-prefer-dark-theme = 1;
-			  };
-		  };
-		  gtk4 = {
-			  extraConfig = {
-				  gtk-application-prefer-dark-theme = 1;
-			  };
-		  };
+			gtk3.extraConfig = {
+				gtk-application-prefer-dark-theme = 1;
+			};
+			gtk4.extraConfig = {
+				gtk-application-prefer-dark-theme = 1;
+			};
+		};
+		qt = {
+			enable = true;
+			style.name = "adwaita-dark";
+			platformTheme.name = "gtk3";
+		};
 
-    };
  };
 
 }

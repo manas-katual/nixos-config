@@ -22,8 +22,6 @@
     pylint
     
     pavucontrol
-    nautilus
-    libsForQt5.dolphin
     tree
     vscodium-fhs
     cpu-x
@@ -37,9 +35,6 @@
     mediawriter
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
-    catppuccin-sddm-corners
-    elegant-sddm
-    sddm-chili-theme
     radeontop
     glxinfo
     eza
@@ -56,8 +51,6 @@
 		glaxnimate
 		obs-studio
 
-		nemo
-		nemo-with-extensions
 		bat
 		eog
 		scrcpy

@@ -11,6 +11,7 @@
           ls = "eza --icons";
           tree = "eza --tree --icons";
           cat = "bat";
+					icat = "kitten icat";
         };
       };
       oh-my-posh = {
