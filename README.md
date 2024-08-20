@@ -1,6 +1,6 @@
 # ❄️ My NixOS Config
 
-## ⬇ steps for reinstalling 
+## steps for installing 
 
 Run this command to ensure Git & Vim are installed:
 
@@ -11,16 +11,21 @@ nix-shell -p git vim
 Clone this repo & enter it:
 
 ```bash
-mkdir ~/setup
 git clone https://github.com/manas-katual/nixos-config ~/setup
 cd setup
 ```
 - must stay in this folder for the rest of the install
 
+Create the host folder for your machine
+
+```bash
+cp -r hosts/default hosts/<your-desired-hostname>
+```
+
 Generate hardware.nix like so:
 
 ```bash
-nixos-generate-config --show-hardware-config > hosts/dell/hardware.nix
+nixos-generate-config --show-hardware-config > hosts/<your-desired-hostname>/hardware-configuration.nix
 ```
 
 Run this to enable flakes and install the flake replacing hostname with whatever you put as the hostname:
