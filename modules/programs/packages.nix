@@ -11,9 +11,8 @@
     neofetch
     fastfetch
     #htop
-    #brave
-    firefox
     wget
+		firefox
 
     python3
     python312Packages.pip

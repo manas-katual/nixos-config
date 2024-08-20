@@ -9,6 +9,7 @@
       # For Intel Quick Sync Video (choose one based on your needs)
       vpl-gpu-rt # or intel-media-sdk
       amdvlk # Vulkan driver
+			intel-vaapi-driver
     ];
     extraPackages32 = with pkgs; [
     driversi686Linux.amdvlk # Vulkan driver for 32-bit applications
@@ -27,18 +28,16 @@
     lact # Linux AMDGPU Controller
   ];
 
-  systemd.services.lactd = {
-    description = "AMDGPU Control Daemon";
-    enable = true;
-    serviceConfig = {
-      ExecStart = "${pkgs.lact}/bin/lact daemon";
-    };
-    wantedBy = ["multi-user.target"];
+  systemd = {
+		packages = [ pkgs.lact ];
+		services.lactd.wantedBy = ["multi-user.target"];
   };
 
   # Intel GPU configuration
   services.xserver.videoDrivers = [ "modesetting" "amdgpu" ]; # Recommended for Intel GPUs
   boot.initrd.kernelModules = [ "amdgpu" ];
+
+	environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
   
 }
 

@@ -1,4 +1,7 @@
+{ userSettings, config, lib, ... }:
+
 {
+	home-manager.users.${userSettings.username} = {
 	programs.waybar = {
 		enable = false;
 		style = ''
@@ -495,6 +498,10 @@ tooltip label {
 
   "hyprland/workspaces" = {
 		on-click = "activate";
+		on-scroll-up = "hyprctl dispatch workspace e-1";
+    on-scroll-down = "hyprctl dispatch workspace e+1";
+    disable-scroll = "false";
+    all-outputs = "true";
     };
 
     "custom/powermenu"= {
@@ -504,11 +511,25 @@ tooltip label {
     };
 		
     "custom/swaync"= {
-			format = " ";
-			on-click = "~/.config/hypr/swaync/scripts/tray_waybar.sh";
-    	on-click-right = "swaync-client -C";
-			tooltip = "false";
-    };
+			 tooltip = false;
+       format = "{icon} {}";
+       format-icons = {
+       notification = "<span foreground='red'><sup></sup></span>";
+       none = "";
+       dnd-notification = "<span foreground='red'><sup></sup></span>";
+       dnd-none = "";
+       inhibited-notification = "<span foreground='red'><sup></sup></span>";
+       inhibited-none = "";
+       dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+       dnd-inhibited-none = "";
+       };
+       return-type = "json";
+       exec-if = "which swaync-client";
+       exec = "swaync-client -swb";
+       on-click = "swaync-client -t -sw";
+       on-click-right = "swaync-client -d -sw";
+       escape = true;
+		};
 
     "custom/menu"= {
 			format = " ";
@@ -563,9 +584,8 @@ tooltip label {
     "backlight"= {
       format = "{percent}% {icon}";
       format-icons = ["" "" "" "" "" "" "" "" ""];
-      tooltip-format = "Left click to save brightness";
-	    on-click = "~/.config/hypr/waybar/scripts/save_brightness.sh";
-	    on-click-right = "~/.config/hypr/waybar/scripts/load_brightness.sh";
+			on-scroll-up = "brightnessctl set 1%+";
+      on-scroll-down = "brightnessctl set 1%-";
     };
 
     "battery"= {
@@ -610,4 +630,5 @@ tooltip label {
 			};
 		};
 	}; 
+	};
 }

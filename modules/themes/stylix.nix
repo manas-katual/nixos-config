@@ -17,8 +17,12 @@
       then "${pkgs.base16-schemes}/share/themes/nord.yaml"
     else if (userSettings.theme == "uwunicorn") 
       then "${pkgs.base16-schemes}/share/themes/uwunicorn.yaml"
+    else if (userSettings.theme == "sakura") 
+      then "${pkgs.base16-schemes}/share/themes/sakura.yaml"
     else if (userSettings.theme == "everforest") 
       then "${pkgs.base16-schemes}/share/themes/everforest.yaml"
+    else if (userSettings.theme == "windows-10-light") 
+      then "${pkgs.base16-schemes}/share/themes/windows-10-light.yaml"
     else 
       "${pkgs.base16-schemes}/share/themes/circus.yaml";
   
@@ -33,9 +37,13 @@
     else if (userSettings.theme == "nord")
       then ../wallpapers/nord_bridge.png
     else if (userSettings.theme == "uwunicorn")
-      then ../wallpapers/pink_house.jpg
+      then ../wallpapers/pink-katana.jpg
+    else if (userSettings.theme == "sakura")
+      then ../wallpapers/pink-katana.jpg
     else if (userSettings.theme == "everforest")
       then ../wallpapers/everforest.png
+    else if (userSettings.theme == "windows-10-light")
+      then ../wallpapers/bindows.jpg
     else
       ../wallpapers/sky.jpg;
 

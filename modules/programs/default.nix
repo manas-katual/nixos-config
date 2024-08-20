@@ -9,12 +9,13 @@
 	#./alacritty.nix
 	./wlogout/wlogout.nix
 	./appimage.nix
-	./waybar/waybar-gruvbox.nix
-  ./waybar/waybar-wayfire.nix
-	./rofi/rofi-gruvbox.nix
+	./waybar/waybar-test.nix
+	./rofi/rofi-test.nix
 	./packages.nix
 	./nautilus.nix
 	./zathura.nix
 	#./eww/eww.nix
 	./htop.nix
+	#./firefox.nix
+	./spicetify.nix
 ]

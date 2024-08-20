@@ -79,7 +79,7 @@
 					exec-once = swaync
 					exec-once = wl-paste --type text --watch cliphist store
 					exec-once = wl-paste --type image --watch cliphist store
-					#exec-once = nwg-dock-hyprland -r
+					#exec-once = nwg-dock-hyprland -d
 					exec-once = pypr
           exec-once = emacs --daemon
 
@@ -176,11 +176,10 @@
 					windowrule = float, ^(imv)$
 					windowrule = float, ^(mpv)$
 					windowrule = float, ^(eog)$
+					windowrule = float, ^(neovide)$
 					windowrulev2 = float, class:(),title:(Authentication Required)
 					windowrulev2 = float, class:(kitty),title:(nmtui)
-					windowrulev2 = opacity 1.0,class:^(Brave-browser),fullscreen:1
-					#windowrulev2 = float, class:(brave),title:(Save File)
-					windowrulev2 = opacity 1.0,class:^(firefox),fullscreen:1
+					windowrulev2 = float, class:(firefox),title:(Save File)
 					windowrulev2 = float,title:^(Save to Disk)$
 					windowrulev2 = size 70% 75%,title:^(Save to Disk)$
 					windowrulev2 = center,title:^(Save to Disk)$
@@ -439,8 +438,6 @@
 			};
 
 			# pypr
-			
-
 			home.file.".config/hypr/pyprland.toml".text = ''
 				[pyprland]
 				plugins = [
@@ -466,11 +463,7 @@
 				#class = "blueberry.py"
 				#size = "75% 60%"
 			'';
-
-
-
-
-					
+			
 				};
 		};
 }

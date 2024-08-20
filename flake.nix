@@ -45,6 +45,18 @@
 		# grub-themes
 		nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
 
+		# firefox addons
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # spotify modified
+		spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
@@ -58,7 +70,9 @@
 			  username = "smaalks";
 			  host = "hyprdell";
         desktop = "hyprland";
-        theme = "gruvbox-dark-medium";
+				waybar = "default";
+				rofi = "something";
+        theme = "everforest";
       };
 
     in {

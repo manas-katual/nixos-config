@@ -2,7 +2,6 @@
 
 {
 
-	config = lib.mkIf ( config.programs.hyprland.enable == true ) {
     home-manager.users.${userSettings.username} = {
         programs.waybar = {
         enable = true;
@@ -402,6 +401,5 @@
         };
         };
     };
-  };
 }
 
