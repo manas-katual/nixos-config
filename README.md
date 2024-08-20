@@ -47,3 +47,5 @@ sudo nixos-rebuild switch --flake .
 Enjoy!
 
 ![screenshot](./desktop.png)
+
+![screenshot](./desktop1.png)
