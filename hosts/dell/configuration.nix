@@ -60,7 +60,7 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = "Manas Katual";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "adbusers" ];
     packages = with pkgs; [];
   };
 
@@ -102,10 +102,6 @@
   # bash
   environment.pathsToLink = [ "/share/bash-completion" ];
 
-
-  # flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # numlock
   services.xserver.displayManager.setupCommands = ''
     ${pkgs.numlockx}/bin/numlockx on
@@ -128,6 +124,28 @@
 #    };                                                                   
 #  };                                                                     
 #};
+
+  environment.sessionVariables = {
+		NIXOS_OZONE_WL = "1";
+  };
+
+
+  # Flakes, Optimization settings and garbage collection automation
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
+
 
 
 }

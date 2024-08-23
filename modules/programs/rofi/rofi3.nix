@@ -1,5 +1,5 @@
 {config, pkgs, ...}: {
-  xdg.configFile."/home/john1917/.config/rofi/colors/tokyonight.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/colors/tokyonight.rasi".text = ''
   /**
   *
    * Author : Levi Lacoss (fishyfishfish55)
@@ -18,7 +18,7 @@
   }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/colors/catppuccin-mocha.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/colors/catppuccin-mocha.rasi".text = ''
   /**
   *
    * Author : Levi Lacoss (fishyfishfish55)
@@ -37,7 +37,7 @@
   }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/colors/kanagawa.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/colors/kanagawa.rasi".text = ''
   * {
       background:     #1F1F28FF;
       background-alt: #1F1F28FF;
@@ -48,7 +48,7 @@
   }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/colors/oxocarbon.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/colors/oxocarbon.rasi".text = ''
   * {
       background: #161616FF;
       background-alt: #161616FF;
@@ -59,7 +59,7 @@
   }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/colors/decayce.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/colors/decayce.rasi".text = ''
   * {
       background: #0d0f18FF;
       background-alt: #0d0f18FF;
@@ -70,7 +70,7 @@
   }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/colors/gruvbox.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/colors/gruvbox.rasi".text = ''
   *{
       background: #1D2021FF;
       background-alt: #1D2021FF;
@@ -81,7 +81,7 @@
   }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/colors/everblush.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/colors/everblush.rasi".text = ''
   *{
       background: #141B1EFF;
       background-alt: #141B1EFF;
@@ -92,7 +92,7 @@
   }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/launchers/type-1/launcher.sh" = {
+  xdg.configFile."/home/smaalks/.config/rofi/launchers/type-1/launcher.sh" = {
     executable = true;
     text = ''
     #!/usr/bin/env bash
@@ -107,7 +107,7 @@
     '';
   };
 
-  xdg.configFile."/home/john1917/.config/rofi/launchers/type-1/shared/fonts.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/launchers/type-1/shared/fonts.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -122,7 +122,7 @@
 }
 '';
 
-xdg.configFile."/home/john1917/.config/rofi/launchers/type-1/shared/colors.rasi".text = '' 
+xdg.configFile."/home/smaalks/.config/rofi/launchers/type-1/shared/colors.rasi".text = '' 
 /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -143,7 +143,7 @@ xdg.configFile."/home/john1917/.config/rofi/launchers/type-1/shared/colors.rasi"
 @import "~/.config/rofi/colors/everblush.rasi"
 '';
 
-  xdg.configFile."/home/john1917/.config/rofi/launchers/type-1/style-1.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/launchers/type-1/style-1.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -453,7 +453,7 @@ error-message {
 }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/pdf-launcher/style-1.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/pdf-launcher/style-1.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -763,7 +763,7 @@ error-message {
 }
   '';
 
-xdg.configFile."/home/john1917/.config/rofi/pdf-launcher/shared/colors.rasi".text = ''
+xdg.configFile."/home/smaalks/.config/rofi/pdf-launcher/shared/colors.rasi".text = ''
 /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -784,7 +784,7 @@ xdg.configFile."/home/john1917/.config/rofi/pdf-launcher/shared/colors.rasi".tex
 @import "~/.config/rofi/colors/everblush.rasi"
 '';
 
-xdg.configFile."/home/john1917/.config/rofi/pdf-launcher/shared/fonts.rasi".text = ''
+xdg.configFile."/home/smaalks/.config/rofi/pdf-launcher/shared/fonts.rasi".text = ''
 /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -799,7 +799,7 @@ xdg.configFile."/home/john1917/.config/rofi/pdf-launcher/shared/fonts.rasi".text
 }
 '';
 
-xdg.configFile."/home/john1917/.config/rofi/powermenu/powermenu.sh" = {
+xdg.configFile."/home/smaalks/.config/rofi/powermenu/powermenu.sh" = {
   executable = true;
   text = '' 
   #!/usr/bin/env bash
@@ -914,7 +914,7 @@ esac
   '';
   };
 
-  xdg.configFile."/home/john1917/.config/rofi/powermenu/style-1.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/powermenu/style-1.rasi".text = ''
     /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1078,7 +1078,7 @@ element selected.normal {
 }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/powermenu/shared/colors.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/powermenu/shared/colors.rasi".text = ''
   /**
   *
    * Author : Aditya Shakya (adi1090x)
@@ -1099,7 +1099,7 @@ element selected.normal {
   @import "~/.config/rofi/colors/everblush.rasi"
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/powermenu/shared/fonts.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/powermenu/shared/fonts.rasi".text = ''
  /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1114,7 +1114,7 @@ element selected.normal {
   }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/screenshot/style-1.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/screenshot/style-1.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1278,7 +1278,7 @@ element selected.normal {
 }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/screenshot/shared/colors.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/screenshot/shared/colors.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1299,7 +1299,7 @@ element selected.normal {
 @import "~/.config/rofi/colors/everblush.rasi"
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/screenshot/shared/fonts.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/screenshot/shared/fonts.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1314,7 +1314,7 @@ element selected.normal {
 }
   '';
   
-  xdg.configFile."/home/john1917/.config/rofi/wallpaper-selection/style-1.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/wallpaper-selection/style-1.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1624,7 +1624,7 @@ error-message {
 }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/wallpaper-selection/shared/fonts.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/wallpaper-selection/shared/fonts.rasi".text = ''
     /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1639,7 +1639,7 @@ error-message {
 }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/wallpaper-selection/shared/colors.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/wallpaper-selection/shared/colors.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1660,7 +1660,7 @@ error-message {
 @import "~/.config/rofi/colors/everblush.rasi"
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/wifi-menu/shared/colors.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/wifi-menu/shared/colors.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1681,7 +1681,7 @@ error-message {
 @import "~/.config/rofi/colors/everblush.rasi"
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/wifi-menu/shared/fonts.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/wifi-menu/shared/fonts.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)
@@ -1696,7 +1696,7 @@ error-message {
 }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/wifi-menu/style-1.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/wifi-menu/style-1.rasi".text = ''
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,run,filebrowser";
@@ -1997,7 +1997,7 @@ error-message {
 }
   '';
 
-  xdg.configFile."/home/john1917/.config/rofi/wifi-menu/wifi-password.rasi".text = ''
+  xdg.configFile."/home/smaalks/.config/rofi/wifi-menu/wifi-password.rasi".text = ''
   /**
  *
  * Author : Aditya Shakya (adi1090x)

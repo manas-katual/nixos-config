@@ -4,5 +4,4 @@
   ./zram.nix
   ./swaync.nix
 	./bootloader/grub.nix
-	./env.nix
 ]

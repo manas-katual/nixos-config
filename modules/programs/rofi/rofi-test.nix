@@ -112,7 +112,7 @@
 			border-radius: 3px;
 		}
 		 '' 
-		 else if (userSettings.rofi == "something") 
+		 else if (userSettings.rofi == "mac") 
 		 then '' configuration{
     modi: ["drun", "window", "run"];
     icon-theme: "Papirus-Dark";
@@ -160,7 +160,7 @@ else '' '';
 				bubble: #'' + config.lib.stylix.colors.base0B + '';
 				width: 600;
 			}
-		 '' else if (userSettings.rofi == "something") then 
+		 '' else if (userSettings.rofi == "mac") then 
 		 '' * {
     font:   "Montserrat 12";
 

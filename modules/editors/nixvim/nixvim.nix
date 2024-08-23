@@ -1,48 +1,53 @@
 { inputs, ... }:
 
 {
+
   imports = [
     inputs.nixvim.nixosModules.nixvim
     ./opts.nix
   ];
 
-    programs.nixvim = {
-      enable = true;
+  environment.sessionVariables = {
+    EDITOR = "nvim";
+  };
 
-      defaultEditor = true;
-      #colorschemes.gruvbox.enable = true;
+  programs.nixvim = {
+    enable = true;
 
-		  plugins = {
-			  bufferline = {
-				  enable = true;
-					alwaysShowBufferline = true;
-					colorIcons = true;
-					hover.enabled = true;
-					highlights.tab.underline = true;
+    defaultEditor = true;
+    #colorschemes.gruvbox.enable = true;
+
+	  plugins = {
+		  bufferline = {
+			  enable = true;
+				alwaysShowBufferline = true;
+				colorIcons = true;
+				hover.enabled = true;
+				highlights.tab.underline = true;
+			};
+
+				alpha = {
+					enable = true;
+					theme = "dashboard";
 				};
 
-					alpha = {
-						enable = true;
-						theme = "dashboard";
-					};
+			lualine.enable = true;
+			#chadtree.enable = true;
+			neo-tree.enable = true;
+		};
+		
+  	globals = {
+    	mapleader = " ";
+    	maplocalleader = " ";
+  	};
 
-				lualine.enable = true;
-				#chadtree.enable = true;
-				neo-tree.enable = true;
-			};
-			
-    	globals = {
-      	mapleader = " ";
-      	maplocalleader = " ";
-    	};
-
-			keymaps = [
-				{
-        	key = "<leader>e";
-        	action = "<CMD>Neotree toggle<CR>";
-        	options.desc = "Toggle NeoTree";
-      	}
-			];
-    };
+		keymaps = [
+			{
+      	key = "<leader>e";
+      	action = "<CMD>Neotree toggle<CR>";
+      	options.desc = "Toggle NeoTree";
+    	}
+		];
+  };
 
 }

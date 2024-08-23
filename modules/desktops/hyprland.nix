@@ -177,6 +177,8 @@
 					windowrule = float, ^(mpv)$
 					windowrule = float, ^(eog)$
 					windowrule = float, ^(neovide)$
+					windowrule = float, ^(blueberry)$
+					windowrule = float, ^(pavucontrol)$
 					windowrulev2 = float, class:(),title:(Authentication Required)
 					windowrulev2 = float, class:(kitty),title:(nmtui)
 					windowrulev2 = float, class:(firefox),title:(Save File)
