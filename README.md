@@ -2,6 +2,8 @@
 
 ## steps for installing 
 
+**First install nixos with no desktop**
+
 Run this command to ensure Git & Vim are installed:
 
 ```bash
@@ -47,5 +49,3 @@ sudo nixos-rebuild switch --flake .
 Enjoy!
 
 ![screenshot](./desktop.png)
-
-![screenshot](./desktop1.png)
