@@ -17,7 +17,6 @@
 		};
     
 		environment.systemPackages = with pkgs; [
-			#lxde.lxsession
 			lxqt.lxqt-policykit
 			slurp
 			grim
@@ -25,12 +24,8 @@
 			pamixer
 			wl-clipboard
 			cliphist
-			#nwg-dock-hyprland
-			#nwg-drawer
 			pyprland
 		];
-
-		security.polkit.enable = true;
 
 		home-manager.users.${userSettings.username} = {
 			wayland.windowManager.hyprland = {
@@ -68,18 +63,17 @@
 					$lock = hyprlock
 					
 					#monitor = HDMI-A-1,preferred,auto,1,mirror,LVDS-1
-					monitor = HDMI-A-1,1366x768,auto,1,mirror,LVDS-1
+					#monitor = HDMI-A-1,1366x768,auto,1,mirror,LVDS-1
+					monitor = ''+ (if (userSettings.host == "dell") then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1" else "HDMI-A-1,preferred,auto,1,mirror,LVDS-1") +''
 					
 					exec-once = hyprpaper
 					exec-once = waybar
 					exec-once = hypridle
-					#exec-once = lxsession
 					exec-once = lxqt-policykit-agent
 					exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 					exec-once = swaync
 					exec-once = wl-paste --type text --watch cliphist store
 					exec-once = wl-paste --type image --watch cliphist store
-					#exec-once = nwg-dock-hyprland -d
 					exec-once = pypr
           exec-once = emacs --daemon
 
@@ -177,11 +171,32 @@
 					windowrule = float, ^(mpv)$
 					windowrule = float, ^(eog)$
 					windowrule = float, ^(neovide)$
-					windowrule = float, ^(blueberry)$
 					windowrule = float, ^(pavucontrol)$
+
 					windowrulev2 = float, class:(),title:(Authentication Required)
-					windowrulev2 = float, class:(kitty),title:(nmtui)
+					windowrulev2 = float, class:(),title:(nmtui)
+					
+					windowrulev2 = float, class:^(blueberry.py)$
+
+					windowrulev2 = workspace 2, class:^(Emacs)$
+
 					windowrulev2 = float, class:(firefox),title:(Save File)
+					windowrulev2 = workspace 3, class:^(firefox)$
+
+					windowrulev2 = workspace 4, class:^(org.gnome.Nautilus)$
+
+					windowrulev2 = workspace 5, class:(),title:(Spotify Free)
+
+					windowrulev2 = workspace 6, class:^(vesktop)$
+
+					windowrulev2 = workspace 8, class:^(virt-manager)$
+
+					windowrulev2 = workspace 9, class:^(com.obsproject.Studio)$
+					windowrulev2 = workspace 9, class:^(org.kde.kdenlive)$
+					windowrulev2 = workspace 9, class:^(org.olivevideoeditor.Olive)$
+
+					windowrulev2 = workspace 0, class:^(heroic)$
+
 					windowrulev2 = float,title:^(Save to Disk)$
 					windowrulev2 = size 70% 75%,title:^(Save to Disk)$
 					windowrulev2 = center,title:^(Save to Disk)$
@@ -201,8 +216,8 @@
 					bind =  Alt, F4, exec, wlogout -b 2 # wlogout
 
 					# pypr
-					bind =  $mainMod, A, exec, pypr toggle term && hyprctl dispatch bringactivetotop
-					bind =  $mainMod, I, exec, pypr toggle volume && hyprctl dispatch bringactivetotop
+					bind =  $mainMod, A, exec, pypr toggle term
+					bind =  $mainMod, I, exec, pypr toggle volume
 
 					# waybar
 					bind =  $mainMod SHIFT, C, exec, pkill waybar && waybar
@@ -254,8 +269,8 @@
 					bind =  $mainMod, mouse_up, workspace, e+1
 
 					# brightness control
-					bind =  $mainMod, F3, exec, brightnessctl -d *::kbd_backlight set +33%
-					bind =  $mainMod, F2, exec, brightnessctl -d *::kbd_backlight set 33%-
+					#bind =  $mainMod, F3, exec, brightnessctl -d *::kbd_backlight set +33%
+					#bind =  $mainMod, F2, exec, brightnessctl -d *::kbd_backlight set 33%-
 
 					# Volume and Media Control
 					bind =  , XF86AudioRaiseVolume, exec, pamixer -i 5 
@@ -270,13 +285,13 @@
 					# Configuration files
 					#, Print, exec, grim -g $(slurp) - | swappy -f -
 					# Screenshot with selection
-					bind =  , Print, exec, grim -g $(slurp) - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png | notify-send Screenshot of the region taken -t 1000 
+					bind =  , Print, exec, grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png | notify-send "Screenshot of the region taken" -t 1000 
 
 					# Whole screen Screenshot
-					bind =  SHIFT, Print, exec, grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png | notify-send Screenshot of whole screen taken -t 1000 
+					bind =  SHIFT, Print, exec, grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png | notify-send "Screenshot of whole screen taken" -t 1000 
 
 					# current window (pos and size)
-					bind =  ALT, Print, exec, grim -g $(hyprctl activewindow | grep at: | cut -d: -f2 | tr -d   | tail -n1) $(hyprctl activewindow | grep size: | cut -d: -f2 | tr -d   | tail -n1 | sed s/,/x/g) - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png | notify-send Screenshot of current window taken -t 1000 
+					bind =  ALT, Print, exec, grim -g "$(hyprctl activewindow | grep 'at:' | cut -d':' -f2 | tr -d ' ' | tail -n1) $(hyprctl activewindow | grep 'size:' | cut -d':' -f2 | tr -d ' ' | tail -n1 | sed s/,/x/g)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png | notify-send "Screenshot of current window taken" -t 1000 
 
 					# screenlock
 					bind =  $mainMod, L, exec, $lock
@@ -452,18 +467,14 @@
 				class = "kitty-dropterm"
 				size = "75% 60%"
 
-				#[scratchpads.volume]
-				#command = "pavucontrol"
-				#margin = 50
-				#unfocus = "hide"
-				#animation = "fromTop"
-				#size = "75% 60%"
+				[scratchpads.volume]
+				animation = "fromTop"
+				command = "pavucontrol"
+        class = "pavucontrol"
+				size = "60% 40%"
+				unfocus = "hide"
+        lazy = true
 
-				#[scratchpads.bluetooth]
-				#animation = "fromTop"
-				#command = "blueberry"
-				#class = "blueberry.py"
-				#size = "75% 60%"
 			'';
 			
 				};

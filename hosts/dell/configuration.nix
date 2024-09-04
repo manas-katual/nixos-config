@@ -108,22 +108,10 @@
   '';
 
   #power savings
-  services.power-profiles-daemon.enable = true;
+  #services.power-profiles-daemon.enable = true;
 
-  # gdm
-  #services.xserver.displayManager.gdm.enable = true;
 
   security.polkit.enable = true;
-
-#  services.greetd = {                                                      
-#  enable = true;                                                         
-#  settings = {                                                           
-#    default_session = {                                                  
-#      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-#      user = "greeter";                                                  
-#    };                                                                   
-#  };                                                                     
-#};
 
   environment.sessionVariables = {
 		NIXOS_OZONE_WL = "1";

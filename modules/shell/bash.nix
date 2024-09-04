@@ -1,6 +1,8 @@
 { pkgs, userSettings, ... }:
 {
   
+  environment.pathsToLink = [ "/share/bash-completion" ];
+
   home-manager.users.${userSettings.username} = {
     programs = {
       bash = {
@@ -9,6 +11,8 @@
         shellAliases = {
           fucking-flake-rb = "sudo nixos-rebuild switch --flake ~/setup/";
           ls = "eza --icons";
+					vi = "nvim";
+					vim = "nvim";
           tree = "eza --tree --icons";
           cat = "bat";
 					icat = "kitten icat";

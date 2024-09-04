@@ -10,11 +10,11 @@
 	./wlogout/wlogout.nix
 	./appimage.nix
 	./waybar/waybar-test.nix
-	./rofi/rofi-test.nix
+	./rofi.nix
 	./packages.nix
 	./nautilus.nix
 	./zathura.nix
-	#./eww/eww.nix
+	#./eww.nix
 	./htop.nix
 	#./firefox.nix
 	./spicetify.nix

@@ -11,6 +11,8 @@
       then "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml" 
     else if (userSettings.theme == "gruvbox-dark-medium") 
       then "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml" 
+    else if (userSettings.theme == "gruvbox-material-dark-medium") 
+      then "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml" 
     else if (userSettings.theme == "solarized-dark") 
       then "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml"
     else if (userSettings.theme == "nord") 
@@ -32,6 +34,8 @@
       then ../wallpapers/car.jpg
     else if (userSettings.theme == "gruvbox-dark-medium")
       then ../wallpapers/gruvbox-car.jpg
+    else if (userSettings.theme == "gruvbox-material-dark-medium")
+      then ../wallpapers/ledge_gruvbox.png
     else if (userSettings.theme == "solarized-dark")
       then ../wallpapers/solarized-dark.jpg
     else if (userSettings.theme == "nord")

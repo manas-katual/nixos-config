@@ -20,8 +20,8 @@
 			 	 hidePodcasts
 			 	 shuffle # shuffle+ (special characters are sanitized out of extension names)
 			  ];
-			  theme = inputs.spicetify-nix.legacyPackages.${pkgs.system}.themes.comfy;
-			  colorScheme = "comfy";
+			  theme = inputs.spicetify-nix.legacyPackages.${pkgs.system}.themes.onepunch;
+			  #colorScheme = "comfy";
 			};
 	};
 }

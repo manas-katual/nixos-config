@@ -1081,7 +1081,7 @@ else '' '';
                 on-click = "pamixer -t";
                 on-scroll-up = "pamixer -i 1";
                 on-scroll-down = "pamixer -d 1";
-                on-click-middle = "pavucontrol";
+                on-click-middle = "pypr toggle volume";
                 on-click-middle-release = "sleep 0";
             };
 

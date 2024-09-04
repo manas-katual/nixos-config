@@ -22,7 +22,7 @@
     stylix.url = "github:danth/stylix";
 
     # nix colors
-    #nix-colors.url = "github:misterio77/nix-colors";
+    nix-colors.url = "github:misterio77/nix-colors";
 
 		# nur
 		nur.url = github:nix-community/NUR;
@@ -72,7 +72,7 @@
         desktop = "hyprland";
 				waybar = "default";
 				rofi = "mac";
-        theme = "everforest";
+        theme = "gruvbox-dark-medium";
       };
 
     in {
