@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: 
+{ inputs, config, pkgs, lib, ... }: 
 
 {
   nixpkgs.config = {
@@ -7,12 +7,16 @@
   
   environment.systemPackages = with pkgs; [
     neovim
+		xed-editor
+    qalculate-gtk
     #git
     neofetch
     fastfetch
     #htop
     wget
-		firefox
+		librewolf
+		netsurf.browser
+		palemoon-bin
 
     python3
     python312Packages.pip
@@ -73,6 +77,11 @@
     tmux
     mission-center
     universal-android-debloater
+		localsend
+		#nomachine-client
+    
+    #inputs.zen-browser.packages."${system}".generic
+
 
   ] 
    ++ (if (config.programs.hyprland.enable == true)
@@ -100,5 +109,5 @@
 
 	programs.adb.enable = true;
 	services.acpid.enable = true;
-  
+
 }

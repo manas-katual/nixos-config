@@ -9,8 +9,8 @@
 	#./alacritty.nix
 	./wlogout/wlogout.nix
 	./appimage.nix
-	./waybar/waybar-test.nix
-	./rofi.nix
+	./waybar.nix
+  ./rofi.nix
 	./packages.nix
 	./nautilus.nix
 	./zathura.nix

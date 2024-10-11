@@ -24,6 +24,8 @@
     services.xserver.desktopManager.pantheon.enable = config.my.desktop.option == "pantheon";
    
     services.desktopManager.plasma6.enable = config.my.desktop.option == "kde";
+
+    #services.desktopManager.cosmic.enable = config.my.desktop.option == "cosmic";
   };
 }
 

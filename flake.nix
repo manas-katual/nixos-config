@@ -25,7 +25,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
 
 		# nur
-		nur.url = github:nix-community/NUR;
+		nur.url = "github:nix-community/NUR";
 
 		# flatpak
 		nix-flatpak.url = "github:gmodena/nix-flatpak";
@@ -56,21 +56,41 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    # zen browser
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    
+    # Emacs Overlays
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      flake = false;
+    };
+
+    # Nix-Community Doom Emacs
+    doom-emacs = {
+      url = "github:nix-community/nix-doom-emacs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.emacs-overlay.follows = "emacs-overlay";
+    };
+
+		# cosmic
+		nixpkgs.follows = "nixos-cosmic/nixpkgs"; 
+        nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
 
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, nixos-cosmic, ... }@inputs:
 
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
+
       
       userSettings = {
 			  username = "smaalks";
 			  host = "hyprdell";
-        desktop = "hyprland";
-				waybar = "default";
+				location = "$HOME/setup";
+        desktop = "wayfire";
 				rofi = "mac";
         theme = "gruvbox-dark-medium";
       };
@@ -79,15 +99,19 @@
     # nixos - system hostname
     nixosConfigurations.${userSettings.host} = lib.nixosSystem {
       specialArgs = {
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        inherit inputs system;
+        inherit inputs system; 
         inherit userSettings;
       };
       modules = [
         ./hosts/dell/configuration.nix
+         {
+            nix.settings = {
+      substituters = [ "https://cosmic.cachix.org/" ];
+      trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+            };
+        }
+         nixos-cosmic.nixosModules.default
+				
 				home-manager.nixosModules.home-manager {
 	  			home-manager.useGlobalPkgs = true;
 	  			home-manager.useUserPackages = true;

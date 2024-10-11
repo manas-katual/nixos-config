@@ -1,8 +1,17 @@
 { pkgs, lib, config, inputs, options, userSettings, ... }:
 
 {
+  options = {
+    hyprland = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
+    };
+  };
  
-  config = lib.mkIf (config.my.desktop.option == "hyprland") {
+  config = lib.mkIf (config.hyprland.enable || config.my.desktop.option == "hyprland") {
+    wlwm.enable = true;
 	
 		# hyprland cachix
   	nix.settings = {
@@ -17,6 +26,7 @@
 		};
     
 		environment.systemPackages = with pkgs; [
+      networkmanagerapplet
 			lxqt.lxqt-policykit
 			slurp
 			grim
@@ -25,6 +35,8 @@
 			wl-clipboard
 			cliphist
 			pyprland
+      ulauncher
+      wmctrl
 		];
 
 		home-manager.users.${userSettings.username} = {
@@ -59,11 +71,9 @@
 					$terminal = kitty
 					$fileManager = nautilus
 					$menu = rofi -show drun -show-icons -disable-history
-					$browser = firefox
+					$browser = librewolf
 					$lock = hyprlock
 					
-					#monitor = HDMI-A-1,preferred,auto,1,mirror,LVDS-1
-					#monitor = HDMI-A-1,1366x768,auto,1,mirror,LVDS-1
 					monitor = ''+ (if (userSettings.host == "dell") then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1" else "HDMI-A-1,preferred,auto,1,mirror,LVDS-1") +''
 					
 					exec-once = hyprpaper
@@ -76,6 +86,7 @@
 					exec-once = wl-paste --type image --watch cliphist store
 					exec-once = pypr
           exec-once = emacs --daemon
+          exec-once = nm-applet
 
 					debug {
 						disable_logs = false
@@ -172,31 +183,21 @@
 					windowrule = float, ^(eog)$
 					windowrule = float, ^(neovide)$
 					windowrule = float, ^(pavucontrol)$
+					windowrule = float, ^(xed)$
 
 					windowrulev2 = float, class:(),title:(Authentication Required)
-					windowrulev2 = float, class:(),title:(nmtui)
-					
 					windowrulev2 = float, class:^(blueberry.py)$
-
 					windowrulev2 = workspace 2, class:^(Emacs)$
-
-					windowrulev2 = float, class:(firefox),title:(Save File)
-					windowrulev2 = workspace 3, class:^(firefox)$
-
+					windowrulev2 = float, class:(librewolf),title:(Save File)
+					windowrulev2 = workspace 3, class:^(librewolf)$
 					windowrulev2 = workspace 4, class:^(org.gnome.Nautilus)$
-
 					windowrulev2 = workspace 5, class:(),title:(Spotify Free)
-
 					windowrulev2 = workspace 6, class:^(vesktop)$
-
 					windowrulev2 = workspace 8, class:^(virt-manager)$
-
 					windowrulev2 = workspace 9, class:^(com.obsproject.Studio)$
 					windowrulev2 = workspace 9, class:^(org.kde.kdenlive)$
 					windowrulev2 = workspace 9, class:^(org.olivevideoeditor.Olive)$
-
 					windowrulev2 = workspace 0, class:^(heroic)$
-
 					windowrulev2 = float,title:^(Save to Disk)$
 					windowrulev2 = size 70% 75%,title:^(Save to Disk)$
 					windowrulev2 = center,title:^(Save to Disk)$
@@ -214,6 +215,7 @@
 					bind =  $mainMod, T, togglesplit, # dwindle
 					bind =  $mainMod, F, fullscreen # dwindle
 					bind =  Alt, F4, exec, wlogout -b 2 # wlogout
+					bind =  Alt, SPACE, exec, ulauncher
 
 					# pypr
 					bind =  $mainMod, A, exec, pypr toggle term
@@ -355,75 +357,85 @@
 				enable = true;
 				package = pkgs.hyprlock;
 				extraConfig = ''
-					background {
-				monitor =
-				path = $HOME/setup/modules/wallpapers/hyprland.png   # only png supported for now
+          $text_color = rgb(''+ config.lib.stylix.colors.base05 +'')
+          $entry_background_color = rgb(''+ config.lib.stylix.colors.base02 +'')
+          $entry_border_color = rgb(''+ config.lib.stylix.colors.base01 +'')
+          $entry_color = rgb(''+ config.lib.stylix.colors.base05 +'')
+          $accent = rgb(''+ config.lib.stylix.colors.base0B +'')
+          $font_family = Caskaydia Cove Nerd Font
+          $font_symbols = Symbols Nerd Font Mono
 
+          background {
+              color = rgb(''+ config.lib.stylix.colors.base00 +'')
+              # path = /path/to/png
+          }
+          input-field {
+              monitor =
+              size = 250, 50
+              outline_thickness = 2
+              dots_size = 0.1
+              dots_spacing = 0.3
+              outer_color = $entry_border_color
+              inner_color = $entry_background_color
+              font_color = $entry_color
 
-				blur_passes = 3 # 0 disables blurring
-				blur_size = 7
-				noise = 0.0117
-				contrast = 0.8916
-				brightness = 0.8172
-				vibrancy = 0.1696
-				vibrancy_darkness = 0.0
-		}
+              position = 0, 20
+              halign = center
+              valign = center
+          }
 
-		input-field {
-				monitor =
-				size = 200, 50
-				outline_thickness = 3
-				dots_size = 0.33 # Scale of input-field height, 0.2 - 0.8
-				dots_spacing = 0.15 # Scale of dots' absolute size, 0.0 - 1.0
-				dots_center = true
-				dots_rounding = -1 # -1 default circle, -2 follow input-field rounding
-				outer_color = rgb(151515)
-				inner_color = rgb(200, 200, 200)
-				font_color = rgb(10, 10, 10)
-				fade_on_empty = true
-				fade_timeout = 1000 # Milliseconds before fade_on_empty is triggered.
-				placeholder_text = <i>Input Password...</i> # Text rendered in the input box when it's empty.
-				hide_input = false
-				rounding = -1 # -1 means complete rounding (circle/oval)
-				check_color = rgb(204, 136, 34)
-				fail_color = rgb(204, 34, 34) # if authentication failed, changes outer_color and fail message color
-				fail_text = <i>$FAIL <b>($ATTEMPTS)</b></i> # can be set to empty
-				fail_transition = 300 # transition time in ms between normal outer_color and fail_color
-				capslock_color = -1
-				numlock_color = -1
-				bothlock_color = -1 # when both locks are active. -1 means don't change outer color (same for above)
-				invert_numlock = false # change color if numlock is off
-				swap_font_color = false # see below
-				position = 0, -20
-				halign = center
-				valign = center
-		}
+          label { # Clock
+              monitor =
+              text = $TIME
+              shadow_passes = 1
+              shadow_boost = 0.5
+              color = $text_color
+              font_size = 170
+              font_family = $font_family
 
-		label {
-				monitor =
-				text = cmd[update:1000] echo "$TIME"
-				color = rgba(200, 200, 200, 1.0)
-				font_size = 55
-				font_family = Fira Semibold
-				position = -100, -200
-				halign = right
-				valign = bottom
-				shadow_passes = 5
-				shadow_size = 10
-		}
+              position = 0, 300
+              halign = center
+              valign = center
+          }
+          label { # Greeting
+              monitor =
+              text = Hello, $USER
+              shadow_passes = 1
+              shadow_boost = 0.5
+              color = $text_color
+              font_size = 20
+              font_family = $font_family
 
-		label {
-				monitor =
-				text = Manas
-				color = rgba(200, 200, 200, 1.0)
-				font_size = 20
-				font_family = Fira Semibold
-				position = -100, 160
-				halign = right
-				valign = bottom
-				shadow_passes = 5
-				shadow_size = 10
-		}
+              position = 0, 150
+              halign = center
+              valign = center
+          }
+          label { # lock icon
+              monitor =
+              text = 󰌾
+              shadow_passes = 1
+              shadow_boost = 0.5
+              color = $accent
+              font_size = 21
+              font_family = $font_symbols
+
+              position = 0, 85
+              halign = center
+              valign = bottom
+          }
+          label { # "Locked" text
+              monitor =
+              text = Locked
+              shadow_passes = 1
+              shadow_boost = 0.5
+              color = $text_color
+              font_size = 14
+              font_family = $font_family
+
+              position = 0, 45
+              halign = center
+              valign = bottom
+          }
 
 				'';
 			};
@@ -435,24 +447,24 @@
 				package = pkgs.hypridle;
 				settings = {
 					general = {
-				after_sleep_cmd = "hyprctl dispatch dpms on";
-				ignore_dbus_inhibit = false;
-				lock_cmd = "hyprlock";
-			};
+            after_sleep_cmd = "hyprctl dispatch dpms on";
+            ignore_dbus_inhibit = false;
+            lock_cmd = "hyprlock";
+          };
 
-			listener = [
-				{
-					timeout = 900;
-					on-timeout = "hyprlock";
-				}
-				{
-					timeout = 1200;
-					on-timeout = "hyprctl dispatch dpms off";
-					on-resume = "hyprctl dispatch dpms on";
-				}
-			];
-				};
-			};
+            listener = [
+                {
+                timeout = 900;
+                on-timeout = "hyprlock";
+                }
+                {
+                timeout = 1200;
+                on-timeout = "hyprctl dispatch dpms off";
+                on-resume = "hyprctl dispatch dpms on";
+                }
+            ];
+                };
+            };
 
 			# pypr
 			home.file.".config/hypr/pyprland.toml".text = ''

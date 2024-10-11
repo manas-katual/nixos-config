@@ -108,7 +108,7 @@
   '';
 
   #power savings
-  #services.power-profiles-daemon.enable = true;
+  #services.power-profiles-daemon.enable = false;
 
 
   security.polkit.enable = true;
@@ -134,6 +134,7 @@
     };
   };
 
-
+    services.desktopManager.cosmic.enable = true;
+    services.displayManager.cosmic-greeter.enable = true;
 
 }

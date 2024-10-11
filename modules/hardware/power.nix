@@ -3,7 +3,18 @@
 {
     services = {
       tlp.enable = false; # Disable due to suspend not working when docked and connected to AC
+
       auto-cpufreq.enable = true; # Power Efficiency
+      auto-cpufreq.settings = {
+        battery = {
+            governor = "powersave";
+            turbo = "never";
+        };
+        charger = {
+            governor = "performance";
+            turbo = "auto";
+        };
+      };
     };
 
     home-manager.users.${userSettings.username} = {

@@ -45,7 +45,7 @@
                 /* background-color: rgba(0, 0, 0, 0); */
                 border-radius: 6px;
                 color: @foreground;
-                opacity: 0.95;
+                opacity: 0.85;
                 transition-property: background-color;
                 transition-duration: .5s;
                 margin-bottom: -7px;
@@ -244,7 +244,7 @@
             height = 35;
             modules-left = ["custom/wmname" "hyprland/workspaces" "backlight" "memory" "bluetooth" "idle_inhibitor"];
             modules-center = ["clock"];
-            modules-right = ["network" "battery" "cpu" "pulseaudio" "custom/notification" "tray" "custom/powermenu"];
+            modules-right = ["tray" "battery" "cpu" "pulseaudio" "custom/notification" "custom/powermenu"];
 
             /* Modules configuration */
             "hyprland/workspaces" = {
@@ -256,15 +256,15 @@
                 format = "{icon}";
                 on-click = "activate";
                 format-icons = {
-                "1" = " ";
+                "1" = "";
                 "2" = "󰨞";
                 "3" = "";
                 "4" = "";
                 "5" = "󰎇";
-                "6" = " ";
-                "7" = " ";
+                "6" = "";
+                "7" = "";
                 "8" = "";
-                "9" = " ";
+                "9" = "";
                 "10" = "󰊴";
                 };
 
@@ -329,7 +329,7 @@
 
             "bluetooth"= {
                 format = "{icon}";
-                format-alt = "bluetooth= {status}";
+                #format-alt = "bluetooth= {status}";
                 interval = 30;
                 on-click-right = "blueberry";
                 "format-icons" = {
@@ -356,11 +356,11 @@
                     default = [" " " " " "];
                 };
                 tooltip-format = "{desc} {volume}%";
-                on-click = "pamixer -t";
+                on-click-right = "pamixer -t";
                 on-scroll-up = "pamixer -i 1";
                 on-scroll-down = "pamixer -d 1";
-                on-click-middle = "pavucontrol";
-                on-click-middle-release = "sleep 0";
+                on-click = "pypr toggle volume";
+                on-click-release = "sleep 0";
             };
 
 

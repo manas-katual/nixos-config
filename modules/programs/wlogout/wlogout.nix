@@ -43,13 +43,13 @@
 
 					/** ********** Main Window ********** **/
 					window {
-   					background-color: #1e1e2e;
+   					background-color: #'' + config.lib.stylix.colors.base00 + '';
 					}
 
 					/** ********** Buttons ********** **/
 					button {
-   					color: #ffffff;
-   					background-color: #11111b;
+   					color: #'' + config.lib.stylix.colors.base07 + '';
+   					background-color: #'' + config.lib.stylix.colors.base01 + '';
    					outline-style: none;
    					border: none;
    					border-width: 0px;
@@ -63,12 +63,12 @@
 					}
 
 					button:focus {
-  					background-color: #a6adc8;
+  					background-color: #'' + config.lib.stylix.colors.base0C + '';
   					background-size: 20%;
 					}
 
 					button:hover {
-						background-color: #89b4fa;
+						background-color: #'' + config.lib.stylix.colors.base0D + '';
 						background-size: 25%;
 						border-radius: 20px;
 						animation: gradient_f 20s ease-in infinite;
