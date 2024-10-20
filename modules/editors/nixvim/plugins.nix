@@ -5,10 +5,20 @@
 			# tabs
 			bufferline = {
 				enable = true;
-				alwaysShowBufferline = true;
-				colorIcons = true;
-				hover.enabled = true;
-				highlights.tab.underline = true;
+				settings = {
+					options = {
+						hover.enabled = true;
+						always_show_bufferline = true;
+						color_icons = true;
+					};
+					highlights.tab.underline = true;
+				};
+			};
+
+			# web devicons
+			web-devicons.enable = true;
+			mini = {
+				enable = true;
 			};
 			
 			# dashboard
@@ -16,26 +26,6 @@
 				enable = true;
 				theme = "dashboard";
 			};
-
-			#dashboard = { 
-			#	enable = true;
-			#	settings = { 
-			#		config = {
-			#			footer = [
-			#				"Made with ❤️"
-			#			];
-			#			header = [
-			#				"███╗   ██╗██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗"
-			#				"████╗  ██║██║╚██╗██╔╝██║   ██║██║████╗ ████║"
-			#				"██╔██╗ ██║██║ ╚███╔╝ ██║   ██║██║██╔████╔██║"
-			#				"██║╚██╗██║██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║"
-			#				"██║ ╚████║██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║"
-			#				"╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝"
-			#			];
-			#		};
-			#		theme = "doom";
-			#	};
-			#};
 
 			# modeline
 			lualine.enable = true;

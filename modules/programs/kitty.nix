@@ -8,7 +8,7 @@
         name = lib.mkForce "Intel One Mono";
         size = lib.mkForce 14;
       };
-      theme = "Gruvbox Dark Soft";
+      #theme = "Gruvbox Dark Soft";
       settings = {
         scrollback_lines = 2000;
         wheel_scroll_min_lines = 1;
