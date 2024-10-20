@@ -90,7 +90,7 @@
 			  username = "smaalks";
 			  host = "hyprdell";
 				location = "$HOME/setup";
-        desktop = "wayfire";
+        desktop = "cosmic";
 				rofi = "mac";
         theme = "gruvbox-dark-medium";
       };
@@ -104,13 +104,13 @@
       };
       modules = [
         ./hosts/dell/configuration.nix
-         {
-            nix.settings = {
-      substituters = [ "https://cosmic.cachix.org/" ];
-      trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-            };
-        }
-         nixos-cosmic.nixosModules.default
+         #{
+         #   nix.settings = {
+      #substituters = [ "https://cosmic.cachix.org/" ];
+      #trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+      #      };
+       # }
+       #  nixos-cosmic.nixosModules.default
 				
 				home-manager.nixosModules.home-manager {
 	  			home-manager.useGlobalPkgs = true;

@@ -25,7 +25,7 @@
    
     services.desktopManager.plasma6.enable = config.my.desktop.option == "kde";
 
-    #services.desktopManager.cosmic.enable = config.my.desktop.option == "cosmic";
+    services.desktopManager.cosmic.enable = config.my.desktop.option == "cosmic";
   };
 }
 

@@ -15,7 +15,7 @@
 					vim = "nvim";
           tree = "eza --tree --icons";
           cat = "bat";
-					icat = "kitten icat";
+					img = "kitten icat";
         };
       };
       oh-my-posh = {

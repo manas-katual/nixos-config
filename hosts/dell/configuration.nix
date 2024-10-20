@@ -86,8 +86,8 @@
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 4242 ];
-  # networking.firewall.allowedUDPPorts = [ 4242 ];
+  networking.firewall.allowedTCPPorts = [ 4242 ];
+  networking.firewall.allowedUDPPorts = [ 4242 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -134,7 +134,7 @@
     };
   };
 
-    services.desktopManager.cosmic.enable = true;
-    services.displayManager.cosmic-greeter.enable = true;
+    #services.desktopManager.cosmic.enable = true;
+    #services.displayManager.cosmic-greeter.enable = true;
 
 }

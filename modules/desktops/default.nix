@@ -8,6 +8,6 @@
 	./wayfire.nix
 	./options.nix
     ./options1.nix
-    #./cosmic.nix
+    ./cosmic.nix
 
 ]

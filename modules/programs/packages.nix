@@ -14,9 +14,7 @@
     fastfetch
     #htop
     wget
-		librewolf
-		netsurf.browser
-		palemoon-bin
+		brave
 
     python3
     python312Packages.pip
