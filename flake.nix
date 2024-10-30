@@ -24,6 +24,7 @@
 	username = "manas";
 	#host = "dell";
 	terminal = "kitty";
+	editor = "nvim";
 	theme = "everforest";
       };
 

@@ -73,35 +73,35 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
     environment = {
     variables = {
       TERMINAL = "${userSettings.terminal}";
       EDITOR = "${userSettings.editor}";
       VISUAL = "${userSettings.editor}";
     };
+    systemPackages = with pkgs; [
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
+	# terminal tools
+	neovim 
+	wget
+	terminal
+	htop
+	fastfetch
+	tldr # helper
+	usbutils # manage usb
+	pciutils # manage pci
+	xdg-utils # environment integration
+	coreutils # GNU utils
+	gvfs
+	nix-tree # browse nix store
 
-   # terminal tools
-   neovim 
-   wget
-   terminal
-   htop
-   fastfetch
-   tldr # helper
-   usbutils # manage usb
-   pciutils # manage pci
-   xdg-utils # environment integration
-   coreutils # GNU utils
-   gvfs
-   nix-tree # browse nix store
-
-   # apps
-   google-chrome # browser
-   image-roll # image viewer
-   mpv # video player
+	# apps
+	google-chrome # browser
+	image-roll # image viewer
+	mpv # video player
   ];
 
   fonts.packages = with pkgs; [
