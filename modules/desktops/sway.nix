@@ -129,7 +129,7 @@ with host;
 	};
         extraConfig = ''
 	  exec ${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent
-	  for_window [title="Authentication Required"] floating enable, resize set 600 400
+	  for_window [title="Authentication Required"] floating enable, resize set 600 200
           set $opacity 0.8
           for_window [class=".*"] opacity 0.95
           for_window [app_id=".*"] opacity 0.95
