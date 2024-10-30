@@ -56,8 +56,18 @@
       ../wallpapers/sky.jpg;
 
 	
-  #stylix.cursor.package = pkgs.bibata-cursors;
-  #stylix.cursor.name = "Bibata-Modern-Ice";
+  stylix = {
+    cursor ={
+      package = pkgs.dracula-theme;
+      name = "Dracula-cursors";
+      size = 16;
+    };
+  };
+
+  stylix.homeManagerIntegration = {
+    autoImport = true;
+    followSystem = true;
+  };
 
   stylix.fonts = {
     monospace = {

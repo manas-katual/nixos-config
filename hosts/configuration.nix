@@ -110,9 +110,11 @@ in
     powerline-fonts
     powerline-symbols
     twemoji-color-font
+    intel-one-mono
+    fira-code
     (nerdfonts.override {
       fonts = [
-        "FiraCode"
+        #"FiraCode"
 	"NerdFontsSymbolsOnly"
       ];
     })

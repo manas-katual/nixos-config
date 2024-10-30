@@ -244,7 +244,7 @@
         # config.json
         settings = {
             mainBar = {
-            margin = "7 7 3 7";
+            #margin = "7 7 3 7";
             layer = "top";
             height = 35;
             modules-left = ["custom/wmname" "sway/workspaces" "backlight" "memory" "bluetooth" "idle_inhibitor"];
@@ -322,8 +322,8 @@
             "backlight" = {
                 format = "{icon}{percent}%";
                 format-icons = ["󰃞 " "󰃟 " "󰃠 "];
-                on-scroll-down = "${pkgs.light}/bin/light -U 5";
-                on-scroll-up = "${pkgs.light}/bin/light -A 5";
+                #on-scroll-down = "${pkgs.light}/bin/light -U 5";
+                #on-scroll-up = "${pkgs.light}/bin/light -A 5";
             };
 
             "battery" = {
@@ -364,7 +364,7 @@
 
             "pulseaudio" = {
                 format = "{icon}{volume}% {format_source}";
-                format-bluetooth = " {icon} {volume}%";
+                format-bluetooth = "{icon} {volume}%";
                 format-bluetooth-muted = "   {volume}%";
                 format-source = "";
                 format-source-muted = "";
