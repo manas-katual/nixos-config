@@ -92,8 +92,9 @@ in
    nix-tree # browse nix store
 
    # apps
-   google-chrome
-   image-roll
+   google-chrome # browser
+   image-roll # image viewer
+   mpv # video player
   ];
 
   fonts.packages = with pkgs; [
