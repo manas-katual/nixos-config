@@ -1,0 +1,4 @@
+[
+  ./swaync.nix
+  ./udiskie.nix
+]

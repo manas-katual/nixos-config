@@ -1,0 +1,4 @@
+[
+  ./options.nix
+  ./sway.nix
+]
