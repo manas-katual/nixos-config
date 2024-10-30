@@ -340,11 +340,11 @@
             };
 
             "network" = {
-                format-wifi = " ";
+                format-wifi = "󰒢 ";
                 format-ethernet = "{ifname}: {ipaddr}/{cidr}  ";
                 format-linked = "{ifname} (No IP)  ";
-                format-disconnected = "󰤮  Disconnected";
-                on-click = "${pkgs.networkmanagerapplet}/bin/nm-applet";
+                format-disconnected = "󰞃 ";
+                on-click = "kitty nmtui";
                 on-click-release = "sleep 0";
                 tooltip-format = "{essid} {signalStrength}%";
             };
