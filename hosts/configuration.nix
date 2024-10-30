@@ -73,6 +73,13 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+    environment = {
+    variables = {
+      TERMINAL = "${userSettings.terminal}";
+      EDITOR = "${userSettings.editor}";
+      VISUAL = "${userSettings.editor}";
+    };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
