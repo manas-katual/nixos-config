@@ -139,6 +139,7 @@ with host;
           for_window [title="drun"] opacity $opacity
           #for_window [class="Emacs"] opacity $opacity
           for_window [app_id="pavucontrol"] floating enable, sticky
+          for_window [app_id="blueberry.py"] floating enable, sticky
           #for_window [app_id=".blueman-manager-wrapped"] floating enable
           for_window [title="Picture in picture"] floating enable, move position 1205 634, resize set 700 400, sticky enable
         ''; # $ swaymsg -t get_tree or get_outputs

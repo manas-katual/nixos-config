@@ -158,6 +158,24 @@ in
     };
   };
 
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 2d";
+    };
+    # package = pkgs.nixVersions.latest;
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs          = true
+      keep-derivations      = true
+    '';
+  };
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -180,7 +198,5 @@ in
       home-manager.enable = true;
     };
   };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 }
