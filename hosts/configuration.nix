@@ -102,7 +102,8 @@ in
 	google-chrome # browser
 	image-roll # image viewer
 	mpv # video player
-  ];
+    ];
+  };
 
   fonts.packages = with pkgs; [
     carlito # NixOS
