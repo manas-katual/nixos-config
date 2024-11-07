@@ -1,3 +1,4 @@
 [
   ./git.nix
+  ./zsh.nix
 ]

@@ -3,4 +3,5 @@
   ./thunar.nix
   ./kitty.nix
   ./wofi.nix
+  ./wlogout.nix
 ]

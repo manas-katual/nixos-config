@@ -27,6 +27,8 @@
       then "${pkgs.base16-schemes}/share/themes/windows-10-light.yaml"
     else if (userSettings.theme == "dracula") 
       then "${pkgs.base16-schemes}/share/themes/dracula.yaml"
+    else if (userSettings.theme == "catppuccin-mocha") 
+      then "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml"
     else 
       "${pkgs.base16-schemes}/share/themes/circus.yaml";
   
@@ -52,6 +54,8 @@
       then ../wallpapers/bindows.jpg
     else if (userSettings.theme == "dracula")
       then ../wallpapers/dracula-mnt.png
+    else if (userSettings.theme == "catppuccin-mocha")
+      then ../wallpapers/shaded.png
     else
       ../wallpapers/sky.jpg;
 

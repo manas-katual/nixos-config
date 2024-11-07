@@ -306,7 +306,7 @@
 
             "clock" = {
                 tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-                format = " {:%H:%M}";
+                format = "󱑏 {:%H:%M}";
                 format-alt = " {:%A, %B %d, %Y}";
             };
 
@@ -352,7 +352,7 @@
             "bluetooth"= {
 		device = "intel_backlight";
                 format = "{icon}";
-                format-alt = "bluetooth= {status}";
+                format-alt = "{status}";
                 interval = 30;
                 on-click-right = "${pkgs.blueberry}/bin/blueberry";
                 "format-icons" = {
@@ -376,7 +376,7 @@
                     phone = " ";
                     portable = " ";
                     car = " ";
-                    default = [" " " " " "];
+                    default = ["󰕿 " "󰖀 " "󰕾 "];
                 };
                 tooltip-format = "{desc} {volume}%";
 		on-click = "${pkgs.pamixer}/bin/pamixer -t";
@@ -415,7 +415,7 @@
             };
 
             "custom/powermenu" = {
-                format = " ";
+                format = "⏻ ";
                 on-click = "${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell";
                 on-click-release = "sleep 1";
             };

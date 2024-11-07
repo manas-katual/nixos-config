@@ -2,8 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/hardware/broadcom.nix
-  ];
+  ] ++ 
+  (import ../../modules/hardware/dell);
 
   sway.enable = true;
 

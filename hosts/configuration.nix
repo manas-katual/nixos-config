@@ -58,7 +58,7 @@ in
   security = {
     rtkit.enable = true;
     polkit.enable = true;
-    sudo.wheelNeedsPassword = false;
+    #sudo.wheelNeedsPassword = false;
   };
 
 
@@ -102,6 +102,9 @@ in
 	google-chrome # browser
 	image-roll # image viewer
 	mpv # video player
+	qbittorrent # torrent client
+	appimage-run # for appimages
+	anydesk
     ];
   };
 
@@ -145,6 +148,12 @@ in
 
   programs = {
     dconf.enable = true;
+  };
+
+  services = {
+    devmon.enable = true;
+    gvfs.enable = true;
+    dbus.enable = true;
   };
 
   hardware.pulseaudio.enable = false;

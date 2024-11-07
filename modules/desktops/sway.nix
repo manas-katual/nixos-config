@@ -16,14 +16,24 @@ with host;
     wlwm.enable = true;
 
     environment = {
-      loginShellInit = ''
-        if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-	  exec sway
-	fi
-      '';
+      #loginShellInit = ''
+      #  if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+	#  exec sway
+	#fi
+      #'';
       variables = {
         WLR_NO_HARDWARE_CURSORS = "1"; 
       };
+    };
+
+    services.greetd = {                                                      
+      enable = true;                                                         
+      settings = {                                                           
+        default_session = {                                                  
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "${userSettings.username}";                                                  
+        };                                                                   
+      };                                                                     
     };
 
     programs = {
@@ -60,11 +70,14 @@ with host;
 	    titlebar = false;
 	  };
 
-	  #fonts = {};
+          #fonts = {
+          #  names = [ "Source Code Pro" "JetBrainsMono Nerd Font Mono" ];
+          #  size = 10.0;
+          #};
 
           gaps = {
-            inner = 5;
-            outer = 5;
+            inner = 3;
+            outer = 3;
           };
 
           input = {
@@ -117,14 +130,15 @@ with host;
 
 
 	    "Print" = "exec ${pkgs.flameshot}/bin/flameshot gui";
+	    #"Print" = ''exec ${pkgs.grim}/bin/grim -g ${pkgs.slurp}/bin/"$(slurp)" - | ${pkgs.swappy}/bin/swappy -f -'';
 	
             "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 10";
             "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 10";
             "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
             "XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
 
-            "XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -U  5";
-            "XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -A 5";
+            "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%+";
+            "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl ser 5%-";
 	  };
 	};
         extraConfig = ''
@@ -149,6 +163,56 @@ with host;
           export XDG_SESSION_DESKTOP=sway
           export XDG_CURRENT_DESKTOP=sway
         '';
+      };
+
+      services = {
+        swayidle = {
+	  enable = true;
+	  package = pkgs.swayidle;
+	  timeouts = [
+	    {
+              timeout = 30;  # 5 minutes of inactivity
+              command = "swaylock";  # Command to lock the screen
+              resumeCommand = "notify-send 'Welcome back!'";  # Command to run on resume
+            }
+            {
+              timeout = 600;  # 10 minutes of inactivity
+              command = "systemctl suspend";  # Command to suspend the system
+              resumeCommand = "notify-send 'Resumed from sleep'";  # Command to run on resume
+            }
+	  ];
+	  events = [
+	    {
+	      event = "lock";
+	      command = "notify-send 'Screen locked'";  # Command to run when locked
+	    }
+	    {
+	      event = "unlock";
+	      command = "notify-send 'Screen unlocked'";  # Command to run when unlocked
+	    }
+	    {
+	      event = "before-sleep";
+	      command = "notify-send 'Going to sleep...'";
+	    }
+	    {
+	      event = "after-resume";
+	      command = "notify-send 'Waking up...'";
+	    }
+	  ];
+	};
+      };
+
+      programs.swaylock = {
+        enable = true;
+	package = pkgs.swaylock;
+	settings = {
+	  color = lib.mkForce "#''+stylix.colors.base04+''";
+  	  font-size = 24;
+  	  indicator-idle-visible = false;
+  	  indicator-radius = 100;
+  	  line-color = lib.mkForce "#''+stylix.colors.base00+''";
+  	  show-failed-attempts = true;
+	};
       };
     };
   

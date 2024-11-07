@@ -8,66 +8,6 @@
 
     home-manager.users.${userSettings.username} = {
       xdg.configFile = {
-        "swaync/config.json".text = ''
-          {
-            "$schema": "/run/current-system/sw/etc/xdg/swaync/configSchema.json",
-            "positionX": "right",
-            "positionY": "top",
-            "control-center-margin-top": 10,
-            "control-center-margin-bottom": 10,
-            "control-center-margin-right": 10,
-            "control-center-margin-left": 10,
-            "notification-icon-size": 64,
-            "notification-body-image-height": 100,
-            "notification-body-image-width": 200,
-            "timeout": 10,
-            "timeout-low": 5,
-            "timeout-critical": 0,
-            "fit-to-screen": false,
-            "control-center-width": 400,
-            "control-center-height": 1025,
-            "notification-window-width": 400,
-            "keyboard-shortcuts": true,
-            "image-visibility": "when-available",
-            "transition-time": 200,
-            "hide-on-clear": false,
-            "hide-on-action": true,
-            "script-fail-notify": true,
-            "widgets": [
-              "title",
-              "buttons-grid",
-              "mpris",
-              "volume",
-              "backlight",
-              "dnd",
-              "notifications"
-            ],
-            "widget-config": {
-              "title": {
-                "text": "Notification Center",
-                "clear-all-button": true,
-                "button-text": "󰆴 Clear All"
-              },
-              "dnd": {
-                "text": "Do Not Disturb"
-              },
-              "label": {
-                "max-lines": 1,
-                "text": "Notification Center"
-              },
-              "mpris": {
-                "image-size": 96,
-                "image-radius": 7
-              },
-              "volume": {
-                "label": "󰕾"
-              },
-              "backlight": {
-                "label": "󰃟"
-              }
-            }
-          }
-        '';
         "swaync/style.css".text = ''
       * {
         all: unset;

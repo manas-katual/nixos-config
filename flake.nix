@@ -25,7 +25,7 @@
 	#host = "dell";
 	terminal = "kitty";
 	editor = "nvim";
-	theme = "everforest";
+	theme = "catppuccin-mocha";
       };
 
     in {

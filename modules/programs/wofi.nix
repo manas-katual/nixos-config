@@ -28,46 +28,118 @@
         };
         ".config/wofi/style.css" = {
           text = ''
-            window {
-	      font-size: 32px;
-              background-color: #${config.lib.stylix.colors.base00};
-              /*background-color: rgba(0, 0, 0, 0.8);*/
-            }
+@define-color rosewater #''+config.lib.stylix.colors.base07+'';
+@define-color flamingo #''+config.lib.stylix.colors.base06+'';
+@define-color pink #''+config.lib.stylix.colors.base05+'';
+@define-color mauve #''+config.lib.stylix.colors.base04+'';
+@define-color red #''+config.lib.stylix.colors.base09+'';
+@define-color maroon #''+config.lib.stylix.colors.base08+'';
+@define-color peach #''+config.lib.stylix.colors.base0A+'';
+@define-color yellow #''+config.lib.stylix.colors.base0A+'';
+@define-color green #''+config.lib.stylix.colors.base0B+'';
+@define-color teal #''+config.lib.stylix.colors.base0C+'';
+@define-color sky #''+config.lib.stylix.colors.base0D+'';
+@define-color sapphire #''+config.lib.stylix.colors.base0D+'';
+@define-color blue #''+config.lib.stylix.colors.base0C+'';
+@define-color lavender #''+config.lib.stylix.colors.base0E+'';
+@define-color text #''+config.lib.stylix.colors.base05+'';
+@define-color subtext1 #''+config.lib.stylix.colors.base04+'';
+@define-color subtext0 #''+config.lib.stylix.colors.base03+'';
+@define-color overlay2 #''+config.lib.stylix.colors.base02+'';
+@define-color overlay1 #''+config.lib.stylix.colors.base02+'';
+@define-color overlay0 #''+config.lib.stylix.colors.base01+'';
+@define-color surface2 #''+config.lib.stylix.colors.base01+'';
+@define-color surface1 #''+config.lib.stylix.colors.base00+'';
+@define-color surface0 #''+config.lib.stylix.colors.base00+'';
+@define-color base #''+config.lib.stylix.colors.base00+'';
+@define-color mantle #''+config.lib.stylix.colors.base01+'';
+@define-color crust #''+config.lib.stylix.colors.base02+'';
 
-            #input {
-              all: unset;
-              border: none;
-              color: #${config.lib.stylix.colors.base05}
-              background-color: #${config.lib.stylix.colors.base00};
-              padding-left: 5px;
-            }
+* {
+  font-family: 'CaskaydiaCove Nerd Font', monospace;
+  font-size: 18px;
+}
 
-            #outer-box {
-              border: none;
-              border-bottom: 1px solid #${config.lib.stylix.colors.base09};
-            }
+/* Window */
+window {
+  margin: 0px;
+  padding: 10px;
+  border: 2px solid @lavender;
+  /*border-radius: 8px;*/
+  background-color: @base;
+}
 
-            #text:selected {
-              /*color: rgba(255, 255, 255, 0.8);*/
-              color: rgba(0, 0, 0, 0.8);
-            }
+/* Inner Box */
+#inner-box {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  background-color: @base;
+}
 
-            #entry {
-              color: #${config.lib.stylix.colors.base05};
-              padding-right: 10px;
-            }
+/* Outer Box */
+#outer-box {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  background-color: @base;
+}
 
-            #entry:selected {
-              all: unset;
-              border-radius: 0px;
-              background-color: #${config.lib.stylix.colors.base09};
-              padding-right: 10px;
-            }
+/* Scroll */
+#scroll {
+  margin: 0px;
+  padding: 10px;
+  border: none;
+  background-color: @base;
+}
 
-            #img {
-              padding-right: 5px;
-              padding-left: 10px;
-            }
+/* Input */
+#input {
+  margin: 5px 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 0.1em;
+  color: @text;
+  background-color: @base;
+}
+
+#input image {
+    border: none;
+    color: @red;
+}
+
+#input * {
+  outline: 4px solid @red!important;
+}
+
+/* Text */
+#text {
+  margin: 5px;
+  border: none;
+  color: @text;
+}
+
+#entry {
+  background-color: @base;
+}
+
+#entry arrow {
+  border: none;
+  color: @lavender;
+}
+
+/* Selected Entry */
+#entry:selected {
+  border: 0.11em solid @lavender;
+}
+
+#entry:selected #text {
+  color: @mauve;
+}
+
+#entry:drop(active) {
+  background-color: @lavender!important;
+}
           '';
         };
       };
