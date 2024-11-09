@@ -104,7 +104,8 @@ in
 	mpv # video player
 	qbittorrent # torrent client
 	appimage-run # for appimages
-	anydesk
+	anydesk # remote access
+	lan-mouse # kbd & mouse share
     ];
   };
 
