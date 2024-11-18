@@ -66,7 +66,7 @@ in
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = "Manas Katual";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "libvirtd" ];
     packages = with pkgs; [];
   };
 
@@ -106,6 +106,8 @@ in
 	appimage-run # for appimages
 	anydesk # remote access
 	lan-mouse # kbd & mouse share
+	localsend # wireless file transfer
+	bottles # to run windows apps
     ];
   };
 
@@ -179,6 +181,8 @@ in
   nix = {
     settings = {
       auto-optimise-store = true;
+      extra-substituters = [ "https://nix-community.cachix.org" ];
+      extra-trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
     };
     gc = {
       automatic = true;

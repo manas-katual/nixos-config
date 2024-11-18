@@ -44,6 +44,9 @@ with host;
 	  wl-clipboard
 	  wlr-randr
 	  xwayland
+	  satty
+	  grim
+	  slurp
 	];
       };
     };
@@ -108,6 +111,11 @@ with host;
 	    "${modifier}+f" = "fullscreen toggle";
 	    "${modifier}+h" = "floating toggle";
 
+            "${modifier}+Left" = "focus left";
+            "${modifier}+Right" = "focus right";
+            "${modifier}+Up" = "focus up";
+            "${modifier}+Down" = "focus down";
+
 	    "${modifier}+1" = "workspace number 1";
             "${modifier}+2" = "workspace number 2";
             "${modifier}+3" = "workspace number 3";
@@ -127,10 +135,7 @@ with host;
             "${modifier}+Shift+4" = "move container to workspace number 4";
             "${modifier}+Shift+5" = "move container to workspace number 5";
 
-
-
 	    "Print" = "exec ${pkgs.flameshot}/bin/flameshot gui";
-	    #"Print" = ''exec ${pkgs.grim}/bin/grim -g ${pkgs.slurp}/bin/"$(slurp)" - | ${pkgs.swappy}/bin/swappy -f -'';
 	
             "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 10";
             "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 10";
@@ -156,6 +161,7 @@ with host;
           for_window [app_id="blueberry.py"] floating enable, sticky
           #for_window [app_id=".blueman-manager-wrapped"] floating enable
           for_window [title="Picture in picture"] floating enable, move position 1205 634, resize set 700 400, sticky enable
+
         ''; # $ swaymsg -t get_tree or get_outputs
         extraSessionCommands = ''
           #export WLR_NO_HARDWARE_CURSORS="1";  # Needed for cursor in vm
@@ -165,50 +171,47 @@ with host;
         '';
       };
 
-      services = {
-        swayidle = {
-	  enable = true;
-	  package = pkgs.swayidle;
-	  timeouts = [
-	    {
-              timeout = 30;  # 5 minutes of inactivity
-              command = "swaylock";  # Command to lock the screen
-              resumeCommand = "notify-send 'Welcome back!'";  # Command to run on resume
-            }
-            {
-              timeout = 600;  # 10 minutes of inactivity
-              command = "systemctl suspend";  # Command to suspend the system
-              resumeCommand = "notify-send 'Resumed from sleep'";  # Command to run on resume
-            }
-	  ];
-	  events = [
-	    {
-	      event = "lock";
-	      command = "notify-send 'Screen locked'";  # Command to run when locked
-	    }
-	    {
-	      event = "unlock";
-	      command = "notify-send 'Screen unlocked'";  # Command to run when unlocked
-	    }
-	    {
-	      event = "before-sleep";
-	      command = "notify-send 'Going to sleep...'";
-	    }
-	    {
-	      event = "after-resume";
-	      command = "notify-send 'Waking up...'";
-	    }
-	  ];
-	};
-      };
+  services = {
+    swayidle = {
+      enable = true;
+      package = pkgs.swayidle;
+      timeouts = [
+        #{ 
+        #  timeout = 800;
+        #  command = "${libnotify}/bin/notify-send 'Locking in 5 seconds'";
+        #}
 
+        {
+          timeout = 850;
+          command = "${pkgs.swaylock-effects}/bin/swaylock";
+        }
+
+        {
+          timeout = 900;
+          command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
+          resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
+        }
+
+        {
+          timeout = 950;
+          command = "${pkgs.systemd}/bin/systemctl suspend";
+        }
+      ];
+      events = [
+        {
+          event = "before-sleep";
+          command = "${pkgs.swaylock-effects}/bin/swaylock";
+        }
+      ];
+    };
+  };      
       programs.swaylock = {
         enable = true;
 	package = pkgs.swaylock;
 	settings = {
 	  color = lib.mkForce "#''+stylix.colors.base04+''";
   	  font-size = 24;
-  	  indicator-idle-visible = false;
+  	  indicator-idle-visible = true;
   	  indicator-radius = 100;
   	  line-color = lib.mkForce "#''+stylix.colors.base00+''";
   	  show-failed-attempts = true;

@@ -45,7 +45,7 @@
     else if (userSettings.theme == "nord")
       then ../wallpapers/nord_bridge.png
     else if (userSettings.theme == "uwunicorn")
-      then ../wallpapers/pink-katana.jpg
+      then ../wallpapers/uwu.jpg
     else if (userSettings.theme == "sakura")
       then ../wallpapers/pink-katana.jpg
     else if (userSettings.theme == "everforest")

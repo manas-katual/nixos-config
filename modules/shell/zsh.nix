@@ -13,9 +13,12 @@
   programs = {
       oh-my-posh = {
         enable = true;
-        useTheme = "robbyrussell";
+        #useTheme = "robbyrussell";
         enableZshIntegration = true;
         package = pkgs.oh-my-posh; 
+	settings = {
+	  
+	};
       };
     zsh = {
       enable = true;
@@ -25,6 +28,7 @@
       #histSize = 100000;
       initExtra = ''
         eval "$(oh-my-posh init zsh)"
+	export PATH="$HOME/.config/emacs/bin:$PATH"
       '';
       };
   };

@@ -15,9 +15,15 @@
     # stylix
     stylix.url = "github:danth/stylix";
 
+    # running windows app
+    winapps = {
+      url = "github:winapps-org/winapps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs@ { self, nixpkgs, home-manager, stylix, ... }:
+  outputs = inputs@ { self, nixpkgs, home-manager, stylix, winapps, ... }:
 
     let
       userSettings = {
@@ -25,14 +31,14 @@
 	#host = "dell";
 	terminal = "kitty";
 	editor = "nvim";
-	theme = "catppuccin-mocha";
+	theme = "solarized-dark";
       };
 
     in {
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-	inherit inputs nixpkgs home-manager userSettings stylix;
+	inherit inputs nixpkgs home-manager userSettings stylix winapps;
       }
     );
   };

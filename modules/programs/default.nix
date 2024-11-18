@@ -4,4 +4,5 @@
   ./kitty.nix
   ./wofi.nix
   ./wlogout.nix
+  ./distrobox.nix
 ]

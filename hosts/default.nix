@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, home-manager, userSettings, stylix, ... }:
+{ inputs, nixpkgs, home-manager, userSettings, stylix, winapps, ... }:
 let
   system = "x86_64-linux";
   lib = nixpkgs.lib;
@@ -7,7 +7,7 @@ in
   dell = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system userSettings stylix;
+      inherit inputs system userSettings stylix winapps;
       host = {
         hostName = "dell";
       }; 
@@ -22,6 +22,16 @@ in
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
     }
+
+          (
+            { pkgs, ... }:
+            {
+              environment.systemPackages = [
+                winapps.packages.${system}.winapps
+                winapps.packages.${system}.winapps-launcher # optional
+              ];
+            }
+          )
   ];
   };
 }

@@ -244,7 +244,7 @@
         # config.json
         settings = {
             mainBar = {
-            #margin = "7 7 3 7";
+            margin = "7 7 3 7";
             layer = "top";
             height = 35;
             modules-left = ["custom/wmname" "sway/workspaces" "backlight" "memory" "bluetooth" "idle_inhibitor"];
