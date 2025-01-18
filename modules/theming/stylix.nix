@@ -13,6 +13,8 @@
       then "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml" 
     else if (userSettings.theme == "gruvbox-material-dark-medium") 
       then "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml" 
+    else if (userSettings.theme == "gruvbox-material-dark-soft") 
+      then "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml" 
     else if (userSettings.theme == "solarized-dark") 
       then "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml"
     else if (userSettings.theme == "nord") 
@@ -40,6 +42,8 @@
       then ../wallpapers/gruvbox-car.jpg
     else if (userSettings.theme == "gruvbox-material-dark-medium")
       then ../wallpapers/ledge_gruvbox.png
+    else if (userSettings.theme == "gruvbox-material-dark-soft")
+      then ../wallpapers/nord_roads.png
     else if (userSettings.theme == "solarized-dark")
       then ../wallpapers/solarized-dark.jpg
     else if (userSettings.theme == "nord")
@@ -62,9 +66,12 @@
 	
   stylix = {
     cursor ={
-      package = pkgs.dracula-theme;
-      name = "Dracula-cursors";
-      size = 16;
+      #package = pkgs.dracula-theme;
+      #name = "Dracula-cursors";
+      #size = 16;
+      package = lib.mkForce pkgs.google-cursor;
+      name = lib.mkForce "GoogleDot-Black";
+      size = lib.mkForce 16;
     };
   };
 
@@ -75,8 +82,8 @@
 
   stylix.fonts = {
     monospace = {
-      package = pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];};
-      name = "JetBrainsMono Nerd Font Mono";
+      package = pkgs.nerd-fonts.jetbrains-mono;#pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];};
+      name = "JetBrainsMono Nerd Font Mono";#"JetBrainsMono Nerd Font Mono";
     };
     sansSerif = {
       package = lib.mkForce pkgs.intel-one-mono;
@@ -91,19 +98,19 @@
   stylix.polarity = "dark";
 
 
-	stylix.fonts.sizes = {
-    applications = 14;
-    terminal = 14;
-    desktop = 10;
-    popups = 10;
-  };
+  #stylix.fonts.sizes = {
+  #  applications = lib.mkForce 14;
+  #  terminal = lib.mkForce 14;
+  #  desktop = lib.mkForce 10;
+  #  popups = lib.mkForce 10;
+  #};
 
-  stylix.opacity = {
-    applications = 1.0;
-    terminal = 1.0;
-    desktop = 1.0;
-    popups = 1.0;
-  };
+  #stylix.opacity = {
+  #  applications = lib.mkForce 1.0;
+  #  terminal = lib.mkForce 1.0;
+  #  desktop = lib.mkForce 1.0;
+  #  popups = lib.mkForce 1.0;
+  #};
  
 
 }

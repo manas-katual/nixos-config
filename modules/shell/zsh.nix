@@ -13,7 +13,7 @@
   programs = {
       oh-my-posh = {
         enable = true;
-        #useTheme = "robbyrussell";
+        useTheme = "robbyrussell";
         enableZshIntegration = true;
         package = pkgs.oh-my-posh; 
 	settings = {

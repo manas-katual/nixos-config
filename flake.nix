@@ -15,15 +15,23 @@
     # stylix
     stylix.url = "github:danth/stylix";
 
-    # running windows app
-    winapps = {
-      url = "github:winapps-org/winapps";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Official Hyprland Flake
+    #hyprland = {
+    #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    #};
+
+    # Hyprspace
+    #hyprspace = {
+    #  url = "github:KZDKM/Hyprspace";
+    #  inputs.hyprland.follows = "hyprland";
+    #};
+
+    # nvf neovim
+    nvf.url = "github:notashelf/nvf";
 
   };
 
-  outputs = inputs@ { self, nixpkgs, home-manager, stylix, winapps, ... }:
+  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, ... }:
 
     let
       userSettings = {
@@ -31,14 +39,14 @@
 	#host = "dell";
 	terminal = "kitty";
 	editor = "nvim";
-	theme = "solarized-dark";
+	theme = "gruvbox-material-dark-medium";
       };
 
     in {
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-	inherit inputs nixpkgs home-manager userSettings stylix winapps;
+	inherit inputs nixpkgs home-manager userSettings stylix nvf;
       }
     );
   };

@@ -1,5 +1,12 @@
 [
   ./options.nix
+  ./dwm.nix
+  ./bspwm.nix
+  ./jwm.nix
+  ./icewm.nix
+  ./dwl.nix
   ./sway.nix
+  ./gnome.nix
+  ./hyprland.nix
   ./vm.nix
 ]

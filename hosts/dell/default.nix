@@ -5,7 +5,15 @@
   ] ++ 
   (import ../../modules/hardware/dell);
 
-  sway.enable = true;
+  #sway.enable = true;
+  #gnome.enable = true;
+  #dwm.enable = true;
+  #bspwm.enable = true;
+  #jwm.enable = true;
+  #icewm.enable = true;
+  #dwl.enable = true;
+  hyprland.enable = true;
+  laptop.enable = true;
 
   environment = {
     systemPackages = with pkgs; [

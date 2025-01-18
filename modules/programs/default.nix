@@ -3,6 +3,7 @@
   ./thunar.nix
   ./kitty.nix
   ./wofi.nix
+  ./rofi.nix
   ./wlogout.nix
   ./distrobox.nix
 ]

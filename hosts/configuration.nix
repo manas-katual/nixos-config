@@ -14,7 +14,8 @@ in
       import ../modules/programs ++
       import ../modules/theming ++
       import ../modules/services ++
-      import ../modules/shell
+      import ../modules/shell ++
+      import ../modules/editors
     );
 
   # Bootloader.
@@ -50,10 +51,10 @@ in
   };
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "in";
-    variant = "eng";
-  };
+  #services.xserver.xkb = {
+  #  layout = "in";
+  #  variant = "eng";
+  #};
 
   security = {
     rtkit.enable = true;
@@ -97,6 +98,7 @@ in
 	coreutils # GNU utils
 	gvfs
 	nix-tree # browse nix store
+	android-tools # fastboot and adb tool
 
 	# apps
 	google-chrome # browser
@@ -108,6 +110,12 @@ in
 	lan-mouse # kbd & mouse share
 	localsend # wireless file transfer
 	bottles # to run windows apps
+	vscode-fhs # vscode for noobs
+	nodejs # backend for js
+	netbeans # ide
+	jdk23 # compiler
+	mission-center # task manager for linux
+	komikku # manga reader
     ];
   };
 
@@ -126,12 +134,13 @@ in
     twemoji-color-font
     intel-one-mono
     fira-code
-    (nerdfonts.override {
-      fonts = [
-        #"FiraCode"
-	"NerdFontsSymbolsOnly"
-      ];
-    })
+    #nerd-fonts.NerdFontsSymbolOnly
+    #(nerdfonts.override {
+    #  fonts = [
+    #    "FiraCode"
+	#"NerdFontsSymbolsOnly"
+    #  ];
+    #})
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -183,6 +192,8 @@ in
       auto-optimise-store = true;
       extra-substituters = [ "https://nix-community.cachix.org" ];
       extra-trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+      #substituters = [ "https://hyprland.cachix.org" ];
+      #trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
     gc = {
       automatic = true;
@@ -220,5 +231,7 @@ in
       home-manager.enable = true;
     };
   };
+
+
 
 }

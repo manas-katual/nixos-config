@@ -13,4 +13,5 @@
 [
   ./theming.nix
   ./stylix.nix
+  #./colors.nix
 ]

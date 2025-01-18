@@ -48,7 +48,7 @@
                 /* background-color: rgba(18, 21, 29, 0.98); */
                 background-color: @background;
                 /* background-color: rgba(0, 0, 0, 0); */
-                /* border-radius: 6px; */
+                border-radius: 6px;
                 color: @foreground;
                 opacity: 0.95;
                 transition-property: background-color;
@@ -60,7 +60,7 @@
                 opacity: 0.2;
             }
 
-            window#sway-window {
+            window#hyprland-window {
                 background-color: @background;
             }
 
@@ -247,12 +247,12 @@
             margin = "7 7 3 7";
             layer = "top";
             height = 35;
-            modules-left = ["custom/wmname" "sway/workspaces" "backlight" "memory" "bluetooth" "idle_inhibitor"];
+            modules-left = ["custom/wmname" "hyprland/workspaces" "backlight" "memory" "bluetooth" "idle_inhibitor"];
             modules-center = ["clock"];
             modules-right = ["network" "battery" "cpu" "pulseaudio" "custom/notification" "tray" "custom/powermenu"];
 
             /* Modules configuration */
-            "sway/workspaces" = {
+            "hyprland/workspaces" = {
               format = "<span font='11'>{icon}</span>";
               format-icons = {
                 # "1"="";

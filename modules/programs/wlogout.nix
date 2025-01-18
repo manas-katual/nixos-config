@@ -97,25 +97,25 @@
 					}
 					/** ********** Icons ********** **/
 					#lock {
-						background-image: url("/home/smaalky/setup/modules/programs/icons/lock.png");
+						background-image: url("/home/${userSettings.username}/setup/modules/programs/icons/lock.png");
 						border-radius: 25px 0px 0px 0px;
 						margin : 35px 0px 0px 10px;
 					}
 
 					#logout {
-						background-image: url("/home/smaalky/setup/modules/programs/icons/shutdown.png");
+						background-image: url("/home/${userSettings.username}/setup/modules/programs/icons/shutdown.png");
 						border-radius: 0px 0px 0px 25px;
 						margin : 0px 0px 35px 10px;
 					}
 
 					#shutdown {
-						background-image: url("/home/smaalky/setup/modules/programs/icons/reboot.png");
+						background-image: url("/home/${userSettings.username}/setup/modules/programs/icons/reboot.png");
 						border-radius: 0px 25px 0px 0px;
 						margin : 35px 10px 0px 0px;
 					}
 
 					#reboot {
-						background-image: url("/home/smaalky/setup/modules/programs/icons/logout.png");
+						background-image: url("/home/${userSettings.username}/setup/modules/programs/icons/logout.png");
 						border-radius: 0px 0px 25px 0px;
 						margin : 0px 10px 35px 0px;
 					}

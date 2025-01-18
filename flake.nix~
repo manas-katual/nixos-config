@@ -1,0 +1,53 @@
+{
+  description = "My system configuration";
+
+  inputs = {
+
+    # nix packages
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # home manager
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # stylix
+    stylix.url = "github:danth/stylix";
+
+    # Official Hyprland Flake
+    #hyprland = {
+    #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    #};
+
+    # Hyprspace
+    #hyprspace = {
+    #  url = "github:KZDKM/Hyprspace";
+    #  inputs.hyprland.follows = "hyprland";
+    #};
+
+    # nvf neovim
+    nvf.url = "github:notashelf/nvf";
+
+  };
+
+  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, ... }:
+
+    let
+      userSettings = {
+	username = "manas";
+	#host = "dell";
+	terminal = "kitty";
+	editor = "nvim";
+	theme = "gruvbox-dark-medium";
+      };
+
+    in {
+    nixosConfigurations = (
+      import ./hosts {
+        inherit (nixpkgs) lib;
+	inherit inputs nixpkgs home-manager userSettings stylix nvf;
+      }
+    );
+  };
+}
