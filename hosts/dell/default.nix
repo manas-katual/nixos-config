@@ -5,6 +5,20 @@
   ] ++ 
   (import ../../modules/hardware/dell);
 
+  # Boot Options
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 3;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+      };
+      timeout = 5;
+    };
+  };
+
   #sway.enable = true;
   #gnome.enable = true;
   #dwm.enable = true;

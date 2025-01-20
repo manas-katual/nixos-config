@@ -15,12 +15,9 @@ in
       import ../modules/theming ++
       import ../modules/services ++
       import ../modules/shell ++
-      import ../modules/editors
+      import ../modules/editors ++
+      import ../modules/hardware
     );
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "dell"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -77,7 +74,7 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-    environment = {
+  environment = {
     variables = {
       TERMINAL = "${userSettings.terminal}";
       EDITOR = "${userSettings.editor}";
@@ -85,37 +82,37 @@ in
     };
     systemPackages = with pkgs; [
 
-	# terminal tools
-	neovim 
-	wget
-	terminal
-	htop
-	fastfetch
-	tldr # helper
-	usbutils # manage usb
-	pciutils # manage pci
-	xdg-utils # environment integration
-	coreutils # GNU utils
-	gvfs
-	nix-tree # browse nix store
-	android-tools # fastboot and adb tool
+      # terminal tools
+      neovim 
+      wget
+      terminal
+      htop
+      fastfetch
+      tldr # helper
+      usbutils # manage usb
+      pciutils # manage pci
+      xdg-utils # environment integration
+      coreutils # GNU utils
+      gvfs
+      nix-tree # browse nix store
+      android-tools # fastboot and adb tool
 
-	# apps
-	google-chrome # browser
-	image-roll # image viewer
-	mpv # video player
-	qbittorrent # torrent client
-	appimage-run # for appimages
-	anydesk # remote access
-	lan-mouse # kbd & mouse share
-	localsend # wireless file transfer
-	bottles # to run windows apps
-	vscode-fhs # vscode for noobs
-	nodejs # backend for js
-	netbeans # ide
-	jdk23 # compiler
-	mission-center # task manager for linux
-	komikku # manga reader
+      # apps
+      google-chrome # browser
+      image-roll # image viewer
+      mpv # video player
+      qbittorrent # torrent client
+      appimage-run # for appimages
+      anydesk # remote access
+      lan-mouse # kbd & mouse share
+      localsend # wireless file transfer
+      bottles # to run windows apps
+      vscode-fhs # vscode for noobs
+      nodejs # backend for js
+      netbeans # ide
+      jdk23 # compiler
+      mission-center # task manager for linux
+      komikku # manga reader
     ];
   };
 
@@ -138,7 +135,7 @@ in
     #(nerdfonts.override {
     #  fonts = [
     #    "FiraCode"
-	#"NerdFontsSymbolsOnly"
+    #"NerdFontsSymbolsOnly"
     #  ];
     #})
   ];
@@ -192,8 +189,6 @@ in
       auto-optimise-store = true;
       extra-substituters = [ "https://nix-community.cachix.org" ];
       extra-trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
-      #substituters = [ "https://hyprland.cachix.org" ];
-      #trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
     gc = {
       automatic = true;

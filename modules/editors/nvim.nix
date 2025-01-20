@@ -13,6 +13,7 @@
       vim = {
         viAlias = true;
         vimAlias = true;
+        preventJunkFiles = true;
         theme = {
           enable = true;
           name = "gruvbox";
@@ -49,6 +50,21 @@
             enable = true;
           };
           java = {
+            enable = true;
+          };
+          python = {
+            enable = true;
+          };
+          bash = {
+            enable = true;
+          };
+          html = {
+            enable = true;
+          };
+          css = {
+            enable = true;
+          };
+          clang = {
             enable = true;
           };
         };

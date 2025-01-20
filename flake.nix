@@ -26,28 +26,34 @@
     #  inputs.hyprland.follows = "hyprland";
     #};
 
+    # Hyprpanel
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nvf neovim
     nvf.url = "github:notashelf/nvf";
 
   };
 
-  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, ... }:
+  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, ... }:
 
     let
       userSettings = {
-	username = "manas";
-	#host = "dell";
-	terminal = "kitty";
-	editor = "nvim";
-	theme = "gruvbox-material-dark-medium";
+        username = "manas";
+        #host = "dell";
+        terminal = "kitty";
+        editor = "nvim";
+        theme = "gruvbox-material-dark-medium";
       };
 
     in {
-    nixosConfigurations = (
-      import ./hosts {
+      nixosConfigurations = (
+        import ./hosts {
         inherit (nixpkgs) lib;
-	inherit inputs nixpkgs home-manager userSettings stylix nvf;
-      }
-    );
-  };
+        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel;
+        }
+      );
+    };
 }

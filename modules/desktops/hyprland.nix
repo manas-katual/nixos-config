@@ -33,7 +33,7 @@ with host;
           XDG_SESSION_TYPE = "wayland";
           XDG_SESSION_DESKTOP = "Hyprland";
           XCURSOR = "Catppuccin-Mocha-Dark-Cursors";
-          XCURSOR_SIZE = lib.mkForce 24;
+          XCURSOR_SIZE = lib.mkForce 16;
           NIXOS_OZONE_WL = 1;
           SDL_VIDEODRIVER = "wayland";
           OZONE_PLATFORM = "wayland";
@@ -230,7 +230,23 @@ with host;
             };
             monitor = (if (hostName == "dell") then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1" else "HDMI-A-1,preferred,auto,1,mirror,LVDS-1");
             animations = {
-              enabled = false;
+              enabled = true;
+              # bezier = [
+              #   "overshot, 0.05, 0.9, 0.1, 1.05"
+              #   "smooth, 0.5, 0, 0.99, 0.99"
+              #   "snapback, 0.54, 0.42, 0.01, 1.34"
+              #   "curve, 0.27, 0.7, 0.03, 0.99"
+              # ];
+              # animation = [
+              #   "windows, 1, 5, overshot, slide"
+              #   "windowsOut, 1, 5, snapback, slide"
+              #   "windowsIn, 1, 5, snapback, slide"
+              #   "windowsMove, 1, 5, snapback, slide"
+              #   "border, 1, 5, default"
+              #   "fade, 1, 5, default"
+              #   "fadeDim, 1, 5, default"
+              #   "workspaces, 1, 6, curve"
+              # ];
               bezier = [
                 "overshot, 0.05, 0.9, 0.1, 1.05"
                 "smoothOut, 0.5, 0, 0.99, 0.99"
@@ -370,34 +386,39 @@ with host;
               "SUPERCTRL,up,resizeactive,0 -60"
               "SUPERCTRL,down,resizeactive,0 60"
             ];
-            bindl = [ ];
+            bindl =
+              if hostName == "dell" then [
+                ",switch:Lid Switch,exec,$HOME/.config/hypr/script/clamshell.sh"
+              ] else [ ];
             windowrulev2 = [
               "float,title:^(Volume Control)$"
-              "keepaspectratio,class:^(firefox)$,title:^(Picture-in-Picture)$"
-              "noborder,class:^(firefox)$,title:^(Picture-in-Picture)$"
+              "keepaspectratio,class:^(google-chrome)$,title:^(Picture-in-Picture)$"
+              "noborder,class:^(google-chrome)$,title:^(Picture-in-Picture)$"
               "float, title:^(Picture-in-Picture)$"
               "size 24% 24%, title:(Picture-in-Picture)"
               "move 75% 75%, title:(Picture-in-Picture)"
               "pin, title:^(Picture-in-Picture)$"
-              "float, title:^(Firefox)$"
-              "size 24% 24%, title:(Firefox)"
-              "move 74% 74%, title:(Firefox)"
-              "pin, title:^(Firefox)$"
+              "float, title:^(Google Chrome)$"
+              "size 24% 24%, title:(Google Chrome)"
+              "move 74% 74%, title:(Google Chrome)"
+              "pin, title:^(Google Chrome)$"
               "opacity 0.9, class:^(kitty)"
-              "tile,initialTitle:^WPS.*"
+              #"tile,initialTitle:^WPS.*"
             ];
             exec-once = [
+              "${pkgs.hyprpolkitagent}/bin/hyprpolkitagent systemctl --user start hyprpolkitagent"
+              "${pkgs.hyprpanel}/bin/hyprpanel"
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
               "${pkgs.hyprlock}/bin/hyprlock"
               "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
-              "${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar/config"
+              #"${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar/config"
               #"${pkgs.eww}/bin/eww daemon"
               # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
-              "${pkgs.blueman}/bin/blueman-applet"
-              "${pkgs.swaynotificationcenter}/bin/swaync"
+              #"${pkgs.blueman}/bin/blueman-applet"
+              #"${pkgs.swaynotificationcenter}/bin/swaync"
               # "${pkgs.hyprpaper}/bin/hyprpaper"
             ] ++ (if hostName == "dell" then [
-              "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+                #"${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
               #"${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive --vfs-cache-mode=writes"
               # "${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive"
             ] else [ ]);
@@ -407,7 +428,25 @@ with host;
             # ];
           };
         };
+        home.file = {
+          ".config/hypr/script/clamshell.sh" = {
+            text = ''
+              #!/bin/sh
 
-	};
+              if grep open /proc/acpi/button/lid/${lid}/state; then
+                ${config.programs.hyprland.package}/bin/hyprctl keyword monitor "${toString mainMonitor}, 1336x768, 0x0, 1"
+              else
+                if [[ `hyprctl monitors | grep "Monitor" | wc -l` != 1 ]]; then
+                  ${config.programs.hyprland.package}/bin/hyprctl keyword monitor "${toString mainMonitor}, disable"
+                else
+                  ${pkgs.hyprlock}/bin/hyprlock
+                  ${pkgs.systemd}/bin/systemctl suspend
+                fi
+              fi
+            '';
+            executable = true;
+          };
+        };
+	    };
 	};
 }

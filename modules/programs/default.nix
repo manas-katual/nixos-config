@@ -1,9 +1,11 @@
 [
-  ./waybar.nix
+  #./waybar.nix
+  ./hyprpanel.nix
   ./thunar.nix
   ./kitty.nix
   ./wofi.nix
   ./rofi.nix
   ./wlogout.nix
   ./distrobox.nix
+  ./kdeconnect.nix
 ]
