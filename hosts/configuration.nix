@@ -96,6 +96,7 @@ in
       gvfs
       nix-tree # browse nix store
       android-tools # fastboot and adb tool
+      hplip # hp printing drivers
 
       # apps
       google-chrome # browser
@@ -108,11 +109,11 @@ in
       localsend # wireless file transfer
       bottles # to run windows apps
       vscode-fhs # vscode for noobs
-      nodejs # backend for js
       netbeans # ide
-      jdk23 # compiler
+      jdk23 # java compiler
       mission-center # task manager for linux
       komikku # manga reader
+      zathura
     ];
   };
 

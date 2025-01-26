@@ -5,6 +5,7 @@
     services = {
       tlp.enable = false; # Disable due to suspend not working when docked and connected to AC
       auto-cpufreq.enable = true; # Power Efficiency
+      upower.enable = true; # to check battery statistics and reporting
     };
 
     home-manager.users.${userSettings.username} = {

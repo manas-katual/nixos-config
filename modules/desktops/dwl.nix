@@ -28,13 +28,13 @@ with host;
       };
       systemPackages = with pkgs; [
         dwl # Window Manager
-	#(dwl.overrideAttrs {
-	#  configH = ./dwl-config/dwl;
-	#})
+        #(dwl.overrideAttrs {
+        #  configH = ./dwl-config/dwl;
+        #})
 
-	#(dwlb.overrideAttrs {
-	#  configH = ./dwl-config/dwlb;
-	#})
+        #(dwlb.overrideAttrs {
+        #  configH = ./dwl-config/dwlb;
+        #})
 
 
         wev # Event Viewer
@@ -54,15 +54,15 @@ with host;
     #home-manager.users.${userSettings.username} = {
     #  home.file = {
     #    "startw" = {
-#	  executable = true;
-#	  text = ''
-#	    #!/bin/sh
-#
-#	    dwl -s 'dwlb <&-'
-#	  '';
-#	};
-#      };
-#    };
+    #	  executable = true;
+    #	  text = ''
+    #	    #!/bin/sh
+    #
+    #	    dwl -s 'dwlb <&-'
+    #	  '';
+    #	};
+    #      };
+    #    };
 
   nixpkgs.overlays = [
     (

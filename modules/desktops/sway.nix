@@ -7,7 +7,7 @@ with host;
     sway = {
       enable = mkOption {
         type = types.bool;
-	default = false;
+        default = false;
       };
     };
   };
@@ -18,8 +18,8 @@ with host;
     environment = {
       #loginShellInit = ''
       #  if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-	#  exec sway
-	#fi
+      #  exec sway
+      #fi
       #'';
       variables = {
         WLR_NO_HARDWARE_CURSORS = "1"; 
@@ -30,8 +30,8 @@ with host;
       enable = true;                                                         
       settings = {                                                           
         default_session = {                                                  
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-        user = "${userSettings.username}";                                                  
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+          user = "${userSettings.username}";                                                  
         };                                                                   
       };                                                                     
     };
@@ -39,15 +39,15 @@ with host;
     programs = {
       sway = {
         enable = true;
-	extraPackages = with pkgs; [
-	  autotiling
-	  wl-clipboard
-	  wlr-randr
-	  xwayland
-	  satty
-	  grim
-	  slurp
-	];
+        extraPackages = with pkgs; [
+          autotiling
+          wl-clipboard
+          wlr-randr
+          xwayland
+          satty
+          grim
+          slurp
+        ];
       };
     };
 
@@ -147,8 +147,8 @@ with host;
 	  };
 	};
         extraConfig = ''
-	  exec ${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent
-	  for_window [title="Authentication Required"] floating enable, resize set 600 200
+          exec ${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent
+          for_window [title="Authentication Required"] floating enable, resize set 600 200
           set $opacity 0.8
           for_window [class=".*"] opacity 0.95
           for_window [app_id=".*"] opacity 0.95

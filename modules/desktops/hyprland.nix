@@ -55,6 +55,7 @@ with host;
           wlr-randr # Monitor Settings
           xwayland # X session
           nwg-look
+          #hyprpolkitagent
         ];
       };
 
@@ -223,7 +224,7 @@ with host;
               layout = "dwindle";
             };
             decoration = {
-              rounding = 6;
+              rounding = 1;
               active_opacity = 1;
               inactive_opacity = 1;
               fullscreen_opacity = 1;
@@ -231,38 +232,21 @@ with host;
             monitor = (if (hostName == "dell") then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1" else "HDMI-A-1,preferred,auto,1,mirror,LVDS-1");
             animations = {
               enabled = true;
-              # bezier = [
-              #   "overshot, 0.05, 0.9, 0.1, 1.05"
-              #   "smooth, 0.5, 0, 0.99, 0.99"
-              #   "snapback, 0.54, 0.42, 0.01, 1.34"
-              #   "curve, 0.27, 0.7, 0.03, 0.99"
-              # ];
-              # animation = [
-              #   "windows, 1, 5, overshot, slide"
-              #   "windowsOut, 1, 5, snapback, slide"
-              #   "windowsIn, 1, 5, snapback, slide"
-              #   "windowsMove, 1, 5, snapback, slide"
-              #   "border, 1, 5, default"
-              #   "fade, 1, 5, default"
-              #   "fadeDim, 1, 5, default"
-              #   "workspaces, 1, 6, curve"
-              # ];
               bezier = [
                 "overshot, 0.05, 0.9, 0.1, 1.05"
-                "smoothOut, 0.5, 0, 0.99, 0.99"
-                "smoothIn, 0.5, -0.5, 0.68, 1.5"
-                "rotate,0,0,1,1"
+                "smooth, 0.5, 0, 0.99, 0.99"
+                "snapback, 0.54, 0.42, 0.01, 1.34"
+                "curve, 0.27, 0.7, 0.03, 0.99"
               ];
               animation = [
-                "windows, 1, 4, overshot, slide"
-                "windowsIn, 1, 2, smoothOut"
-                "windowsOut, 1, 0.5, smoothOut"
-                "windowsMove, 1, 3, smoothIn, slide"
+                "windows, 1, 5, overshot, slide"
+                "windowsOut, 1, 5, snapback, slide"
+                "windowsIn, 1, 5, snapback, slide"
+                "windowsMove, 1, 5, snapback, slide"
                 "border, 1, 5, default"
-                "fade, 1, 4, smoothIn"
-                "fadeDim, 1, 4, smoothIn"
-                "workspaces, 1, 4, default"
-                "borderangle, 1, 20, rotate, loop"
+                "fade, 1, 5, default"
+                "fadeDim, 1, 5, default"
+                "workspaces, 1, 6, curve"
               ];
             };
             input = {
@@ -329,7 +313,8 @@ with host;
               # "SUPER,E,exec,GDK_BACKEND=x11 ${pkgs.pcmanfm}/bin/pcmanfm"
               "SUPER,E,exec,${pkgs.pcmanfm}/bin/pcmanfm"
               "SUPER,F,togglefloating,"
-              "SUPER,Space,exec, pkill wofi || ${pkgs.wofi}/bin/wofi --show drun"
+              #"SUPER,Space,exec, pkill wofi || ${pkgs.wofi}/bin/wofi --show drun"
+              "SUPER,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -show drun"
               "SUPER,P,pseudo,"
               ",F11,fullscreen,"
               "SUPER,R,forcerendererreload"
@@ -392,6 +377,7 @@ with host;
               ] else [ ];
             windowrulev2 = [
               "float,title:^(Volume Control)$"
+              "float,title:^(Authentication Required)$"
               "keepaspectratio,class:^(google-chrome)$,title:^(Picture-in-Picture)$"
               "noborder,class:^(google-chrome)$,title:^(Picture-in-Picture)$"
               "float, title:^(Picture-in-Picture)$"
@@ -406,7 +392,9 @@ with host;
               #"tile,initialTitle:^WPS.*"
             ];
             exec-once = [
-              "${pkgs.hyprpolkitagent}/bin/hyprpolkitagent systemctl --user start hyprpolkitagent"
+              #"systemctl --user start hyprpolkitagent"
+              #"${pkgs.mate.mate-polkit}/bin/mate-polkit-agent"
+              "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent"
               "${pkgs.hyprpanel}/bin/hyprpanel"
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
               "${pkgs.hyprlock}/bin/hyprlock"
@@ -445,6 +433,13 @@ with host;
               fi
             '';
             executable = true;
+          };
+        };
+        home.file = {
+          ".config/uwsm/env-hyprland" = {
+            text = ''
+              export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card2" 
+            '';
           };
         };
 	    };

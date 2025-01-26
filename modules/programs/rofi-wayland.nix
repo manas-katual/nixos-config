@@ -9,7 +9,7 @@ let
   #colors = import ../theming/colors.nix;
 in
 {
-  config = lib.mkIf (config.x11wm.enable) {
+  config = lib.mkIf (config.wlwm.enable) {
     home-manager.users.${userSettings.username} = {
       home = {
         packages = with pkgs; [
@@ -20,6 +20,7 @@ in
       programs = {
         rofi = {
           enable = true;
+          package = pkgs.rofi-wayland;
           terminal = "${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal}";
           location = "center";
           font = lib.mkForce "FiraCode Nerd Font Mono 11";

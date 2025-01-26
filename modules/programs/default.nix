@@ -4,8 +4,8 @@
   ./thunar.nix
   ./kitty.nix
   ./wofi.nix
-  ./rofi.nix
-  ./wlogout.nix
+  ./rofi-wayland.nix
+  #./wlogout.nix
   ./distrobox.nix
   ./kdeconnect.nix
 ]

@@ -1,12 +1,12 @@
 { pkgs, lib, ... }:
 
 {
-    environment = {
-      systemPackages = with pkgs; [
-        ripgrep
-        fd
-      ];
-    };
+  environment = {
+    systemPackages = with pkgs; [
+      ripgrep
+      fd
+    ];
+  };
   programs.nvf = {
     enable = true;
     settings = {
@@ -16,7 +16,7 @@
         preventJunkFiles = true;
         theme = {
           enable = true;
-          name = "gruvbox";
+          name = "onedark";
           style = "dark";
         };
         lsp = {
@@ -112,6 +112,13 @@
             desc = "Open neo-tree";
           }
         ];
+
+        # terminal
+        terminal = {
+          toggleterm = {
+            enable = true;
+          };
+        };
       };
     };
   };

@@ -33,7 +33,8 @@
     systemPackages = with pkgs; [
       nchat # whatsapp & telegram tui-client
       ripcord # dicord client
-      youtube-tui # youtube client
+      spotify-player # spotify in terminal
+      pipe-viewer # youtube in terminal
     ];
   };
 

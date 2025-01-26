@@ -10,9 +10,11 @@
 
 
   # For broadcom bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
   hardware.enableAllFirmware = true;
+
+  environment.systemPackages = [
+    pkgs.linux-firmware
+  ];
 
 
 }

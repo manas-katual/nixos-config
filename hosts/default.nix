@@ -14,8 +14,6 @@ in
       }; 
     };
     modules = [
-      #(import ../overlays)
-
       ./dell
       ./configuration.nix
 
@@ -25,7 +23,7 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
+        nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; # needed for hyprpanel
       }
     ];
   };
