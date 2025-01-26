@@ -1,3 +1,8 @@
+#
+#  Hyprland Configuration
+#  Enable with "hyprland.enable = true;"
+#
+
 { config, lib, pkgs, userSettings, host, ... }:
 
 with lib;
@@ -54,7 +59,7 @@ with host;
           wl-clipboard # Clipboard
           wlr-randr # Monitor Settings
           xwayland # X session
-          nwg-look
+          #nwg-look
           #hyprpolkitagent
         ];
       };
@@ -217,8 +222,8 @@ with host;
               border_size = 2;
               gaps_in = 3;
               gaps_out = 6;
-              "col.active_border" = lib.mkDefault "0x99f7870a";
-              "col.inactive_border" = lib.mkDefault "0x66f7870a";
+              "col.active_border" = lib.mkDefault "0x99${config.lib.stylix.colors.base0D}";
+              "col.inactive_border" = lib.mkDefault "0x66${config.lib.stylix.colors.base02}";
               resize_on_border = true;
               hover_icon_on_border = false;
               layout = "dwindle";
@@ -310,7 +315,6 @@ with host;
               "SUPER,Escape,exit,"
               "SUPER,S,exec,${pkgs.systemd}/bin/systemctl suspend"
               "SUPER,L,exec,${pkgs.hyprlock}/bin/hyprlock"
-              # "SUPER,E,exec,GDK_BACKEND=x11 ${pkgs.pcmanfm}/bin/pcmanfm"
               "SUPER,E,exec,${pkgs.pcmanfm}/bin/pcmanfm"
               "SUPER,F,togglefloating,"
               #"SUPER,Space,exec, pkill wofi || ${pkgs.wofi}/bin/wofi --show drun"
@@ -320,7 +324,9 @@ with host;
               "SUPER,R,forcerendererreload"
               "SUPERSHIFT,R,exec,${config.programs.hyprland.package}/bin/hyprctl reload"
               "SUPER,T,exec,${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal} -e nvim"
-              "SUPER,K,exec,${config.programs.hyprland.package}/bin/hyprctl switchxkblayout keychron-k8-keychron-k8 next"
+              # "SUPER,K,exec,${config.programs.hyprland.package}/bin/hyprctl switchxkblayout keychron-k8-keychron-k8 next"
+              "SUPER,Z,layoutmsg,togglesplit"
+
               "SUPER,left,movefocus,l"
               "SUPER,right,movefocus,r"
               "SUPER,up,movefocus,u"
@@ -339,8 +345,8 @@ with host;
               "SUPER,8,workspace,8"
               "SUPER,9,workspace,9"
               "SUPER,0,workspace,10"
-              "SUPER,right,workspace,+1"
-              "SUPER,left,workspace,-1"
+              #"SUPER,right,workspace,+1"
+              #"SUPER,left,workspace,-1"
               "SUPERSHIFT,1,movetoworkspace,1"
               "SUPERSHIFT,2,movetoworkspace,2"
               "SUPERSHIFT,3,movetoworkspace,3"
@@ -351,10 +357,9 @@ with host;
               "SUPERSHIFT,8,movetoworkspace,8"
               "SUPERSHIFT,9,movetoworkspace,9"
               "SUPERSHIFT,0,movetoworkspace,10"
-              "SUPERSHIFT,right,movetoworkspace,+1"
-              "SUPERSHIFT,left,movetoworkspace,-1"
+              #"SUPERSHIFT,right,movetoworkspace,+1"
+              #"SUPERSHIFT,left,movetoworkspace,-1"
 
-              "SUPER,Z,layoutmsg,togglesplit"
               ",print,exec,${pkgs.grimblast}/bin/grimblast --notify --freeze --wait 1 copysave area ~/Pictures/Screenshots/$(date +%Y-%m-%dT%H%M%S).png"
               ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 10"
               ",XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -i 10"
@@ -392,8 +397,6 @@ with host;
               #"tile,initialTitle:^WPS.*"
             ];
             exec-once = [
-              #"systemctl --user start hyprpolkitagent"
-              #"${pkgs.mate.mate-polkit}/bin/mate-polkit-agent"
               "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent"
               "${pkgs.hyprpanel}/bin/hyprpanel"
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

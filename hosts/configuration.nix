@@ -1,6 +1,26 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+#
+#  Main system configuration. More information available in configuration.nix(5) man page.
+#
+#  flake.nix
+#   ├─ ./hosts
+#   │   ├─ default.nix
+#   │   └─ configuration.nix *
+#   └─ ./modules
+#       ├─ ./desktops
+#       │   └─ default.nix
+#       ├─ ./editors
+#       │   └─ default.nix
+#       ├─ ./hardware
+#       │   └─ default.nix
+#       ├─ ./programs
+#       │   └─ default.nix
+#       ├─ ./services
+#       │   └─ default.nix
+#       ├─ ./shell
+#       │   └─ default.nix
+#       └─ ./theming
+#           └─ default.nix
+#
 
 { config, pkgs, userSettings, lib, inputs, ... }:
 
@@ -19,32 +39,31 @@ in
       import ../modules/hardware
     );
 
-  networking.hostName = "dell"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "dell"; # Define your hostname.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+    # enable networking
+    networkmanager.enable = true; # network manager systemd
+    #wireless.enable = true; # Enables wireless support via wpa_supplicant.
+  }; 
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_IN";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_IN";
-    LC_IDENTIFICATION = "en_IN";
-    LC_MEASUREMENT = "en_IN";
-    LC_MONETARY = "en_IN";
-    LC_NAME = "en_IN";
-    LC_NUMERIC = "en_IN";
-    LC_PAPER = "en_IN";
-    LC_TELEPHONE = "en_IN";
-    LC_TIME = "en_IN";
+  i18n = {
+    defaultLocale = "en_IN";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_IN";
+      LC_IDENTIFICATION = "en_IN";
+      LC_MEASUREMENT = "en_IN";
+      LC_MONETARY = "en_IN";
+      LC_NAME = "en_IN";
+      LC_NUMERIC = "en_IN";
+      LC_PAPER = "en_IN";
+      LC_TELEPHONE = "en_IN";
+      LC_TIME = "en_IN";
+    };
   };
 
   # Configure keymap in X11
@@ -68,10 +87,6 @@ in
     packages = with pkgs; [];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
@@ -83,11 +98,11 @@ in
     systemPackages = with pkgs; [
 
       # terminal tools
-      neovim 
-      wget
+      neovim # text editor 
+      wget # downloader
       terminal
-      htop
-      fastfetch
+      htop # cpu usage
+      fastfetch # system info
       tldr # helper
       usbutils # manage usb
       pciutils # manage pci
@@ -98,7 +113,7 @@ in
       android-tools # fastboot and adb tool
       hplip # hp printing drivers
 
-      # apps
+      # gui apps
       google-chrome # browser
       image-roll # image viewer
       mpv # video player
@@ -113,7 +128,7 @@ in
       jdk23 # java compiler
       mission-center # task manager for linux
       komikku # manga reader
-      zathura
+      zathura # pdf reader
     ];
   };
 
@@ -140,14 +155,6 @@ in
     #  ];
     #})
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # List services that you want to enable:
 
@@ -196,7 +203,6 @@ in
       dates = "weekly";
       options = "--delete-older-than 2d";
     };
-    # package = pkgs.nixVersions.latest;
     registry.nixpkgs.flake = inputs.nixpkgs;
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -205,19 +211,11 @@ in
     '';
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  # DONT TOUCH THIS
+  system.stateVersion = "24.05"; 
 
   home-manager.users.${userSettings.username} = {
     home = {

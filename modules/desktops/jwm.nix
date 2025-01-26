@@ -1,4 +1,4 @@
-{ config, lib, pkgs, userSettings, host, ... }:
+{ config, lib, ... }:
 
 with lib;
 {
@@ -15,18 +15,29 @@ with lib;
     {
       x11wm.enable = true;
 
-      services.xserver.enable = true;
-      services.xserver.windowManager.jwm.enable = true;
-      services.xserver.displayManager.lightdm.enable = true;
-      services.displayManager.defaultSession = "none+jwm";
-      services.libinput = {
-        enable = true;
-	touchpad = {
-	  tapping = true;
-	};
+      services = {
+        xserver = {
+          enable = true;
+          windowManager = {
+            jwm = {
+              enable = true;
+            };
+          };
+          displayManager = {
+            lightdm = {
+              enable = true;
+            };
+          };
+        };
+        displayManager = {
+            defaultSession = "none+jwm";
+        };
+        libinput = {
+          enable = true;
+          touchpad = {
+            tapping = true;
+          };
+        };
       };
-      environment.systemPackages = [
-	pkgs.jwm-settings-manager
-      ];
     };
 }

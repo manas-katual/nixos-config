@@ -1,3 +1,14 @@
+#
+#  These are the different profiles that can be used when building NixOS.
+#
+#  flake.nix
+#   └─ ./hosts
+#       ├─ default.nix *
+#       ├─ configuration.nix
+#       └─ ./<host>.nix
+#           └─ default.nix
+#
+
 { inputs, nixpkgs, home-manager, userSettings, stylix, nvf, hyprpanel, ... }:
 let
   system = "x86_64-linux";

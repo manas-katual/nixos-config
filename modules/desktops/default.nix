@@ -1,7 +1,6 @@
 [
   ./options.nix
   ./dwm.nix
-  ./bspwm.nix
   ./jwm.nix
   ./icewm.nix
   ./dwl.nix

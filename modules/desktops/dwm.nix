@@ -16,40 +16,39 @@ with lib;
       x11wm.enable = true;
 
       services = {
-	displayManager.defaultSession = "none+dwm";
-	libinput = {
-	  enable = true;
-	  touchpad = {
-	    tapping = true;
-	  };
-	};
-        
+        displayManager.defaultSession = "none+dwm";
+        libinput = {
+          enable = true;
+          touchpad = {
+            tapping = true;
+          };
+        };
 
-	xserver = {
-	  enable = true;
-      xkb = {
-        layout = "in";
-        variant = "eng";
-        #options = "eurosign:e";
-      };
-	  displayManager = {
-	    lightdm = {
-	      enable = true;
-	    };
-	  };
-	  windowManager = {
-	    dwm = {
-	      enable = true;
-	      package = pkgs.dwm.overrideAttrs {
+        xserver = {
+          enable = true;
+            xkb = {
+              layout = "in";
+              variant = "eng";
+              #options = "eurosign:e";
+            };
+          displayManager = {
+            lightdm = {
+              enable = true;
+            };
+          };
+          windowManager = {
+            dwm = {
+              enable = true;
+              package = pkgs.dwm.overrideAttrs {
                 src = ./dwm-config/dwm;
               };
-	    };
-	  };
-	};
+            };
+          };
+        };
       };
       environment.systemPackages = with pkgs; [
         rofi
-	(dwmblocks.overrideAttrs {
+        (dwmblocks.overrideAttrs {
           src = ./dwm-config/dwmblocks;
           #patches = [ ./my-fix.patch ]; # Or some `fetchPatch` thing
         })

@@ -1,3 +1,8 @@
+#
+#  Sway Configuration
+#  Enable with "sway.enable = true;"
+#
+
 { config, lib, pkgs, userSettings, host, ... }:
 
 with lib;

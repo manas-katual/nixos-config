@@ -1,3 +1,17 @@
+#
+#  Specific system configuration settings for dell inspiron 15 3521
+#
+#  flake.nix
+#   ├─ ./hosts
+#   │   ├─ default.nix
+#   │   └─ ./dell
+#   │        ├─ default.nix *
+#   │        └─ hardware-configuration.nix
+#   └─ ./modules
+#       └─ ./desktops
+#           └─ hyprland.nix
+#
+
 { pkgs, ... }:
 {
   imports = [
@@ -19,13 +33,6 @@
     };
   };
 
-  #sway.enable = true;
-  #gnome.enable = true;
-  #dwm.enable = true;
-  #bspwm.enable = true;
-  #jwm.enable = true;
-  #icewm.enable = true;
-  #dwl.enable = true;
   hyprland.enable = true;
   laptop.enable = true;
 
@@ -38,7 +45,7 @@
     ];
   };
 
-    zramSwap = {
+  zramSwap = {
     enable = true;
     algorithm = "lz4";
     memoryPercent = 100;
