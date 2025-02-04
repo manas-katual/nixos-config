@@ -4,6 +4,7 @@
   ./thunar.nix
   ./kitty.nix
   ./wofi.nix
+  ./waydroid.nix
   ./rofi-wayland.nix
   #./wlogout.nix
   ./distrobox.nix

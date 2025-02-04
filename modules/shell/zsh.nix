@@ -104,10 +104,16 @@
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
         enableCompletion = true;
+        shellAliases = {
+          ls = "${pkgs.eza}/bin/eza --icons";
+          tree = "${pkgs.eza}/bin/eza --tree --icons";
+          cat = "${pkgs.bat}/bin/bat";
+					icat = "kitten icat";
+        };
         #histSize = 100000;
         initExtra = ''
           eval "$(oh-my-posh init zsh)"
-          export PATH="$HOME/.config/emacs/bin:$PATH"
+          #export PATH="$HOME/.config/emacs/bin:$PATH"
         '';
         };
     };

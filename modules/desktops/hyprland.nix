@@ -23,8 +23,7 @@ with host;
     environment =
       let
         exec = "exec dbus-launch Hyprland";
-      in
-      {
+      in {
         loginShellInit = ''
           if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
             ${exec}
@@ -399,6 +398,7 @@ with host;
             exec-once = [
               "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent"
               "${pkgs.hyprpanel}/bin/hyprpanel"
+              "emacs --daemon"
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
               "${pkgs.hyprlock}/bin/hyprlock"
               "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"

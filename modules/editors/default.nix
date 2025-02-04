@@ -1,4 +1,5 @@
 [
 
   ./nvim.nix
+  ./doom.nix
 ]

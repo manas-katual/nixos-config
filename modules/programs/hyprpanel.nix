@@ -24,7 +24,7 @@
           "0" = {
             left = [ "dashboard" "workspaces" "windowtitle" ];
             middle = [ "clock" ];
-            right = [ "battery" "volume" "network" "bluetooth" "systray" "notifications" "power" ];
+            right = [ "hypridle" "battery" "volume" "network" "bluetooth"  "notifications" "systray" ];
           };
         };
       };
@@ -38,10 +38,24 @@
             showWsIcons = false;
             reverse_scroll = true;
           };
-          battery.label = true;
+          battery = {
+            label = true;
+          };
+          bluetooth = {
+            label = false;
+          };
+          network = {
+            label = false;
+          };
           clock = {
+            icon = "󱑏";
             format = "%I:%M %p";
             #rightClick = '' hyprpanel set clock.format "%a %b %d %I:%M %p" '';
+          };
+          customModules = {
+            hypridle = {
+              label = false;
+            };
           };
         };
         theme = {

@@ -35,9 +35,18 @@
     # nvf neovim
     nvf.url = "github:notashelf/nvf";
 
+    # doom-emacs unstraightened
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
+
+    # nur
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, ... }:
+  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, ... }:
 
     let
       userSettings = {
@@ -52,7 +61,7 @@
       nixosConfigurations = (
         import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel;
+        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur;
         }
       );
     };

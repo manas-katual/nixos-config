@@ -108,10 +108,9 @@ in
       pciutils # manage pci
       xdg-utils # environment integration
       coreutils # GNU utils
-      gvfs
+      gvfs # samba
       nix-tree # browse nix store
       android-tools # fastboot and adb tool
-      hplip # hp printing drivers
 
       # gui apps
       google-chrome # browser
@@ -124,11 +123,10 @@ in
       localsend # wireless file transfer
       bottles # to run windows apps
       vscode-fhs # vscode for noobs
-      netbeans # ide
-      jdk23 # java compiler
       mission-center # task manager for linux
       komikku # manga reader
       zathura # pdf reader
+      hplip # hp printing drivers
     ];
   };
 
@@ -147,6 +145,9 @@ in
     twemoji-color-font
     intel-one-mono
     fira-code
+    fira-mono
+    fira-sans
+    nerd-fonts.dejavu-sans-mono
     #nerd-fonts.NerdFontsSymbolOnly
     #(nerdfonts.override {
     #  fonts = [
