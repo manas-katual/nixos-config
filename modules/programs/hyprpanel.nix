@@ -55,6 +55,8 @@
           customModules = {
             hypridle = {
               label = false;
+              onIcon = "󰅶";
+              offIcon = "󰾪";
             };
           };
         };

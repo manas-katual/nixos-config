@@ -36,7 +36,7 @@ with host;
           XDG_CURRENT_DESKTOP = "Hyprland";
           XDG_SESSION_TYPE = "wayland";
           XDG_SESSION_DESKTOP = "Hyprland";
-          XCURSOR = "Catppuccin-Mocha-Dark-Cursors";
+          # XCURSOR = "Catppuccin-Mocha-Dark-Cursors";
           XCURSOR_SIZE = lib.mkForce 16;
           NIXOS_OZONE_WL = 1;
           SDL_VIDEODRIVER = "wayland";
@@ -325,6 +325,9 @@ with host;
               "SUPER,T,exec,${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal} -e nvim"
               # "SUPER,K,exec,${config.programs.hyprland.package}/bin/hyprctl switchxkblayout keychron-k8-keychron-k8 next"
               "SUPER,Z,layoutmsg,togglesplit"
+              "SUPER,F1,exec,~/.config/hypr/gamemode.sh"
+              "SUPER,F2,exec,hyprpanel toggleWindow bar-0"
+              "ALT,F4,exec,hyprpanel toggleWindow powerdropdownmenu"
 
               "SUPER,left,movefocus,l"
               "SUPER,right,movefocus,r"
@@ -379,9 +382,13 @@ with host;
               if hostName == "dell" then [
                 ",switch:Lid Switch,exec,$HOME/.config/hypr/script/clamshell.sh"
               ] else [ ];
+            windowrule = [
+              "float, ^(mpv)$"
+            ];
             windowrulev2 = [
               "float,title:^(Volume Control)$"
               "float,title:^(Authentication Required)$"
+
               "keepaspectratio,class:^(google-chrome)$,title:^(Picture-in-Picture)$"
               "noborder,class:^(google-chrome)$,title:^(Picture-in-Picture)$"
               "float, title:^(Picture-in-Picture)$"
@@ -392,6 +399,11 @@ with host;
               "size 24% 24%, title:(Google Chrome)"
               "move 74% 74%, title:(Google Chrome)"
               "pin, title:^(Google Chrome)$"
+
+              "workspace 2, class:^(google-chrome)$"
+              "workspace 2, class:^(Emacs)$"
+              "workspace 8, class:^(.virt-manager-wrapped)$"
+
               "opacity 0.9, class:^(kitty)"
               #"tile,initialTitle:^WPS.*"
             ];
@@ -443,6 +455,28 @@ with host;
             text = ''
               export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card2" 
             '';
+          };
+        };
+        home.file = {
+          ".config/hypr/gamemode.sh" = {
+            text = ''
+              #!/usr/bin/env sh
+
+              HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
+              if [ "$HYPRGAMEMODE" = 1 ] ; then
+                  hyprctl --batch "\
+                      keyword animations:enabled 0;\
+                      keyword decoration:shadow:enabled 0;\
+                      keyword decoration:blur:enabled 0;\
+                      keyword general:gaps_in 0;\
+                      keyword general:gaps_out 0;\
+                      keyword general:border_size 1;\
+                      keyword decoration:rounding 0"
+                  exit
+              fi
+              hyprctl reload
+            '';
+            executable = true;
           };
         };
 	    };

@@ -5,6 +5,8 @@
 { pkgs, userSettings, ... }:
 
 {
+  programs.zsh.enable = true;
+
   users.users.${userSettings.username} = {
     shell = pkgs.zsh;
   };
@@ -118,23 +120,5 @@
         };
     };
   };
-
-  programs.zsh.enable = true;
-
-      #ohMyZsh = {
-      #  enable = true;
-      #  plugins = [ "git" ];
-      #};
-
-
-      #shellInit = ''
-      #  # Spaceship
-      #  source ${pkgs.spaceship-prompt}/share/zsh/site-functions/prompt_spaceship_setup
-      #  autoload -U promptinit; promptinit
-      #  # Hook direnv
-      #  #emulate zsh -c "$(direnv hook zsh)"
-
-      #  #eval "$(direnv hook zsh)"
-      #'';
 
 }

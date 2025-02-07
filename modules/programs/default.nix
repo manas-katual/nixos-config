@@ -9,4 +9,5 @@
   #./wlogout.nix
   ./distrobox.nix
   ./kdeconnect.nix
+  ./games.nix
 ]

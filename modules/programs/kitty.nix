@@ -1,6 +1,12 @@
-{ lib, userSettings, ... }:
+{ pkgs, lib, userSettings, ... }:
 
 {
+  environment = {
+    systemPackages = with pkgs; [
+      kitty
+    ];
+  };
+
   home-manager.users.${userSettings.username} = {
     programs.kitty = {
       enable = true;

@@ -127,6 +127,7 @@ in
       komikku # manga reader
       zathura # pdf reader
       hplip # hp printing drivers
+      onlyoffice-desktopeditors # office suite
     ];
   };
 
