@@ -1,0 +1,19 @@
+scheme: "gruvbox-custom"
+author: "Manas Katual"
+base00: "1d2021"  # Background
+base01: "282828"  # Background4
+base02: "303030"  # Background3
+base03: "3c3836"  # Noti-close-bg
+base04: "bdae93"  # Waybar-clock
+base05: "ebdbb2"  # Foreground
+base06: "fbf1c7"  # Terminal-white-bright
+base07: "ffffff"  # White (if applicable)
+base08: "cc241d"  # Terminal-red
+base09: "d79921"  # Terminal-yellow
+base0A: "fabd2f"  # Waybar-pulseaudio
+base0B: "98971a"  # Terminal-green
+base0C: "689d6a"  # Terminal-cyan
+base0D: "458588"  # Terminal-blue
+base0E: "b16286"  # Terminal-magenta
+base0F: "d65d0e"  # Additional color (if needed)
+

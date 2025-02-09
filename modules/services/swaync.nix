@@ -1,7 +1,7 @@
 { config, lib, pkgs, userSettings, ... }:
 
 {
-  config = lib.mkIf (config.wlwm.enable) {
+  config = lib.mkIf (config.wlwm.enable && userSettings.bar == "waybar") {
     environment.systemPackages = with pkgs; [
       swaynotificationcenter
     ];

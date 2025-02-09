@@ -1,0 +1,368 @@
+$foreground: #ebdbb2;
+$foreground-disabled: #282828;
+$background: #1d2021;
+$background2: #1f2223;
+$background2-bottom: #191c1d;
+$background3: #303030;
+$background3-bottom: #272727;
+$background4: #282828;
+$background4-bottom: #252c32;
+$window-border: #689d6a;
+$window-border-inactive: #1d2021;
+$close-button: #e23c2c;
+$close-button-bottom: #cc241d;
+$close-button-foreground: #282828;
+$powermenu-button: #e23c2c;
+$powermenu-button-bottom: #cc241d;
+$powermenu-button-foreground: #282828;
+$slider: #689d6a;
+$metric-slider: #689d6a;
+$metric-slider-background: #3c3836;
+$metric-slider-foreground: #8ec07c;
+$button: #689d6a;
+$button-bottom: #518554;
+$button-active: #7db37e;
+$button-bottom-active: #659a68;
+$button-hover: #8ec07c;
+$button-bottom-hover: #76a765;
+$button-foreground: #282828;
+$cc-bg: #1d2021;
+$noti-border-color: #689d6a;
+$noti-border-color-critical: #cc241d;
+$noti-bg: #1d2021;
+$noti-bg-darker: #1d2021;
+$noti-bg-hover: #1d2021;
+$noti-close-bg: #3c3836;
+$noti-close-bg-hover: #cc241d;
+$dnd-bg: #3c3836;
+$dnd-selected: #689d6a;
+$dnd-dot: #282828;
+$noti-button: #282828;
+$noti-button-hover: #3c3836;
+$waybar-module-foreground: #282828;
+$waybar-clock: #98971a;
+$waybar-clock-bottom: #828200;
+$waybar-battery: #5d9da0;
+$waybar-battery-bottom: #458588;
+$waybar-battery-critical: #e23c2c;
+$waybar-battery-bottom-critical: #cc241d;
+$waybar-cpu: #689d6a;
+$waybar-cpu-bottom: #518554;
+$waybar-memory: #c8779b;
+$waybar-memory-bottom: #b16286;
+$waybar-backlight: #98bbad;
+$waybar-backlight-bottom: #80a295;
+$waybar-pulseaudio: #f2b13c;
+$waybar-pulseaudio-bottom: #d79921;
+$waybar-tray: #ec7024;
+$waybar-tray-bottom: #d05806;
+$terminal-black: #323536;
+$terminal-black-bright: #444748;
+$terminal-red: #cc241d;
+$terminal-red-bright: #fb4934;
+$terminal-green: #98971a;
+$terminal-green-bright: #b8bb26;
+$terminal-yellow: #d79921;
+$terminal-yellow-bright: #fabd2f;
+$terminal-blue: #458588;
+$terminal-blue-bright: #83a598;
+$terminal-magenta: #b16286;
+$terminal-magenta-bright: #d3869b;
+$terminal-cyan: #689d6a;
+$terminal-cyan-bright: #8ec07c;
+$terminal-white: #ebdbb2;
+$terminal-white-bright: #fbf1c7;
+
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.spacer-v {
+  min-height: 10px;
+}
+
+.spacer-h {
+  min-width: 10px;
+}
+
+.rice-update-available {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.rice-update-available label {
+  color: $foreground;
+  font-size: 25px;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+}
+
+.keybinds-parent-box {
+  background-color: transparent;
+  border: none;
+}
+
+.keybinds,
+.keybinds-fullscreen {
+  background-color: $background2;
+  border: none;
+  border-top: 8px solid $background2;
+  border-bottom: 8px solid $background2-bottom;
+  color: $foreground;
+}
+
+.keybinds {
+  min-height: 750px;
+}
+
+.keybinds-fullscreen label,
+.keybinds label {
+  font-size: 20px;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+}
+
+.close-button {
+  background-color: $close-button;
+  border: none;
+  border-bottom: 8px solid $close-button-bottom;
+  min-width: 48px;
+  min-height: 40px;
+}
+
+.close-button label {
+  color: $close-button-foreground;
+  font-size: 30px;
+  font-weight: bold;
+  padding-right: 12px;
+}
+
+.titlebar {
+  background-color: $background3;
+  border: none;
+  border-bottom: 8px solid $background3-bottom;
+  margin: 0px;
+  padding: 4px;
+}
+
+.titlebar-title label {
+  color: $foreground;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  margin-left: 12px;
+}
+
+scrollbar {
+  background-color: transparent;
+  min-width: 1px;
+  min-height: 10px;
+  margin: 4px;
+  border: none;
+  border-radius: 50px;
+}
+
+scrollbar slider {
+  background-color: $slider;
+  min-width: 14px;
+  min-height: 20px;
+  border: none;
+  border-radius: 50px;
+  margin: 2px;
+}
+
+.window-module {
+  background-color: $background4;
+  border: none;
+  border-bottom: 8px solid $background4-bottom;
+  border-radius: 5px;
+  margin-bottom: -6px;
+  margin-left: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.window-module label {
+  color: $foreground;
+  font-family: JetBrainsMono Nerd Font, monospace;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.workspace-button {
+  background-color: $button;
+  border: none;
+  border-bottom: 8px solid $button-bottom;
+  border-radius: 5px;
+  margin-left: 4px;
+  margin-bottom: -6px;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.workspace-button label {
+  color: #282828;
+  font-family: JetBrainsMono Nerd Font, sans-sherif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.bar {
+  background-color: $background2;
+  border-bottom: 8px solid $background2-bottom;
+  color: $foreground;
+  border-radius: 0px;
+}
+
+.bar-menu {
+  background-color: $background2;
+  border: none;
+  border-bottom: 8px solid $background2-bottom;
+  color: $foreground;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.bar-menu-button {
+  background-color: $button;
+  border: none;
+  border-bottom: 8px solid $button-bottom;
+  border-radius: 5px;
+  text-shadow: none;
+  box-shadow: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.bar-menu-button label {
+  color: $button-foreground;
+  text-shadow: none;
+  box-shadow: none;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: JetBrainsMono Nerd Font, monospace;
+}
+
+.sbr-1 {
+  margin-top: 40px;
+}
+
+.bar-menu-spacer {
+  min-height: 50px;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: $metric-slider;
+  color: #000000;
+  border-radius: 50px;
+}
+
+.metric scale trough {
+  all: unset;
+  background-color: $metric-slider-background;
+  border-radius: 50px;
+  min-height: 18px;
+  min-width: 200px;
+  margin-left: -50px;
+  margin-right: 0px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+label {
+  color: $foreground;
+  font-family: bold;
+}
+
+.metric label {
+  min-width: 40px;
+}
+
+.metric-label {
+  margin-left: -90px;
+}
+
+.metric-label-text label {
+  font-size: 28px;
+  color: $metric-slider-foreground;
+}
+
+.powermenu-window {
+  background-color: $background2;
+  border: none;
+  border-bottom: 8px solid $background2-bottom;
+  color: $foreground;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.powermenu-window label {
+  font-family: JetBrainsMono Nerd Font, monospace;
+  font-weight: bold;
+  font-size: 22px;
+  color: $foreground;
+  background-color: $background3;
+  border: none;
+  border-bottom: 8px solid $background3-bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.powermenu-button {
+  background-color: $powermenu-button;
+  border: none;
+  border-bottom: 8px solid $powermenu-button-bottom;
+  border-radius: 5px;
+  text-shadow: none;
+  box-shadow: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.powermenu-button label {
+  color: $powermenu-button-foreground;
+  text-shadow: none;
+  box-shadow: none;
+  font-weight: bold;
+  font-size: 25px;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  background: none;
+  border: none;
+  padding: 0px;
+}
+
+.powermenu-poweroff-button label {
+  padding-right: 6px;
+}
+
+.powermenu-reboot-button label {
+  padding-left: 8px;
+}
+
+.powermenu-spacer-v {
+  min-height: 20px;
+}
+
+.powermenu-button-spacer {
+  min-width: 10px;
+}

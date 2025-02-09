@@ -54,7 +54,8 @@
         #host = "dell";
         terminal = "kitty";
         editor = "nvim";
-        theme = "onedark";
+        bar = "waybar";
+        theme = "gruvbox-dark-hard";
       };
 
     in {

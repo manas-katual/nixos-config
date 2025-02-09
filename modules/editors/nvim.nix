@@ -16,7 +16,7 @@
         preventJunkFiles = true;
         theme = {
           enable = true;
-          name = "onedark";
+          name = "gruvbox";
           style = "dark";
         };
         lsp = {

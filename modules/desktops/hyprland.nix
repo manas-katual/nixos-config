@@ -328,6 +328,7 @@ with host;
               "SUPER,F1,exec,~/.config/hypr/gamemode.sh"
               "SUPER,F2,exec,hyprpanel toggleWindow bar-0"
               "ALT,F4,exec,hyprpanel toggleWindow powerdropdownmenu"
+              "SUPER,TAB,exec,pkill -SIGUSR1 waybar"
 
               "SUPER,left,movefocus,l"
               "SUPER,right,movefocus,r"
@@ -400,7 +401,7 @@ with host;
               "move 74% 74%, title:(Google Chrome)"
               "pin, title:^(Google Chrome)$"
 
-              "workspace 2, class:^(google-chrome)$"
+              "workspace 3, class:^(google-chrome)$"
               "workspace 2, class:^(Emacs)$"
               "workspace 8, class:^(.virt-manager-wrapped)$"
 
@@ -409,22 +410,26 @@ with host;
             ];
             exec-once = [
               "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent"
-              "${pkgs.hyprpanel}/bin/hyprpanel"
+              # "${pkgs.hyprpanel}/bin/hyprpanel"
               "emacs --daemon"
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
               "${pkgs.hyprlock}/bin/hyprlock"
               "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
-              #"${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar/config"
-              #"${pkgs.eww}/bin/eww daemon"
-              # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
-              #"${pkgs.blueman}/bin/blueman-applet"
-              #"${pkgs.swaynotificationcenter}/bin/swaync"
               # "${pkgs.hyprpaper}/bin/hyprpaper"
-            ] ++ (if hostName == "dell" then [
-                #"${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+            ] ++ (if userSettings.bar == "waybar" then [
+                "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
               #"${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive --vfs-cache-mode=writes"
               # "${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive"
-            ] else [ ]);
+                "${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar/config"
+                "${pkgs.eww}/bin/eww daemon"
+                # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
+                "${pkgs.blueman}/bin/blueman-applet"
+                "${pkgs.swaynotificationcenter}/bin/swaync" 
+            ] 
+              else if userSettings.bar == "hyprpanel" then [
+                "${pkgs.hyprpanel}/bin/hyprpanel"
+                ]
+              else [ ]);
             # env = [
             #   "XCURSOR,Catppuccin-Mocha-Dark-Cursors"
             #   "XCURSOR_SIZE,24"
