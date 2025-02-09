@@ -2,4 +2,4 @@
 
 sleep 0.1
 
-$HOME/.config/hypr/scripts/lockscreen.sh & disown
+hyprlock

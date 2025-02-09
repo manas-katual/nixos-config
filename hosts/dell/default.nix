@@ -12,7 +12,7 @@
 #           └─ hyprland.nix
 #
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -42,6 +42,8 @@
       ripcord # dicord client
       spotify-player # spotify in terminal
       pipe-viewer # youtube in terminal
+      manga-tui # manga reader
+      inputs.yt-x.packages."${system}".default
     ];
   };
 

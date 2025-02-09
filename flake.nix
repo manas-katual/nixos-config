@@ -44,6 +44,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    yt-x.url = "github:Benexl/yt-x";
+
   };
 
   outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, ... }:
