@@ -218,9 +218,9 @@ with host;
           # '';
           settings = {
             general = {
-              border_size = 2;
-              gaps_in = 3;
-              gaps_out = 6;
+              border_size = 4;
+              gaps_in = 10;
+              gaps_out = 20;
               "col.active_border" = lib.mkDefault "0x99${config.lib.stylix.colors.base0D}";
               "col.inactive_border" = lib.mkDefault "0x66${config.lib.stylix.colors.base02}";
               resize_on_border = true;
@@ -228,10 +228,17 @@ with host;
               layout = "dwindle";
             };
             decoration = {
-              rounding = 1;
+              rounding = 4;
               active_opacity = 1;
               inactive_opacity = 1;
               fullscreen_opacity = 1;
+              blur = {
+                enabled = true;
+                size = 2;
+                passes = 3;
+                special = false;
+                # new_optimizations = on;
+              };
             };
             monitor = (if (hostName == "dell") then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1" else "HDMI-A-1,preferred,auto,1,mirror,LVDS-1");
             animations = {
@@ -383,6 +390,11 @@ with host;
               if hostName == "dell" then [
                 ",switch:Lid Switch,exec,$HOME/.config/hypr/script/clamshell.sh"
               ] else [ ];
+            layerrule = [
+              "blur, waybar"
+              "blur, rofi"
+              "blur, gtk-layer-shell"
+            ];
             windowrule = [
               "float, ^(mpv)$"
             ];
@@ -412,6 +424,7 @@ with host;
               "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent"
               # "${pkgs.hyprpanel}/bin/hyprpanel"
               "emacs --daemon"
+              "kdeconnect-indicator"
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
               "${pkgs.hyprlock}/bin/hyprlock"
               "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"

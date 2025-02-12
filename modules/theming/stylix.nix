@@ -9,8 +9,6 @@
 	stylix.base16Scheme = 
     if (userSettings.theme == "gruvbox-dark-hard") 
       then "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml" 
-    else if (userSettings.theme == "gruvbox-custom") 
-      then "./gruvbox-custom.yaml" 
     else if (userSettings.theme == "gruvbox-dark-medium") 
       then "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml" 
     else if (userSettings.theme == "gruvbox-material-dark-medium") 
@@ -43,9 +41,7 @@
 
   stylix.image = 
     if (userSettings.theme == "gruvbox-dark-hard")
-      then ../wallpapers/wind_rises.jpeg
-    else if (userSettings.theme == "gruvbox-custom")
-      then ../wallpapers/wind_rises.jpeg
+      then ../wallpapers/forest.jpg
     else if (userSettings.theme == "gruvbox-dark-medium")
       then ../wallpapers/gruvbox-car.jpg
     else if (userSettings.theme == "gruvbox-material-dark-medium")

@@ -1,5 +1,8 @@
 { pkgs, config, lib, userSettings, ... }:
 
+let
+  colors = import ../theming/colors.nix;
+in
 {
 
   config = lib.mkIf (config.wlwm.enable && userSettings.bar == "waybar") {
@@ -7,7 +10,7 @@
       waybar
     ];
 
-    home-manager.users.${userSettings.username} = {
+    home-manager.users.${userSettings.username} = with colors.scheme.gruvbox; {
       programs.waybar = {
         enable = true;
         # style = ''
@@ -242,14 +245,14 @@
         #
         #
         style = ''
-          @define-color foreground  #ebdbb2;
-          @define-color foreground-disabled  #282828;
-          @define-color background  #1d2021;
+          @define-color foreground #${foreground};
+          @define-color foreground-disabled #282828;
+          @define-color background #1d2021;
           @define-color background2  #1f2223;
           @define-color background2-bottom  #191c1d;
-          @define-color background3  #303030;
+          @define-color background3 #303030;
           @define-color background3-bottom  #272727;
-          @define-color background4  #282828;
+          @define-color background4 #282828;
           @define-color background4-bottom  #252c32;
           @define-color window-border  #689d6a;
           @define-color window-border-inactive  #1d2021;
@@ -276,7 +279,7 @@
           @define-color noti-bg  #1d2021;
           @define-color noti-bg-darker  #1d2021;
           @define-color noti-bg-hover  #1d2021;
-          @define-color noti-close-bg  #3c3836;
+          @define-color noti-close-bg #3c3836;
           @define-color noti-close-bg-hover  #cc241d;
           @define-color dnd-bg  #3c3836;
           @define-color dnd-selected  #689d6a;
@@ -326,8 +329,8 @@
           }
 
           window#waybar {
-              background-color: @background2;
-              border-bottom: 8px solid @background2-bottom;
+              background-color: #${background2};
+              border-bottom: 8px solid #${background2-bottom};
               color: @foreground;
               transition-property: background-color;
               transition-duration: .5s;
@@ -461,7 +464,7 @@
           }
 
           #custom-powermenu {
-              background-color: @powermenu-button;
+              background-color: #${powermenu-button};
               color: @powermenu-button-foreground;
               font-family: JetBrainsMono Nerd Font, monospace;
               font-size: 22px;
@@ -489,7 +492,7 @@
 
           #battery {
               background-color: @waybar-battery;
-              color: @--waybar-module-foreground--;
+              color: @waybar-module-foreground;
               font-family: JetBrainsMono Nerd Font, monospace;
               font-size: 15px;
               font-weight: bold;
@@ -815,8 +818,8 @@
             "backlight" = {
               format = "{icon}{percent}%";
               format-icons = ["󰃞 " "󰃟 " "󰃠 "];
-              #on-scroll-down = "${pkgs.light}/bin/light -U 5";
-              #on-scroll-up = "${pkgs.light}/bin/light -A 5";
+              on-scroll-down = "${pkgs.light}/bin/light -U 5";
+              on-scroll-up = "${pkgs.light}/bin/light -A 5";
             };
 
             "battery" = {
@@ -829,7 +832,8 @@
               format-charging = "󱐋 {capacity}%";
               format-plugged = " ";
               format-alt = "{time} {icon}";
-              format-icons = ["  " "  " "  " "  " "  "];
+              # format-icons = ["  " "  " "  " "  " "  "];
+              format-icons = [" " " " " " " " " "];
             };
 
             "network" = {
@@ -856,11 +860,11 @@
             };
 
             "pulseaudio" = {
-              format = "{icon}{volume}% {format_source}";
+              format = "{icon} {volume}% {format_source}";
               format-bluetooth = "{icon} {volume}%";
               format-bluetooth-muted = "   {volume}%";
-              format-source = "";
-              format-source-muted = "";
+              format-source = " ";
+              format-source-muted = " ";
               format-muted = "  {format_source}";
               format-icons = {
                 headphone = " ";
@@ -869,7 +873,7 @@
                 phone = " ";
                 portable = " ";
                 car = " ";
-                default = ["󰕿 " "󰖀 " "󰕾 "];
+                default = [" " " " " "];
               };
               tooltip-format = "{desc} {volume}%";
               on-click = "${pkgs.pamixer}/bin/pamixer -t";
@@ -905,6 +909,7 @@
               # on-click = "${pkgs.rofi-wayland}/bin/rofi -show drun";
               on-click = "${pkgs.eww}/bin/eww open --toggle bar-menu --screen 0";
               on-click-release = "sleep 0";
+              tooltip = false;
             };
 
             "custom/powermenu" = {
@@ -912,6 +917,7 @@
               # on-click = "${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell";
               on-click = "${pkgs.eww}/bin/eww open --toggle powermenu-window --screen 0";
               on-click-release = "sleep 1";
+              tooltip = false;
             };
           };
         };
