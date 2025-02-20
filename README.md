@@ -48,5 +48,8 @@ sudo nixos-rebuild switch --flake .
 
 Enjoy!
 
+with hyprpanel
 ![screenshot](./hyprpanel.png)
+
+with waybar
 ![screenshot](./waybar.png)
