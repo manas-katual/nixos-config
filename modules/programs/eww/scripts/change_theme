@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+~/.config/hypr/scripts/change_theme.sh & disown
+
+./scripts/self close bar-menu

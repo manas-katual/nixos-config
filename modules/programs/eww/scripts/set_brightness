@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+brightnessctl set $1
+brightnessctl --save
+
