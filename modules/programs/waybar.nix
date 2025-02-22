@@ -438,7 +438,7 @@ in
             spacing = 4;
             modules-left = ["hyprland/workspaces" "hyprland/window"];
             # modules-center = [ "hyprland/window" ];
-            modules-right = ["custom/notification" "custom/menu" "tray" "pulseaudio" "cpu" "memory" "backlight" "battery" "clock" "custom/powermenu"];
+            modules-right = ["custom/notification" "custom/menu" "pulseaudio" "battery" "clock" "tray" "custom/powermenu"];
 
             /* Modules configuration */
             "hyprland/workspaces" = {

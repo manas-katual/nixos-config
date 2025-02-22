@@ -1,86 +1,79 @@
 { pkgs, lib, inputs, config, userSettings, ... }:
 
-{
-
-#	imports = [ inputs.stylix.nixosModules.stylix ];
-
-	stylix.enable = true;
-	
-	stylix.base16Scheme = 
-    if (userSettings.theme == "gruvbox-dark-hard") 
-      then "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml" 
-    else if (userSettings.theme == "gruvbox-dark-medium") 
-      then "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml" 
-    else if (userSettings.theme == "gruvbox-material-dark-medium") 
-      then "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml" 
-    else if (userSettings.theme == "gruvbox-material-dark-soft") 
-      then "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml" 
-    else if (userSettings.theme == "solarized-dark") 
-      then "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml"
-    else if (userSettings.theme == "nord") 
-      then "${pkgs.base16-schemes}/share/themes/nord.yaml"
-    else if (userSettings.theme == "uwunicorn") 
-      then "${pkgs.base16-schemes}/share/themes/uwunicorn.yaml"
-    else if (userSettings.theme == "sakura") 
-      then "${pkgs.base16-schemes}/share/themes/sakura.yaml"
-    else if (userSettings.theme == "everforest") 
-      then "${pkgs.base16-schemes}/share/themes/everforest.yaml"
-    else if (userSettings.theme == "windows-10-light") 
-      then "${pkgs.base16-schemes}/share/themes/windows-10-light.yaml"
-    else if (userSettings.theme == "dracula") 
-      then "${pkgs.base16-schemes}/share/themes/dracula.yaml"
-    else if (userSettings.theme == "catppuccin-mocha") 
-      then "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml"
-    else if (userSettings.theme == "atelier-dune") 
-      then "${pkgs.base16-schemes}/share/themes/atelier-dune.yaml"
-    else if (userSettings.theme == "onedark") 
-      then "${pkgs.base16-schemes}/share/themes/onedark.yaml"
-    else 
-      "${pkgs.base16-schemes}/share/themes/circus.yaml";
-  
-
-  stylix.image = 
-    if (userSettings.theme == "gruvbox-dark-hard")
-      then ../wallpapers/forest.jpg
-    else if (userSettings.theme == "gruvbox-dark-medium")
-      then ../wallpapers/gruvbox-car.jpg
-    else if (userSettings.theme == "gruvbox-material-dark-medium")
-      then ../wallpapers/ledge_gruvbox.png
-    else if (userSettings.theme == "gruvbox-material-dark-soft")
-      then ../wallpapers/nord_roads.png
-    else if (userSettings.theme == "solarized-dark")
-      then ../wallpapers/solarized-dark.jpg
-    else if (userSettings.theme == "nord")
-      then ../wallpapers/nord_bridge.png
-    else if (userSettings.theme == "uwunicorn")
-      then ../wallpapers/uwu.jpg
-    else if (userSettings.theme == "sakura")
-      then ../wallpapers/pink-katana.jpg
-    else if (userSettings.theme == "everforest")
-      then ../wallpapers/everforest.png
-    else if (userSettings.theme == "windows-10-light")
-      then ../wallpapers/bindows.jpg
-    else if (userSettings.theme == "dracula")
-      then ../wallpapers/dracula-mnt.png
-    else if (userSettings.theme == "catppuccin-mocha")
-      then ../wallpapers/shaded.png
-    else if (userSettings.theme == "atelier-dune")
-      then ../wallpapers/comfy.jpg
-    else if (userSettings.theme == "onedark")
-      then ../wallpapers/od_neon_warm.png
-    else
-      ../wallpapers/sky.jpg;
-
-	
-  stylix = {
-    cursor ={
-      #package = pkgs.dracula-theme;
-      #name = "Dracula-cursors";
-      #size = 16;
-      package = lib.mkForce pkgs.google-cursor;
-      name = lib.mkForce "GoogleDot-Black";
-      size = lib.mkForce 16;
+let
+  themePaths = {
+    "gruvbox-dark-hard" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+      image = ../wallpapers/forest.jpg;
     };
+    "gruvbox-dark-medium" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+      image = ../wallpapers/gruvbox-car.jpg;
+    };
+    "gruvbox-material-dark-medium" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+      image = ../wallpapers/ledge_gruvbox.png;
+    };
+    "gruvbox-material-dark-soft" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml";
+      image = ../wallpapers/nord_roads.png;
+    };
+    "solarized-dark" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml";
+      image = ../wallpapers/solarized-dark.jpg;
+    };
+    "nord" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+      image = ../wallpapers/nord_bridge.png;
+    };
+    "uwunicorn" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/uwunicorn.yaml";
+      image = ../wallpapers/uwu.jpg;
+    };
+    "sakura" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/sakura.yaml";
+      image = ../wallpapers/pink-katana.jpg;
+    };
+    "everforest" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+      image = ../wallpapers/everforest.png;
+    };
+    "windows-10-light" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/windows-10-light.yaml";
+      image = ../wallpapers/bindows.jpg;
+    };
+    "dracula" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+      image = ../wallpapers/dracula-mnt.png;
+    };
+    "catppuccin-mocha" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+      image = ../wallpapers/shaded.png;
+    };
+    "atelier-dune" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/atelier-dune.yaml";
+      image = ../wallpapers/comfy.jpg;
+    };
+    "onedark" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
+      image = ../wallpapers/od_neon_warm.png;
+    };
+  };
+
+  defaultScheme = "${pkgs.base16-schemes}/share/themes/circus.yaml";
+  defaultImage = ../wallpapers/sky.jpg;
+
+in
+{
+  # Use attribute set to get theme paths
+  stylix.base16Scheme = lib.mkDefault (lib.getAttr userSettings.theme themePaths).scheme;
+  stylix.image = lib.mkDefault (lib.getAttr userSettings.theme themePaths).image;
+
+
+  stylix.cursor = {
+    package = lib.mkForce pkgs.google-cursor;
+    name = lib.mkForce "GoogleDot-Black";
+    size = lib.mkForce 16;
   };
 
   stylix.homeManagerIntegration = {
@@ -90,8 +83,8 @@
 
   stylix.fonts = {
     monospace = {
-      package = pkgs.nerd-fonts.jetbrains-mono;#pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];};
-      name = "JetBrainsMono Nerd Font Mono";#"JetBrainsMono Nerd Font Mono";
+      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "JetBrainsMono Nerd Font Mono";
     };
     sansSerif = {
       package = lib.mkForce pkgs.intel-one-mono;
@@ -103,7 +96,6 @@
     };
   };
 
-
   stylix.polarity = "dark";
 
   home-manager.users.${userSettings.username} = {
@@ -112,25 +104,8 @@
     stylix.targets.waybar.enable = false;
     stylix.targets.rofi.enable = false;
     stylix.targets.kde.enable = true;
+    stylix.targets.qt.enable = true;
+    stylix.targets.qt.platform = "qtct";
   };
-
-
-
-
-  #stylix.fonts.sizes = {
-  #  applications = lib.mkForce 14;
-  #  terminal = lib.mkForce 14;
-  #  desktop = lib.mkForce 10;
-  #  popups = lib.mkForce 10;
-  #};
-
-  #stylix.opacity = {
-  #  applications = lib.mkForce 1.0;
-  #  terminal = lib.mkForce 1.0;
-  #  desktop = lib.mkForce 1.0;
-  #  popups = lib.mkForce 1.0;
-  #};
- 
-
 }
 

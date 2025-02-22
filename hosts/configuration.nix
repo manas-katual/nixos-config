@@ -154,17 +154,9 @@ in
     fira-mono
     fira-sans
     nerd-fonts.dejavu-sans-mono
-    #nerd-fonts.NerdFontsSymbolOnly
-    #(nerdfonts.override {
-    #  fonts = [
-    #    "FiraCode"
-    #"NerdFontsSymbolsOnly"
-    #  ];
-    #})
   ];
 
   # List services that you want to enable:
-
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";

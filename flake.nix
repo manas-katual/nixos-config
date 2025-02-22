@@ -44,6 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # youtube terminal
     yt-x.url = "github:Benexl/yt-x";
 
   };
