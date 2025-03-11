@@ -12,7 +12,12 @@
     settings = {
       vim = {
         viAlias = true;
-        vimAlias = true;
+        vimAlias = true;        
+        options = {
+          tabstop = 2;
+          shiftwidth = 2;
+          wrap = false;
+        };
         preventJunkFiles = true;
         theme = {
           enable = true;
@@ -39,6 +44,7 @@
         # languages
         languages = {
           enableLSP = true;
+          enableFormat = true;
           enableTreesitter = true;
           nix = {
             enable = true;
@@ -59,6 +65,9 @@
             enable = true;
           };
           html = {
+            enable = true;
+          };
+          markdown = {
             enable = true;
           };
           css = {
@@ -82,6 +91,15 @@
         };
         visuals = {
           indent-blankline = {
+            enable = true;
+          };
+          nvim-web-devicons = {
+            enable = true;
+          };
+          cinnamon-nvim = {
+            enable = true;
+          };
+          fidget-nvim = {
             enable = true;
           };
         };

@@ -3,7 +3,7 @@
   ./hyprpanel.nix
   ./thunar.nix
   ./kitty.nix
-  ./wofi.nix
+  # ./wofi.nix
   ./waydroid.nix
   ./rofi.nix
   # ./wlogout.nix
@@ -11,4 +11,7 @@
   ./kdeconnect.nix
   ./games.nix
   ./eww.nix
+  ./pcmanfm.nix
+  ./xdg.nix
+  ./wine.nix
 ]

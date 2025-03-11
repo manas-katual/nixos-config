@@ -427,7 +427,7 @@ with host;
             exec-once = [
               "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent"
               # "emacs --daemon"
-              "wayvibes ~/wayvibes/SK61 with Lubed brown switches/ -v 10"
+              # "wayvibes ~/wayvibes/SK61 with Lubed brown switches/ -v 10"
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
               "${pkgs.hyprlock}/bin/hyprlock"
               "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"

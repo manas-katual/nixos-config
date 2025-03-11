@@ -116,6 +116,7 @@ in
 
       # gui apps
       google-chrome # browser
+      ungoogled-chromium
       floorp # firefox based browser
       image-roll # image viewer
       mpv # video player
@@ -132,7 +133,11 @@ in
       hplip # hp printing drivers
       onlyoffice-desktopeditors # office suite
       neovide # neovim gui
+      hardinfo # shows hardware info
+
+      # games and emulation
       mcpelauncher-ui-qt # minecraft bedrock edition
+      ppsspp-sdl-wayland # psp emulator
     ];
   };
 
@@ -164,17 +169,10 @@ in
 
   programs = {
     dconf.enable = true;
-  };
-
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
-
-  services = {
-    devmon.enable = true;
-    gvfs.enable = true;
-    dbus.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
   };
 
   services = {
@@ -196,6 +194,9 @@ in
     openssh = {
       enable = true;
     };
+    devmon.enable = true;
+    gvfs.enable = true;
+    dbus.enable = true;
   };
 
   nix = {
