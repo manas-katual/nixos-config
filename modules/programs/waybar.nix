@@ -356,7 +356,7 @@ in
               border-radius: 5px;
               margin-bottom: 2px;
               padding-left: 13px;
-              padding-right: 9px;
+              padding-right: 13px;
           }
 
           /* #idle_inhibitor {
@@ -366,6 +366,7 @@ in
           #idle_inhibitor.activated {
               background-color: #${powermenu-button};
               color: #${powermenu-button-foreground};
+              border-bottom: 8px solid #${powermenu-button-bottom};
           }
 
           #mpd {
