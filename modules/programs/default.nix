@@ -14,4 +14,5 @@
   ./pcmanfm.nix
   ./xdg.nix
   ./wine.nix
+  # ./jovian.nix
 ]

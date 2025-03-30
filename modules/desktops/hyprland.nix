@@ -39,7 +39,7 @@ with host;
           # XCURSOR = "Catppuccin-Mocha-Dark-Cursors";
           XCURSOR_SIZE = lib.mkForce 16;
           NIXOS_OZONE_WL = 1;
-          SDL_VIDEODRIVER = "wayland";
+          # SDL_VIDEODRIVER = "wayland";
           OZONE_PLATFORM = "wayland";
           WLR_RENDERER_ALLOW_SOFTWARE = 1;
           CLUTTER_BACKEND = "wayland";
@@ -47,7 +47,7 @@ with host;
           QT_QPA_PLATFORMTHEME = "qt6ct";
           QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
           QT_AUTO_SCREEN_SCALE_FACTOR = 1;
-          GDK_BACKEND = "wayland";
+          GDK_BACKEND = "wayland,x11";
           WLR_NO_HARDWARE_CURSORS = "1";
           MOZ_ENABLE_WAYLAND = "1";
         };
@@ -55,6 +55,7 @@ with host;
           grimblast # Screenshot
           hyprcursor # Cursor
           hyprpaper # Wallpaper
+          hyprsunset
           wl-clipboard # Clipboard
           wlr-randr # Monitor Settings
           xwayland # X session
@@ -416,9 +417,10 @@ with host;
               "move 74% 74%, title:(Google Chrome)"
               "pin, title:^(Google Chrome)$"
 
-              "workspace 3, class:^(google-chrome)$"
-              # "workspace 2, class:^(Emacs)$"
               "workspace 2, class:^(neovide)$"
+              "workspace 3, class:^(google-chrome)$"
+              "workspace 4, class:^(pcmanfm)$"
+              # "workspace 2, class:^(Emacs)$"
               "workspace 8, class:^(.virt-manager-wrapped)$"
 
               "opacity 0.9, class:^(kitty)"
@@ -426,6 +428,7 @@ with host;
             ];
             exec-once = [
               "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent"
+              "${pkgs.hyprsunset}/bin/hyprsunset" 
               # "emacs --daemon"
               # "wayvibes ~/wayvibes/SK61 with Lubed brown switches/ -v 10"
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

@@ -4,10 +4,10 @@
   home-manager.users.${userSettings.username} = {
     programs.git = {
       enable = true;
-      userName = "manas-katual";
-      userEmail = "manaskatual19@gmail.com";
+      userName = "${userSettings.gitUsername}";
+      userEmail = "${userSettings.gitEmail}";
       extraConfig = {
-	init.defaultBranch = "main";
+        init.defaultBranch = "main";
       };
     };
   };

@@ -346,12 +346,26 @@ in
           }
 
           #idle_inhibitor {
-              background-color: #2d3436;
+              background-color: #${button};
+              color: #${button-foreground};
+              font-family: JetBrainsMono Nerd Font, monospace;
+              font-size: 18px;
+              font-weight: bold;
+              border: none;
+              border-bottom: 8px solid #${button-bottom};
+              border-radius: 5px;
+              margin-bottom: 2px;
+              padding-left: 13px;
+              padding-right: 9px;
           }
 
+          /* #idle_inhibitor {
+              background-color: #2d3436;
+          } */
+
           #idle_inhibitor.activated {
-              background-color: #ecf0f1;
-              color: #2d3436;
+              background-color: #${powermenu-button};
+              color: #${powermenu-button-foreground};
           }
 
           #mpd {
@@ -438,7 +452,7 @@ in
             spacing = 4;
             modules-left = ["hyprland/workspaces" "hyprland/window"];
             # modules-center = [ "hyprland/window" ];
-            modules-right = ["custom/notification" "custom/menu" "pulseaudio" "battery" "clock" "tray" "custom/powermenu"];
+            modules-right = ["idle_inhibitor" "custom/notification" "custom/menu" "pulseaudio" "battery" "clock" "tray" "custom/powermenu"];
 
             /* Modules configuration */
             "hyprland/workspaces" = {

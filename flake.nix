@@ -47,9 +47,12 @@
     # youtube terminal
     yt-x.url = "github:Benexl/yt-x";
 
+    # jovian steam
+    jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
+
   };
 
-  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, ... }:
+  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, jovian-nixos, ... }:
 
     let
       userSettings = {
@@ -59,13 +62,15 @@
         editor = "nvim";
         bar = "waybar";
         theme = "gruvbox-dark-hard";
+        gitUsername = "manas-katual";
+        gitEmail = "manaskatual19@gmail.com";
       };
 
     in {
       nixosConfigurations = (
         import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur;
+        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur jovian-nixos;
         }
       );
     };

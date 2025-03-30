@@ -20,9 +20,12 @@
 };
   # AMD GPU settings for Southern Islands (SI) GPUs
   boot.kernelParams = [
+    # "radeon.runpm=1"
     "radeon.si_support=0" # Disable support for the radeon driver for SI GPUs
     "amdgpu.si_support=1" # Enable support for the amdgpu driver for SI GPUs
+    # "nomodeset"
   ];
+  # boot.blacklistedKernelModules = ["i915"];
 
   # GUI Tools for AMD GPU Management
   environment.systemPackages = with pkgs; [
