@@ -50,9 +50,15 @@
     # jovian steam
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
 
+    # niri 
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, jovian-nixos, ... }:
+  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, jovian-nixos, niri, ... }:
 
     let
       userSettings = {
@@ -70,7 +76,7 @@
       nixosConfigurations = (
         import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur jovian-nixos;
+        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur jovian-nixos niri;
         }
       );
     };

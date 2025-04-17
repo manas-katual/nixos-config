@@ -3,18 +3,16 @@
 {
   # Enable graphics support
   hardware = {
-   graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
         intel-media-driver
-        vaapiIntel
-        vaapiVdpau
-        libvdpau-va-gl
-	amdvlk
+        intel-vaapi-driver
+        amdvlk
     ];
     extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk # Vulkan driver for 32-bit applications
+      driversi686Linux.amdvlk # Vulkan driver for 32-bit applications
     ];
 };
 };
@@ -25,7 +23,6 @@
     "amdgpu.si_support=1" # Enable support for the amdgpu driver for SI GPUs
     # "nomodeset"
   ];
-  # boot.blacklistedKernelModules = ["i915"];
 
   # GUI Tools for AMD GPU Management
   environment.systemPackages = with pkgs; [
@@ -41,7 +38,7 @@
   services.xserver.videoDrivers = [ "modesetting" "amdgpu" ]; # Recommended for Intel GPUs
   boot.initrd.kernelModules = [ "amdgpu" ];
 
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; };
   
 }
 

@@ -1,7 +1,21 @@
 { pkgs, config, lib, userSettings, ... }:
 
 let
-  colors = import ../theming/colors.nix;
+  colors = import ../../theming/colors.nix;
+in
+
+let
+  modules-left = with config;
+    if hyprland.enable == true then [
+      "hyprland/workspaces"
+      "hyprland/window"
+    ] else if sway.enable == true then [
+      "sway/workspaces"
+      "sway/window"
+    ] else if niri.enable == true then [
+      "niri/workspaces"
+      "niri/window"
+    ] else [ ];
 in
 {
 
@@ -451,12 +465,12 @@ in
             layer = "top";
             height = 30;
             spacing = 4;
-            modules-left = ["hyprland/workspaces" "hyprland/window"];
-            # modules-center = [ "hyprland/window" ];
+            modules-left = modules-left;
+            # modules-center = [ "sway/window" ];
             modules-right = ["idle_inhibitor" "custom/notification" "custom/menu" "pulseaudio" "battery" "clock" "tray" "custom/powermenu"];
 
             /* Modules configuration */
-            "hyprland/workspaces" = {
+            "sway/workspaces" = {
               format = "<span font='11'>{icon}</span>";
               format-icons = {
                 "1" = "1";
@@ -483,6 +497,43 @@ in
                 "9" = [ ];
                 "10" = [ ];
               };
+            };
+            "niri/workspaces" = {
+              format = "<span font='11'>{icon}</span>";
+              format-icons = {
+                "1" = "1";
+                "2" = "2";
+                "3" = "3";
+                "4" = "4";
+                "5" = "5";
+                "6" = "6";
+                "7" = "7";
+                "8" = "8";
+                "9" = "9";
+                "10" = "10";
+              };
+              all-outputs = true;
+              persistent_workspaces = {
+                "1" = [ ];
+                "2" = [ ];
+                "3" = [ ];
+                "4" = [ ];
+                "5" = [ ];
+                "6" = [ ];
+                "7" = [ ];
+                "8" = [ ];
+                "9" = [ ];
+                "10" = [ ];
+              };
+            };
+            "niri/workspaces" = {
+              active-only = false;
+              on-click = "activate";
+            };
+            "wlr/workspaces" = {
+              format = "<span font='11'>{name}</span>";
+              active-only = false;
+              on-click = "activate";
             };
             "hyprland/workspaces" = {
               #format = "<span font='11'>{name}</span>";

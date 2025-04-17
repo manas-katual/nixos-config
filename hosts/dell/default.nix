@@ -33,7 +33,10 @@
     };
   };
 
-  hyprland.enable = true;
+  # hyprland.enable = true;
+  # sway.enable = true;
+  # dwm.enable = true;
+  niri.enable = true;
   laptop.enable = true;
 
   environment = {

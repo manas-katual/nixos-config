@@ -8,4 +8,5 @@
   ./gnome.nix
   ./hyprland.nix
   ./vm.nix
+  ./niri.nix
 ]

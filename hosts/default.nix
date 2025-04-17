@@ -9,7 +9,7 @@
 #           └─ default.nix
 #
 
-{ inputs, nixpkgs, home-manager, userSettings, stylix, nvf, hyprpanel, nur, jovian-nixos, ... }:
+{ inputs, nixpkgs, home-manager, userSettings, stylix, nvf, hyprpanel, nur, jovian-nixos, niri, ... }:
 let
   system = "x86_64-linux";
   lib = nixpkgs.lib;
@@ -18,7 +18,7 @@ in
   dell = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system userSettings stylix nvf hyprpanel nur jovian-nixos;
+      inherit inputs system userSettings stylix nvf hyprpanel nur jovian-nixos niri;
       host = {
         hostName = "dell";
 	      mainMonitor = "LVDS-1";
@@ -32,12 +32,16 @@ in
       inputs.nvf.nixosModules.default
       inputs.nur.modules.nixos.default
       inputs.jovian-nixos.nixosModules.default
+      # inputs.niri.nixosModules.niri
 
       home-manager.nixosModules.home-manager 
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; # needed for hyprpanel
+        nixpkgs.overlays = [ 
+          inputs.hyprpanel.overlay 
+          inputs.niri.overlays.niri
+        ]; # needed for hyprpanel
       }
     ];
   };

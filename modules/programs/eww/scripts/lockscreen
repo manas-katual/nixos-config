@@ -2,4 +2,8 @@
 
 sleep 0.1
 
-hyprlock
+if command -v hyprland &> /dev/null; then
+  hyprlock
+else
+  swaylock
+fi

@@ -52,7 +52,11 @@ with host;
           satty
           grim
           slurp
+          libnotify
         ];
+      };
+      light = {
+        enable = true;
       };
     };
 
@@ -62,7 +66,8 @@ with host;
         config = rec {
           modifier = "Mod4";
           terminal = "${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal}";
-          menu = "${pkgs.wofi}/bin/wofi --show drun --allow-images --sort-order=alphabetical";
+          # menu = "${pkgs.wofi}/bin/wofi --show drun --allow-images --sort-order=alphabetical";
+          menu = "${pkgs.rofi-wayland}/bin/rofi -show drun";
 
           startup = [
             { command = "${pkgs.autotiling}/bin/autotiling"; always = true; }
@@ -152,6 +157,8 @@ with host;
         extraConfig = ''
           exec ${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent
           for_window [title="Authentication Required"] floating enable, resize set 600 200
+          exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+          exec ${pkgs.blueman}/bin/blueman-applet
           set $opacity 0.8
           for_window [class=".*"] opacity 0.95
           for_window [app_id=".*"] opacity 0.95
@@ -178,10 +185,10 @@ with host;
         enable = true;
         package = pkgs.swayidle;
         timeouts = [
-          #{ 
-          #  timeout = 800;
-          #  command = "${libnotify}/bin/notify-send 'Locking in 5 seconds'";
-          #}
+          { 
+           timeout = 800;
+           command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
+          }
 
           {
             timeout = 850;
@@ -209,7 +216,7 @@ with host;
     };      
       programs.swaylock = {
         enable = true;
-        package = pkgs.swaylock;
+        package = pkgs.swaylock-effects;
         settings = {
           color = lib.mkForce "#''+stylix.colors.base04+''";
             font-size = 24;

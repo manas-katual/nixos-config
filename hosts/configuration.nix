@@ -36,7 +36,7 @@ in
       import ../modules/services ++
       import ../modules/shell ++
       import ../modules/editors ++
-      import ../modules/custom ++
+      # import ../modules/custom ++
       import ../modules/hardware 
     );
 
@@ -134,6 +134,7 @@ in
       onlyoffice-desktopeditors # office suite
       neovide # neovim gui
       hardinfo # shows hardware info
+      ciscoPacketTracer8 # networking emulation
 
       # games and emulation
       mcpelauncher-ui-qt # minecraft bedrock edition

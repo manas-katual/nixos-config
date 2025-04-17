@@ -77,7 +77,7 @@ $terminal-white-bright: #fbf1c7;
   all: unset;
   font-family: "JetBrainsMono Nerd Font", sans-serif;
   font-size: 20px;
-  border-radius: 5px;
+  // border-radius: 5px;
 }
 
 .spacer-v {
@@ -180,7 +180,7 @@ scrollbar slider {
   background-color: $background4;
   border: none;
   border-bottom: 8px solid $background4-bottom;
-  border-radius: 5px;
+  // border-radius: 5px;
   margin-bottom: -6px;
   margin-left: 12px;
   padding-left: 10px;
