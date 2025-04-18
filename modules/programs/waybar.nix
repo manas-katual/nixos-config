@@ -1,7 +1,7 @@
 { pkgs, config, lib, userSettings, ... }:
 
 let
-  colors = import ../../theming/colors.nix;
+  colors = import ../theming/colors.nix;
 in
 
 let
