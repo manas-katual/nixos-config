@@ -5,4 +5,5 @@
   ./flameshot.nix
   #./picom.nix
   ./udiskie.nix
+  ./wlsunset.nix
 ]
