@@ -1,5 +1,5 @@
 [
-  ./swaynoti.nix
+  ./swaync.nix
   ./polybar.nix
   ./sxhkd.nix
   ./flameshot.nix

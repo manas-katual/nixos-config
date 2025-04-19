@@ -136,6 +136,8 @@ in
             "media"
           ];
           "right" = [
+            "hypridle"
+            "battery"
             "volume"
             "bluetooth"
             "network"
@@ -149,7 +151,7 @@ in
 
     override = {
       "tear" = true; # Screen Tearing
-      "theme.font.size" = "1.1rem";
+      "theme.font.size" = "0.8rem";
       "theme.bar.outer_spacing" = "1rem";
       "theme.bar.dropdownGap" = "3.3em";
       "scalingPriority" = "hyprland";

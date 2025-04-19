@@ -56,9 +56,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # ags
+    ags.url = "github:aylur/ags";
+
   };
 
-  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, jovian-nixos, niri, ... }:
+  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, jovian-nixos, niri, ags, ... }:
 
     let
       userSettings = {
@@ -67,7 +70,7 @@
         terminal = "kitty";
         editor = "nvim";
         bar = "waybar";
-        theme = "gruvbox-dark-hard";
+        theme = "rose-pine";
         gitUsername = "manas-katual";
         gitEmail = "manaskatual19@gmail.com";
       };
@@ -76,7 +79,7 @@
       nixosConfigurations = (
         import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur jovian-nixos niri;
+        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur jovian-nixos niri ags;
         }
       );
     };

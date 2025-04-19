@@ -58,6 +58,10 @@ let
       scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
       image = ../wallpapers/od_neon_warm.png;
     };
+    "rose-pine" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+      image = ../wallpapers/pink-katana.jpg;
+    };
   };
 
   defaultScheme = "${pkgs.base16-schemes}/share/themes/circus.yaml";

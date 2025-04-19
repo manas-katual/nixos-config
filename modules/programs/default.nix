@@ -16,4 +16,5 @@
   ./wine.nix
   # ./jovian.nix
   ./fhs.nix
+  ./ags.nix
 ]

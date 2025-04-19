@@ -33,10 +33,7 @@
     };
   };
 
-  # hyprland.enable = true;
-  # sway.enable = true;
-  # dwm.enable = true;
-  niri.enable = true;
+  hyprland.enable = true;
   laptop.enable = true;
 
   environment = {
@@ -53,9 +50,12 @@
   zramSwap = {
     enable = true;
     algorithm = "lz4";
-    memoryPercent = 100;
+    memoryPercent = 75;
     priority = 999;
   };
-	boot.kernel.sysctl."vm.page-cluster" = 0;
+	boot.kernel.sysctl = { 
+    "vm.page-cluster" = 0;
+    "vm.swappiness" = 100;
+  };
 
 }

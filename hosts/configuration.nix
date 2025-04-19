@@ -42,16 +42,11 @@ in
 
   networking = {
     hostName = "dell"; # Define your hostname.
-
-    # enable networking
     networkmanager.enable = true; # network manager systemd
     #wireless.enable = true; # Enables wireless support via wpa_supplicant.
   }; 
-
-  # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
-  # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_IN";
     extraLocaleSettings = {
@@ -79,8 +74,6 @@ in
     #sudo.wheelNeedsPassword = false;
   };
 
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = "Manas Katual";
@@ -88,8 +81,6 @@ in
     packages = with pkgs; [];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment = {
     variables = {
       TERMINAL = "${userSettings.terminal}";
@@ -164,7 +155,6 @@ in
     nerd-fonts.dejavu-sans-mono
   ];
 
-  # List services that you want to enable:
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";
@@ -221,10 +211,11 @@ in
     '';
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # DONT TOUCH THIS
+  # =============== #
+  # DONT TOUCH THIS #
+  # =============== #
   system.stateVersion = "24.05"; 
 
   home-manager.users.${userSettings.username} = {
