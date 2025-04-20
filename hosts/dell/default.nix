@@ -56,6 +56,7 @@
 	boot.kernel.sysctl = { 
     "vm.page-cluster" = 0;
     "vm.swappiness" = 100;
+    "kernel.sysrq" = 1;
   };
 
 }
