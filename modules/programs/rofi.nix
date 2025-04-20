@@ -36,7 +36,7 @@ in
             display-window = "   Window ";
           };
           terminal = "${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal}";
-          theme = with colors.scheme.rose-pine; {
+          theme = with colors.scheme.${userSettings.theme}; {
             "*" = lib.mkForce { };
             "element-text" = lib.mkForce {
               background-color = mkLiteral "#00000000";

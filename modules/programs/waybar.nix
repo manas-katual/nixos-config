@@ -24,7 +24,7 @@ in
       waybar
     ];
 
-    home-manager.users.${userSettings.username} = with colors.scheme.rose-pine; {
+    home-manager.users.${userSettings.username} = with colors.scheme.${userSettings.theme}; {
       programs.waybar = {
         enable = true;
         style = ''

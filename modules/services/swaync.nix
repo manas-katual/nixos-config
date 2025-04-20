@@ -11,7 +11,7 @@ in
 
     home-manager.users.${userSettings.username} = {
       xdg.configFile = {
-        "swaync/style.css".text = with colors.scheme.gruvbox; ''
+        "swaync/style.css".text = with colors.scheme.${userSettings.theme}; ''
 
         @define-color noti-bg-focus rgba(0, 0, 0, 0);
         @define-color sep-color transparent;
