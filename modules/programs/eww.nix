@@ -19,6 +19,9 @@
         source = ./eww;
         recursive = true;
       };
+      home.file.".config/eww/themes/current.scss" = { 
+        source = ./eww/themes/_${userSettings.theme}.scss; 
+      };
     };
   };
 }

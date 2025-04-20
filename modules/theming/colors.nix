@@ -129,7 +129,7 @@
       base0F = "00f769";
     };
 
-    gruvbox = {
+    gruvbox-dark-hard = {
       scheme = "Gruvbox";
       foreground = "ebdbb2";
       foreground-disabled = "282828";
