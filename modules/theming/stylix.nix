@@ -50,6 +50,10 @@ let
       scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
       image = ../wallpapers/shaded.png;
     };
+    "catppuccin-frappe" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
+      image = ../wallpapers/shaded.png;
+    };
     "atelier-dune" = {
       scheme = "${pkgs.base16-schemes}/share/themes/atelier-dune.yaml";
       image = ../wallpapers/comfy.jpg;

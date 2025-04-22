@@ -5,13 +5,13 @@ vlevel=$(./scripts/get_output_volume)
 is_muted=$(./scripts/is_output_muted) # yes or no
 
 if [[ $is_muted == "yes" ]]; then
-  echo "󰖁"
+  echo "󰖁 "
 else
   if (( $vlevel > 49 )); then
-    echo "󰕾"
+    echo "󰕾 "
   elif (( $vlevel > 0 )); then
-    echo "󰖀"
+    echo "󰖀 "
   else
-    echo "󰝟"
+    echo "󰝟 "
   fi
 fi

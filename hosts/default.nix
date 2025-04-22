@@ -9,7 +9,7 @@
 #           └─ default.nix
 #
 
-{ inputs, nixpkgs, home-manager, userSettings, stylix, nvf, hyprpanel, nur, jovian-nixos, niri, ags, ... }:
+{ inputs, nixpkgs, home-manager, userSettings, stylix, nvf, hyprpanel, nur, jovian-nixos, niri, ags, chaotic, ... }:
 let
   system = "x86_64-linux";
   lib = nixpkgs.lib;
@@ -18,7 +18,7 @@ in
   dell = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system userSettings stylix nvf hyprpanel nur jovian-nixos;
+      inherit inputs system userSettings stylix nvf hyprpanel nur jovian-nixos chaotic;
       host = {
         hostName = "dell";
 	      mainMonitor = "LVDS-1";
@@ -32,6 +32,7 @@ in
       # inputs.nvf.nixosModules.default
       inputs.nur.modules.nixos.default
       inputs.jovian-nixos.nixosModules.default
+      inputs.chaotic.nixosModules.default
 
       home-manager.nixosModules.home-manager 
       {

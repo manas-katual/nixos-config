@@ -12,7 +12,7 @@
 #           └─ hyprland.nix
 #
 
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -21,6 +21,7 @@
 
   # Boot Options
   boot = {
+    # kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
     loader = {
       systemd-boot = {
         enable = true;
@@ -55,8 +56,14 @@
   };
 	boot.kernel.sysctl = { 
     "vm.page-cluster" = 0;
-    "vm.swappiness" = 100;
+    # "vm.swappiness" = 100;
     "kernel.sysrq" = 1;
+  };
+  services = {
+    # for SSD/NVME
+    fstrim.enable = true;
+    # scx.enable = true;
+    # scx.scheduler = "scx_rusty";
   };
 
 }

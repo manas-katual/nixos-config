@@ -17,4 +17,9 @@
   # ./jovian.nix
   ./fhs.nix
   ./ags.nix
+  ./fastfetch.nix
+  ./bat.nix
+  # ./btop.nix
+  ./htop.nix
+  ./cava.nix
 ]

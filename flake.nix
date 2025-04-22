@@ -59,9 +59,12 @@
     # ags
     ags.url = "github:aylur/ags";
 
+    # chaotic
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
   };
 
-  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, jovian-nixos, niri, ags, ... }:
+  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, jovian-nixos, niri, ags, chaotic, ... }:
 
     let
       userSettings = {
@@ -70,7 +73,7 @@
         terminal = "kitty";
         editor = "nvim";
         bar = "waybar";
-        theme = "rose-pine";
+        theme = "gruvbox-dark-hard";
         gitUsername = "manas-katual";
         gitEmail = "manaskatual19@gmail.com";
       };
@@ -79,7 +82,7 @@
       nixosConfigurations = (
         import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur jovian-nixos niri ags;
+        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur jovian-nixos niri ags chaotic;
         }
       );
     };

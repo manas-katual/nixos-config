@@ -104,6 +104,7 @@ in
       nix-tree # browse nix store
       android-tools # fastboot and adb tool
       procps
+      pulseaudio # audio controller
 
       # gui apps
       google-chrome # browser
@@ -126,6 +127,7 @@ in
       neovide # neovim gui
       hardinfo # shows hardware info
       ciscoPacketTracer8 # networking emulation
+      soundwireserver # to listen audio from pc to mobile
 
       # games and emulation
       mcpelauncher-ui-qt # minecraft bedrock edition
@@ -134,6 +136,9 @@ in
       dolphin-emu
     ];
   };
+
+  networking.firewall.allowedTCPPorts = [ 59010 ]; # for soundwire
+  networking.firewall.allowedUDPPorts = [ 59010 ]; # for soundwire
 
   fonts.packages = with pkgs; [
     carlito # NixOS

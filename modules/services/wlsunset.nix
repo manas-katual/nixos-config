@@ -8,7 +8,7 @@
         longitude = 73.1;
         temperature = {
           day = 6500;   # Neutral white
-          night = 3000; # Warmer tone for eye comfort
+          night = 4000; # Warmer tone for eye comfort
         };
         gamma = 0.8;    # Adjusts brightness; lower values reduce brightness
       };
