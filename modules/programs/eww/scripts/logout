@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if command -v hyprland &> /dev/null; then
+  hyprctl dispatch exit
+else
+  loginctl terminate-user "$USER"
+fi

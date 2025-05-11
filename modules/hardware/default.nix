@@ -1,0 +1,4 @@
+[
+  ./power.nix
+  ./bluetooth.nix
+]

@@ -1,0 +1,128 @@
+;; === POLLS ===
+(defpoll brightness :interval "30ms" "scripts/get_brightness")
+(defpoll output-volume :interval "30ms" "scripts/get_output_volume")
+(defpoll output-volume-icon :interval "30ms" "scripts/get_output_volume_icon")
+(defpoll input-volume :interval "30ms" "scripts/get_input_volume")
+(defpoll input-volume-icon :interval "30ms" "scripts/get_input_volume_icon")
+(defpoll uptime :interval "1s" "scripts/get_uptime")
+
+;; === SPACER WIDGET ===
+(defwidget spacer-v-core [class]
+  (box :class class
+       :orientation "v"
+       :space-evenly false))
+
+;; === METRIC UTILITY WIDGET ===
+(defwidget metric [label value ?onchange ?onclick]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly true
+       (box :class "metric-label"
+            (button :onclick onclick
+                    :class "metric-label-text"
+                    :halign "center"
+                    label)
+            (scale :min 0
+                   :max 101
+                   :active {onchange != ""}
+                   :value value
+                   :onchange onchange))))
+
+;; === SLIDER WIDGETS ===
+(defwidget brightness-slider []
+  (metric :label "󰃠 "
+          :value brightness
+          :onchange "scripts/set_brightness {}%"))
+
+(defwidget output-volume-slider []
+  (metric :label output-volume-icon
+          :value output-volume
+          :onchange "scripts/set_output_volume {}%"
+          :onclick "scripts/toggle_output_mute"))
+
+(defwidget input-volume-slider []
+  (metric :label input-volume-icon
+          :value input-volume
+          :onchange "scripts/set_input_volume {}%"
+          :onclick "scripts/toggle_input_mute"))
+
+(defwidget bar-menu-sliders []
+  (box :class "bar-menu-sliders"
+       :orientation "v"
+       :space-evenly false
+       :halign "center"
+       (brightness-slider)
+       (output-volume-slider)
+       (input-volume-slider)))
+
+(defwidget bar-menu []
+  (box :space-evenly false
+       :orientation "v"
+       :class "bar-menu"
+       (bar-menu-sliders)))
+
+(defwindow bar-menu
+  :monitor 0
+  :geometry (geometry :x "10px"
+                      :y "10px"
+                      :width "400px"
+                      :height "0px"
+                      :anchor "top right")
+  :stacking "fg"
+  :windowtype "normal"
+  :wm-ignore true
+  (bar-menu))
+
+;; === POWERMENU BUTTONS ===
+(defwidget powermenu-button [label onclick ?class]
+  (button :class "powermenu-button ${class}"
+          :onclick onclick
+          label))
+
+(defwidget powermenu-lockscreen-button []
+  (powermenu-button :label ""
+                    :onclick "scripts/lockscreen"
+                    :class "powermenu-lockscreen-button"))
+
+(defwidget powermenu-logout-button []
+  (powermenu-button :label "󰍃"
+                    :onclick "scripts/logout"
+                    :class "powermenu-logout-button"))
+
+(defwidget powermenu-poweroff-button []
+  (powermenu-button :label ""
+                    :onclick "scripts/poweroff"
+                    :class "powermenu-poweroff-button"))
+
+(defwidget powermenu-reboot-button []
+  (powermenu-button :label ""
+                    :onclick "scripts/reboot"
+                    :class "powermenu-reboot-button"))
+
+;; === POWERMENU WINDOW WIDGET ===
+(defwidget powermenu-window []
+  (box :space-evenly false
+       :orientation "v"
+       :class "powermenu-window"
+       uptime
+       (spacer-v-core :class "powermenu-spacer-v")
+       (box :space-evenly true
+            :orientation "h"
+            :class "powermenu-window-button-area"
+            (powermenu-lockscreen-button)
+            (powermenu-logout-button)
+            (powermenu-poweroff-button)
+            (powermenu-reboot-button))))
+
+(defwindow powermenu-window
+  :monitor 0
+  :geometry (geometry :x "0px"
+                      :y "10px"
+                      :width "500px"
+                      :height "0px"
+                      :anchor "top center")
+  :stacking "fg"
+  :windowtype "normal"
+  :wm-ignore true
+  (powermenu-window))
+

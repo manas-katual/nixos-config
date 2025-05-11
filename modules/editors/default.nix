@@ -1,0 +1,5 @@
+[
+
+  ./nvf.nix
+  # ./doom.nix
+]

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+alacritty -e ~/.config/hypr/manage/update.sh & disown
+
+./scripts/self close bar-menu

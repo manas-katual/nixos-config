@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sleep 0.1
+
+if command -v hyprland &> /dev/null; then
+  hyprlock
+else
+  swaylock
+fi
