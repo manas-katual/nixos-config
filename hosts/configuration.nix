@@ -54,6 +54,7 @@ in
     #wireless.enable = true; # Enables wireless support via wpa_supplicant.
   }; 
   time.timeZone = "Asia/Kolkata";
+  time.hardwareClockInLocalTime = true;
 
   i18n = {
     defaultLocale = "en_IN";

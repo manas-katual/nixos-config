@@ -29,12 +29,12 @@
         enable = true; # Power Efficiency
         settings = {
           battery = {
-            governor = "powersave";
-            turbo = "never";
+            governor = "performance";
+            turbo = "always";
           };
           charger = {
             governor = "performance";
-            turbo = "auto";
+            turbo = "always";
           };
         };
       };

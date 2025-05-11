@@ -37,7 +37,7 @@ with host;
           XDG_SESSION_TYPE = "wayland";
           XDG_SESSION_DESKTOP = "Hyprland";
           # XCURSOR = "Catppuccin-Mocha-Dark-Cursors";
-          XCURSOR_SIZE = lib.mkForce 16;
+          # XCURSOR_SIZE = lib.mkForce 16;
           NIXOS_OZONE_WL = 1;
           # SDL_VIDEODRIVER = "wayland";
           OZONE_PLATFORM = "wayland";
@@ -48,6 +48,8 @@ with host;
           QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
           QT_AUTO_SCREEN_SCALE_FACTOR = 1;
           GDK_BACKEND = "wayland,x11";
+          GDK_SCALE = 1;
+          QT_SCALE_FACTOR = 1;
           WLR_NO_HARDWARE_CURSORS = "1";
           MOZ_ENABLE_WAYLAND = "1";
         };
@@ -59,6 +61,7 @@ with host;
           wl-clipboard # Clipboard
           wlr-randr # Monitor Settings
           xwayland # X session
+          blueman-applet
           #nwg-look
           #hyprpolkitagent
         ];
@@ -136,7 +139,7 @@ with host;
               color = "rgba(25, 20, 20, 1.0)";
               blur_passes = 1;
               blur_size = 0;
-              brightness = 0.4;
+              brightness = 0.5;
             }];
             input-field = lib.mkForce [
               {
@@ -241,7 +244,11 @@ with host;
                 # new_optimizations = on;
               };
             };
-            monitor = (if (hostName == "dell") then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1" else if (hostName == "nokia") then "eDP-1,1920x1080@60,0x0,1" else "HDMI-A-1,preferred,auto,1,mirror,LVDS-1");
+            monitor = (if (hostName == "dell") 
+              then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1" 
+            else if (hostName == "nokia") 
+              then "eDP-1,1920x1080@60,0x0,1" 
+            else ",preferred,auto,auto");
             animations = {
               enabled = true;
               bezier = [
@@ -492,7 +499,8 @@ with host;
               # "${pkgs.hyprpaper}/bin/hyprpaper"
             ] ++ (if userSettings.bar == "waybar" then [
                 "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
-                "${pkgs.blueman}/bin/blueman-applet"
+                # "${pkgs.blueman}/bin/blueman-applet"
+                "blueman-applet"
                 # "${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive --vfs-cache-mode=writes"
                 # "${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive"
                 "${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar/config"
