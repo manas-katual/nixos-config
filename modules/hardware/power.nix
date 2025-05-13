@@ -1,6 +1,9 @@
-{ config, lib, userSettings, ... }:
-
 {
+  config,
+  lib,
+  userSettings,
+  ...
+}: {
   config = lib.mkIf (config.laptop.enable && config.gnome.enable == false) {
     services = {
       # tlp
@@ -20,23 +23,23 @@
 
           # Optional helps save long term battery health
           START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
-          STOP_CHARGE_THRESH_BAT0 = 80;  # 80 and above it stops charging
+          STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
         };
       };
 
       # auto-cpufreq
       auto-cpufreq = {
         enable = true; # Power Efficiency
-        settings = {
-          battery = {
-            governor = "performance";
-            turbo = "always";
-          };
-          charger = {
-            governor = "performance";
-            turbo = "always";
-          };
-        };
+        # settings = {
+        #   battery = {
+        #     governor = "performance";
+        #     turbo = "always";
+        #   };
+        #   charger = {
+        #     governor = "performance";
+        #     turbo = "always";
+        #   };
+        # };
       };
 
       upower.enable = true; # to check battery statistics and reporting
@@ -44,11 +47,11 @@
     };
 
     # nixos default ppower management tool
-    powerManagement = {
-      enable = false;
-      cpuFreqGovernor = "powersave";
-      powertop.enable = false;
-    };
+    # powerManagement = {
+    #   enable = false;
+    #   cpuFreqGovernor = "powersave";
+    #   powertop.enable = false;
+    # };
 
     home-manager.users.${userSettings.username} = {
       services = {

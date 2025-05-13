@@ -85,4 +85,38 @@ in
       }
     ];
   };
+
+  hp = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs system userSettings stylix nvf hyprpanel nur jovian-nixos chaotic astal anyrun;
+      host = {
+        hostName = "hp";
+        mainMonitor = "eDP-1";
+      }; 
+    };
+    modules = [
+      ./nokia
+      ./configuration.nix
+
+      inputs.stylix.nixosModules.stylix
+      # inputs.nvf.nixosModules.default
+      inputs.nur.modules.nixos.default
+      inputs.jovian-nixos.nixosModules.default
+      inputs.chaotic.nixosModules.default
+      {environment.systemPackages = [ anyrun.packages.${system}.anyrun ];}
+
+      home-manager.nixosModules.home-manager 
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "backup";
+        # home-manager.extraSpecialArgs = {inherit system pkgs;};
+        nixpkgs.overlays = [ 
+          inputs.hyprpanel.overlay 
+          inputs.niri.overlays.niri
+        ];
+      }
+    ];
+  };
 }

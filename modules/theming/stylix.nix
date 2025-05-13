@@ -1,6 +1,11 @@
-{ pkgs, lib, inputs, config, userSettings, ... }:
-
-let
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  userSettings,
+  ...
+}: let
   themePaths = {
     "gruvbox-dark-hard" = {
       scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
@@ -74,13 +79,10 @@ let
 
   defaultScheme = "${pkgs.base16-schemes}/share/themes/circus.yaml";
   defaultImage = ../wallpapers/sky.jpg;
-
-in
-{
+in {
   # Use attribute set to get theme paths
   stylix.base16Scheme = lib.mkDefault (lib.getAttr userSettings.theme themePaths).scheme;
   stylix.image = lib.mkDefault (lib.getAttr userSettings.theme themePaths).image;
-
 
   stylix.cursor = {
     package = lib.mkForce pkgs.google-cursor;
@@ -95,10 +97,10 @@ in
 
   stylix.fonts = {
     sizes = {
-      applications = lib.mkForce 16;
-      terminal = lib.mkForce 16;
-      desktop = lib.mkForce 16;
-      popups = lib.mkForce 16;
+      applications = lib.mkForce 18;
+      terminal = lib.mkForce 18;
+      desktop = lib.mkForce 18;
+      popups = lib.mkForce 18;
     };
     # opacity = {
     #   applications = lib.mkForce 1.0;
@@ -132,4 +134,3 @@ in
     stylix.targets.qt.platform = "qtct";
   };
 }
-

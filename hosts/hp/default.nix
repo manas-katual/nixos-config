@@ -11,17 +11,13 @@
 #       └─ ./desktops
 #           └─ hyprland.nix
 #
+
+{ pkgs, inputs, lib, ... }:
 {
-  pkgs,
-  inputs,
-  lib,
-  ...
-}: {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ]
-    ++ (import ../../modules/hardware/nokia);
+  imports = [
+    ./hardware-configuration.nix
+  ]; #++ 
+    # (import ../../modules/hardware/nokia); 
 
   # Boot Options
   boot = {
@@ -59,7 +55,7 @@
     memoryPercent = 50;
     priority = 999;
   };
-  boot.kernel.sysctl = {
+	boot.kernel.sysctl = { 
     "vm.page-cluster" = 0;
     "vm.swappiness" = 20;
     "vm.vfs_cache_pressure" = 50;
@@ -74,7 +70,14 @@
     scx.scheduler = "scx_rusty";
   };
 
+  programs.coolercontrol = {
+    enable = true;
+  };
+
   networking.networkmanager.wifi.powersave = false;
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
+
+  # hardware.fancontrol.enable = true;
+
 }

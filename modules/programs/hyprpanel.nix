@@ -37,9 +37,7 @@
                     "workspaces"
                     "windowtitle"
                   ];
-                  "middle" = [
-                    "media"
-                  ];
+                  "middle" = [ ];
                   "right" = [
                     "systray"
                     "hypridle"
@@ -61,7 +59,7 @@
             "theme.font.size" = "0.8rem";
             "theme.bar.outer_spacing" = "1rem";
             "theme.bar.dropdownGap" = "3.3em";
-            "scalingPriority" = "both";
+            "scalingPriority" = "hyprland";
             "bar.launcher.icon" = "󰍜"; #"";
 
             "bar.workspaces.showAllActive" = false;

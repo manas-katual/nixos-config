@@ -2,7 +2,6 @@
   description = "My system configuration";
 
   inputs = {
-
     # nix packages
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -17,7 +16,7 @@
 
     # Official Hyprland Flake
     hyprland = {
-     url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     };
 
     # Hyprspace
@@ -53,7 +52,7 @@
     # jovian steam
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
 
-    # niri 
+    # niri
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,29 +81,40 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  outputs = inputs@ { self, nixpkgs, home-manager, stylix, nvf, hyprpanel, nur, jovian-nixos, niri, ags, chaotic, astal, anyrun, ... }:
-
-    let
-      userSettings = {
-        username = "manas";
-        #host = "dell";
-        terminal = "kitty";
-        editor = "nvim";
-        bar = "hyprpanel";
-        theme = "catppuccin-frappe";
-        gitUsername = "manas-katual";
-        gitEmail = "manaskatual19@gmail.com";
-      };
-
-    in {
-      nixosConfigurations = (
-        import ./hosts {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    stylix,
+    nvf,
+    hyprpanel,
+    nur,
+    jovian-nixos,
+    niri,
+    ags,
+    chaotic,
+    astal,
+    anyrun,
+    ...
+  }: let
+    userSettings = {
+      username = "manas";
+      #host = "dell";
+      terminal = "kitty";
+      editor = "nvim";
+      bar = "waybar";
+      theme = "everforest";
+      gitUsername = "manas-katual";
+      gitEmail = "manaskatual19@gmail.com";
+    };
+  in {
+    nixosConfigurations = (
+      import ./hosts {
         inherit (nixpkgs) lib;
         inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur jovian-nixos niri ags chaotic astal anyrun;
-        }
-      );
-    };
+      }
+    );
+  };
 }

@@ -27,4 +27,5 @@
   # ./btop.nix
   ./htop.nix
   ./cava.nix
+  ./zed-editor.nix
 ]
