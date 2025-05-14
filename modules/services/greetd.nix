@@ -6,7 +6,7 @@
   ...
 }:
 with lib; {
-  config = mkIf (config.wlwm.enable) {
+  config = mkIf (config.wlwm.enable && config.gnome.enable == false) {
     services.greetd = {
       enable = true;
       settings = {

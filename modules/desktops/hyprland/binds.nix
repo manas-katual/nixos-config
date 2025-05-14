@@ -76,7 +76,8 @@ with host; {
           "$modifier, mouse_down, workspace, e-1"
           "$modifier, mouse_up, workspace, e+1"
 
-          ",print,exec,${pkgs.grimblast}/bin/grimblast --notify --freeze --wait 1 copysave area ~/Pictures/Screenshots/$(date +%Y-%m-%dT%H%M%S).png"
+          # ",print,exec,${pkgs.grimblast}/bin/grimblast --notify --freeze --wait 1 copysave area ~/Pictures/Screenshots/$(date +%Y-%m-%dT%H%M%S).png"
+          '',print,exec,grim -g "$(slurp)" - | swappy -f -''
           ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 10"
           ",XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -i 10"
           ",XF86AudioMute,exec,${pkgs.pamixer}/bin/pamixer -t"
