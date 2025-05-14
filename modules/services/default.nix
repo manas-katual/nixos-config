@@ -7,4 +7,6 @@
   ./udiskie.nix
   ./wlsunset.nix
   ./acpid.nix
+  ./lid.nix
+  ./greetd.nix
 ]

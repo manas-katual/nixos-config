@@ -1,4 +1,5 @@
-[
+(import ./hyprland)
+++ [
   ./options.nix
   ./dwm.nix
   ./jwm.nix
@@ -6,7 +7,7 @@
   ./dwl.nix
   ./sway.nix
   ./gnome.nix
-  ./hyprland.nix
+  # ./hyprland.nix
   ./vm.nix
   ./niri.nix
 ]

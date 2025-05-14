@@ -2,12 +2,16 @@
 #  Sway Configuration
 #  Enable with "sway.enable = true;"
 #
-
-{ config, lib, pkgs, userSettings, host, ... }:
-
-with lib;
-with host;
 {
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  host,
+  ...
+}:
+with lib;
+with host; {
   options = {
     sway = {
       enable = mkOption {
@@ -27,19 +31,19 @@ with host;
       #fi
       #'';
       variables = {
-        WLR_NO_HARDWARE_CURSORS = "1"; 
+        WLR_NO_HARDWARE_CURSORS = "1";
       };
     };
 
-    services.greetd = {                                                      
-      enable = true;                                                         
-      settings = {                                                           
-        default_session = {                                                  
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-          user = "${userSettings.username}";                                                  
-        };                                                                   
-      };                                                                     
-    };
+    # services.greetd = {
+    #   enable = true;
+    #   settings = {
+    #     default_session = {
+    #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+    #       user = "${userSettings.username}";
+    #     };
+    #   };
+    # };
 
     programs = {
       sway = {
@@ -70,11 +74,14 @@ with host;
           menu = "${pkgs.rofi-wayland}/bin/rofi -show drun";
 
           startup = [
-            { command = "${pkgs.autotiling}/bin/autotiling"; always = true; }
+            {
+              command = "${pkgs.autotiling}/bin/autotiling";
+              always = true;
+            }
           ];
 
           bars = [
-            { command = "${pkgs.waybar}/bin/waybar"; }
+            {command = "${pkgs.waybar}/bin/waybar";}
           ];
 
           window = {
@@ -180,53 +187,52 @@ with host;
         '';
       };
 
-    services = {
-      swayidle = {
-        enable = true;
-        package = pkgs.swayidle;
-        timeouts = [
-          { 
-           timeout = 800;
-           command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-          }
+      services = {
+        swayidle = {
+          enable = true;
+          package = pkgs.swayidle;
+          timeouts = [
+            {
+              timeout = 800;
+              command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
+            }
 
-          {
-            timeout = 850;
-            command = "${pkgs.swaylock-effects}/bin/swaylock";
-          }
+            {
+              timeout = 850;
+              command = "${pkgs.swaylock-effects}/bin/swaylock";
+            }
 
-          {
-            timeout = 900;
-            command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-            resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
-          }
+            {
+              timeout = 900;
+              command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
+              resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
+            }
 
-          {
-            timeout = 950;
-            command = "${pkgs.systemd}/bin/systemctl suspend";
-          }
-        ];
-        events = [
-          {
-            event = "before-sleep";
-            command = "${pkgs.swaylock-effects}/bin/swaylock";
-          }
-        ];
+            {
+              timeout = 950;
+              command = "${pkgs.systemd}/bin/systemctl suspend";
+            }
+          ];
+          events = [
+            {
+              event = "before-sleep";
+              command = "${pkgs.swaylock-effects}/bin/swaylock";
+            }
+          ];
+        };
       };
-    };      
       programs.swaylock = {
         enable = true;
         package = pkgs.swaylock-effects;
         settings = {
           color = lib.mkForce "#''+stylix.colors.base04+''";
-            font-size = 24;
-            indicator-idle-visible = true;
-            indicator-radius = 100;
-            line-color = lib.mkForce "#''+stylix.colors.base00+''";
-            show-failed-attempts = true;
+          font-size = 24;
+          indicator-idle-visible = true;
+          indicator-radius = 100;
+          line-color = lib.mkForce "#''+stylix.colors.base00+''";
+          show-failed-attempts = true;
         };
       };
     };
-
   };
 }
