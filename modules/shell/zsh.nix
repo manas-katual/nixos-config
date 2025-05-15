@@ -1,10 +1,11 @@
 #
 #  Shell
 #
-
-{ pkgs, userSettings, ... }:
-
 {
+  pkgs,
+  userSettings,
+  ...
+}: {
   programs.zsh.enable = true;
 
   users.users.${userSettings.username} = {
@@ -17,7 +18,7 @@
         enable = true;
         useTheme = "robbyrussell";
         enableZshIntegration = true;
-        package = pkgs.oh-my-posh; 
+        package = pkgs.oh-my-posh;
         settings = {
           version = 2;
           final_space = true;
@@ -108,18 +109,19 @@
         enableCompletion = true;
         shellAliases = {
           fucking-flake-rb = "sudo nixos-rebuild switch --flake ~/setup/";
-          ls = "${pkgs.eza}/bin/eza --icons";
-          tree = "${pkgs.eza}/bin/eza --tree --icons";
+          ls = "${pkgs.eza}/bin/eza --icons --group-directories-first -1";
+          ll = "${pkgs.eza}/bin/eza --icons -lh --group-directories-first -1 --no-user --long";
+          la = "${pkgs.eza}/bin/eza --icons -lah --group-directories-first -1";
+          tree = "${pkgs.eza}/bin/eza --icons --tree --group-directories-first";
           cat = "${pkgs.bat}/bin/bat";
-					icat = "kitten icat";
+          icat = "kitten icat";
         };
         #histSize = 100000;
         initContent = ''
           eval "$(oh-my-posh init zsh)"
           #export PATH="$HOME/.config/emacs/bin:$PATH"
         '';
-        };
+      };
     };
   };
-
 }

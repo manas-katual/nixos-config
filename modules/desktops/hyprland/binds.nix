@@ -35,7 +35,7 @@ with host; {
           "$modifier,T,exec,${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal} -e nvim"
           # "$modifier,K,exec,${config.programs.hyprland.package}/bin/hyprctl switchxkblayout keychron-k8-keychron-k8 next"
           "$modifier,Z,layoutmsg,togglesplit"
-          "$modifier,F1,exec,~/.config/hypr/gamemode.sh"
+          "$modifier,F1,exec,gamemode"
           "$modifier,F2,exec,hyprpanel toggleWindow bar-0"
           "ALT,F4,exec,hyprpanel toggleWindow powerdropdownmenu"
           "$modifier,TAB,exec,pkill -SIGUSR1 waybar"
@@ -76,8 +76,7 @@ with host; {
           "$modifier, mouse_down, workspace, e-1"
           "$modifier, mouse_up, workspace, e+1"
 
-          # ",print,exec,${pkgs.grimblast}/bin/grimblast --notify --freeze --wait 1 copysave area ~/Pictures/Screenshots/$(date +%Y-%m-%dT%H%M%S).png"
-          '',print,exec,grim -g "$(slurp)" - | swappy -f -''
+          ",print,exec,screenshot"
           ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 10"
           ",XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -i 10"
           ",XF86AudioMute,exec,${pkgs.pamixer}/bin/pamixer -t"
@@ -96,7 +95,7 @@ with host; {
         bindl =
           if hostName == "dell" || hostName == "nokia"
           then [
-            ",switch:Lid Switch,exec,$HOME/.config/hypr/script/clamshell.sh"
+            ",switch:on:Lid Switch,exec,${pkgs.hyprlock}/bin/hyprlock"
           ]
           else [];
         layerrule = [

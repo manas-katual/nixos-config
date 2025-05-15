@@ -21,24 +21,28 @@
 #       └─ ./theming
 #           └─ default.nix
 #
-
-{ config, pkgs, userSettings, lib, inputs, ... }:
-
-let
-  terminal = pkgs.${userSettings.terminal};
-in
 {
-  imports =
-    ( 
-      import ../modules/desktops ++
-      import ../modules/programs ++
-      import ../modules/theming ++
-      import ../modules/services ++
-      import ../modules/shell ++
-      import ../modules/editors ++ 
-      # import ../modules/custom ++
-      import ../modules/hardware 
-    );
+  config,
+  pkgs,
+  userSettings,
+  lib,
+  inputs,
+  ...
+}: let
+  terminal = pkgs.${userSettings.terminal};
+in {
+  imports = (
+    import ../modules/desktops
+    ++ import ../modules/programs
+    ++ import ../modules/theming
+    ++ import ../modules/services
+    ++ import ../modules/shell
+    ++ import ../modules/editors
+    ++
+    # import ../modules/custom ++
+    import ../modules/hardware
+    ++ import ../modules/scripts
+  );
 
   boot = {
     tmp = {
@@ -52,7 +56,7 @@ in
     hostName = "nokia"; # Define your hostname.
     networkmanager.enable = true; # network manager systemd
     #wireless.enable = true; # Enables wireless support via wpa_supplicant.
-  }; 
+  };
   time.timeZone = "Asia/Kolkata";
   time.hardwareClockInLocalTime = true;
 
@@ -86,7 +90,7 @@ in
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = "Manas Katual";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "libvirtd" "input" ];
+    extraGroups = ["networkmanager" "wheel" "video" "audio" "libvirtd" "input"];
     packages = with pkgs; [];
   };
 
@@ -97,9 +101,8 @@ in
       VISUAL = "${userSettings.editor}";
     };
     systemPackages = with pkgs; [
-
       # terminal tools
-      neovim # text editor 
+      neovim # text editor
       wget # downloader
       terminal
       htop # cpu usage
@@ -143,8 +146,8 @@ in
     ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 59010 ]; # for soundwire
-  networking.firewall.allowedUDPPorts = [ 59010 ]; # for soundwire
+  networking.firewall.allowedTCPPorts = [59010]; # for soundwire
+  networking.firewall.allowedUDPPorts = [59010]; # for soundwire
 
   fonts.packages = with pkgs; [
     carlito # NixOS
@@ -206,8 +209,8 @@ in
   nix = {
     settings = {
       auto-optimise-store = true;
-      extra-substituters = [ "https://nix-community.cachix.org" ];
-      extra-trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+      extra-substituters = ["https://nix-community.cachix.org"];
+      extra-trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
     };
     gc = {
       automatic = true;
@@ -227,7 +230,7 @@ in
   # =============== #
   # DONT TOUCH THIS #
   # =============== #
-  system.stateVersion = "24.05"; 
+  system.stateVersion = "24.05";
 
   home-manager.users.${userSettings.username} = {
     home = {
@@ -237,7 +240,4 @@ in
       home-manager.enable = true;
     };
   };
-
-
-
 }

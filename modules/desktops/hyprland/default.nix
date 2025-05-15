@@ -7,5 +7,5 @@
   ./hypridle.nix
   ./hyprpaper.nix
   ./pyprland.nix
-  ./scripts.nix
+  # ./scripts.nix
 ]
