@@ -108,6 +108,7 @@
       theme = "everforest";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
+      cpu = "intel";
     };
   in {
     nixosConfigurations = (

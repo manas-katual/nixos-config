@@ -1,6 +1,8 @@
 [
   ./android.nix
   ./anyrun.nix
+  ./bat.nix
+  ./btop.nix
   ./chrome.nix
   ./firefox.nix
   # ./nbfc.nix
@@ -23,8 +25,6 @@
   ./fhs.nix
   ./ags.nix
   ./fastfetch.nix
-  ./bat.nix
-  # ./btop.nix
   ./htop.nix
   ./cava.nix
   ./swappy.nix

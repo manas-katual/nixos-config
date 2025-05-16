@@ -38,9 +38,8 @@ in {
     ++ import ../modules/services
     ++ import ../modules/shell
     ++ import ../modules/editors
-    ++
-    # import ../modules/custom ++
-    import ../modules/hardware
+    ++ import ../modules/custom
+    ++ import ../modules/hardware
     ++ import ../modules/scripts
   );
 

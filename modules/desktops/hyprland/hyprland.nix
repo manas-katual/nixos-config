@@ -129,14 +129,14 @@ with host; {
               size = 2;
               passes = 3;
               special = false;
-              # new_optimizations = on;
+              new_optimizations = true;
             };
           };
           monitor =
             if (hostName == "dell")
             then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1"
-            # else if (hostName == "hp")
-            #   then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1"
+            else if (hostName == "hp")
+            then "HDMI-A-1,1366x768,auto,1,mirror,LVDS-1"
             else if (hostName == "nokia")
             then "eDP-1,1920x1080@60,0x0,1"
             else ",preferred,auto,auto";

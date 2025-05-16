@@ -1,13 +1,12 @@
-{userSettings, pkgs, ...}: 
-
 {
+  userSettings,
+  pkgs,
+  ...
+}: {
   home-manager.users.${userSettings.username} = {
     programs.btop = {
       enable = true;
-      package = pkgs.btop.override {
-        rocmSupport = true;
-        cudaSupport = true;
-      };
+      package = pkgs.btop;
       settings = {
         vim_keys = true;
         rounded_corners = true;
@@ -24,4 +23,3 @@
     };
   };
 }
-

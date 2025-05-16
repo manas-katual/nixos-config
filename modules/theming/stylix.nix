@@ -87,7 +87,7 @@ in {
   stylix.cursor = {
     package = lib.mkForce pkgs.google-cursor;
     name = lib.mkForce "GoogleDot-Black";
-    size = lib.mkForce 16;
+    size = lib.mkForce 18;
   };
 
   stylix.homeManagerIntegration = {
