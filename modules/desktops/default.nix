@@ -10,4 +10,5 @@
   # ./hyprland.nix
   ./vm.nix
   ./niri.nix
+  ./bspwm.nix
 ]

@@ -14,7 +14,7 @@
       package = pkgs.neovide;
       settings = {
         font = {
-          normal = ["Intel One Mono"];
+          normal = ["JetBrainsMono Nerd Font Mono"];
           size = 18.0;
         };
       };

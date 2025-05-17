@@ -28,5 +28,6 @@
   ./htop.nix
   ./cava.nix
   ./swappy.nix
+  ./spicetify.nix
   ./zed-editor.nix
 ]

@@ -39,6 +39,11 @@ with host; {
       ];
     };
 
+    # nix.settings = {
+    #   substituters = ["https://hyprland.cachix.org"];
+    #   trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    # };
+
     programs.hyprland = {
       enable = true;
     };
@@ -79,23 +84,16 @@ with host; {
           exec-once =
             [
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-              # "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent"
               "systemctl --user start ${pkgs.hyprpolkitagent}/bin/hyprpolkitagent"
-              # "emacs --daemon"
-              # "wayvibes ~/wayvibes/SK61 with Lubed brown switches/ -v 10"
               "${pkgs.hyprlock}/bin/hyprlock"
               "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
               "pypr &"
-              # "${pkgs.hyprpaper}/bin/hyprpaper"
             ]
             ++ (
               if userSettings.bar == "waybar"
               then [
                 "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
-                # "${pkgs.blueman}/bin/blueman-applet"
                 "blueman-applet"
-                # "${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive --vfs-cache-mode=writes"
-                # "${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive"
                 "${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar/config"
                 "${pkgs.eww}/bin/eww daemon"
                 # "$HOME/.config/eww/scripts/eww" # When running eww as a bar

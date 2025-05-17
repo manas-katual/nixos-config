@@ -25,25 +25,15 @@ with host; {
     wlwm.enable = true;
 
     environment = {
-      #loginShellInit = ''
-      #  if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-      #  exec sway
-      #fi
-      #'';
+      loginShellInit = ''
+         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+         exec sway
+        fi
+      '';
       variables = {
         WLR_NO_HARDWARE_CURSORS = "1";
       };
     };
-
-    # services.greetd = {
-    #   enable = true;
-    #   settings = {
-    #     default_session = {
-    #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-    #       user = "${userSettings.username}";
-    #     };
-    #   };
-    # };
 
     programs = {
       sway = {
@@ -53,9 +43,6 @@ with host; {
           wl-clipboard
           wlr-randr
           xwayland
-          satty
-          grim
-          slurp
           libnotify
         ];
       };
@@ -70,7 +57,6 @@ with host; {
         config = rec {
           modifier = "Mod4";
           terminal = "${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal}";
-          # menu = "${pkgs.wofi}/bin/wofi --show drun --allow-images --sort-order=alphabetical";
           menu = "${pkgs.rofi-wayland}/bin/rofi -show drun";
 
           startup = [
@@ -87,11 +73,6 @@ with host; {
           window = {
             titlebar = false;
           };
-
-          #fonts = {
-          #  names = [ "Source Code Pro" "JetBrainsMono Nerd Font Mono" ];
-          #  size = 10.0;
-          #};
 
           gaps = {
             inner = 3;
@@ -149,8 +130,12 @@ with host; {
             "${modifier}+Shift+3" = "move container to workspace number 3";
             "${modifier}+Shift+4" = "move container to workspace number 4";
             "${modifier}+Shift+5" = "move container to workspace number 5";
+            "${modifier}+Shift+6" = "move container to workspace number 6";
+            "${modifier}+Shift+7" = "move container to workspace number 7";
+            "${modifier}+Shift+8" = "move container to workspace number 8";
+            "${modifier}+Shift+9" = "move container to workspace number 9";
 
-            "Print" = "exec ${pkgs.flameshot}/bin/flameshot gui";
+            "Print" = "exec screenshot";
 
             "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 10";
             "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 10";
@@ -186,47 +171,47 @@ with host; {
           export XDG_CURRENT_DESKTOP=sway
         '';
       };
-
-      services = {
-        swayidle = {
-          enable = true;
-          package = pkgs.swayidle;
-          timeouts = [
-            {
-              timeout = 800;
-              command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
-            }
-
-            {
-              timeout = 850;
-              command = "${pkgs.swaylock-effects}/bin/swaylock";
-            }
-
-            {
-              timeout = 900;
-              command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'";
-              resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'";
-            }
-
-            {
-              timeout = 950;
-              command = "${pkgs.systemd}/bin/systemctl suspend";
-            }
-          ];
-          events = [
-            {
-              event = "before-sleep";
-              command = "${pkgs.swaylock-effects}/bin/swaylock";
-            }
-          ];
-        };
+      services.swayidle = {
+        enable = true;
+        events = [
+          {
+            event = "before-sleep";
+            command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
+          }
+          {
+            event = "lock";
+            command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize --grace 0";
+          }
+          {
+            event = "unlock";
+            command = "pkill -SIGUSR1 swaylock";
+          }
+          {
+            event = "after-resume";
+            command = "swaymsg \"output * dpms on\"";
+          }
+        ];
+        timeouts = [
+          {
+            timeout = 1800;
+            command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
+          }
+          {
+            timeout = 2000;
+            command = "swaymsg \"output * dpms off\"";
+            resumeCommand = "swaymsg \"output * dpms on\"";
+          }
+        ];
       };
       programs.swaylock = {
         enable = true;
         package = pkgs.swaylock-effects;
         settings = {
           color = lib.mkForce "#''+stylix.colors.base04+''";
+          clock = true;
           font-size = 24;
+          fade-in = 0.2;
+          grace = 5;
           indicator-idle-visible = true;
           indicator-radius = 100;
           line-color = lib.mkForce "#''+stylix.colors.base00+''";

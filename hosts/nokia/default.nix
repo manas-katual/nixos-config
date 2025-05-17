@@ -43,13 +43,8 @@
 
   environment = {
     systemPackages = with pkgs; [
-      nchat # whatsapp & telegram tui-client
-      ripcord # dicord client
-      spotify-player # spotify in terminal
       pipe-viewer # youtube in terminal
       manga-tui # manga reader
-      inputs.yt-x.packages."${system}".default
-      lm_sensors
     ];
   };
 

@@ -137,6 +137,7 @@ in {
       hardinfo2 # shows hardware info
       # ciscoPacketTracer8 # networking emulation
       soundwireserver # to listen audio from pc to mobile
+      vesktop # discord client
 
       # games and emulation
       mcpelauncher-ui-qt # minecraft bedrock edition

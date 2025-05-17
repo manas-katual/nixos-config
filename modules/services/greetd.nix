@@ -17,7 +17,7 @@ with lib; {
             then "${config.programs.hyprland.package}/bin/Hyprland"
             else if (config.sway.enable)
             then "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway"
-            else "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri"; # tuigreet not needed with exec-once hyprlock
+            else "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri";
           user = userSettings.username;
         };
       };
