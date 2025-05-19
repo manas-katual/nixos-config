@@ -5,8 +5,10 @@
   lib,
   ...
 }: {
-  environment.systemPackages = [
-    pkgs.zed-editor
+  environment.systemPackages = with pkgs; [
+    zed-editor
+    nixd
+    nixpkgs-fmt
   ];
 
   home-manager.users.${userSettings.username} = {
@@ -56,7 +58,7 @@
             };
           };
           env = {
-            TERM = "alacritty";
+            TERM = "kitty";
           };
           font_family = "FiraCode Nerd Font";
           font_features = null;
@@ -116,17 +118,21 @@
               };
             };
           };
+          "Nix" = {
+            language_servers = ["nixd"];
+            format_on_save = {
+              external = {
+                command = "nixpkgs-fmt";
+                arguments = ["-"];
+              };
+            };
+          };
         };
 
         vim_mode = true;
         ## tell zed to use direnv and direnv can use a flake.nix enviroment.
         load_direnv = "shell_hook";
         base_keymap = "VSCode";
-        # theme = {
-        #   mode = "system";
-        #   light = "One Light";
-        #   dark = "One Dark";
-        # };
         show_whitespaces = "all";
         # ui_font_size = 16;
         # buffer_font_size = 16;

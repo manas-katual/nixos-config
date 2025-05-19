@@ -15,9 +15,9 @@
     stylix.url = "github:danth/stylix";
 
     # Official Hyprland Flake
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    # };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+    };
 
     # Hyprspace
     #hyprspace = {
@@ -106,7 +106,7 @@
       terminal = "kitty";
       editor = "nvim";
       bar = "waybar";
-      theme = "everforest";
+      theme = "gruvbox-dark-hard";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";

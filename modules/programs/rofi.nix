@@ -11,7 +11,7 @@
   inherit (config.home-manager.users.${userSettings.username}.lib.formats.rasi) mkLiteral;
   colors = import ../theming/colors.nix;
 in {
-  config = lib.mkIf (config.wlwm.enable) {
+  config = lib.mkIf (config.wlwm.enable && userSettings.bar == "waybar") {
     home-manager.users.${userSettings.username} = {
       home = {
         packages = with pkgs; [

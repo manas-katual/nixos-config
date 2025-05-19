@@ -1,24 +1,30 @@
-{ pkgs, config, lib, userSettings, ... }:
-
-let
+{
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}: let
   colors = import ../theming/colors.nix;
-in
-
-let
+in let
   modules-left = with config;
-    if hyprland.enable == true then [
+    if hyprland.enable == true
+    then [
       "hyprland/workspaces"
       "hyprland/window"
-    ] else if sway.enable == true then [
+    ]
+    else if sway.enable == true
+    then [
       "sway/workspaces"
       "sway/window"
-    ] else if niri.enable == true then [
+    ]
+    else if niri.enable == true
+    then [
       "niri/workspaces"
       "niri/window"
-    ] else [ ];
-in
-{
-
+    ]
+    else [];
+in {
   config = lib.mkIf (config.wlwm.enable && userSettings.bar == "waybar") {
     environment.systemPackages = with pkgs; [
       waybar
@@ -469,9 +475,11 @@ in
             # modules-center = [ "sway/window" ];
             modules-right = ["idle_inhibitor" "custom/notification" "custom/menu" "pulseaudio" "battery" "clock" "tray" "custom/powermenu"];
 
-            /* Modules configuration */
+            /*
+            Modules configuration
+            */
             "sway/workspaces" = {
-              format = "<span font='11'>{icon}</span>";
+              # format = "<span font='11'>{icon}</span>";
               format-icons = {
                 "1" = "1";
                 "2" = "2";
@@ -486,17 +494,21 @@ in
               };
               all-outputs = true;
               persistent_workspaces = {
-                "1" = [ ];
-                "2" = [ ];
-                "3" = [ ];
-                "4" = [ ];
-                "5" = [ ];
-                "6" = [ ];
-                "7" = [ ];
-                "8" = [ ];
-                "9" = [ ];
-                "10" = [ ];
+                "1" = [];
+                "2" = [];
+                "3" = [];
+                "4" = [];
+                "5" = [];
+                "6" = [];
+                "7" = [];
+                "8" = [];
+                "9" = [];
+                "10" = [];
               };
+            };
+            "sway/workspaces" = {
+              active-only = false;
+              on-click = "activate";
             };
             "niri/workspaces" = {
               format = "<span font='11'>{icon}</span>";
@@ -514,16 +526,16 @@ in
               };
               all-outputs = true;
               persistent_workspaces = {
-                "1" = [ ];
-                "2" = [ ];
-                "3" = [ ];
-                "4" = [ ];
-                "5" = [ ];
-                "6" = [ ];
-                "7" = [ ];
-                "8" = [ ];
-                "9" = [ ];
-                "10" = [ ];
+                "1" = [];
+                "2" = [];
+                "3" = [];
+                "4" = [];
+                "5" = [];
+                "6" = [];
+                "7" = [];
+                "8" = [];
+                "9" = [];
+                "10" = [];
               };
             };
             "niri/workspaces" = {
@@ -544,11 +556,11 @@ in
               disable-scroll = "false";
             };
 
-            "idle_inhibitor"= {
-              format= "{icon}";
-              format-icons= {
-                "activated"= "󰅶";
-                "deactivated"= "󰾪";
+            "idle_inhibitor" = {
+              format = "{icon}";
+              format-icons = {
+                "activated" = "󰅶";
+                "deactivated" = "󰾪";
               };
             };
 
@@ -601,7 +613,7 @@ in
               tooltip-format = "{essid} {signalStrength}%";
             };
 
-            "bluetooth"= {
+            "bluetooth" = {
               device = "intel_backlight";
               format = "{icon}";
               format-alt = "{status}";
@@ -609,7 +621,7 @@ in
               on-click-right = "${pkgs.blueberry}/bin/blueberry";
               "format-icons" = {
                 enabled = "";
-                disabled = "󰂲";  
+                disabled = "󰂲";
               };
               tooltip-format = "{status}";
             };
@@ -638,25 +650,25 @@ in
             };
 
             "custom/notification" = {
-               tooltip = false;
-               format = "{icon} ";
-               format-icons = {
-                 notification = "<span foreground='red'><sup></sup></span>";
-                 none = "";
-                 dnd-notification = "<span foreground='red'><sup></sup></span>";
-                 dnd-none = "";
-                 inhibited-notification = "<span foreground='red'><sup></sup></span>";
-                 inhibited-none = "";
-                 dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
-                 dnd-inhibited-none = "";
-               };
-               return-type = "json";
-               exec-if = "which swaync-client";
-               exec = "swaync-client -swb";
-               #on-click = "sleep 0.1 && task-waybar";
-               on-click = "sleep 0.1; swaync-client -t -sw";
-               on-click-right = "sleep 0.1; swaync-client -d -sw";
-               escape = true;
+              tooltip = false;
+              format = "{icon} ";
+              format-icons = {
+                notification = "<span foreground='red'><sup></sup></span>";
+                none = "";
+                dnd-notification = "<span foreground='red'><sup></sup></span>";
+                dnd-none = "";
+                inhibited-notification = "<span foreground='red'><sup></sup></span>";
+                inhibited-none = "";
+                dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+                dnd-inhibited-none = "";
+              };
+              return-type = "json";
+              exec-if = "which swaync-client";
+              exec = "swaync-client -swb";
+              #on-click = "sleep 0.1 && task-waybar";
+              on-click = "sleep 0.1; swaync-client -t -sw";
+              on-click-right = "sleep 0.1; swaync-client -d -sw";
+              escape = true;
             };
 
             "custom/menu" = {
@@ -680,4 +692,3 @@ in
     };
   };
 }
-

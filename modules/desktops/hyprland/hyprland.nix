@@ -26,10 +26,9 @@ with host; {
       '';
 
       systemPackages = with pkgs; [
-        grimblast # Screenshot
         hyprcursor # Cursor
         hyprpaper # Wallpaper
-        hyprsunset
+        hyprsunset # night light
         wl-clipboard # Clipboard
         wlr-randr # Monitor Settings
         xwayland # X session
@@ -38,11 +37,6 @@ with host; {
         #hyprpolkitagent
       ];
     };
-
-    # nix.settings = {
-    #   substituters = ["https://hyprland.cachix.org"];
-    #   trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-    # };
 
     programs.hyprland = {
       enable = true;
@@ -54,7 +48,8 @@ with host; {
       ];
       wayland.windowManager.hyprland = {
         enable = true;
-        package = pkgs.hyprland;
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
         xwayland.enable = true;
         systemd = {
           enable = true;
@@ -86,14 +81,16 @@ with host; {
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
               "systemctl --user start ${pkgs.hyprpolkitagent}/bin/hyprpolkitagent"
               "${pkgs.hyprlock}/bin/hyprlock"
-              "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
+              "${pkgs.hypridle}/bin/hypridle"
+              # "${pkgs.hyprpaper}/bin/hyprpaper"
+              # "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
               "pypr &"
             ]
             ++ (
               if userSettings.bar == "waybar"
               then [
                 "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
-                "blueman-applet"
+                "${pkgs.blueman}/bin/blueman-applet"
                 "${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar/config"
                 "${pkgs.eww}/bin/eww daemon"
                 # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
