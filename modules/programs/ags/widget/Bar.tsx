@@ -1,45 +1,37 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk3";
-import Time from "./components/Time";
-import MediaComponent from "./components/Media";
-import Workspaces from "./components/Workspaces";
-import BatteryComponent from "./components/Battery";
-import Wifi from "./components/Wifi";
-import Distro from "./components/Distro";
-import ActiveWindow from "./components/Window";
-import BluetoothComponent from "./components/Bluetooth";
-import VolumeComponent from "./components/Volume";
+import { App, Astal, Gtk, Gdk } from "astal/gtk3"
+import { Clock } from "./bar/Clock"
+import { Workspaces } from "./bar/Hyprland"
+import { BarBattery } from "./bar/Battery"
+import { Mic, Speaker } from "./bar/Audio"
+import { Brightness } from "./bar/Brightness"
+import { NetworkIndicator } from "./bar/Network"
+import { Variable } from "../../../../.local/share/ags"
+import { BarMprisPlayer } from "./quicksettings/Media"
+import { Calculator } from "./bar/Calculator"
+
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
-  return (
-    <window
-      className="Bar"
-      name="Bar"
-      gdkmonitor={gdkmonitor}
-      exclusivity={Astal.Exclusivity.EXCLUSIVE}
-      anchor={
-        Astal.WindowAnchor.TOP |
-        Astal.WindowAnchor.LEFT |
-        Astal.WindowAnchor.RIGHT
-      }
-      application={App}
-    >
-      <centerbox>
-        <box halign={Gtk.Align.START}>
-          <Distro />
-          <Workspaces />
-          <ActiveWindow />
+    return <window
+        keymode={Astal.Keymode.ON_DEMAND}
+        gdkmonitor={gdkmonitor}
+        exclusivity={Astal.Exclusivity.EXCLUSIVE}
+        anchor={Astal.WindowAnchor.TOP
+            | Astal.WindowAnchor.LEFT
+            | Astal.WindowAnchor.RIGHT}
+        name="bar"
+        application={App}>
+        <box className="bar" spacing={4} canFocus={false}>
+            <Workspaces />
+            <Speaker />
+            <Mic />
+            <Calculator />
+            <BarBattery />
+            <box expand={true} />
+            <box expand={true} />
+            <BarMprisPlayer />
+            <NetworkIndicator />
+            <Brightness />
+            <Clock monitor={gdkmonitor.get_model()} />
         </box>
-        <box halign={Gtk.Align.CENTER}>
-          <MediaComponent />
-        </box>
-        <box halign={Gtk.Align.END}>
-          <BluetoothComponent />
-          <VolumeComponent />
-          <BatteryComponent />
-          <Wifi />
-          <Time />
-        </box>
-      </centerbox>
     </window>
-  );
 }

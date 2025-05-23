@@ -1,6 +1,7 @@
 [
   ./android.nix
   ./anyrun.nix
+  # ./ags.nix
   ./bat.nix
   ./btop.nix
   ./chrome.nix
@@ -23,7 +24,6 @@
   ./wine.nix
   # ./jovian.nix
   ./fhs.nix
-  ./ags.nix
   ./fastfetch.nix
   ./htop.nix
   ./cava.nix

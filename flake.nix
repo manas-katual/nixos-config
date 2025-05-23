@@ -90,7 +90,7 @@
     home-manager,
     stylix,
     nvf,
-    hyprpanel,
+    # hyprpanel,
     nur,
     jovian-nixos,
     niri,
@@ -105,8 +105,8 @@
       #host = "dell";
       terminal = "kitty";
       editor = "nvim";
-      bar = "waybar";
-      theme = "gruvbox-dark-hard";
+      bar = "hyprpanel";
+      theme = "gruvbox-dark-medium";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";
@@ -115,7 +115,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager userSettings stylix nvf hyprpanel nur jovian-nixos niri ags chaotic astal anyrun;
+        inherit inputs nixpkgs home-manager userSettings stylix nvf nur jovian-nixos niri ags chaotic astal anyrun;
       }
     );
   };

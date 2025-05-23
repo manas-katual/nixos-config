@@ -25,17 +25,24 @@ with host; {
         fi
       '';
 
-      systemPackages = with pkgs; [
-        hyprcursor # Cursor
-        hyprpaper # Wallpaper
-        hyprsunset # night light
-        wl-clipboard # Clipboard
-        wlr-randr # Monitor Settings
-        xwayland # X session
-        blueman
-        #nwg-look
-        #hyprpolkitagent
-      ];
+      systemPackages = with pkgs;
+        [
+          hyprcursor # Cursor
+          hyprpaper # Wallpaper
+          hyprsunset # night light
+          wl-clipboard # Clipboard
+          wlr-randr # Monitor Settings
+          xwayland # X session
+          #nwg-look
+          #hyprpolkitagent
+        ]
+        ++ (
+          if userSettings.bar == "waybar"
+          then [
+            blueman
+          ]
+          else []
+        );
     };
 
     programs.hyprland = {

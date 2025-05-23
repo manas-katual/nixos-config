@@ -23,7 +23,7 @@ with lib; {
         class = "kitty-dropterm"
         size = "75% 60%"
         # max_size = "1920px 100%"
-        # position = "150px 150px"
+        position = "150px 100px"
       '';
     };
   };

@@ -1,8 +1,6 @@
 {
   pkgs,
   lib,
-  inputs,
-  config,
   userSettings,
   ...
 }: let
@@ -95,6 +93,13 @@ in {
     followSystem = true;
   };
 
+  stylix.opacity = {
+    applications = lib.mkForce 0.9;
+    terminal = lib.mkForce 0.9;
+    desktop = lib.mkForce 0.9;
+    popups = lib.mkForce 0.9;
+  };
+
   stylix.fonts = {
     sizes = {
       applications = lib.mkForce 18;
@@ -102,12 +107,6 @@ in {
       desktop = lib.mkForce 18;
       popups = lib.mkForce 18;
     };
-    # opacity = {
-    #   applications = lib.mkForce 1.0;
-    #   terminal = lib.mkForce 1.0;
-    #   desktop = lib.mkForce 1.0;
-    #   popups = lib.mkForce 1.0;
-    # };
     monospace = {
       package = pkgs.nerd-fonts.jetbrains-mono;
       name = "JetBrainsMono Nerd Font Mono";

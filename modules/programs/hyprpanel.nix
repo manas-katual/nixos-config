@@ -7,11 +7,11 @@
   ...
 }: {
   config = lib.mkIf (config.wlwm.enable && userSettings.bar == "hyprpanel") {
-    environment.systemPackages = [
-      # pkgs.libgtop
-      # pkgs.ags
-      pkgs.hyprpanel
-    ];
+    # environment.systemPackages = [
+    #   pkgs.libgtop
+    #   pkgs.ags
+    #   pkgs.hyprpanel
+    # ];
 
     nixpkgs.overlays = [inputs.hyprpanel.overlay];
 
@@ -21,11 +21,15 @@
       background = "#${config.lib.stylix.colors.base00}";
       background-alt = "#${config.lib.stylix.colors.base01}";
       foreground = "#${config.lib.stylix.colors.base05}";
-      rounding = 10;
+      rounding = 14;
     in {
       imports = [
         inputs.hyprpanel.homeManagerModules.hyprpanel
       ];
+
+      # home.packages = [
+      #   pkgs.hyprpanel
+      # ];
 
       programs.hyprpanel = {
         overlay.enable = true;
@@ -96,6 +100,7 @@
           "menus.dashboard.shortcuts.enabled" = false;
           "menus.dashboard.powermenu.avatar.image" = "/home/manas/setup/modules/programs/icons/nixos.png";
 
+          "theme.bar.floating" = true;
           "theme.bar.buttons.opacity" = 100;
           "theme.bar.menus.monochrome" = true;
           "theme.bar.buttons.monochrome" = true;

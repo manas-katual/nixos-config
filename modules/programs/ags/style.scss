@@ -1,132 +1,270 @@
-$theme_bg_color: #1e1e2e;
-$theme_fg_color: #ffffff;
-$active_bg_color: #1e1e2e;
-$button_bg_color: #1e1e2e;
-$button_text_color: #545768;
-$active_button_text_color: #a6adc8;
-$inactive_button_text_color: #555869;
-$foreground_text_color: #bac2e0;
-$border_color: #1e1e2e;
-$padding_small: 2px;
-$padding_medium: 7px;
-$padding_large: 10px;
-$margin_small: 2px;
-$margin_medium: 4px;
-$margin_large: 6px;
-$border_radius_small: 8px;
-$border_radius_large: 10px;
+// https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+$theme_fg_color: "@theme_fg_color";
+$theme_bg_color: "@theme_bg_color";
 
-window.Bar {
-  font-family: "JetBrains Mono";
-  background: transparent;
-  color: $theme_bg_color;
-  font-weight: bold;
+//Terqoise
+$selected_btn_color: #0EA16F;
+//Dark-blue
+$secondary_btn_color: #172A7D;
+//Blue
+$primary_btn_color: #0F5880;
+ 
 
-  >centerbox {
-    background: transparent;
-    padding: $padding_small;
-    border-radius: $border_radius_large;
-    margin: $margin_small 0;
-  }
-
-  button {
-    border-radius: $border_radius_small;
-    margin: 0 $margin_medium;
-    background: $button_bg_color;
-    padding: $padding_small + 1;
-    border: none;
-    color: $foreground_text_color;
-  }
-
-  .active-workspace,
-  .active-workspace-button {
-    margin: 0;
-    background: $active_bg_color;
-    border-style: solid;
-    border-color: $border_color;
-    color: $active_button_text_color;
-    transition: all 0.3s ease-in-out;
-  }
-
-
-  .inactive-workspace,
-  .inactive-workspace-button {
-    margin: 0;
-    color: $inactive_button_text_color;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .active-client {
-    padding: 0 $padding_large;
-    border-width: 2px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-  }
-
-  .workspaces {
-    margin: 0 $margin_large;
-    background-color: $theme_bg_color;
-    border-radius: $border_radius_large;
-
-    button {
-      margin: 0 $margin_small;
-    }
-  }
-
-  .distro-module {
-    padding: $padding_medium $padding_large;
-    padding-right: 12px; //idk why but my logo is misaligned without it
-  }
-
-  .media-module box {
-    margin: 0 $margin_large 0 $margin_medium;
-  }
+* {
+    font-size: 12px; 
 }
 
-box.MediaPlayer {
-  padding: 0.6rem;
-  background-color: $theme_bg_color;
+.bar {
+    padding-top: 2px;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-bottom: 2px;
+}
 
-  box.cover-art {
-    min-width: 120px;
-    min-height: 120px;
-    border-radius: 9px;
-    margin-right: 0.6rem;
-    background-size: contain;
-    background-position: center;
-  }
+button {
+    background-clip: padding-box;
+    min-width: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 15px;
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    color: white;
+}
 
-  box.title label {
+entry {
+    background-clip: padding-box;
+    min-width: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    min-height: 20px;
+}
+
+eventbox {
     font-weight: bold;
-    font-size: 1.1em;
-  }
-
-  scale {
-    padding: 0;
-    margin: 0.4rem 0;
-
-    trough {
-      min-height: 8px;
-    }
-
-    highlight {
-      background-color: $theme_fg_color;
-    }
-
-    slider {
-      all: unset;
-    }
-  }
-
-  centerbox.actions {
-    min-width: 220px;
-
-    button {
-      min-width: 0;
-      min-height: 0;
-      padding: 0.4rem;
-      margin: 0 0.2rem;
-    }
-  }
+    background-clip: padding-box;
+    min-width: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius: 15px;
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    color: white;
 }
+
+
+button:active {
+    background-color: grey;
+}
+
+button:hover{
+    border: 1px solid grey;
+}
+
+window {
+    background-color: transparent;
+}
+
+.bg-player {
+    border-radius: 15px;
+    background-image: linear-gradient(45deg, #1C8CFB, #854FB9);
+}
+
+.bg-norad {
+    background-color: rgba(0,0,0, .80);
+}
+
+.bg-light {
+    background-color: rgba(50,50,50, .5)
+}
+
+.bg {
+    background-color: rgba(0,0,0, 1);
+}
+
+.bg-secondary {
+    background-color: $secondary-btn-color;
+}
+.bg-selected {
+    background-color: $selected-btn-color;
+}
+
+.bg-blue {
+    background-color: $primary-btn-color;
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.round {
+    border-radius: 15px;
+}
+
+.padding {
+    padding: 8px;
+}
+
+.margin {
+    margin: 4px;
+}
+
+.invis-btn {
+    background-color: transparent;
+    border: transparent;
+}
+.invis-btn:active {
+    background-color: transparent;
+    border: transparent;
+}
+
+.invis-btn:hover {
+    background-color: transparent;
+    border: transparent;
+}
+
+.menu-btn {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.mic {
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 13px;
+}
+.wifi {
+    background-clip: border-box;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 1px;
+}
+
+.calc {
+    background-clip: border-box;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 13px;
+}
+
+.square-button {
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-left: 1px;
+    border-radius: 9px;
+}
+
+.square-button-no-rad {
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-left: 1px;
+}
+
+.thick-button-left {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 1px;
+    padding-left: 1px;
+    border-right: 1px solid $primary-btn-color;
+    border-radius: 15px 0px 0px 15px;
+}
+.thick-button-right {
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    border-left: 1px solid $primary-btn-color;
+    border-radius: 0px 15px 15px 0px;
+}
+
+
+
+.workspace-button {
+    background-color: black;
+    border-color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 0px;
+}
+
+.workspaces button.focused {
+    border-bottom: 1px solid white;
+}
+
+.client-title {
+    color: grey;
+}
+
+.top {
+    background-color: white;
+}
+
+slider {
+    min-height: 5px;
+    min-width: 5px;
+    margin: 0px;
+    box-shadow: none;	
+    background-color: white;
+}
+
+highlight {
+    border-radius: 10px 0px 0px 10px;
+}
+
+
+progress {
+    background-color: white
+}
+
+.menu {
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+}
+
+.title {
+    color: white;
+    font-size: 16px; 
+    font-weight: bold;
+}
+
+.subtitle {
+    color: grey;
+}
+
+
+
+.highlight {
+    background-color: transparent;
+    border-width: 0px;
+}
+.header {
+    background-color: transparent;
+    border-width: 0px;
+}
+
+.media-player {
+    margin: 4px;
+    padding: 8px;
+    border-radius: 15px;
+}
+
+circular-progress {
+    font-size: 2px;
+    margin: 10px;
+    color: white;
+}
+
+calendar {
+	border: none;
+}
+
+:focus {
+  outline: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+
