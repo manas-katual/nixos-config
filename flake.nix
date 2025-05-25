@@ -82,6 +82,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    mithril-shell.url = "github:andreashgk/mithril-shell";
   };
 
   outputs = inputs @ {
@@ -106,7 +107,7 @@
       terminal = "kitty";
       editor = "nvim";
       bar = "hyprpanel";
-      theme = "gruvbox-dark-medium";
+      theme = "solarized-dark";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";

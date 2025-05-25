@@ -6,7 +6,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf (config.wlwm.enable && userSettings.bar == "hyprpanel") {
+  config = lib.mkIf (config.wlwm.enable && (userSettings.bar == "hyprpanel" || userSettings.bar == "mithril")) {
     home-manager.users.${userSettings.username} = {
       # imports = [ inputs.anyrun.homeManagerModules.default ];
       programs.anyrun = {

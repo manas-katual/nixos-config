@@ -95,6 +95,10 @@ with host; {
               "$modifier,TAB,exec,hyprpanel toggleWindow bar-0"
               "ALT,F4,exec,hyprpanel toggleWindow powerdropdownmenu"
             ]
+            else if userSettings.bar == "mithril"
+            then [
+              "$modifier,Space,exec, pkill anyrun || ${pkgs.anyrun}/bin/anyrun"
+            ]
             else []
           );
         binde = [

@@ -1,10 +1,11 @@
 [
   ./android.nix
   ./anyrun.nix
-  # ./ags.nix
+  ./ags.nix
   ./bat.nix
   ./btop.nix
   ./chrome.nix
+  ./mithril.nix
   ./firefox.nix
   # ./nbfc.nix
   ./waybar.nix

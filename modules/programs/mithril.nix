@@ -1,0 +1,22 @@
+{
+  pkgs,
+  inputs,
+  config,
+  lib,
+  userSettings,
+  ...
+}: {
+  config = lib.mkIf (config.wlwm.enable && userSettings.bar == "mithril") {
+    home-manager.users.${userSettings.username} = {
+      imports = [
+        inputs.mithril-shell.homeManagerModules.default
+      ];
+
+      services.mithril-shell.enable = true;
+      services.mithril-shell.integrations.hyprland.enable = true;
+      programs.mithril-control-center.enable = true;
+      services.mithril-shell.settings.lockCommand = "${pkgs.hyprlock}/bin/hyprlock --immediate";
+      services.mithril-shell.settings.bar.modules.workspacesIndicator.reverseScrollDirection = false;
+    };
+  };
+}
