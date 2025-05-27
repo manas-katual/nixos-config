@@ -68,7 +68,7 @@
                       :width "400px"
                       :height "0px"
                       :anchor "top right")
-  :stacking "fg"
+  :stacking "overlay"
   :windowtype "normal"
   :wm-ignore true
   (bar-menu))
@@ -121,7 +121,7 @@
                       :width "500px"
                       :height "0px"
                       :anchor "top center")
-  :stacking "fg"
+  :stacking "overlay"
   :windowtype "normal"
   :wm-ignore true
   (powermenu-window))

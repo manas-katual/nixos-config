@@ -32,11 +32,8 @@
   };
 
   lib = nixpkgs.lib;
-  # nixpkgs.overlays = [
-  #   inputs.hyprpanel.overlay
-  #   inputs.niri.overlays.niri
-  # ];
 in {
+  # dell inspiron
   dell = lib.nixosSystem {
     inherit system;
     specialArgs = {
@@ -64,6 +61,7 @@ in {
     ];
   };
 
+  # nokia purebook x14
   nokia = lib.nixosSystem {
     inherit system;
     specialArgs = {
@@ -98,6 +96,7 @@ in {
     ];
   };
 
+  # hp
   hp = lib.nixosSystem {
     inherit system;
     specialArgs = {

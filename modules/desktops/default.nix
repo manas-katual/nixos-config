@@ -11,4 +11,5 @@
   ./vm.nix
   ./niri.nix
   ./bspwm.nix
+  ./qtile.nix
 ]

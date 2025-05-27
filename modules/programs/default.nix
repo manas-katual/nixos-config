@@ -1,7 +1,8 @@
 [
   ./android.nix
   ./anyrun.nix
-  ./ags.nix
+  # ./ags.nix
+  ./alacritty.nix
   ./bat.nix
   ./btop.nix
   ./chrome.nix
@@ -15,7 +16,7 @@
   # ./wofi.nix
   ./waydroid.nix
   ./rofi.nix
-  # ./wlogout.nix
+  ./wlogout.nix
   ./distrobox.nix
   ./kdeconnect.nix
   ./games.nix
@@ -30,5 +31,6 @@
   ./cava.nix
   ./swappy.nix
   ./spicetify.nix
+  ./tmux.nix
   ./zed-editor.nix
 ]

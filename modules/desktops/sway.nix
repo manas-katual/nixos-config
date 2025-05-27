@@ -67,7 +67,17 @@ with host; {
           ];
 
           bars = [
-            {command = "${pkgs.waybar}/bin/waybar";}
+            # {command = "${pkgs.waybar}/bin/waybar";}
+            {
+              id = "top";
+              position = "top";
+              # fonts = {
+              #   names = ["DejaVu Sans Mono" "FontAwesome6"];
+              #   style = "Bold Semi-Condensed";
+              #   size = 11.0;
+              # };
+              statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
+            }
           ];
 
           window = {
@@ -216,6 +226,115 @@ with host; {
           indicator-radius = 100;
           line-color = lib.mkForce "#''+stylix.colors.base00+''";
           show-failed-attempts = true;
+        };
+      };
+
+      programs.i3status-rust.enable = true;
+      programs.i3status-rust.bars = {
+        default = {
+          theme = "ctp-frappe";
+          icons = "awesome6";
+          blocks = [
+            {
+              theme_overrides = {
+                idle_bg = "#8caaee";
+                idle_fg = "#303446";
+              };
+              block = "focused_window";
+              format = {
+                full = " $title.str(max_w:15) |";
+                short = " $title.str(max_w:10) |";
+              };
+            }
+            {
+              block = "keyboard_layout";
+              driver = "sway";
+              format = " ⌨ $layout ";
+              mappings = {
+                "English (US)" = "us";
+              };
+            }
+            {
+              block = "music";
+              format = "$icon {$combo.str(max_w:20,rot_interval:0.5) $play $next |}";
+            }
+            /*
+            {
+              block = "notify";
+              click = [
+                {
+                  button = "left";
+                  action = "show";
+                }
+                {
+                  button = "right";
+                  action = "toggle_paused";
+                }
+              ];
+            }
+            */
+            {
+              block = "notify";
+              format = " $icon {($notification_count.eng(w:1)) |}";
+              driver = "swaync";
+              click = [
+                {
+                  button = "left";
+                  action = "show";
+                }
+                {
+                  button = "right";
+                  action = "toggle_paused";
+                }
+              ];
+            }
+            {
+              block = "privacy";
+              driver = [
+                {
+                  name = "v4l";
+                }
+              ];
+            }
+            {
+              block = "sound";
+              click = [
+                {
+                  button = "left";
+                  cmd = "pavucontrol";
+                }
+              ];
+            }
+
+            {
+              block = "time";
+              format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+              interval = 60;
+            }
+            {
+              block = "custom";
+              interval = 1200;
+              command = "wttrbar --location Marrakech";
+              format = "{ $icon|} $text.pango-str()°";
+              json = true;
+            }
+            {
+              block = "battery";
+              missing_format = "";
+            }
+            {
+              block = "custom";
+              format = " ";
+              command = "/run/current-system/sw/bin/false";
+              interval = "once";
+              click = [
+                {
+                  button = "left";
+                  cmd = "${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell";
+                }
+              ];
+            }
+          ];
         };
       };
     };

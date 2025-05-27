@@ -674,16 +674,17 @@ in {
             "custom/menu" = {
               format = " ";
               # on-click = "${pkgs.rofi-wayland}/bin/rofi -show drun";
-              on-click = "${pkgs.eww}/bin/eww open --toggle bar-menu --screen 0";
-              on-click-release = "sleep 0";
+              # on-click = "${pkgs.eww}/bin/eww open --toggle bar-menu --screen 0";
+              on-click = "sleep 0.1; ${pkgs.eww}/bin/eww open --toggle bar-menu";
+              # on-click-release = "sleep 0";
               tooltip = false;
             };
 
             "custom/powermenu" = {
               format = "⏻ ";
               # on-click = "${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell";
-              on-click = "${pkgs.eww}/bin/eww open --toggle powermenu-window --screen 0";
-              on-click-release = "sleep 1";
+              on-click = "sleep 0.1; ${pkgs.eww}/bin/eww open --toggle powermenu-window";
+              # on-click-release = "sleep 1";
               tooltip = false;
             };
           };

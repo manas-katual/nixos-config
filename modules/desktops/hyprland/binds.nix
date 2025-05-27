@@ -85,7 +85,7 @@ with host; {
           ++ (
             if userSettings.bar == "waybar"
             then [
-              "$modifier,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -show drun"
+              "$modifier,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -disable-history -show drun"
               "$modifier,TAB,exec,pkill -SIGUSR1 waybar"
               "ALT,F4,exec,${pkgs.eww}/bin/eww open --toggle powermenu-window --screen 0"
             ]

@@ -59,9 +59,19 @@
     };
 
     # ags
+    # ags = {
+    #   url = "github:aylur/ags";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     ags = {
-      url = "github:aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # last commit I had before ags switched to astal (thus breaking my config)
+      # TODO: set up quickshell ASAP
+      url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        # systems.follows = "systems";
+      };
     };
 
     astal = {
@@ -106,8 +116,8 @@
       #host = "dell";
       terminal = "kitty";
       editor = "nvim";
-      bar = "hyprpanel";
-      theme = "solarized-dark";
+      bar = "waybar";
+      theme = "gruvbox-dark-hard";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";
