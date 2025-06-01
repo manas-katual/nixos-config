@@ -21,7 +21,7 @@
         vimAlias = true;
         viAlias = true;
         withNodeJs = true;
-        useSystemClipboard = true;
+        clipboard.enable = true;
 
         options = {
           tabstop = 2;
@@ -114,10 +114,11 @@
         telescope.enable = true;
 
         spellcheck = {
-          enable = true;
+          enable = false;
         };
 
         lsp = {
+          enable = true;
           formatOnSave = true;
           lspkind.enable = false;
           lightbulb.enable = true;
@@ -129,7 +130,6 @@
         };
 
         languages = {
-          enableLSP = true;
           enableFormat = true;
           enableTreesitter = true;
           enableExtraDiagnostics = true;
@@ -173,7 +173,7 @@
           nvimBufferline.enable = true;
         };
 
-        treesitter.context.enable = true;
+        treesitter.context.enable = false;
 
         binds = {
           whichKey.enable = true;

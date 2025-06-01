@@ -1,7 +1,7 @@
 [
   ./android.nix
   ./anyrun.nix
-  # ./ags.nix
+  ./ags.nix
   ./alacritty.nix
   ./bat.nix
   ./btop.nix

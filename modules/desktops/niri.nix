@@ -21,6 +21,8 @@ with host; {
   config = mkIf (config.niri.enable) {
     wlwm.enable = true;
 
+    nixpkgs.overlays = [inputs.niri.overlays.niri];
+
     environment = {
       variables = {
       };

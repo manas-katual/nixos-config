@@ -37,9 +37,9 @@ with host; {
           #hyprpolkitagent
         ]
         ++ (
-          if userSettings.bar == "waybar"
+          if (userSettings.bar == "waybar")
           then [
-            blueman
+            pkgs.blueman
           ]
           else []
         );
@@ -105,7 +105,11 @@ with host; {
               ]
               else if userSettings.bar == "hyprpanel"
               then [
-                "${pkgs.hyprpanel}/bin/hyprpanel"
+                "${inputs.hyprpanel.packages.${pkgs.system}.wrapper}/bin/hyprpanel"
+              ]
+              else if userSettings.bar == "ags"
+              then [
+                "ags run &"
               ]
               else []
             );

@@ -2,6 +2,7 @@
   pkgs,
   lib,
   userSettings,
+  inputs,
   ...
 }: let
   themePaths = {

@@ -25,13 +25,13 @@
     #  inputs.hyprland.follows = "hyprland";
     #};
 
-    # Hyprpanel
+    # Hyprpanel based on ags
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nvf neovim
+    # neovim distro
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,7 +40,7 @@
     # doom-emacs unstraightened
     # nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
 
-    # nur
+    # NUR Community Packages
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,26 +52,16 @@
     # jovian steam
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
 
-    # niri
+    # niri compositor
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # ags
-    # ags = {
-    #   url = "github:aylur/ags";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
+    # ags widgets
     ags = {
-      # last commit I had before ags switched to astal (thus breaking my config)
-      # TODO: set up quickshell ASAP
-      url = "github:Aylur/ags/60180a184cfb32b61a1d871c058b31a3b9b0743d";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        # systems.follows = "systems";
-      };
+      url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     astal = {
@@ -79,19 +69,25 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # chaotic
+    # chaotic AUR
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    # menu launcher
     anyrun = {
       url = "github:anyrun-org/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # firefox declaritively
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # spotify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    # gnome like bar based on ags
     mithril-shell.url = "github:andreashgk/mithril-shell";
   };
 
@@ -101,7 +97,6 @@
     home-manager,
     stylix,
     nvf,
-    # hyprpanel,
     nur,
     jovian-nixos,
     niri,
@@ -116,8 +111,8 @@
       #host = "dell";
       terminal = "kitty";
       editor = "nvim";
-      bar = "waybar";
-      theme = "gruvbox-dark-hard";
+      bar = "hyprpanel";
+      theme = "catppuccin-frappe";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";

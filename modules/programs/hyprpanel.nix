@@ -7,13 +7,11 @@
   ...
 }: {
   config = lib.mkIf (config.wlwm.enable && userSettings.bar == "hyprpanel") {
-    # environment.systemPackages = [
-    #   pkgs.libgtop
-    #   pkgs.ags
-    #   pkgs.hyprpanel
-    # ];
-
-    nixpkgs.overlays = [inputs.hyprpanel.overlay];
+    environment.systemPackages = with pkgs; [
+      libgtop
+      ags
+      inputs.hyprpanel.packages.${pkgs.system}.wrapper
+    ];
 
     home-manager.users.${userSettings.username} = let
       accent = "#${config.lib.stylix.colors.base0D}";
@@ -27,12 +25,7 @@
         inputs.hyprpanel.homeManagerModules.hyprpanel
       ];
 
-      # home.packages = [
-      #   pkgs.hyprpanel
-      # ];
-
       programs.hyprpanel = {
-        overlay.enable = true;
         enable = true;
         hyprland.enable = true;
         overwrite.enable = true;
@@ -67,7 +60,7 @@
           "theme.bar.outer_spacing" = "1rem";
           "theme.bar.dropdownGap" = "3.3em";
           "scalingPriority" = "hyprland";
-          "bar.launcher.icon" = "󰍜"; #"";
+          "bar.launcher.icon" = "";
 
           "bar.workspaces.showAllActive" = false;
           "bar.workspaces.workspaces" = 1;
