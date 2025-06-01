@@ -1,7 +1,6 @@
-{ lib, config, pkgs, ... }:
-{
-  boot.initrd.kernelModules = [ "i915" ];
-  boot.kernelModules = [ "kvm-intel" ];
+{pkgs, ...}: {
+  boot.initrd.kernelModules = ["i915"];
+  boot.kernelModules = ["kvm-intel"];
   services.xserver.videoDrivers = [
     "i915"
     "intel"
@@ -16,10 +15,5 @@
       libvdpau-va-gl
     ];
   };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
-  environment.systemPackages = [
-    pkgs.lact
-  ];
-  systemd.packages = with pkgs; [ lact ];
-  systemd.services.lactd.wantedBy = ["multi-user.target"];
+  environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";};
 }

@@ -39,9 +39,6 @@
   };
 
   hyprland.enable = true;
-  # sway.enable = true;
-  # qtile.enable = true;
-  # gnome.enable = true;
   laptop.enable = true;
 
   environment = {

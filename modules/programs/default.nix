@@ -1,36 +1,34 @@
 [
-  ./android.nix
-  ./anyrun.nix
   ./ags.nix
   ./alacritty.nix
+  ./android.nix
+  ./anyrun.nix
   ./bat.nix
   ./btop.nix
-  ./chrome.nix
-  ./mithril.nix
-  ./firefox.nix
-  # ./nbfc.nix
-  ./waybar.nix
-  ./hyprpanel.nix
-  ./thunar.nix
-  ./kitty.nix
-  # ./wofi.nix
-  ./waydroid.nix
-  ./rofi.nix
-  ./wlogout.nix
-  ./distrobox.nix
-  ./kdeconnect.nix
-  ./games.nix
-  ./eww.nix
-  ./pcmanfm.nix
-  ./xdg.nix
-  ./wine.nix
-  # ./jovian.nix
-  ./fhs.nix
-  ./fastfetch.nix
-  ./htop.nix
   ./cava.nix
-  ./swappy.nix
+  ./chrome.nix
+  ./distrobox.nix
+  ./eww.nix
+  ./fastfetch.nix
+  ./fhs.nix
+  ./firefox.nix
+  ./games.nix
+  ./htop.nix
+  ./hyprpanel.nix
+  # ./jovian.nix
+  ./kdeconnect.nix
+  ./kitty.nix
+  ./mithril.nix
+  ./pcmanfm.nix
+  ./rofi.nix
   ./spicetify.nix
+  ./swappy.nix
+  ./thunar.nix
   ./tmux.nix
-  ./zed-editor.nix
+  ./waybar.nix
+  ./waydroid.nix
+  ./wine.nix
+  ./wlogout.nix
+  # ./wofi.nix
+  ./xdg.nix
 ]
