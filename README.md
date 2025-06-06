@@ -1,6 +1,9 @@
 # ❄️ My NixOS Config
 
-## steps for installing 
+_Note Hyprland is the only fully configured environment to use other manual
+steps are needed_
+
+## steps for installing
 
 **First install nixos with no desktop**
 
@@ -16,6 +19,7 @@ Clone this repo & enter it:
 git clone https://github.com/manas-katual/nixos-config ~/setup
 cd setup
 ```
+
 - must stay in this folder for the rest of the install
 
 Create the host folder for your machine
@@ -30,7 +34,8 @@ Generate hardware.nix like so:
 nixos-generate-config --show-hardware-config > hosts/<your-desired-hostname>/hardware-configuration.nix
 ```
 
-Run this to enable flakes and install the flake replacing hostname with whatever you put as the hostname:
+Run this to enable flakes and install the flake replacing hostname with whatever
+you put as the hostname:
 
 ```bash
 NIX_CONFIG="experimental-features = nix-command flakes" 
@@ -48,8 +53,6 @@ sudo nixos-rebuild switch --flake .
 
 Enjoy!
 
-with hyprpanel
-![screenshot](./hyprpanel.png)
+with hyprpanel ![screenshot](./hyprpanel.png)
 
-with waybar
-![screenshot](./waybar.png)
+with waybar ![screenshot](./waybar.png)

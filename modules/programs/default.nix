@@ -9,6 +9,7 @@
   ./chrome.nix
   ./distrobox.nix
   ./eww.nix
+  ./eza.nix
   ./fastfetch.nix
   ./fhs.nix
   ./firefox.nix
@@ -19,7 +20,7 @@
   ./kdeconnect.nix
   ./kitty.nix
   ./mithril.nix
-  ./pcmanfm.nix
+  # ./pcmanfm.nix
   ./rofi.nix
   ./spicetify.nix
   ./swappy.nix

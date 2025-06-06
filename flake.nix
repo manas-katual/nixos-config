@@ -112,7 +112,7 @@
       terminal = "kitty";
       editor = "nvim";
       bar = "hyprpanel";
-      theme = "catppuccin-frappe";
+      theme = "onedark";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";

@@ -71,11 +71,6 @@ with host; {
             {
               id = "top";
               position = "top";
-              # fonts = {
-              #   names = ["DejaVu Sans Mono" "FontAwesome6"];
-              #   style = "Bold Semi-Condensed";
-              #   size = 11.0;
-              # };
               statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml";
             }
           ];

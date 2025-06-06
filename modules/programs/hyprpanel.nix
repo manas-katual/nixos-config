@@ -8,8 +8,6 @@
 }: {
   config = lib.mkIf (config.wlwm.enable && userSettings.bar == "hyprpanel") {
     environment.systemPackages = with pkgs; [
-      libgtop
-      ags
       inputs.hyprpanel.packages.${pkgs.system}.wrapper
     ];
 
@@ -34,10 +32,13 @@
             "bar.layouts" = {
               "0" = {
                 "left" = [
+                  "dashboard"
                   "workspaces"
                   "windowtitle"
                 ];
-                "middle" = [];
+                "middle" = [
+                  "clock"
+                ];
                 "right" = [
                   "systray"
                   "hypridle"
@@ -45,9 +46,7 @@
                   "volume"
                   "bluetooth"
                   "network"
-                  "clock"
                   "notifications"
-                  "dashboard"
                 ];
               };
             };

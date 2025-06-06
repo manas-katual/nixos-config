@@ -1,3 +1,3 @@
 [
-  ./pkg.nix
+  ./pkgs.nix
 ]

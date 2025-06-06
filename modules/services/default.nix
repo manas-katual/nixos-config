@@ -1,12 +1,12 @@
 [
-  ./swaync.nix
-  ./polybar.nix
-  ./sxhkd.nix
+  ./acpid.nix
   ./flameshot.nix
+  ./greetd.nix
+  ./lid.nix
   ./picom.nix
+  ./polybar.nix
+  ./swaync.nix
+  ./sxhkd.nix
   ./udiskie.nix
   ./wlsunset.nix
-  ./acpid.nix
-  ./lid.nix
-  ./greetd.nix
 ]

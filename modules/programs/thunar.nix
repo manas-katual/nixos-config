@@ -1,11 +1,9 @@
 #
 #  File Browser
 #
-
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs = {
+    xfconf.enable = true;
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
@@ -20,4 +18,8 @@
     gvfs.enable = true;
     tumbler.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    file-roller # archive manager
+  ];
 }

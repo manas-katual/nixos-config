@@ -4,7 +4,7 @@
   ...
 }: {
   home-manager.users.${userSettings.username} = {
-    programs.alacritty = {
+    programs.alacritty = lib.mkIf (userSettings.terminal == "alacritty") {
       enable = true;
       settings = {
         window = {

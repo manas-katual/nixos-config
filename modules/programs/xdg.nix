@@ -1,20 +1,23 @@
 {
   pkgs,
   userSettings,
+  inputs,
+  lib,
+  config,
   ...
 }: {
   home-manager.users.${userSettings.username} = {
     xdg = {
       enable = true;
       mime.enable = true;
-      mimeApps = {
+      mimeApps = lib.mkIf (config.gnome.enable == false) {
         enable = true;
       };
-      # portal = {
-      #   enable = true;
-      #   extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-      #   configPackages = [pkgs.hyprland];
-      # };
+      portal = {
+        enable = true;
+        extraPortals = [inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland];
+        configPackages = [inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland];
+      };
     };
   };
 }

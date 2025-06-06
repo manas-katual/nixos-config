@@ -23,7 +23,7 @@ with host; {
             "$modifier,Escape,exit,"
             "$modifier,S,exec,${pkgs.systemd}/bin/systemctl suspend"
             "$modifier,L,exec,${pkgs.hyprlock}/bin/hyprlock"
-            "$modifier,E,exec,${pkgs.pcmanfm}/bin/pcmanfm"
+            "$modifier,E,exec,${pkgs.xfce.thunar}/bin/thunar"
             "$modifier,F,togglefloating,"
             "$modifierSHIFT,Return,exec,pypr toggle term"
             "$modifier,P,pseudo,"
@@ -34,7 +34,6 @@ with host; {
             # "$modifier,K,exec,${config.programs.hyprland.package}/bin/hyprctl switchxkblayout keychron-k8-keychron-k8 next"
             "$modifier,Z,layoutmsg,togglesplit"
             "$modifier,F1,exec,gamemode"
-            # ",Escape,exec,${pkgs.eww}/bin/eww close-all"
 
             "$modifier,left,movefocus,l"
             "$modifier,right,movefocus,r"

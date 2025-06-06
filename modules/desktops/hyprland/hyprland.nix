@@ -166,8 +166,8 @@ with host; {
             ];
           };
           input = {
-            kb_layout = "in";
-            kb_variant = "eng";
+            kb_layout = "us";
+            # kb_variant = "eng";
             kb_options = [
               "grp:alt_caps_toggle"
               "caps:super"

@@ -21,14 +21,39 @@
         vimAlias = true;
         viAlias = true;
         withNodeJs = true;
-        clipboard.enable = true;
+        preventJunkFiles = true;
 
         options = {
-          tabstop = 2;
+          tabstop = 4;
           shiftwidth = 2;
           wrap = false;
         };
-        preventJunkFiles = true;
+
+        clipboard = {
+          enable = true;
+          registers = "unnamedplus";
+          providers = {
+            wl-copy.enable = true;
+            xsel.enable = true;
+          };
+        };
+
+        maps = {
+          normal = {
+            "<leader>e" = {
+              action = "<CMD>Neotree toggle<CR>";
+              silent = false;
+            };
+          };
+        };
+
+        diagnostics = {
+          enable = true;
+          config = {
+            virtual_lines.enable = true;
+            underline = true;
+          };
+        };
 
         keymaps = [
           {
@@ -85,36 +110,14 @@
             action = "<Right>";
             desc = "Move right in insert mode";
           }
-          {
-            key = "<leader>dj";
-            mode = ["n"];
-            action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
-            desc = "Go to next diagnostic";
-          }
-          {
-            key = "<leader>dk";
-            mode = ["n"];
-            action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
-            desc = "Go to previous diagnostic";
-          }
-          {
-            key = "<leader>dl";
-            mode = ["n"];
-            action = "<cmd>Lspsaga show_line_diagnostics<CR>";
-            desc = "Show diagnostic details";
-          }
-          {
-            key = "<leader>dt";
-            mode = ["n"];
-            action = "<cmd>Trouble diagnostics toggle<cr>";
-            desc = "Toggle diagnostics list";
-          }
         ];
 
         telescope.enable = true;
 
         spellcheck = {
           enable = false;
+          languages = ["en"];
+          programmingWordlist.enable = true;
         };
 
         lsp = {
@@ -139,12 +142,22 @@
           zig.enable = true;
           python.enable = true;
           markdown.enable = true;
-          ts.enable = true;
+          ts = {
+            enable = true;
+            lsp.enable = true;
+            format.type = "prettierd";
+            extensions.ts-error-translator.enable = true;
+          };
+
           html.enable = true;
           css.enable = true;
           bash.enable = true;
           java.enable = true;
-          rust.enable = true;
+          typst.enable = true;
+          rust = {
+            enable = true;
+            crates.enable = true;
+          };
         };
 
         visuals = {
@@ -152,9 +165,9 @@
           nvim-cursorline.enable = true;
           cinnamon-nvim.enable = true;
           fidget-nvim.enable = true;
-
           highlight-undo.enable = true;
           indent-blankline.enable = true;
+          rainbow-delimiters.enable = true;
         };
 
         statusline = {
@@ -197,6 +210,7 @@
         };
 
         utility = {
+          preview.markdownPreview.enable = true;
           ccc.enable = false;
           vim-wakatime.enable = false;
           icon-picker.enable = true;
@@ -236,32 +250,6 @@
           comment-nvim.enable = true;
         };
       };
-    };
-
-    # Source custom Lua explicitly
-    home.file.".config/nvim/init.lua" = {
-      text = ''
-        vim.notify("Main init.lua loaded", vim.log.levels.INFO)
-        pcall(require, "custom.init")
-      '';
-    };
-
-    home.file.".config/nvim/lua/custom/init.lua" = {
-      text = ''
-        -- Debug notification
-        vim.notify("Custom Lua loaded", vim.log.levels.INFO)
-        -- Diagnostics configuration (fallback)
-        vim.diagnostic.config({
-          virtual_text = {
-            spacing = 4,
-            prefix = "●"
-          },
-          signs = true,
-          underline = true,
-          update_in_insert = false,
-          severity_sort = true
-        })
-      '';
     };
   };
 }

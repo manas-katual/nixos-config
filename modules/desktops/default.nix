@@ -1,15 +1,15 @@
 (import ./hyprland)
 ++ [
-  ./options.nix
-  ./dwm.nix
-  ./jwm.nix
-  ./icewm.nix
-  ./dwl.nix
-  ./sway.nix
-  ./gnome.nix
-  # ./hyprland.nix
-  ./vm.nix
-  ./niri.nix
   ./bspwm.nix
+  ./cosmic.nix
+  ./dwl.nix
+  ./dwm.nix
+  ./gnome.nix
+  ./icewm.nix
+  ./jwm.nix
+  ./niri.nix
+  ./options.nix
   ./qtile.nix
+  ./sway.nix
+  ./vm.nix
 ]

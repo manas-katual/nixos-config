@@ -9,8 +9,7 @@
 #           ├─ default.nix *
 #           └─ ...
 #
-
 [
-  ./theming.nix
   ./stylix.nix
+  ./theming.nix
 ]
