@@ -251,5 +251,25 @@
         };
       };
     };
+    programs.neovim = {
+      enable = true;
+
+      # Specify Neovim plugins using the `plugins` option
+      plugins = [
+        pkgs.vimPlugins.tmux-navigator # Add the Tmux Navigator plugin
+      ];
+
+      # Custom Lua configuration for Tmux Navigator using `extraConfig`
+      extraConfig = ''
+        require('tmux-navigator').setup {
+          keymaps = {
+            up = '<C-k>',
+            down = '<C-j>',
+            left = '<C-h>',
+            right = '<C-l>'
+          }
+        }
+      '';
+    };
   };
 }

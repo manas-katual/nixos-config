@@ -19,12 +19,6 @@
       url = "github:hyprwm/Hyprland";
     };
 
-    # Hyprspace
-    #hyprspace = {
-    #  url = "github:KZDKM/Hyprspace";
-    #  inputs.hyprland.follows = "hyprland";
-    #};
-
     # Hyprpanel based on ags
     hyprpanel = {
       url = "github:Jas-SinghFSU/HyprPanel";
@@ -69,9 +63,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # chaotic AUR
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     # menu launcher
     anyrun = {
       url = "github:anyrun-org/anyrun";
@@ -95,20 +86,10 @@
     self,
     nixpkgs,
     home-manager,
-    stylix,
-    nvf,
-    nur,
-    jovian-nixos,
-    niri,
-    ags,
-    chaotic,
-    astal,
-    anyrun,
     ...
   }: let
     userSettings = {
       username = "manas";
-      #host = "dell";
       terminal = "kitty";
       editor = "nvim";
       bar = "hyprpanel";
@@ -121,7 +102,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager userSettings stylix nvf nur jovian-nixos niri ags chaotic astal anyrun;
+        inherit inputs nixpkgs home-manager userSettings;
       }
     );
   };

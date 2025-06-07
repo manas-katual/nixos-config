@@ -13,23 +13,9 @@
   nixpkgs,
   home-manager,
   userSettings,
-  stylix,
-  nvf,
-  nur,
-  jovian-nixos,
-  niri,
-  ags,
-  chaotic,
-  astal,
-  anyrun,
   ...
 }: let
   system = "x86_64-linux";
-
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
 
   lib = nixpkgs.lib;
 in {
@@ -37,7 +23,7 @@ in {
   dell = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system userSettings stylix nvf nur jovian-nixos chaotic;
+      inherit inputs system userSettings;
       host = {
         hostName = "dell";
         mainMonitor = "LVDS-1";
@@ -50,7 +36,6 @@ in {
       inputs.stylix.nixosModules.stylix
       inputs.nur.modules.nixos.default
       inputs.jovian-nixos.nixosModules.default
-      inputs.chaotic.nixosModules.default
 
       home-manager.nixosModules.home-manager
       {
@@ -65,7 +50,7 @@ in {
   nokia = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system userSettings stylix nvf nur jovian-nixos chaotic astal anyrun;
+      inherit inputs system userSettings;
       host = {
         hostName = "nokia";
         mainMonitor = "eDP-1";
@@ -78,7 +63,6 @@ in {
       inputs.stylix.nixosModules.stylix
       inputs.nur.modules.nixos.default
       inputs.jovian-nixos.nixosModules.default
-      inputs.chaotic.nixosModules.default
 
       home-manager.nixosModules.home-manager
       {
@@ -93,20 +77,19 @@ in {
   hp = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system userSettings stylix nvf nur jovian-nixos chaotic astal anyrun;
+      inherit inputs system userSettings;
       host = {
         hostName = "hp";
         mainMonitor = "eDP-1";
       };
     };
     modules = [
-      ./nokia
+      ./hp
       ./configuration.nix
 
       inputs.stylix.nixosModules.stylix
       inputs.nur.modules.nixos.default
       inputs.jovian-nixos.nixosModules.default
-      inputs.chaotic.nixosModules.default
 
       home-manager.nixosModules.home-manager
       {

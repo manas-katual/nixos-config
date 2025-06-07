@@ -16,10 +16,6 @@ with lib; {
   };
 
   config = mkIf (config.cosmic.enable) {
-    # programs = {
-    #   zsh.enable = true;
-    # };
-
     services = {
       libinput.enable = true;
       displayManager.cosmic-greeter.enable = true;

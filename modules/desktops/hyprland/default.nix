@@ -3,7 +3,7 @@
   ./hypridle.nix
   ./hyprland.nix
   ./hyprlock.nix
-  # ./hyprpaper.nix
+  ./hyprpaper.nix
   ./options.nix
   ./pyprland.nix
   ./windowrule.nix

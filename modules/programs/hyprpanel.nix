@@ -76,7 +76,7 @@
           "bar.clock.format" = "%I:%M %p";
           "bar.clock.showIcon" = true;
           "bar.clock.icon" = "󱑏";
-          "bar.volume.label" = true;
+          "bar.volume.label" = false;
           "bar.bluetooth.label" = false;
           "bar.network.label" = false;
           "bar.media.show_active_only" = true;

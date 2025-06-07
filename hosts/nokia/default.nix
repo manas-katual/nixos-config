@@ -25,7 +25,6 @@
 
   # Boot Options
   boot = {
-    kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
     loader = {
       systemd-boot = {
         enable = true;
@@ -65,8 +64,6 @@
   services = {
     # for SSD/NVME
     fstrim.enable = true;
-    scx.enable = true;
-    scx.scheduler = "scx_rusty";
   };
 
   networking.networkmanager.wifi.powersave = false;
