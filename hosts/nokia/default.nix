@@ -15,6 +15,7 @@
   pkgs,
   inputs,
   lib,
+  userSettings,
   ...
 }: {
   imports =
@@ -37,7 +38,7 @@
     };
   };
 
-  hyprland.enable = true;
+  ${userSettings.desktop}.enable = true;
   laptop.enable = true;
 
   environment = {

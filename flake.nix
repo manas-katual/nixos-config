@@ -12,11 +12,15 @@
     };
 
     # stylix
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Official Hyprland Flake
     hyprland = {
       url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Hyprpanel based on ags
@@ -41,10 +45,16 @@
     };
 
     # youtube terminal
-    yt-x.url = "github:Benexl/yt-x";
+    yt-x = {
+      url = "github:Benexl/yt-x";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # jovian steam
-    jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
+    # jovian-nixos = {
+    #   url = "github:Jovian-Experiments/Jovian-NixOS";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # niri compositor
     niri = {
@@ -76,10 +86,16 @@
     };
 
     # spotify
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # gnome like bar based on ags
-    mithril-shell.url = "github:andreashgk/mithril-shell";
+    mithril-shell = {
+      url = "github:andreashgk/mithril-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -92,6 +108,7 @@
       username = "manas";
       terminal = "kitty";
       editor = "nvim";
+      desktop = "hyprland";
       bar = "hyprpanel";
       theme = "onedark";
       gitUsername = "manas-katual";

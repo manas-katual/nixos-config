@@ -4,12 +4,6 @@
   userSettings,
   ...
 }: {
-  environment = {
-    systemPackages = with pkgs; [
-      kitty
-    ];
-  };
-
   home-manager.users.${userSettings.username} = {
     programs.kitty = lib.mkIf (userSettings.terminal == "kitty") {
       enable = true;

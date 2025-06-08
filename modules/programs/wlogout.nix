@@ -4,7 +4,7 @@
   userSettings,
   ...
 }: {
-  config = lib.mkIf (config.programs.hyprland.enable == true || config.programs.sway.enable == true || config.programs.wayfire.enable == true) {
+  config = lib.mkIf (config.sway.enable) {
     home-manager.users.${userSettings.username} = {
       home.file.".config/wlogout/icons" = {
         source = ./icons;

@@ -1,7 +1,12 @@
 # ❄️ My NixOS Config
 
-_Note Hyprland is the only fully configured environment to use other manual
+_Note: Hyprland is the only fully configured environment, to use other manual
 steps are needed_
+
+todo:
+
+- make this available for everyone
+- make other DE/WM workable
 
 ## steps for installing
 

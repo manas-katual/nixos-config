@@ -13,7 +13,7 @@
       mimeApps = lib.mkIf (config.gnome.enable == false) {
         enable = true;
       };
-      portal = {
+      portal = lib.mkIf (config.hyprland.enable) {
         enable = true;
         extraPortals = [inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland];
         configPackages = [inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland];

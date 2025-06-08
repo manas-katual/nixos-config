@@ -30,6 +30,6 @@
   ./waydroid.nix
   ./wine.nix
   ./wlogout.nix
-  # ./wofi.nix
+  ./wofi.nix
   ./xdg.nix
 ]

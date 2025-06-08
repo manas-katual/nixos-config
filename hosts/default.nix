@@ -35,7 +35,6 @@ in {
 
       inputs.stylix.nixosModules.stylix
       inputs.nur.modules.nixos.default
-      inputs.jovian-nixos.nixosModules.default
 
       home-manager.nixosModules.home-manager
       {
@@ -62,7 +61,7 @@ in {
 
       inputs.stylix.nixosModules.stylix
       inputs.nur.modules.nixos.default
-      inputs.jovian-nixos.nixosModules.default
+      # inputs.jovian-nixos.nixosModules.default
 
       home-manager.nixosModules.home-manager
       {
@@ -89,7 +88,6 @@ in {
 
       inputs.stylix.nixosModules.stylix
       inputs.nur.modules.nixos.default
-      inputs.jovian-nixos.nixosModules.default
 
       home-manager.nixosModules.home-manager
       {
