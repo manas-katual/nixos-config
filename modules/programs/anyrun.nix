@@ -6,7 +6,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf (config.wlwm.enable && (userSettings.bar == "hyprpanel" || userSettings.bar == "mithril")) {
+  config = lib.mkIf (config.wlwm.enable && (userSettings.bar == "hyprpanel" || userSettings.bar == "mithril" || userSettings.bar == "ags")) {
     environment.systemPackages = [
       inputs.anyrun.packages.${pkgs.system}.anyrun
     ];

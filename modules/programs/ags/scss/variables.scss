@@ -1,0 +1,177 @@
+$font: "JetBrainsMono NF";
+$systemMenuClockDayFont: "JetBrainsMono NF";
+
+$gaps: 5px;
+$barBorderRadius: 8px;
+$barBorderWidth: 8px;
+$buttonBorderRadius: 8px;
+$windowBorderRadius: 8px;
+$windowBorderWidth: 2px;
+$largeButtonBorderRadius: 16px;
+
+$bg: #000000;
+$fg: #FFFFFF;
+$primary: #009911;
+$buttonPrimary: #224466;
+$warning: #DD3322;
+$barBorder: #009911;
+$windowBorder: #009911;
+$alertBorder: #009911;
+$scrimColor: #00000001;
+
+$barBorder: #000000;
+$barBackgroundColor: #000000;
+$windowBorder: #000000;
+$windowBackgroundColor: #000000;
+
+// Bar widgets
+$barMenuForeground: #ffffff;
+$barMenuBackground: #000000;
+$barMenuBorderRadius: 8px;
+$barMenuBorderWidth: 1px;
+$barMenuBorderColor: #009911;
+
+$barWorkspacesForeground: #ffffff;
+$barWorkspacesInactiveForeground: #ffffff;
+$barWorkspacesBackground: #000000;
+$barWorkspacesBorderRadius: 8px;
+$barWorkspacesBorderWidth: 1px;
+$barWorkspacesBorderColor: #009911;
+
+$barClockForeground: #ffffff;
+$barClockBackground: #000000;
+$barClockBorderRadius: 8px;
+$barClockBorderWidth: 1px;
+$barClockBorderColor: #009911;
+
+$barAudioOutForeground: #ffffff;
+$barAudioOutBackground: #000000;
+$barAudioOutBorderRadius: 8px;
+$barAudioOutBorderWidth: 1px;
+$barAudioOutBorderColor: #009911;
+
+$barAudioInForeground: #ffffff;
+$barAudioInBackground: #000000;
+$barAudioInBorderRadius: 8px;
+$barAudioInBorderWidth: 1px;
+$barAudioInBorderColor: #009911;
+
+$barBluetoothForeground: #ffffff;
+$barBluetoothBackground: #000000;
+$barBluetoothBorderRadius: 8px;
+$barBluetoothBorderWidth: 1px;
+$barBluetoothBorderColor: #009911;
+
+$barNetworkForeground: #ffffff;
+$barNetworkBackground: #000000;
+$barNetworkBorderRadius: 8px;
+$barNetworkBorderWidth: 1px;
+$barNetworkBorderColor: #009911;
+
+$barRecordingIndicatorForeground: #ffffff;
+$barRecordingIndicatorBackground: #000000;
+$barRecordingIndicatorBorderRadius: 8px;
+$barRecordingIndicatorBorderWidth: 1px;
+$barRecordingIndicatorBorderColor: #009911;
+
+$barVpnIndicatorForeground: #ffffff;
+$barVpnIndicatorBackground: #000000;
+$barVpnIndicatorBorderRadius: 8px;
+$barVpnIndicatorBorderWidth: 1px;
+$barVpnIndicatorBorderColor: #009911;
+
+$barBatteryForeground: #ffffff;
+$barBatteryBackground: #000000;
+$barBatteryBorderRadius: 8px;
+$barBatteryBorderWidth: 1px;
+$barBatteryBorderColor: #009911;
+
+$barTrayForeground: #ffffff;
+$barTrayBackground: #000000;
+$barTrayBorderRadius: 8px;
+$barTrayBorderWidth: 1px;
+$barTrayBorderColor: #009911;
+
+$barAppLauncherForeground: #ffffff;
+$barAppLauncherBackground: #000000;
+$barAppLauncherBorderRadius: 8px;
+$barAppLauncherBorderWidth: 1px;
+$barAppLauncherBorderColor: #009911;
+
+$barScreenshotForeground: #ffffff;
+$barScreenshotBackground: #000000;
+$barScreenshotBorderRadius: 8px;
+$barScreenshotBorderWidth: 1px;
+$barScreenshotBorderColor: #009911;
+
+$barClipboardManagerForeground: #ffffff;
+$barClipboardManagerBackground: #000000;
+$barClipboardManagerBorderRadius: 8px;
+$barClipboardManagerBorderWidth: 1px;
+$barClipboardManagerBorderColor: #009911;
+
+$barPowerProfileForeground: #ffffff;
+$barPowerProfileBackground: #000000;
+$barPowerProfileBorderRadius: 8px;
+$barPowerProfileBorderWidth: 1px;
+$barPowerProfileBorderColor: #009911;
+
+$barCavaWaveformForeground: #ffffff;
+$barCavaWaveformBackground: #000000;
+$barCavaWaveformBorderRadius: 8px;
+$barCavaWaveformBorderWidth: 1px;
+$barCavaWaveformBorderColor: #009911;
+
+$barMprisControlsForeground: #ffffff;
+$barMprisControlsBackground: #000000;
+$barMprisControlsBorderRadius: 8px;
+$barMprisControlsBorderWidth: 1px;
+$barMprisControlsBorderColor: #009911;
+
+$barMprisTrackInfoForeground: #ffffff;
+$barMprisTrackInfoBackground: #000000;
+$barMprisTrackInfoBorderRadius: 8px;
+$barMprisTrackInfoBorderWidth: 1px;
+$barMprisTrackInfoBorderColor: #009911;
+
+$barMprisPrimaryPlayerSwitcherForeground: #ffffff;
+$barMprisPrimaryPlayerSwitcherBackground: #000000;
+$barMprisPrimaryPlayerSwitcherBorderRadius: 8px;
+$barMprisPrimaryPlayerSwitcherBorderWidth: 1px;
+$barMprisPrimaryPlayerSwitcherBorderColor: #009911;
+
+$barNotificationHistoryForeground: #ffffff;
+$barNotificationHistoryBackground: #000000;
+$barNotificationHistoryBorderRadius: 8px;
+$barNotificationHistoryBorderWidth: 1px;
+$barNotificationHistoryBorderColor: #009911;
+
+$barColorPickerForeground: #ffffff;
+$barColorPickerBackground: #000000;
+$barColorPickerBorderRadius: 8px;
+$barColorPickerBorderWidth: 1px;
+$barColorPickerBorderColor: #009911;
+
+$barLogoutForeground: #ffffff;
+$barLogoutBackground: #000000;
+$barLogoutBorderRadius: 8px;
+$barLogoutBorderWidth: 1px;
+$barLogoutBorderColor: #009911;
+
+$barLockForeground: #ffffff;
+$barLockBackground: #000000;
+$barLockBorderRadius: 8px;
+$barLockBorderWidth: 1px;
+$barLockBorderColor: #009911;
+
+$barRestartForeground: #ffffff;
+$barRestartBackground: #000000;
+$barRestartBorderRadius: 8px;
+$barRestartBorderWidth: 1px;
+$barRestartBorderColor: #009911;
+
+$barShutdownForeground: #ffffff;
+$barShutdownBackground: #000000;
+$barShutdownBorderRadius: 8px;
+$barShutdownBorderWidth: 1px;
+$barShutdownBorderColor: #009911;

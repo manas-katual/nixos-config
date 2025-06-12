@@ -2,6 +2,10 @@
 #  Hyprland Configuration
 #  Enable with "hyprland.enable = true;"
 #
+#  useful commands for nix
+#  find $(nix eval --raw nixpkgs#hyprpolkitagent) -type f -name 'hyprpolkitagent'
+#  ls -l $(nix eval --raw nixpkgs#pyprland)/bin/
+#
 {
   config,
   lib,
@@ -28,13 +32,11 @@ with host; {
       systemPackages = with pkgs;
         [
           hyprcursor # Cursor
-          hyprpaper # Wallpaper
-          hyprsunset # night light
           wl-clipboard # Clipboard
           wlr-randr # Monitor Settings
           xwayland # X session
           #nwg-look
-          #hyprpolkitagent
+          hyprpolkitagent
         ]
         ++ (
           if (userSettings.bar == "waybar")
@@ -77,7 +79,6 @@ with host; {
             "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
             "SDL_VIDEODRIVER, x11"
             "MOZ_ENABLE_WAYLAND, 1"
-            # "AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1"
             "GDK_SCALE,1"
             "QT_SCALE_FACTOR,1"
             "EDITOR,nvim"
@@ -86,19 +87,19 @@ with host; {
           exec-once =
             [
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-              "systemctl --user start ${pkgs.hyprpolkitagent}/bin/hyprpolkitagent"
+              "pgrep -x hyprpolkitagent || ${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent &"
               "${pkgs.hyprlock}/bin/hyprlock"
               "${pkgs.hypridle}/bin/hypridle"
-              # "${pkgs.hyprpaper}/bin/hyprpaper"
+              "${pkgs.hyprpaper}/bin/hyprpaper"
               # "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
-              "pypr &"
+              "pkill pypr || ${pkgs.pyprland}/bin/pypr &"
             ]
             ++ (
               if userSettings.bar == "waybar"
               then [
+                "pgrep -x waybar || ${pkgs.waybar}/bin/waybar &"
                 "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
                 "${pkgs.blueman}/bin/blueman-applet"
-                "${pkgs.waybar}/bin/waybar -c $HOME/.config/waybar/config"
                 "${pkgs.eww}/bin/eww daemon"
                 # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
                 "${pkgs.swaynotificationcenter}/bin/swaync"
@@ -109,7 +110,7 @@ with host; {
               ]
               else if userSettings.bar == "ags"
               then [
-                "ags run &"
+                "ags run --gtk4"
               ]
               else []
             );
@@ -172,7 +173,7 @@ with host; {
               "grp:alt_caps_toggle"
               "caps:super"
             ];
-            follow_mouse = 2;
+            follow_mouse = 1;
             repeat_delay = 250;
             numlock_by_default = 1;
             accel_profile = "flat";

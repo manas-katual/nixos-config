@@ -92,7 +92,7 @@
           "menus.dashboard.shortcuts.enabled" = false;
           "menus.dashboard.powermenu.avatar.image" = "/home/manas/setup/modules/programs/icons/nixos.png";
 
-          "theme.bar.floating" = true;
+          "theme.bar.floating" = false;
           "theme.bar.buttons.opacity" = 100;
           "theme.bar.menus.monochrome" = true;
           "theme.bar.buttons.monochrome" = true;

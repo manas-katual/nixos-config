@@ -49,10 +49,10 @@
 
         diagnostics = {
           enable = true;
-          config = {
-            virtual_lines.enable = true;
-            underline = true;
-          };
+          # config = {
+          #   virtual_lines.enable = true;
+          #   underline = true;
+          # };
         };
 
         keymaps = [

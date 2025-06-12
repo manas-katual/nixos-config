@@ -1181,6 +1181,7 @@
         "nvf": "nvf",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
+        "wallpaper-bank": "wallpaper-bank",
         "yt-x": "yt-x"
       }
     },
@@ -1505,6 +1506,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "wallpaper-bank": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742112173,
+        "narHash": "sha256-rjNShu858WjbEQbIM7d8uVeUPZ3402H41dkYw6WMRHI=",
+        "owner": "JaKooLit",
+        "repo": "Wallpaper-Bank",
+        "rev": "b15f6c32a219257f18b9faf4664312101f58f435",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JaKooLit",
+        "repo": "Wallpaper-Bank",
         "type": "github"
       }
     },

@@ -26,10 +26,6 @@ in let
     else [];
 in {
   config = lib.mkIf (config.wlwm.enable && userSettings.bar == "waybar") {
-    environment.systemPackages = with pkgs; [
-      waybar
-    ];
-
     home-manager.users.${userSettings.username} = with colors.scheme.${userSettings.theme}; {
       programs.waybar = {
         enable = true;

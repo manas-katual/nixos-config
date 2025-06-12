@@ -26,6 +26,7 @@
   ./swappy.nix
   ./thunar.nix
   ./tmux.nix
+  ./wallpapers.nix
   ./waybar.nix
   ./waydroid.nix
   ./wine.nix

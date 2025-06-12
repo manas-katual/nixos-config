@@ -1,0 +1,52 @@
+@use "../variables" as vars;
+@use "sass:color";
+@use "../functions" as fun;
+
+.okButtonClass {
+  all: unset;
+  background-color: transparent;
+  border: none;
+  @include fun.hoverLighten(vars.$bg);
+}
+
+.okButtonClassPrimary {
+  @include fun.hoverLighten(vars.$buttonPrimary);
+}
+
+.okButtonClassSelected {
+  all: unset;
+  background-color: vars.$buttonPrimary;
+  border: none;
+}
+
+.screenshotButton {
+  all: unset;
+  background-color: vars.$buttonPrimary;
+  color: vars.$fg;
+  border-radius: vars.$buttonBorderRadius;
+  padding: 4px 8px 4px 8px;
+  @include fun.hoverLighten(vars.$buttonPrimary);
+}
+
+.trayIconButton {
+  @include fun.hoverLighten(vars.$bg);
+  .toggle {
+    all: unset;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.trayMenuButton {
+  all: unset;
+  background-color: transparent;
+  color: vars.$fg;
+  border-radius: vars.$buttonBorderRadius;
+  padding: 4px 8px 4px 8px;
+  @include fun.hoverLighten(vars.$bg);
+
+  .toggle {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}

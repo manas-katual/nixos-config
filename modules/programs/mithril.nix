@@ -14,9 +14,13 @@
 
       services.mithril-shell.enable = true;
       services.mithril-shell.integrations.hyprland.enable = true;
-      programs.mithril-control-center.enable = true;
       services.mithril-shell.settings.lockCommand = "${pkgs.hyprlock}/bin/hyprlock --immediate";
-      services.mithril-shell.settings.bar.modules.workspacesIndicator.reverseScrollDirection = false;
+      services.mithril-shell.settings.bar.modules.workspacesIndicator.reverseScrollDirection = true;
+      programs.mithril-control-center.enable = true;
+      programs.mithril-control-center.package = inputs.mithril-shell.packages.${pkgs.system}.mithril-control-center;
+      programs.mithril-control-center.compatibility.enable = true;
+      programs.mithril-control-center.compatibility.bluetooth.enable = true;
+      services.mithril-shell.settings.popups.volumePopup.enable = true;
     };
   };
 }

@@ -8,7 +8,13 @@
   themePaths = {
     "gruvbox-dark-hard" = {
       scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-      image = ../wallpapers/wind_rises.jpeg;
+      # image = ../wallpapers/wind_rises.jpeg;
+      # image = "${inputs.wallpaper-bank}/wallpapers/Dynamic-Wallpapers/Dark/Garden-Dark.png";
+      image = pkgs.fetchurl {
+        url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
+        # hash = "sha256-enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
+        sha256 = "1793iy5a727m5xmixyvgwq73pyha1v5dkqzi202zv0d11bgjhx3s";
+      };
     };
     "gruvbox-dark-medium" = {
       scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
@@ -83,9 +89,23 @@ in {
   stylix.base16Scheme = lib.mkDefault (lib.getAttr userSettings.theme themePaths).scheme;
   stylix.image = lib.mkDefault (lib.getAttr userSettings.theme themePaths).image;
 
+  # stylix.cursor = {
+  #   package = lib.mkIf (userSettings.desktop == "hyprland" then pkgs.google-cursor else pkgs.bibata-cursors);
+  #   name = lib.mkIf userSettings.desktop == "hyprland" then "GoogleDot-Black" else "Bibata-Modern-Ice";
+  #   size = lib.mkForce 18;
+  # };
+
   stylix.cursor = {
-    package = lib.mkForce pkgs.google-cursor;
-    name = lib.mkForce "GoogleDot-Black";
+    package =
+      if userSettings.desktop == "hyprland"
+      then pkgs.google-cursor
+      else pkgs.bibata-cursors;
+
+    name =
+      if userSettings.desktop == "hyprland"
+      then "GoogleDot-Black"
+      else "Bibata-Modern-Ice";
+
     size = lib.mkForce 18;
   };
 

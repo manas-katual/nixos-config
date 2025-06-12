@@ -96,6 +96,11 @@
       url = "github:andreashgk/mithril-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wallpaper-bank = {
+      url = "github:JaKooLit/Wallpaper-Bank";
+      flake = false; # important: because it's NOT a flake
+    };
   };
 
   outputs = inputs @ {

@@ -85,6 +85,7 @@ with host; {
             if userSettings.bar == "waybar"
             then [
               "$modifier,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -disable-history -show drun"
+              "$modifier,W,exec, pkill waybar || ${pkgs.waybar}/bin/waybar &"
               "$modifier,TAB,exec,pkill -SIGUSR1 waybar"
               "ALT,F4,exec,${pkgs.eww}/bin/eww open --toggle powermenu-window --screen 0"
             ]
@@ -98,6 +99,10 @@ with host; {
             then [
               "$modifier,Space,exec, pkill anyrun || ${pkgs.anyrun}/bin/anyrun"
             ]
+            else if userSettings.bar == "ags"
+            then [
+              "$modifier,Space,exec, pkill anyrun || ${pkgs.anyrun}/bin/anyrun"
+            ]
             else []
           );
         binde = [
@@ -107,7 +112,7 @@ with host; {
           "$modifierCTRL,down,resizeactive,0 60"
         ];
         bindl =
-          if hostName == "dell" || hostName == "nokia"
+          if hostName == "dell" || hostName == "nokia" || hostName == "hp"
           then [
             ",switch:on:Lid Switch,exec,${pkgs.hyprlock}/bin/hyprlock"
           ]
