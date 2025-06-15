@@ -46,6 +46,11 @@ with host; {
         );
     };
 
+    services.blueman.enable =
+      if userSettings.bar == "waybar"
+      then true
+      else false;
+
     programs.hyprland = {
       enable = true;
     };
