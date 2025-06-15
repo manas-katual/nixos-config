@@ -51,6 +51,8 @@ with host; {
       then true
       else false;
 
+    programs.light.enable = true;
+
     programs.hyprland = {
       enable = true;
     };

@@ -10,7 +10,7 @@
 with lib;
 with host; {
   config = mkIf (config.hyprland.enable) {
-    wlwm.enable = true;
+    # wlwm.enable = true;
 
     security.pam.services.hyprlock = {
       # text = "auth include system-auth";

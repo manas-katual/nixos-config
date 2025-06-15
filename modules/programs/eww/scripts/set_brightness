@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-# brightnessctl set $1
-# brightnessctl --save
-light -S $1
+brightnessctl set $1
+brightnessctl --save

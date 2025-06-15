@@ -120,12 +120,12 @@ in {
       name = "JetBrainsMono Nerd Font Mono";
     };
     sansSerif = {
-      package = lib.mkForce pkgs.intel-one-mono;
-      name = "Intel One Mono";
+      package = lib.mkForce pkgs.montserrat;
+      name = "Montserrat";
     };
     serif = {
-      package = lib.mkForce pkgs.intel-one-mono;
-      name = "Intel One Mono";
+      package = lib.mkForce pkgs.montserrat;
+      name = "Montserrat";
     };
   };
 
