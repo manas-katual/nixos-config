@@ -35,7 +35,6 @@ with host; {
           wl-clipboard # Clipboard
           wlr-randr # Monitor Settings
           xwayland # X session
-          #nwg-look
           hyprpolkitagent
         ]
         ++ (
@@ -90,9 +89,8 @@ with host; {
               "pgrep -x hyprpolkitagent || ${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent &"
               "${pkgs.hyprlock}/bin/hyprlock"
               "${pkgs.hypridle}/bin/hypridle"
-              "${pkgs.hyprpaper}/bin/hyprpaper"
               # "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
-              "pkill pypr || ${pkgs.pyprland}/bin/pypr &"
+              "pypr &"
             ]
             ++ (
               if userSettings.bar == "waybar"
@@ -222,12 +220,6 @@ with host; {
           debug = {
             damage_tracking = 2;
           };
-        };
-      };
-      home.file = {
-        "Pictures/Wallpapers" = {
-          source = ../../wallpapers;
-          recursive = true;
         };
       };
     };

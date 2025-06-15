@@ -266,7 +266,7 @@ with host; {
           # This tells i3status-rust to not take the whole bar
           settings = {
             theme = {
-              theme = "plain";
+              theme = "ctp-frappe";
               overrides = {
                 idle_bg = "#${config.lib.stylix.colors.base00}";
                 idle_fg = "#${config.lib.stylix.colors.base05}";

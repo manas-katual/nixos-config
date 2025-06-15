@@ -97,9 +97,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    wallpaper-bank = {
-      url = "github:JaKooLit/Wallpaper-Bank";
-      flake = false; # important: because it's NOT a flake
+    walls = {
+      url = "git+https://codeberg.org/manas-katual/walls";
+      flake = false;
     };
   };
 
@@ -114,8 +114,8 @@
       terminal = "kitty";
       editor = "nvim";
       desktop = "hyprland";
-      bar = "hyprpanel";
-      theme = "onedark";
+      bar = "waybar";
+      theme = "gruvbox-dark-hard";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";

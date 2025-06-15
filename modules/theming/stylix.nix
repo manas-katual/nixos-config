@@ -6,94 +6,81 @@
   ...
 }: let
   themePaths = {
-    "gruvbox-dark-hard" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-      # image = ../wallpapers/wind_rises.jpeg;
-      # image = "${inputs.wallpaper-bank}/wallpapers/Dynamic-Wallpapers/Dark/Garden-Dark.png";
-      image = pkgs.fetchurl {
-        url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
-        # hash = "sha256-enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
-        sha256 = "1793iy5a727m5xmixyvgwq73pyha1v5dkqzi202zv0d11bgjhx3s";
-      };
-    };
-    "gruvbox-dark-medium" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-      image = ../wallpapers/gruvbox-car.jpg;
-    };
-    "gruvbox-material-dark-medium" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
-      image = ../wallpapers/ledge_gruvbox.png;
-    };
-    "gruvbox-material-dark-soft" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml";
-      image = ../wallpapers/nord_roads.png;
-    };
-    "solarized-dark" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml";
-      image = ../wallpapers/solarized-dark.jpg;
-    };
-    "nord" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-      image = ../wallpapers/nord_bridge.png;
-    };
-    "uwunicorn" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/uwunicorn.yaml";
-      image = ../wallpapers/uwu.jpg;
-    };
-    "sakura" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/sakura.yaml";
-      image = ../wallpapers/pink-katana.jpg;
-    };
-    "everforest" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
-      image = ../wallpapers/forest.jpg;
-    };
-    "windows-10-light" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/windows-10-light.yaml";
-      image = ../wallpapers/bindows.jpg;
-    };
-    "dracula" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-      image = ../wallpapers/dracula-mnt.png;
-    };
-    "catppuccin-mocha" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-      image = ../wallpapers/shaded.png;
+    "atelier-dune" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/atelier-dune.yaml";
+      image = "${inputs.walls}/comfy.jpg";
     };
     "catppuccin-frappe" = {
       scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
-      image = ../wallpapers/monterey.jpg;
+      image = "${inputs.walls}/monterey.jpg";
+    };
+    "catppuccin-mocha" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+      image = "${inputs.walls}/shaded.png";
     };
     "cupertino" = {
       scheme = "${pkgs.base16-schemes}/share/themes/cupertino.yaml";
-      image = ../wallpapers/monterey.jpg;
+      image = "${inputs.walls}/monterey.jpg";
     };
-    "atelier-dune" = {
-      scheme = "${pkgs.base16-schemes}/share/themes/atelier-dune.yaml";
-      image = ../wallpapers/comfy.jpg;
+    "dracula" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+      image = "${inputs.walls}/dracula-mnt.png";
+    };
+    "everforest" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+      image = "${inputs.walls}/forest.jpg";
+    };
+    "gruvbox-dark-hard" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+      image = "${inputs.walls}/ghibli_insider.jpeg";
+    };
+    "gruvbox-dark-medium" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+      image = "${inputs.walls}/gruvbox-car.jpg";
+    };
+    "gruvbox-material-dark-medium" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
+      image = "${inputs.walls}/ledge_gruvbox.png";
+    };
+    "gruvbox-material-dark-soft" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml";
+      image = "${inputs.walls}/nord_roads.png";
+    };
+    "nord" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+      image = "${inputs.walls}/nord_bridge.png";
     };
     "onedark" = {
       scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
-      image = ../wallpapers/od_neon_warm.png;
+      image = "${inputs.walls}/od_neon_warm.png";
     };
     "rose-pine" = {
       scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
-      image = ../wallpapers/pink-katana.jpg;
+      image = "${inputs.walls}/uwu.jpg";
+    };
+    "sakura" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/sakura.yaml";
+      image = "${inputs.walls}/pink-katana.jpg";
+    };
+    "solarized-dark" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml";
+      image = "${inputs.walls}/solarized-dark.jpg";
+    };
+    "uwunicorn" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/uwunicorn.yaml";
+      image = "${inputs.walls}/uwu.jpg";
+    };
+    "windows-10-light" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/windows-10-light.yaml";
+      image = "${inputs.walls}/bindows.jpg";
     };
   };
-
   defaultScheme = "${pkgs.base16-schemes}/share/themes/circus.yaml";
-  defaultImage = ../wallpapers/sky.jpg;
+  defaultImage = "${inputs.walls}/sky.jpg";
 in {
   # Use attribute set to get theme paths
   stylix.base16Scheme = lib.mkDefault (lib.getAttr userSettings.theme themePaths).scheme;
   stylix.image = lib.mkDefault (lib.getAttr userSettings.theme themePaths).image;
-
-  # stylix.cursor = {
-  #   package = lib.mkIf (userSettings.desktop == "hyprland" then pkgs.google-cursor else pkgs.bibata-cursors);
-  #   name = lib.mkIf userSettings.desktop == "hyprland" then "GoogleDot-Black" else "Bibata-Modern-Ice";
-  #   size = lib.mkForce 18;
-  # };
 
   stylix.cursor = {
     package =
@@ -152,5 +139,12 @@ in {
     stylix.targets.kde.enable = true;
     stylix.targets.qt.enable = true;
     stylix.targets.qt.platform = "qtct";
+
+    home.file = {
+      "Pictures/Wallpapers" = {
+        source = "${inputs.walls}";
+        recursive = true;
+      };
+    };
   };
 }

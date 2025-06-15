@@ -13,6 +13,7 @@ with lib; {
     home-manager.users.${userSettings.username} = {
       services.hypridle = {
         enable = true;
+        package = pkgs.hypridle;
         settings = {
           general = {
             before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";

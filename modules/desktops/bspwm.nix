@@ -6,15 +6,19 @@
   config,
   lib,
   pkgs,
-  vars,
+  userSettings,
   host,
   ...
 }:
 with lib;
 with host; let
   monitor =
-    if hostName == "nokia"
-    then "${pkgs.xorg.xrandr}/bin/xrandr --output ${mainMonitor} --mode 1920x1080 --pos 0x0 --rotate normal"
+    if hostName == "beelink"
+    then "${pkgs.xorg.xrandr}/bin/xrandr --output ${secondMonitor} --mode 1920x1080 --pos 0x0 --rotate normal --output ${mainMonitor} --primary --mode 1920x1080 --pos 1920x0 --rotate normal"
+    else if hostName == "work"
+    then "${pkgs.xorg.xrandr}/bin/xrandr --output ${mainMonitor} --mode 1920x1080 --pos 0x0 --rotate normal --primary --output ${secondMonitor} --mode 1920x1200 --pos 1920x0 --rotate normal --output ${thirdMonitor} --mode 1920x1200 --pos 3840x0 --rotate normal"
+    else if hostName == "vm" || hostName == "probook"
+    then "${pkgs.xorg.xrandr}/bin/xrandr --mode 1920x1080 --pos 0x0 --rotate normal"
     else "";
 
   extra = ''
@@ -55,7 +59,7 @@ with host; let
           polybar sec &
           polybar thi &
         ''
-        else if hostName == "vm" || hostName == "probook"
+        else if hostName == "vm" || hostName == "probook" || hostName == "nokia"
         then ''
           bspc monitor -d 1 2 3 4 5
         ''
@@ -164,7 +168,7 @@ in {
         xterm # Terminal
       ];
 
-      home-manager.users.${vars.user} = {
+      home-manager.users.${userSettings.username} = {
         xsession = {
           enable = true;
           numlock.enable = true;

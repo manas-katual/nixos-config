@@ -1181,7 +1181,7 @@
         "nvf": "nvf",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
-        "wallpaper-bank": "wallpaper-bank",
+        "walls": "walls",
         "yt-x": "yt-x"
       }
     },
@@ -1509,20 +1509,20 @@
         "type": "github"
       }
     },
-    "wallpaper-bank": {
+    "walls": {
       "flake": false,
       "locked": {
-        "lastModified": 1742112173,
-        "narHash": "sha256-rjNShu858WjbEQbIM7d8uVeUPZ3402H41dkYw6WMRHI=",
-        "owner": "JaKooLit",
-        "repo": "Wallpaper-Bank",
-        "rev": "b15f6c32a219257f18b9faf4664312101f58f435",
-        "type": "github"
+        "lastModified": 1749898905,
+        "narHash": "sha256-eqqhkWFGLt+qfXLJ6notOPoGacsKBXm/2/oP7IJldl4=",
+        "ref": "refs/heads/main",
+        "rev": "ae17839b465e7c058927bc1dc9ab17985b66c877",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://codeberg.org/manas-katual/walls"
       },
       "original": {
-        "owner": "JaKooLit",
-        "repo": "Wallpaper-Bank",
-        "type": "github"
+        "type": "git",
+        "url": "https://codeberg.org/manas-katual/walls"
       }
     },
     "xdph": {

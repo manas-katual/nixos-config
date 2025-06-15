@@ -169,6 +169,7 @@ in {
     fira-mono
     fira-sans
     nerd-fonts.dejavu-sans-mono
+    dejavu_fonts
   ];
 
   console = {
