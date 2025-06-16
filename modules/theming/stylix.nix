@@ -32,7 +32,7 @@
     };
     "gruvbox-dark-hard" = {
       scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-      image = "${inputs.walls}/ghibli_insider.jpeg";
+      image = "${inputs.walls}/hyprland.png";
     };
     "gruvbox-dark-medium" = {
       scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";

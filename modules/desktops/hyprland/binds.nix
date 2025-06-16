@@ -78,6 +78,10 @@ with host; {
             "$modifier_L,c,exec,${pkgs.pamixer}/bin/pamixer --default-source -t"
             "CTRL,F10,exec,${pkgs.pamixer}/bin/pamixer -t"
             ",XF86AudioMicMute,exec,${pkgs.pamixer}/bin/pamixer --default-source -t"
+            ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+            ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+            ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+
             ",XF86MonBrightnessDown,exec,${pkgs.light}/bin/light -U 10"
             ",XF86MonBrightnessUP,exec,${pkgs.light}/bin/light -A 10"
           ]
@@ -85,8 +89,8 @@ with host; {
             if userSettings.bar == "waybar"
             then [
               "$modifier,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -disable-history -show drun"
-              "$modifier,W,exec, pkill waybar || ${pkgs.waybar}/bin/waybar &"
               "$modifier,TAB,exec,pkill -SIGUSR1 waybar"
+              "$modifier, W, exec, pkill waybar && ${pkgs.waybar}/bin/waybar &"
               "ALT,F4,exec,${pkgs.eww}/bin/eww open --toggle powermenu-window --screen 0"
             ]
             else if userSettings.bar == "hyprpanel"
