@@ -115,7 +115,7 @@
       editor = "nvim";
       desktop = "hyprland";
       bar = "waybar";
-      theme = "gruvbox-dark-hard";
+      theme = "everforest";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";

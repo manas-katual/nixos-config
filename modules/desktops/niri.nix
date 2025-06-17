@@ -33,9 +33,11 @@ with host; {
         xdg-desktop-portal-wlr # Wayland portal
         xwayland # X for Wayland
         networkmanagerapplet
+        blueman
       ];
     };
 
+    services.blueman.enable = true;
     programs = {
       light = {
         enable = true;
@@ -52,15 +54,15 @@ with host; {
     in {
       imports = [inputs.niri.homeModules.niri];
 
-      services.hyprpaper = {
-        enable = true;
-        settings = {
-          ipc = true;
-          splash = false;
-          preload = [''+config.stylix.image+''];
-          wallpaper = [''+config.stylix.image+''];
-        };
-      };
+      # services.hyprpaper = {
+      #   enable = true;
+      #   settings = {
+      #     ipc = true;
+      #     splash = false;
+      #     preload = [''+config.stylix.image+''];
+      #     wallpaper = [''+config.stylix.image+''];
+      #   };
+      # };
 
       programs.niri = {
         enable = true;
@@ -107,7 +109,15 @@ with host; {
           };
 
           screenshot-path = "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png";
-
+          outputs = {
+            "eDP-1" = {
+              scale = 1.0;
+              position = {
+                x = 0;
+                y = 0;
+              };
+            };
+          };
           prefer-no-csd = true;
 
           layout = {
@@ -175,9 +185,9 @@ with host; {
             "${Modifier}+4".action.focus-workspace = 4;
 
             "${Modifier}+Minus".action = set-column-width "-10%";
-            "${Modifier}+Plus".action = set-column-width "+10%";
+            "${Modifier}+Equal".action = set-column-width "+10%";
             "${Modifier}+Shift+Minus".action = set-window-height "-10%";
-            "${Modifier}+Shift+Plus".action = set-window-height "+10%";
+            "${Modifier}+Shift+Equal".action = set-window-height "+10%";
 
             "${Modifier}+Comma".action = consume-window-into-column;
             "${Modifier}+Period".action = expel-window-from-column;
@@ -186,6 +196,7 @@ with host; {
 
             "${Modifier}+Q".action = close-window;
             "${Modifier}+F".action = toggle-window-floating;
+            "${Modifier}+M".action = maximize-column;
             "${Modifier}+S".action = switch-preset-column-width;
             "${Modifier}+Shift+F".action = expand-column-to-available-width;
             "${Modifier}+W".action = toggle-column-tabbed-display;
