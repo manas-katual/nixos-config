@@ -5,7 +5,7 @@
   userSettings,
   ...
 }: let
-  colors = import ../theming/colors.nix;
+  colors = import ../../theming/colors.nix;
   modules-left = with config;
     if hyprland.enable == true
     then [
@@ -55,25 +55,17 @@
     on-click = "activate";
   };
 in {
-  config = lib.mkIf (config.wlwm.enable && userSettings.bar == "waybar") {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-oglo") {
     home-manager.users.${userSettings.username} = with colors.scheme.${userSettings.theme}; {
       programs.waybar = {
         enable = true;
-
-        # config.json
         settings = {
           mainBar = {
-            # margin = "7 7 3 7";
             layer = "top";
             height = 30;
             spacing = 4;
             modules-left = modules-left;
-            # modules-center = [ "sway/window" ];
             modules-right = ["idle_inhibitor" "custom/notification" "custom/menu" "pulseaudio" "battery" "clock" "tray" "custom/powermenu"];
-
-            /*
-            Modules configuration
-            */
             "sway/workspaces" = commonWorkspaces;
             "niri/workspaces" = commonWorkspaces;
             "wlr/workspaces" = {

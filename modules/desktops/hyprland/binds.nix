@@ -86,24 +86,24 @@ with host; {
             ",XF86MonBrightnessUP,exec,${pkgs.light}/bin/light -A 10"
           ]
           ++ (
-            if userSettings.bar == "waybar"
+            if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve"
             then [
               "$modifier,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -disable-history -show drun"
               "$modifier,TAB,exec,pkill -SIGUSR1 waybar"
               "$modifier, W, exec, pkill waybar && ${pkgs.waybar}/bin/waybar &"
               "ALT,F4,exec,${pkgs.eww}/bin/eww open --toggle powermenu-window --screen 0"
             ]
-            else if userSettings.bar == "hyprpanel"
+            else if userSettings.style == "hyprpanel"
             then [
               "$modifier,Space,exec, pkill anyrun || ${pkgs.anyrun}/bin/anyrun"
               "$modifier,TAB,exec,hyprpanel toggleWindow bar-0"
               "ALT,F4,exec,hyprpanel toggleWindow powerdropdownmenu"
             ]
-            else if userSettings.bar == "mithril"
+            else if userSettings.style == "mithril"
             then [
               "$modifier,Space,exec, pkill anyrun || ${pkgs.anyrun}/bin/anyrun"
             ]
-            else if userSettings.bar == "ags"
+            else if userSettings.style == "ags"
             then [
               "$modifier,Space,exec, pkill anyrun || ${pkgs.anyrun}/bin/anyrun"
             ]

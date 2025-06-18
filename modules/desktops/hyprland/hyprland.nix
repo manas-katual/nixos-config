@@ -38,7 +38,7 @@ with host; {
           hyprpolkitagent
         ]
         ++ (
-          if (userSettings.bar == "waybar")
+          if (userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve")
           then [
             pkgs.blueman
           ]
@@ -47,7 +47,7 @@ with host; {
     };
 
     services.blueman.enable =
-      if userSettings.bar == "waybar"
+      if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve"
       then true
       else false;
 
@@ -100,7 +100,7 @@ with host; {
               "pypr &"
             ]
             ++ (
-              if userSettings.bar == "waybar"
+              if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve"
               then [
                 "pgrep -x waybar || ${pkgs.waybar}/bin/waybar &"
                 "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
@@ -109,11 +109,11 @@ with host; {
                 # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
                 "${pkgs.swaynotificationcenter}/bin/swaync"
               ]
-              else if userSettings.bar == "hyprpanel"
+              else if userSettings.style == "hyprpanel"
               then [
                 "${inputs.hyprpanel.packages.${pkgs.system}.wrapper}/bin/hyprpanel"
               ]
-              else if userSettings.bar == "ags"
+              else if userSettings.style == "ags"
               then [
                 "ags run --gtk4"
               ]

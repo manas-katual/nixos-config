@@ -5,7 +5,8 @@
   ./lid.nix
   ./picom.nix
   ./polybar.nix
-  ./swaync.nix
+  ./swaync/swaync-oglo.nix
+  ./swaync/swaync-dynamic.nix
   ./sxhkd.nix
   ./udiskie.nix
   ./wlsunset.nix

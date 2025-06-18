@@ -4,7 +4,7 @@
   userSettings,
   ...
 }: {
-  config = lib.mkIf (config.sway.enable) {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-curve") {
     home-manager.users.${userSettings.username} = {
       home.file.".config/wlogout/icons" = {
         source = ./icons;
@@ -35,7 +35,7 @@
           {
             label = "shutdown";
             action = "sleep 1; systemctl poweroff";
-            text = "sleep 1; Shutdown";
+            text = "Shutdown";
             keybind = "s";
           }
           {

@@ -21,12 +21,14 @@
   ./kitty.nix
   ./mithril.nix
   # ./pcmanfm.nix
-  ./rofi.nix
+  ./rofi/rofi-oglo.nix
+  ./rofi/rofi-zaney.nix
   ./spicetify.nix
   ./swappy.nix
   ./thunar.nix
   ./tmux.nix
-  ./waybar.nix
+  ./waybar/waybar-oglo.nix
+  ./waybar/waybar-zaney.nix
   ./waydroid.nix
   ./wine.nix
   ./wlogout.nix

@@ -114,7 +114,7 @@
       terminal = "kitty";
       editor = "nvim";
       desktop = "hyprland";
-      bar = "waybar";
+      style = "waybar-curve";
       theme = "everforest";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";

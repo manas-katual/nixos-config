@@ -1,11 +1,14 @@
 #
 #  Widget
 #
-
-{ config, lib, pkgs, userSettings, ... }:
-
 {
-  config = lib.mkIf (config.wlwm.enable && userSettings.bar == "waybar") {
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}: {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-oglo") {
     environment.systemPackages = with pkgs; [
       eww # Widgets
       jq # JSON Processor
@@ -19,8 +22,8 @@
         source = ./eww;
         recursive = true;
       };
-      home.file.".config/eww/themes/current.scss" = { 
-        source = ./eww/themes/_${userSettings.theme}.scss; 
+      home.file.".config/eww/themes/current.scss" = {
+        source = ./eww/themes/_${userSettings.theme}.scss;
       };
     };
   };

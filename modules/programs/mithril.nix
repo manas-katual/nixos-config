@@ -6,7 +6,7 @@
   userSettings,
   ...
 }: {
-  config = lib.mkIf (config.wlwm.enable && userSettings.bar == "mithril") {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "mithril") {
     home-manager.users.${userSettings.username} = {
       imports = [
         inputs.mithril-shell.homeManagerModules.default

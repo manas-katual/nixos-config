@@ -6,7 +6,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (config.wlwm.enable && userSettings.bar == "ags") {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "ags") {
     home-manager.users.${userSettings.username} = {
       imports = [inputs.ags.homeManagerModules.default];
 
