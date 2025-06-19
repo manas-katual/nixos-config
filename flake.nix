@@ -114,8 +114,8 @@
       terminal = "kitty";
       editor = "nvim";
       desktop = "hyprland";
-      style = "waybar-curve";
-      theme = "everforest";
+      style = "waybar-oglo";
+      theme = "solarized-dark";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";

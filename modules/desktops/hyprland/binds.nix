@@ -86,12 +86,16 @@ with host; {
             ",XF86MonBrightnessUP,exec,${pkgs.light}/bin/light -A 10"
           ]
           ++ (
-            if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve"
+            if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool"
             then [
               "$modifier,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -disable-history -show drun"
               "$modifier,TAB,exec,pkill -SIGUSR1 waybar"
               "$modifier, W, exec, pkill waybar && ${pkgs.waybar}/bin/waybar &"
-              "ALT,F4,exec,${pkgs.eww}/bin/eww open --toggle powermenu-window --screen 0"
+              (
+                if userSettings.style == "waybar-oglo"
+                then "ALT,F4,exec,${pkgs.eww}/bin/eww open --toggle powermenu-window --screen 0"
+                else "ALT,F4,exec,${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell"
+              )
             ]
             else if userSettings.style == "hyprpanel"
             then [
@@ -122,7 +126,7 @@ with host; {
           ]
           else [];
         layerrule = [
-          "blur, waybar"
+          # "blur, waybar"
           "blur, rofi"
           "blur, gtk-layer-shell"
         ];

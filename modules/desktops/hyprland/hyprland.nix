@@ -38,7 +38,7 @@ with host; {
           hyprpolkitagent
         ]
         ++ (
-          if (userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve")
+          if (userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool")
           then [
             pkgs.blueman
           ]
@@ -47,7 +47,7 @@ with host; {
     };
 
     services.blueman.enable =
-      if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve"
+      if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool"
       then true
       else false;
 
@@ -100,7 +100,7 @@ with host; {
               "pypr &"
             ]
             ++ (
-              if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve"
+              if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool"
               then [
                 "pgrep -x waybar || ${pkgs.waybar}/bin/waybar &"
                 "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
@@ -108,6 +108,7 @@ with host; {
                 "${pkgs.eww}/bin/eww daemon"
                 # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
                 "${pkgs.swaynotificationcenter}/bin/swaync"
+                "${pkgs.avizo}/bin/avizo-service"
               ]
               else if userSettings.style == "hyprpanel"
               then [

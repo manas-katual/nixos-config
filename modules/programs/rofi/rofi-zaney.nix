@@ -6,11 +6,12 @@
   lib,
   pkgs,
   userSettings,
+  inputs,
   ...
 }: let
   inherit (config.home-manager.users.${userSettings.username}.lib.formats.rasi) mkLiteral;
 in {
-  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-curve") {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool") {
     home-manager.users.${userSettings.username} = {
       home = {
         packages = with pkgs; [
@@ -75,7 +76,7 @@ in {
             "imagebox" = {
               padding = mkLiteral "20px";
               background-color = mkLiteral "transparent";
-              background-image = mkLiteral ''url("~/Pictures/Wallpapers/linux.png", height)'';
+              background-image = mkLiteral ''url("${inputs.walls}/Rainnight.jpg", height)'';
               orientation = mkLiteral "vertical";
               children = map mkLiteral [
                 "inputbar"

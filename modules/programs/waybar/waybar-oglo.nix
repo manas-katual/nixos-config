@@ -548,22 +548,18 @@ in {
           }
 
           #idle_inhibitor {
-              background-color: #${button};
-              color: #${button-foreground};
+              background-color: #${waybar-clock};
+              color: #${waybar-module-foreground};
               font-family: JetBrainsMono Nerd Font, monospace;
-              font-size: 18px;
+              font-size: 15px;
               font-weight: bold;
               border: none;
-              border-bottom: 8px solid #${button-bottom};
+              border-bottom: 8px solid #${waybar-clock-bottom};
               border-radius: 5px;
               margin-bottom: 2px;
               padding-left: 13px;
               padding-right: 16px;
           }
-
-          /* #idle_inhibitor {
-              background-color: #2d3436;
-          } */
 
           #idle_inhibitor.activated {
               background-color: #${powermenu-button};

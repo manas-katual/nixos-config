@@ -24,7 +24,7 @@
     };
     "dracula" = {
       scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
-      image = "${inputs.walls}/dracula-mnt.png";
+      image = "${inputs.walls}/Rainnight.jpg";
     };
     "everforest" = {
       scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
@@ -46,6 +46,10 @@
       scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml";
       image = "${inputs.walls}/nord_roads.png";
     };
+    "helios" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/helios.yaml";
+      image = "${inputs.walls}/gruv-temple.png";
+    };
     "nord" = {
       scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
       image = "${inputs.walls}/nord_bridge.png";
@@ -64,7 +68,7 @@
     };
     "solarized-dark" = {
       scheme = "${pkgs.base16-schemes}/share/themes/solarized-dark.yaml";
-      image = "${inputs.walls}/solarized-dark.jpg";
+      image = "${inputs.walls}/under_water.png";
     };
     "uwunicorn" = {
       scheme = "${pkgs.base16-schemes}/share/themes/uwunicorn.yaml";

@@ -4,7 +4,7 @@
   userSettings,
   ...
 }: {
-  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-curve") {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool") {
     home-manager.users.${userSettings.username} = {
       home.file.".config/wlogout/icons" = {
         source = ./icons;

@@ -10,6 +10,9 @@
         "--no-quotes"
         "--git-ignore"
         "--icons=always"
+
+        "--classify" # append indicator (/, *, =, @, |)
+        "--hyperlink" # make paths clickable in some terminals
       ];
     };
   };

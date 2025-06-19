@@ -28,7 +28,10 @@
   ./thunar.nix
   ./tmux.nix
   ./waybar/waybar-oglo.nix
-  ./waybar/waybar-zaney.nix
+  ./waybar/waybar-curve.nix
+  ./waybar/waybar-jake.nix
+  ./waybar/waybar-jerry.nix
+  ./waybar/waybar-cool.nix
   ./waydroid.nix
   ./wine.nix
   ./wlogout.nix
