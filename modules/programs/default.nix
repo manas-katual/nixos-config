@@ -23,6 +23,7 @@
   # ./pcmanfm.nix
   ./rofi/rofi-oglo.nix
   ./rofi/rofi-zaney.nix
+  # ./soundwire.nix
   ./spicetify.nix
   ./swappy.nix
   ./thunar.nix

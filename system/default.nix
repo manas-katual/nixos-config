@@ -1,0 +1,15 @@
+[
+  ./appimage.nix
+  ./boot.nix
+  ./console.nix
+  ./fonts.nix
+  ./locale.nix
+  ./networking.nix
+  ./packages.nix
+  ./pipewire.nix
+  ./printing.nix
+  ./security.nix
+  ./ssh.nix
+  ./users.nix
+  ./xserver.nix
+]
