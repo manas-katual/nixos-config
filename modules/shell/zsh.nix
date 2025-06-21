@@ -4,6 +4,7 @@
 {
   pkgs,
   userSettings,
+  host,
   ...
 }: {
   programs.zsh.enable = true;
@@ -14,6 +15,27 @@
 
   home-manager.users.${userSettings.username} = {
     programs = {
+      zsh = {
+        enable = true;
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = true;
+        enableCompletion = true;
+        shellAliases = {
+          fucking-flake-rb = "sudo nixos-rebuild switch --flake ~/setup/";
+          # fucking-flake-rb = "nh os switch --hostname ${host.hostName}";
+          ls = "${pkgs.eza}/bin/eza --icons --group-directories-first -1";
+          ll = "${pkgs.eza}/bin/eza --icons -lh --group-directories-first -1 --no-user --long";
+          la = "${pkgs.eza}/bin/eza --icons -lah --group-directories-first -1";
+          tree = "${pkgs.eza}/bin/eza --icons --tree --group-directories-first";
+          cat = "${pkgs.bat}/bin/bat";
+          icat = "kitten icat";
+        };
+        #histSize = 100000;
+        initContent = ''
+          eval "$(oh-my-posh init zsh)"
+          #export PATH="$HOME/.config/emacs/bin:$PATH"
+        '';
+      };
       oh-my-posh = {
         enable = true;
         useTheme = "robbyrussell";
@@ -101,26 +123,6 @@
             template = "❯❯ ";
           };
         };
-      };
-      zsh = {
-        enable = true;
-        autosuggestion.enable = true;
-        syntaxHighlighting.enable = true;
-        enableCompletion = true;
-        shellAliases = {
-          fucking-flake-rb = "sudo nixos-rebuild switch --flake ~/setup/";
-          ls = "${pkgs.eza}/bin/eza --icons --group-directories-first -1";
-          ll = "${pkgs.eza}/bin/eza --icons -lh --group-directories-first -1 --no-user --long";
-          la = "${pkgs.eza}/bin/eza --icons -lah --group-directories-first -1";
-          tree = "${pkgs.eza}/bin/eza --icons --tree --group-directories-first";
-          cat = "${pkgs.bat}/bin/bat";
-          icat = "kitten icat";
-        };
-        #histSize = 100000;
-        initContent = ''
-          eval "$(oh-my-posh init zsh)"
-          #export PATH="$HOME/.config/emacs/bin:$PATH"
-        '';
       };
     };
   };

@@ -12,39 +12,61 @@
 
       programs.ags = {
         enable = true;
-
-        # symlink to ~/.config/ags
         configDir = ./ags;
 
         # additional packages to add to gjs's runtime
         extraPackages = with pkgs; [
-          gobject-introspection
-          polkit
-
-          inputs.ags.packages.${pkgs.system}.battery
-          fzf
-          # inputs.ags.packages.${pkgs.system}.io
-          # inputs.ags.packages.${pkgs.system}.astal3
-          inputs.ags.packages.${pkgs.system}.apps
-          inputs.ags.packages.${pkgs.system}.auth
-          inputs.ags.packages.${pkgs.system}.bluetooth
-          inputs.ags.packages.${pkgs.system}.cava
-          inputs.ags.packages.${pkgs.system}.greet
+          gtksourceview
+          webkitgtk
+          accountsservice
+          inputs.ags.packages.${pkgs.system}.astal4
+          inputs.ags.packages.${pkgs.system}.io
           inputs.ags.packages.${pkgs.system}.hyprland
           inputs.ags.packages.${pkgs.system}.mpris
-          inputs.ags.packages.${pkgs.system}.network
-          inputs.ags.packages.${pkgs.system}.notifd
-          inputs.ags.packages.${pkgs.system}.powerprofiles
-          inputs.ags.packages.${pkgs.system}.tray
+          inputs.ags.packages.${pkgs.system}.battery
           inputs.ags.packages.${pkgs.system}.wireplumber
-
-          inputs.astal.packages.${pkgs.system}.io
-          inputs.astal.packages.${pkgs.system}.astal3
+          inputs.ags.packages.${pkgs.system}.network
+          inputs.ags.packages.${pkgs.system}.bluetooth
+          inputs.ags.packages.${pkgs.system}.tray
         ];
       };
-      home.packages = [inputs.astal.packages.${pkgs.system}.default];
+      home.packages = with pkgs; [
+        # Core dependencies
+        gtk3
+        gtk4
+        gtksourceview
+        webkitgtk
+        accountsservice
 
-      # home.file.".config/ags".source = ./ags;
+        # Styling and theming
+        sassc # SCSS compiler
+        dart-sass # Alternative SCSS compiler
+
+        # Our widget dependencies
+        matugen # Material You color generator
+        swww # Wallpaper daemon
+        hyprpicker # Color picker
+        wl-clipboard # Clipboard utilities
+        grim # Screenshot utility
+        slurp # Screen area selector
+
+        # System info
+        btop # For system monitoring widgets
+        pamixer # Audio control
+        brightnessctl # Brightness control
+        networkmanager # Network management
+
+        # Optional but useful
+        jq # JSON processing
+        socat # Socket communication
+        ripgrep # Fast searching
+        fd # Fast file finding
+      ];
+
+      # Environment variables for AGS
+      home.sessionVariables = {
+        AGS_SKIP_V1_DEPRECATION_WARNING = "1";
+      };
     };
   };
 }

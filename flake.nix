@@ -11,9 +11,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # stylix
-    stylix = {
-      url = "github:danth/stylix";
+    # ags widgets
+    ags = {
+      url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # menu launcher
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    astal = {
+      url = "github:aylur/astal";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # doom-emacs unstraightened
+    # nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
+
+    # firefox declaritively
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -29,32 +49,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # neovim distro
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # doom-emacs unstraightened
-    # nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
-
-    # NUR Community Packages
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # youtube terminal
-    yt-x = {
-      url = "github:Benexl/yt-x";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # jovian steam
     # jovian-nixos = {
     #   url = "github:Jovian-Experiments/Jovian-NixOS";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+
+    # gnome like bar based on ags
+    mithril-shell = {
+      url = "github:andreashgk/mithril-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # niri compositor
     niri = {
@@ -62,26 +67,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # ags widgets
-    ags = {
-      url = "github:aylur/ags";
+    # NUR Community Packages
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    astal = {
-      url = "github:aylur/astal";
+    # neovim distro
+    nvf = {
+      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # menu launcher
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # firefox declaritively
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    # quickshell widgets
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -91,15 +91,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # gnome like bar based on ags
-    mithril-shell = {
-      url = "github:andreashgk/mithril-shell";
+    # stylix
+    stylix = {
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     walls = {
       url = "git+https://codeberg.org/manas-katual/walls";
       flake = false;
+    };
+
+    # youtube terminal
+    yt-x = {
+      url = "github:Benexl/yt-x";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

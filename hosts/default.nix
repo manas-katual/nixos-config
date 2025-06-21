@@ -79,7 +79,7 @@ in {
       inherit inputs system userSettings;
       host = {
         hostName = "hp";
-        mainMonitor = "eDP-1";
+        mainMonitor = "LVDS-1";
       };
     };
     modules = [

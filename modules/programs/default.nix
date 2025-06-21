@@ -20,6 +20,7 @@
   ./kdeconnect.nix
   ./kitty.nix
   ./mithril.nix
+  # ./nh.nix
   # ./pcmanfm.nix
   ./rofi/rofi-oglo.nix
   ./rofi/rofi-zaney.nix

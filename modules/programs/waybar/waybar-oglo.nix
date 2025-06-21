@@ -548,13 +548,13 @@ in {
           }
 
           #idle_inhibitor {
-              background-color: #${waybar-clock};
+              background-color: #${waybar-battery};
               color: #${waybar-module-foreground};
               font-family: JetBrainsMono Nerd Font, monospace;
               font-size: 15px;
               font-weight: bold;
               border: none;
-              border-bottom: 8px solid #${waybar-clock-bottom};
+              border-bottom: 8px solid #${waybar-battery-bottom};
               border-radius: 5px;
               margin-bottom: 2px;
               padding-left: 13px;
