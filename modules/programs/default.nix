@@ -1,4 +1,6 @@
-[
+(import ./waybar)
+++ (import ./rofi)
+++ [
   ./ags.nix
   ./alacritty.nix
   ./android.nix
@@ -22,18 +24,11 @@
   ./mithril.nix
   # ./nh.nix
   # ./pcmanfm.nix
-  ./rofi/rofi-oglo.nix
-  ./rofi/rofi-zaney.nix
   # ./soundwire.nix
   ./spicetify.nix
   ./swappy.nix
   ./thunar.nix
   ./tmux.nix
-  ./waybar/waybar-oglo.nix
-  ./waybar/waybar-curve.nix
-  ./waybar/waybar-jake.nix
-  ./waybar/waybar-jerry.nix
-  ./waybar/waybar-cool.nix
   ./waydroid.nix
   ./wine.nix
   ./wlogout.nix

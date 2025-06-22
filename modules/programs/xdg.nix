@@ -12,6 +12,13 @@
       mime.enable = true;
       mimeApps = lib.mkIf (config.gnome.enable == false) {
         enable = true;
+        defaultApplications = {
+          "image/jpeg" = ["image-roll.desktop" "feh.desktop"];
+          "image/png" = ["image-roll.desktop"];
+          "text/plain" = "nvim.desktop";
+          "text/html" = "nvim.desktop";
+          "text/csv" = "nvim.desktop";
+        };
       };
       portal = lib.mkIf (config.hyprland.enable) {
         enable = true;
