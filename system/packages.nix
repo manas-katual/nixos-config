@@ -22,6 +22,7 @@ in {
       gvfs # samba
       nix-tree # browse nix store
       pulseaudio # audio controller
+      syncthing
 
       # gui apps
       # google-chrome # browser
@@ -44,6 +45,7 @@ in {
       hardinfo2 # shows hardware info
       # ciscoPacketTracer8 # networking emulation
       vesktop # discord client
+      obsidian
 
       # games and emulation
       mcpelauncher-ui-qt # minecraft bedrock edition

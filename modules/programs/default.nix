@@ -1,6 +1,4 @@
-(import ./waybar)
-++ (import ./rofi)
-++ [
+[
   ./ags.nix
   ./alacritty.nix
   ./android.nix
@@ -22,7 +20,6 @@
   ./kdeconnect.nix
   ./kitty.nix
   ./mithril.nix
-  # ./nh.nix
   # ./pcmanfm.nix
   # ./soundwire.nix
   ./spicetify.nix
@@ -35,3 +32,5 @@
   ./wofi.nix
   ./xdg.nix
 ]
+++ (import ./waybar)
+++ (import ./rofi)

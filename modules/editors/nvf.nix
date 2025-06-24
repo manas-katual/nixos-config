@@ -251,6 +251,19 @@
         comments = {
           comment-nvim.enable = true;
         };
+
+        notes.obsidian = {
+          enable = true;
+          setupOpts.completion.nvim_cmp = true;
+          setupOpts = {
+            workspaces = [
+              {
+                name = "personal";
+                path = "/home/${userSettings.username}/obsidian/sync";
+              }
+            ];
+          };
+        };
       };
     };
   };

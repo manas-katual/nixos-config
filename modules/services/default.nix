@@ -8,6 +8,7 @@
   ./swaync/swaync-oglo.nix
   ./swaync/swaync-dynamic.nix
   ./sxhkd.nix
+  ./syncthing.nix
   ./udiskie.nix
   ./wlsunset.nix
 ]

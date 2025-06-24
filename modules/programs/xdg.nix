@@ -13,6 +13,7 @@
       mimeApps = lib.mkIf (config.gnome.enable == false) {
         enable = true;
         defaultApplications = {
+          "default-web-browser" = ["google-chrome-stable.desktop"];
           "image/jpeg" = ["image-roll.desktop" "feh.desktop"];
           "image/png" = ["image-roll.desktop"];
           "text/plain" = "nvim.desktop";
