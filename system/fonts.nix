@@ -17,6 +17,9 @@
     fira-mono
     fira-sans
     nerd-fonts.dejavu-sans-mono
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.fira-code
+    nerd-fonts.hack
     dejavu_fonts
   ];
 }

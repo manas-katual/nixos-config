@@ -143,7 +143,18 @@
           clang.enable = true;
           zig.enable = true;
           python.enable = true;
-          markdown.enable = true;
+          markdown = {
+            enable = true;
+            treesitter.enable = true;
+            extensions.render-markdown-nvim = {
+              enable = true;
+              setupOpts = {
+                render = {
+                  bullet = "• "; # ← add a space after the bullet
+                };
+              };
+            };
+          };
           ts = {
             enable = true;
             lsp.enable = true;
@@ -252,19 +263,60 @@
           comment-nvim.enable = true;
         };
 
+        notes.neorg = {
+          enable = true;
+          treesitter.norgPackage = pkgs.tree-sitter-grammars.tree-sitter-norg;
+          setupOpts = {
+            load = {
+              "core.defaults".enable = true;
+              "core.concealer".enable = true;
+              "core.dirman" = {
+                enable = true;
+                config = {
+                  workspaces = {
+                    notes = "~/notes";
+                  };
+                  default_workspace = "notes";
+                };
+              };
+            };
+          };
+        };
+
         notes.obsidian = {
           enable = true;
           setupOpts.completion.nvim_cmp = true;
           setupOpts = {
+            ui = {
+              enable = false;
+            };
             workspaces = [
               {
                 name = "personal";
-                path = "/home/${userSettings.username}/obsidian/sync";
+                path = "/home/${userSettings.username}/Documents/obsidian/sync";
               }
             ];
           };
         };
       };
     };
+
+    # Source custom Lua explicitly
+    # home.file.".config/nvim/init.lua" = {
+    #   text = ''
+    #     pcall(require, "custom.init")
+    #   '';
+    # };
+    # home.file.".config/nvim/lua/custom/init.lua" = {
+    #   text = ''
+    #     vim.api.nvim_create_autocmd("FileType", {
+    #       pattern = "markdown",
+    #       callback = function()
+    #         vim.opt_local.conceallevel = 2
+    #         vim.opt_local.concealcursor = "nc"
+    #       end,
+    #     })
+    #   '';
+    # };
   };
 }

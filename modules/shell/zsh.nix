@@ -33,7 +33,7 @@
         #histSize = 100000;
         initContent = ''
           eval "$(oh-my-posh init zsh)"
-          #export PATH="$HOME/.config/emacs/bin:$PATH"
+          export PATH="$HOME/.config/emacs/bin:$PATH"
         '';
       };
       oh-my-posh = {

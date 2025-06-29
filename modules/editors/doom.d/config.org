@@ -1,30 +1,22 @@
-#+title: Doom emacs config file
-
-* Table of contents :toc:
-- [[#introduction][Introduction]]
-- [[#username-and-email][Username and email]]
-- [[#fonts][Fonts]]
-- [[#doom-theme][Doom Theme]]
-- [[#line-numbers][Line numbers]]
-- [[#org-directory][Org directory]]
-- [[#org-auto-tangle][Org-auto-tangle]]
+#+title: Doom Emacs Config
+#+author: Manas Katual
 
 * Introduction
-This is the doom emacs config file written in org mode
+This is my config file in org mode. Org mode rocks.
 
-* Username and email
+* Username and Email
 #+begin_src emacs-lisp
- (setq user-full-name "Manas Katual"
+ (setq user-full-name "manas"
        user-mail-address "manaskatual@gmail.com")
 #+end_src
 
 * Fonts
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "Intel One Mono" :size 18 :weight 'semi-bold)
-      doom-variable-pitch-font (font-spec :family "Intel One Mono" :size 18))
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 16 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 16))
 #+end_src
 
-* Doom Theme
+* Theme
 #+begin_src emacs-lisp
 (setq doom-theme 'doom-one)
 #+end_src
@@ -37,11 +29,4 @@ This is the doom emacs config file written in org mode
 * Org directory
 #+begin_src emacs-lisp
 (setq org-directory "~/org/")
-#+end_src
-
-* Org-auto-tangle
-#+begin_src emacs-lisp
-(use-package org-auto-tangle
-  :defer t
-  :hook (org-mode . org-auto-tangle-mode))
 #+end_src

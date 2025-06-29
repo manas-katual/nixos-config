@@ -1,11 +1,32 @@
-{config, pkgs, inputs, userSettings, ...}:
 {
+  config,
+  pkgs,
+  inputs,
+  userSettings,
+  lib,
+  ...
+}: {
   home-manager.users.${userSettings.username} = {
-    imports = [inputs.nix-doom-emacs-unstraightened.hmModule];
-
-    programs.doom-emacs = {
+    programs.emacs = {
       enable = true;
-      doomDir = ./doom.d;  # or e.g. `./doom.d` for a local configuration
+      package = pkgs.emacs; # replace with pkgs.emacs-gtk if desired
     };
+    home.packages = with pkgs; [
+      gnutls # HTTPS for packages
+      imagemagick # image previews in Emacs
+      zstd # undo-tree compression
+      editorconfig-core-c # optional per-project style
+      sqlite # org-roam, etc.
+      clang-tools # for C/C++ dev if needed
+
+      cmake
+      libtool
+      libvterm
+      gcc
+      gnumake
+      pkg-config # for native module building (like vterm)
+
+      emacsPackages.all-the-icons
+    ];
   };
 }
