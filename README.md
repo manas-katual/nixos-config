@@ -61,3 +61,5 @@ Enjoy!
 with hyprpanel ![screenshot](./hyprpanel.png)
 
 with waybar ![screenshot](./waybar.png)
+
+![screenshot](./waybar2.png)
