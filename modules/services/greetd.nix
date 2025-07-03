@@ -18,7 +18,7 @@ with lib; {
             else if (config.sway.enable)
             then "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway"
             else "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri";
-          user = userSettings.username;
+          user = "${userSettings.username}";
         };
       };
       vt = 7;

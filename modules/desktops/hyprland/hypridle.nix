@@ -9,7 +9,6 @@
 with host;
 with lib; {
   config = mkIf (config.hyprland.enable) {
-    wlwm.enable = true;
     home-manager.users.${userSettings.username} = {
       services.hypridle = {
         enable = true;

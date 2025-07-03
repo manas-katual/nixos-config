@@ -1,5 +1,4 @@
-(import ./hyprland)
-++ [
+[
   ./bspwm.nix
   ./cosmic.nix
   ./dwl.nix
@@ -7,6 +6,8 @@
   ./gnome.nix
   ./niri.nix
   ./options.nix
-  ./sway.nix
+  # ./sway.nix
   ./vm.nix
 ]
+++ (import ./hyprland)
+++ (import ./sway)

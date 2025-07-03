@@ -44,11 +44,15 @@
     };
     "gruvbox-material-dark-soft" = {
       scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-soft.yaml";
-      image = "${inputs.walls}/nord_roads.png";
+      image = "${inputs.walls}/chaos.png";
     };
     "helios" = {
       scheme = "${pkgs.base16-schemes}/share/themes/helios.yaml";
       image = "${inputs.walls}/gruv-temple.png";
+    };
+    "kanagawa" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
+      image = "${inputs.walls}/berries.jpg";
     };
     "nord" = {
       scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
@@ -76,7 +80,7 @@
     };
     "windows-10-light" = {
       scheme = "${pkgs.base16-schemes}/share/themes/windows-10-light.yaml";
-      image = "${inputs.walls}/bindows.jpg";
+      image = "${inputs.walls}/nixos.jpg";
     };
   };
   defaultScheme = "${pkgs.base16-schemes}/share/themes/circus.yaml";
@@ -133,7 +137,10 @@ in {
     };
   };
 
-  stylix.polarity = "dark";
+  stylix.polarity =
+    if userSettings.theme == "windows-10-ight"
+    then "light"
+    else "dark";
 
   home-manager.users.${userSettings.username} = {
     stylix.enable = true;
@@ -142,6 +149,7 @@ in {
     stylix.targets.rofi.enable = false;
     stylix.targets.kde.enable = true;
     stylix.targets.qt.enable = true;
+    stylix.targets.emacs.enable = false;
     stylix.targets.qt.platform = "qtct";
 
     home.file = {

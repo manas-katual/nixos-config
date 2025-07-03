@@ -5,20 +5,6 @@
   userSettings,
   ...
 }: let
-  # base00 = "0F1419";
-  # base01 = "131721";
-  # base03 = "3E4B59";
-  # base05 = "E6E1CF";
-  # base06 = "E6E1CF";
-  # base07 = "F3F4F5";
-  # base08 = "F07178";
-  # base09 = "FF8F40";
-  # base0A = "FFB454";
-  # base0B = "B8CC52";
-  # base0C = "95E6CB";
-  # base0D = "59C2FF";
-  # base0E = "D2A6FF";
-  # base0F = "E6B673";
   base00 = config.lib.stylix.colors.base00;
   base01 = config.lib.stylix.colors.base01;
   base02 = config.lib.stylix.colors.base02;
@@ -96,7 +82,7 @@ in {
             layer = "top";
             height = 30;
             spacing = 4;
-            modules-left = ["custom/menu" "hyprland/window"];
+            modules-left = ["custom/menu" "custom/window_class"];
             modules-center = modules-center;
             modules-right = ["tray" "idle_inhibitor" "custom/notification" "battery" "custom/powermenu"];
             "sway/workspaces" = commonWorkspaces;
@@ -224,7 +210,6 @@ in {
               return-type = "json";
               exec-if = "which swaync-client";
               exec = "swaync-client -swb";
-              #on-click = "sleep 0.1 && task-waybar";
               on-click = "sleep 0.1; swaync-client -t -sw";
               on-click-right = "sleep 0.1; swaync-client -d -sw";
               escape = true;
@@ -239,6 +224,13 @@ in {
             "custom/powermenu" = {
               format = "⏻ ";
               on-click = "sleep 0.1 && ${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell";
+              tooltip = false;
+            };
+
+            "custom/window_class" = {
+              exec = "window_class";
+              interval = 1;
+              format = "{}";
               tooltip = false;
             };
           };
@@ -264,6 +256,7 @@ in {
             border-radius: 0px;
             color: #${base0F};
           }
+
           #workspaces {
             /*
               Eternal
@@ -318,7 +311,7 @@ in {
           tooltip label {
             color: #${base07};
           }
-          #window {
+          #window, #custom-window_class {
             /*
               Eternal
               color: #${base05};

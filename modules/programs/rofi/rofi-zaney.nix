@@ -11,7 +11,7 @@
 }: let
   inherit (config.home-manager.users.${userSettings.username}.lib.formats.rasi) mkLiteral;
 in {
-  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool") {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs") {
     home-manager.users.${userSettings.username} = {
       home = {
         packages = with pkgs; [
@@ -76,7 +76,7 @@ in {
             "imagebox" = {
               padding = mkLiteral "20px";
               background-color = mkLiteral "transparent";
-              background-image = mkLiteral ''url("${inputs.walls}/Rainnight.jpg", height)'';
+              background-image = mkLiteral ''url("${inputs.walls}/nixos.png", height)'';
               orientation = mkLiteral "vertical";
               children = map mkLiteral [
                 "inputbar"
@@ -112,7 +112,7 @@ in {
             "textbox-prompt-colon" = {
               enabled = true;
               expand = false;
-              str = " ";
+              str = "";
               background-color = mkLiteral "inherit";
               text-color = mkLiteral "inherit";
             };
@@ -223,6 +223,53 @@ in {
           };
         };
       };
+      home.file.".config/rofi/config-long.rasi".text = ''
+        @import "~/.config/rofi/config.rasi"
+        window {
+          width: 750px;
+          border-radius: 20px;
+        }
+        mainbox {
+          orientation: vertical;
+          children: [ "inputbar", "listbox" ];
+        }
+        inputbar {
+          padding: 75px 40px;
+          background-color: transparent;
+          background-image: url("${inputs.walls}/nixos.png", width);
+          text-color: @foreground;
+          children: [ "textbox-prompt-colon", "entry" ];
+        }
+        textbox-prompt-colon {
+          padding: 12px 20px;
+          border-radius: 100%;
+          background-color: @bg-alt;
+          text-color: @foreground;
+        }
+        entry {
+          expand: true;
+          padding: 12px 16px;
+          border-radius: 100%;
+          background-color: @bg-alt;
+          text-color: @foreground;
+        }
+        button {
+          padding: 12px;
+          border-radius: 100%;
+        }
+        element {
+          spacing: 10px;
+          padding: 12px;
+          border-radius: 100%;
+        }
+        textbox {
+          padding: 12px;
+          border-radius: 100%;
+        }
+        error-message {
+          border-radius: 0px;
+        }
+      '';
     };
   };
 }

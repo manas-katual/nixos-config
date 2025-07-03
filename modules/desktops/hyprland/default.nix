@@ -1,5 +1,5 @@
 [
-  ./binds.nix
+  ./hyprbinds.nix
   ./hypridle.nix
   ./hyprland.nix
   ./hyprlock.nix

@@ -1,3 +1,4 @@
 [
-  ./pkg.nix
+  ./apps.nix
+  ./appimages.nix
 ]

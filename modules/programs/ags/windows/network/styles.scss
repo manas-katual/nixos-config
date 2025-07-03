@@ -1,0 +1,105 @@
+.network {
+  min-width: 300px;
+  min-height: 400px;
+
+  & .content {
+    & .header {
+      padding: 1rem;
+
+      & .title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+
+    & .switch {
+      border: solid $bg 1px;
+
+      & slider {
+        background-color: $bg;
+        transition: 300ms;
+
+        &:checked {
+          background-color: #fff;
+        }
+      }
+    }
+
+    & .refresh {
+      & .icon {
+        font-size: 18px;
+      }
+    }
+  }
+
+  & .wifi_networks {
+    padding: 1rem;
+
+    & .ap {
+      padding: 4px 0;
+
+      & .icon { font-size: 24px; }
+      & .ssid { font-size: 16px; }
+      & .down-icon {
+        color: $bg2;
+        font-size: 10px;
+      }
+
+      & .dropdown {
+        & .password_container {
+          & .password {
+            border: solid $bg 1px;
+            padding: 4px;
+            caret-color: $bg;
+            font-size: 14px;
+          }
+
+          & .placeholder {
+            font-size: 14px;
+            color: $bg2;
+            padding: 4px 6px;
+          }
+        }
+
+        & .show_password {
+          font-size: 14px;
+          font-weight: 700;
+
+          & check {
+            border: solid $bg 1px;
+          }
+        }
+
+        & .connect,
+        & .disconnected {
+          background-color: $bg;
+          padding: 4px 8px;
+
+          & .label {
+            color: $fg;
+            font-weight: 700;
+            font-size: 14px;
+          }
+        }
+
+        & .err {
+          color: red;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  & .no_wifi_network {
+    margin-top: 7rem;
+
+    & .icon {
+      font-size: 64px;
+    }
+
+    & .title {
+      font-size: 24px;
+      color: $bg2;
+    }
+  }
+}

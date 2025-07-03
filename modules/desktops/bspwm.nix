@@ -95,11 +95,6 @@ in {
           };
         };
         xserver = {
-          enable = true;
-          xkb = {
-            layout = "us";
-            options = "eurosign:e";
-          };
           autoRepeatInterval = 50;
           autoRepeatDelay = 200;
           modules = [pkgs.xf86_input_wacom];

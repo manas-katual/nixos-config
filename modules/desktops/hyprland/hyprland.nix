@@ -38,7 +38,7 @@ with host; {
           hyprpolkitagent
         ]
         ++ (
-          if (userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool")
+          if (userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs")
           then [
             pkgs.blueman
           ]
@@ -47,7 +47,7 @@ with host; {
     };
 
     services.blueman.enable =
-      if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool"
+      if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs"
       then true
       else false;
 
@@ -98,9 +98,10 @@ with host; {
               "${pkgs.hypridle}/bin/hypridle"
               # "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
               "pypr &"
+              "emacs --daemon"
             ]
             ++ (
-              if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool"
+              if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs"
               then [
                 "pgrep -x waybar || ${pkgs.waybar}/bin/waybar &"
                 "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"

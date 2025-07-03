@@ -31,12 +31,12 @@ with lib; {
         };
 
         xserver = {
-          enable = true;
-          xkb = {
-            layout = "in";
-            variant = "eng";
-            #options = "eurosign:e";
-          };
+          # enable = true;
+          # xkb = {
+          #   layout = "in";
+          #   variant = "eng";
+          #   #options = "eurosign:e";
+          # };
           displayManager = {
             lightdm = {
               enable = true;

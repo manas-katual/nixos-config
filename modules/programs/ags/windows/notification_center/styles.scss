@@ -1,0 +1,40 @@
+.notification_center {
+  min-width: 300px;
+  min-height: 400px;
+
+  & .content {
+    & .header {
+      padding: 1rem;
+
+      & .icon { font-size: 24px; }
+      & .clear {
+        & .icon {
+          font-size: 18px;
+        }
+      }
+
+      & .title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+
+    & .notifications {
+      padding: 1rem;
+    }
+
+    & .no_notification {
+      margin-top: 3rem;
+
+      & .icon {
+        font-size: 64px;
+        color: $bg2;
+      }
+
+      & .title {
+        font-size: 24px;
+        color: $bg2;
+      }
+    }
+  }
+}

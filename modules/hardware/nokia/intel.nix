@@ -16,4 +16,8 @@
     ];
   };
   environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";};
+
+  networking.networkmanager.wifi.powersave = false;
+  hardware.enableAllFirmware = true;
+  hardware.enableRedistributableFirmware = true;
 }

@@ -66,8 +66,4 @@
     # for SSD/NVME
     fstrim.enable = true;
   };
-
-  networking.networkmanager.wifi.powersave = false;
-  hardware.enableAllFirmware = true;
-  hardware.enableRedistributableFirmware = true;
 }

@@ -29,11 +29,12 @@
           tree = "${pkgs.eza}/bin/eza --icons --tree --group-directories-first";
           cat = "${pkgs.bat}/bin/bat";
           icat = "kitten icat";
+          # emacs = "emacsclient -c -a 'emacs'";
         };
         #histSize = 100000;
         initContent = ''
           eval "$(oh-my-posh init zsh)"
-          export PATH="$HOME/.config/emacs/bin:$PATH"
+          # export PATH="$HOME/.config/emacs/bin:$PATH"
         '';
       };
       oh-my-posh = {

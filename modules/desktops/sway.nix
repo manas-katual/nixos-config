@@ -325,7 +325,7 @@ with host; {
             {
               block = "battery";
               interval = 10;
-              format = " $icon $percentage $time ";
+              format = " $icon $percentage ";
               full_format = " $icon Full ";
               empty_format = " $icon Empty ";
               not_charging_format = " $icon $percentage ";

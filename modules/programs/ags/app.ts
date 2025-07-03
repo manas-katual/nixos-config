@@ -1,26 +1,52 @@
-import { App } from "astal/gtk4"
-import style from "./style.scss"
-import Bar from "./widget/bar/Bar"
-import OSD from "./widget/osd/OSD"
-import "./services/osd-service"
-import "./widget/osd/hyprland-hooks"
+#!/usr/bin/gjs -m
+
+import './globals'
+
+import { App } from 'astal/gtk3'
+import { compileScss } from './cssHotReload'
+
+import SideBar from '@windows/side_bar/SideBar'
+import TopBar from '@windows/top_bar/TopBar'
+
+import Network from '@windows/network/Network'
+import Battery from '@windows/battery/Battery'
+import NotificationPopups from '@windows/notification_popups/NotificationPopups'
+import NotificationCenter from '@windows/notification_center/NotificationCenter'
+
+import AppLauncher from '@windows/app_launcher/AppLauncher'
+import Calendar from '@windows/calendar/Calendar'
+import Wallpapers from '@windows/wallpapers/Wallpapers'
+import MusicPlayer from '@windows/music_player/MusicPlayer'
+import Weather from '@windows/weather/Weather'
+import Controls from '@windows/controls/Controls'
+
+import requestHandler from './requestHandler'
 
 App.start({
-    css: style,
-    main() {
-        console.log("AGS starting...")
-        const monitors = App.get_monitors()
-        console.log(`Found ${monitors.length} monitors`)
-        
-        // Create a bar for each monitor
-        monitors.forEach((monitor, index) => {
-            console.log(`Creating bar for monitor ${index}:`, monitor.get_model())
-            const bar = Bar(monitor)
-            console.log(`Bar created for monitor ${index}:`, bar)
-        })
-        
-        // Initialize OSD widget
-        console.log("Initializing OSD widget...")
-        OSD()
-    },
+  css: compileScss(),
+  icons: `${SRC}/assets/icons`,
+  main() {
+    const mainMonitor = App
+      .get_monitors()
+      .at(0)!
+
+    // Bars
+    SideBar(mainMonitor)
+    TopBar(mainMonitor)
+
+    // TopBar Floating Windows
+    Network(mainMonitor)
+    Battery(mainMonitor)
+    NotificationPopups(mainMonitor)
+    NotificationCenter(mainMonitor)
+
+    // SideBar Floating Windows
+    AppLauncher(mainMonitor)
+    Calendar(mainMonitor)
+    Wallpapers(mainMonitor)
+    MusicPlayer(mainMonitor)
+    Weather(mainMonitor)
+    Controls(mainMonitor)
+  },
+  requestHandler: requestHandler
 })

@@ -97,6 +97,7 @@
   # =============== #
   # DONT TOUCH THIS #
   # =============== #
+
   system.stateVersion = "24.05";
 
   home-manager.users.${userSettings.username} = {
