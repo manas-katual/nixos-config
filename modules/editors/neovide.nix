@@ -17,6 +17,8 @@
           normal = ["JetBrainsMono Nerd Font Mono"];
           size = 18.0;
         };
+        theme = "auto";
+        vsync = true;
       };
     };
   };

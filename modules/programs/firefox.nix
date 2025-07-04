@@ -1,25 +1,34 @@
-# home.nix 
-                                                                                           
-{ pkgs, inputs, userSettings, ... }:
-
+# home.nix
 {
+  pkgs,
+  inputs,
+  userSettings,
+  ...
+}: {
   home-manager.users.${userSettings.username} = {
     programs.firefox = {
       enable = true;
       profiles.manas = {
-
         search.engines = {
           "Nix Packages" = {
-            urls = [{
-              template = "https://search.nixos.org/packages";
-              params = [
-                { name = "type"; value = "packages"; }
-                { name = "query"; value = "{searchTerms}"; }
-              ];
-            }];
+            urls = [
+              {
+                template = "https://search.nixos.org/packages";
+                params = [
+                  {
+                    name = "type";
+                    value = "packages";
+                  }
+                  {
+                    name = "query";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
 
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = [ "@np" ];
+            definedAliases = ["@np"];
           };
         };
         search.force = true;
@@ -27,12 +36,12 @@
         bookmarks = {
           force = true;
           settings = [
-          {
-            name = "wikipedia";
-            tags = [ "wiki" ];
-            keyword = "wiki";
-            url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
-          }
+            {
+              name = "wikipedia";
+              tags = ["wiki"];
+              keyword = "wiki";
+              url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+            }
           ];
         };
         settings = {
@@ -42,9 +51,9 @@
           "signon.rememberSignons" = false;
         };
 
-        userChrome = ''                         
-          /* some css */                        
-        '';                                      
+        userChrome = ''
+          /* some css */
+        '';
 
         extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
           # bitwarden
@@ -53,11 +62,10 @@
           darkreader
           # tridactyl
           youtube-shorts-block
+          violentmonkey
         ];
-
       };
     };
-    stylix.targets.firefox.profileNames = [ "manas" ];
+    stylix.targets.firefox.profileNames = ["manas"];
   };
 }
-

@@ -1,5 +1,6 @@
 [
   ./acpid.nix
+  ./avizo.nix
   ./flameshot.nix
   ./greetd.nix
   ./lid.nix

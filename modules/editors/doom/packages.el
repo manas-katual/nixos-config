@@ -47,3 +47,5 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+;;(package! base16-stylix-theme :recipe (:host github :repo "base16-emacs/base16-stylix-theme"))

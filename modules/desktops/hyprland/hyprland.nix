@@ -99,6 +99,7 @@ with host; {
               # "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
               "pypr &"
               "emacs --daemon"
+              "avizo-service"
             ]
             ++ (
               if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs"
