@@ -5,13 +5,6 @@
 
 ---
 
-## ✅ To-Do
-
-- 🔄 Make this configuration more universal and user-friendly
-- 🖥️ Add support for other desktop environments/window managers
-
----
-
 ## 🚀 Installation Steps
 
 ### 1️⃣ Install NixOS (Without Any Desktop Environment)
@@ -19,18 +12,19 @@
 Once you're in your NixOS terminal, run the following to install essential
 tools:
 
-\```bash nix-shell -p git vim
-
-# Optionally: install htop and tmux for monitoring CPU/RAM usage
-
-\```
+```bash
+nix-shell -p git vim
+#Optionally: install htop and tmux for monitoring CPU/RAM usage
+```
 
 ---
 
 ### 2️⃣ Clone This Repository
 
-\```bash git clone https://github.com/manas-katual/nixos-config ~/setup cd
-~/setup \```
+```bash
+git clone https://github.com/manas-katual/nixos-config ~/setup 
+cd ~/setup
+```
 
 > 📌 **Important:** Stay inside this folder throughout the rest of the
 > installation.
@@ -39,11 +33,10 @@ tools:
 
 ### 3️⃣ Create a Host Folder for Your Machine
 
-\```bash cp -r hosts/nokia hosts/<your-desired-hostname>
-
+```bash
+cp -r hosts/nokia hosts/<your-desired-hostname>
 # Replace <your-desired-hostname> with the hostname of your choice
-
-\```
+```
 
 ---
 
@@ -64,8 +57,10 @@ Then edit `flake.nix` and update:
 
 ### 5️⃣Generate Hardware Configuration
 
-\```bash nixos-generate-config --show-hardware-config >
-hosts/<your-desired-hostname>/hardware-configuration.nix \```
+```bash
+nixos-generate-config --show-hardware-config >
+hosts/<your-desired-hostname>/hardware-configuration.nix
+```
 
 ---
 
@@ -73,8 +68,10 @@ hosts/<your-desired-hostname>/hardware-configuration.nix \```
 
 Run the following command, replacing `hostname` with your chosen hostname:
 
-\```bash NIX_CONFIG="experimental-features = nix-command flakes"\
-sudo nixos-rebuild switch --flake .#hostname \```
+```bash
+NIX_CONFIG="experimental-features = nix-command flakes"
+sudo nixos-rebuild switch --flake .#hostname
+```
 
 ---
 
@@ -82,11 +79,11 @@ sudo nixos-rebuild switch --flake .#hostname \```
 
 After rebooting, you can use the provided alias for quick rebuilds:
 
-\```bash fucking-flake-rebuild
-
+```bash
+fucking-flake-rebuild
 # OR
-
-cd ~/setup sudo nixos-rebuild switch --flake . \```
+cd ~/setup sudo nixos-rebuild switch --flake .
+```
 
 ---
 
@@ -100,3 +97,10 @@ cd ~/setup sudo nixos-rebuild switch --flake . \```
 
 ![Waybar Screenshot](./waybar.png)\
 ![Waybar Alternate Screenshot](./waybar2.png)
+
+---
+
+## ✅ To-Do
+
+- 🔄 Make this configuration more universal and user-friendly
+- 🖥️ Add support for other desktop environments/window managers
