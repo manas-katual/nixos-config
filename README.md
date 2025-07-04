@@ -58,8 +58,7 @@ Then edit `flake.nix` and update:
 ### 5️⃣Generate Hardware Configuration
 
 ```bash
-nixos-generate-config --show-hardware-config >
-hosts/<your-desired-hostname>/hardware-configuration.nix
+nixos-generate-config --show-hardware-config > hosts/<your-desired-hostname>/hardware-configuration.nix
 ```
 
 ---
@@ -82,7 +81,8 @@ After rebooting, you can use the provided alias for quick rebuilds:
 ```bash
 fucking-flake-rebuild
 # OR
-cd ~/setup sudo nixos-rebuild switch --flake .
+cd ~/setup 
+sudo nixos-rebuild switch --flake .
 ```
 
 ---
