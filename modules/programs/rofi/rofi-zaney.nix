@@ -76,7 +76,7 @@ in {
             "imagebox" = {
               padding = mkLiteral "20px";
               background-color = mkLiteral "transparent";
-              background-image = mkLiteral ''url("${inputs.walls}/nixos.png", height)'';
+              background-image = mkLiteral ''url("${inputs.walls}/padrinan.jpg", height)'';
               orientation = mkLiteral "vertical";
               children = map mkLiteral [
                 "inputbar"
@@ -112,7 +112,7 @@ in {
             "textbox-prompt-colon" = {
               enabled = true;
               expand = false;
-              str = "";
+              str = " ";
               background-color = mkLiteral "inherit";
               text-color = mkLiteral "inherit";
             };
@@ -236,7 +236,7 @@ in {
         inputbar {
           padding: 75px 40px;
           background-color: transparent;
-          background-image: url("${inputs.walls}/nixos.png", width);
+          background-image: url("${inputs.walls}/padrinan.jpg", width);
           text-color: @foreground;
           children: [ "textbox-prompt-colon", "entry" ];
         }

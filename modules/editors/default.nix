@@ -7,4 +7,5 @@
   ./doom.nix
   # ./helix.nix
   ./evil-helix.nix
+  ./vscode.nix
 ]

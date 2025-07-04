@@ -1523,11 +1523,11 @@
     "walls": {
       "flake": false,
       "locked": {
-        "lastModified": 1751525116,
-        "narHash": "sha256-GwwV7z/oFr60T1Be+r1HOE7X/qeDdWh2tLz4/qTcQqI=",
+        "lastModified": 1751603122,
+        "narHash": "sha256-lQx5qa6HvnR/b77GjIxZwiGyfaxGxbzfsZw8EgnrdKE=",
         "ref": "refs/heads/main",
-        "rev": "759d7950eafa1d3f946bb46452c8355e7f1a0047",
-        "revCount": 5,
+        "rev": "aca433efca0d6ef827b84fac3a962a4b596fb0ca",
+        "revCount": 6,
         "type": "git",
         "url": "https://codeberg.org/manas-katual/walls"
       },

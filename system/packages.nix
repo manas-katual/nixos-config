@@ -35,7 +35,7 @@ in {
       lan-mouse # kbd & mouse share
       localsend # wireless file transfer
       bottles # to run windows apps
-      vscode-fhs # vscode for noobs
+      # vscode-fhs # vscode for noobs
       mission-center # task manager for linux
       komikku # manga reader
       zathura # pdf reader

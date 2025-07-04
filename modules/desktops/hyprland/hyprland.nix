@@ -124,9 +124,18 @@ with host; {
 
           general = {
             "$modifier" = "SUPER";
-            border_size = 4;
-            gaps_in = 10;
-            gaps_out = 20;
+            border_size =
+              if userSettings.style == "waybar-oglo"
+              then 4
+              else 2;
+            gaps_in =
+              if userSettings.style == "waybar-oglo"
+              then 10
+              else 5;
+            gaps_out =
+              if userSettings.style == "waybar-oglo"
+              then 20
+              else 10;
             "col.active_border" = lib.mkDefault "0x99${config.lib.stylix.colors.base0D}";
             "col.inactive_border" = lib.mkDefault "0x66${config.lib.stylix.colors.base02}";
             resize_on_border = true;
@@ -134,7 +143,10 @@ with host; {
             layout = "dwindle";
           };
           decoration = {
-            rounding = 4;
+            rounding =
+              if userSettings.style == "waybar-oglo"
+              then 4
+              else 10;
             active_opacity = 1;
             inactive_opacity = 1;
             fullscreen_opacity = 1;
