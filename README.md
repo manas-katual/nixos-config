@@ -91,12 +91,12 @@ cd ~/setup sudo nixos-rebuild switch --flake .
 
 ### Hyprland with Hyprpanel
 
-![Hyprpanel Screenshot](./hyprpanel.png)
+![Hyprpanel Screenshot](./assets/hyprpanel.png)
 
 ### Hyprland with Waybar
 
-![Waybar Screenshot](./waybar.png)\
-![Waybar Alternate Screenshot](./waybar2.png)
+![Waybar Screenshot](./assets/waybar.png)\
+![Waybar Alternate Screenshot](./assets/waybar2.png)
 
 ---
 
