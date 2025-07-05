@@ -7,21 +7,22 @@
   ...
 }: {
   config = lib.mkIf (config.wlwm.enable && (userSettings.style == "hyprpanel" || userSettings.style == "mithril" || userSettings.style == "ags")) {
-    environment.systemPackages = [
-      inputs.anyrun.packages.${pkgs.system}.anyrun
-    ];
+    # environment.systemPackages = [
+    #   inputs.anyrun.packages.${pkgs.system}.anyrun
+    # ];
 
     home-manager.users.${userSettings.username} = {
       # imports = [inputs.anyrun.homeManagerModules.default];
       programs.anyrun = {
         enable = true;
         config = {
-          plugins = with inputs.anyrun.packages.${pkgs.system}; [
-            applications
-            shell
-            symbols
-            translate
-          ];
+          # plugins = with inputs.anyrun.packages.${pkgs.system}; [
+          # plugins = with pkgs; [
+          #   applications
+          #   shell
+          #   symbols
+          #   translate
+          # ];
 
           width.fraction = 0.25;
           y.fraction = 0.3;

@@ -11,23 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # ags widgets
-    ags = {
-      url = "github:aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # menu launcher
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # doom-emacs unstraightened
     # nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
 
@@ -42,24 +25,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Official Hyprland Flake
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Hyprpanel based on ags
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # jovian steam
-    # jovian-nixos = {
-    #   url = "github:Jovian-Experiments/Jovian-NixOS";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     # gnome like bar based on ags
     mithril-shell = {

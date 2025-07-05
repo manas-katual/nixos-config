@@ -90,6 +90,7 @@ in {
   stylix.base16Scheme = lib.mkDefault (lib.getAttr userSettings.theme themePaths).scheme;
   stylix.image = lib.mkDefault (lib.getAttr userSettings.theme themePaths).image;
 
+  stylix.enable = true;
   stylix.cursor = {
     package =
       if userSettings.desktop == "hyprland"
@@ -104,10 +105,10 @@ in {
     size = lib.mkForce 18;
   };
 
-  stylix.homeManagerIntegration = {
-    autoImport = true;
-    followSystem = true;
-  };
+  # stylix.homeManagerIntegration = {
+  #   autoImport = true;
+  #   followSystem = true;
+  # };
 
   stylix.opacity = {
     applications = lib.mkForce 0.9;
@@ -143,14 +144,16 @@ in {
     else "dark";
 
   home-manager.users.${userSettings.username} = {
-    stylix.enable = true;
-    stylix.autoEnable = true;
+    # stylix.enable = true;
+    # stylix.autoEnable = true;
     stylix.targets.waybar.enable = false;
     stylix.targets.rofi.enable = false;
-    stylix.targets.kde.enable = true;
-    stylix.targets.qt.enable = true;
-    stylix.targets.emacs.enable = false;
-    stylix.targets.qt.platform = "qtct";
+    # stylix.targets.kde.enable = true;
+    # stylix.targets.qt.enable = true;
+    # stylix.targets.emacs.enable = false;
+    # stylix.targets.qt.platform = "qtct";
+
+    stylix.targets.firefox.profileNames = ["${userSettings.username}"];
 
     home.file = {
       "Pictures/Wallpapers" = {

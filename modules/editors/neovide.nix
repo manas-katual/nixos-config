@@ -13,10 +13,10 @@
       enable = true;
       package = pkgs.neovide;
       settings = {
-        font = {
-          normal = ["JetBrainsMono Nerd Font Mono"];
-          size = 18.0;
-        };
+        # font = {
+        #   normal = ["JetBrainsMono Nerd Font Mono"];
+        #   size = 18.0;
+        # };
         theme = "auto";
         vsync = true;
       };

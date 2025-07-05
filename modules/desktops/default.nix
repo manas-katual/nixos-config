@@ -8,6 +8,7 @@
   ./options.nix
   # ./sway.nix
   ./vm.nix
+  ./wayland.nix
 ]
 ++ (import ./hyprland)
 ++ (import ./sway)

@@ -104,17 +104,13 @@ with host; {
             ]
             else if userSettings.style == "hyprpanel"
             then [
-              "$modifier,Space,exec, pkill anyrun || ${pkgs.anyrun}/bin/anyrun"
+              "$modifier,Space,exec, pkill wofi || ${pkgs.wofi}/bin/wofi --show drun"
               "$modifier,TAB,exec,hyprpanel toggleWindow bar-0"
               "ALT,F4,exec,hyprpanel toggleWindow powerdropdownmenu"
             ]
             else if userSettings.style == "mithril"
             then [
-              "$modifier,Space,exec, pkill anyrun || ${pkgs.anyrun}/bin/anyrun"
-            ]
-            else if userSettings.style == "ags"
-            then [
-              "$modifier,Space,exec, pkill anyrun || ${pkgs.anyrun}/bin/anyrun"
+              "$modifier,Space,exec, pkill wofi || ${pkgs.wofi}/bin/wofi --show drun"
             ]
             else []
           );

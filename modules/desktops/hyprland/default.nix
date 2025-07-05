@@ -1,5 +1,6 @@
 [
   ./hyprbinds.nix
+  ./hyprenv.nix
   ./hypridle.nix
   ./hyprland.nix
   ./hyprlock.nix

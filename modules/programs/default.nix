@@ -1,8 +1,6 @@
 [
-  ./ags.nix
   ./alacritty.nix
   ./android.nix
-  ./anyrun.nix
   ./bat.nix
   ./btop.nix
   ./cava.nix

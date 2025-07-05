@@ -66,6 +66,5 @@
         ];
       };
     };
-    stylix.targets.firefox.profileNames = ["manas"];
   };
 }

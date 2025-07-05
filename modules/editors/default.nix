@@ -1,6 +1,6 @@
 [
   # ./doom-unstraightened.nix
-  ./doom.nix
+  # ./doom.nix
   ./evil-helix.nix
   # ./helix.nix
   ./neovide.nix

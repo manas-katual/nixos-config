@@ -31,9 +31,6 @@ with host; {
         enable = true;
         extraPackages = with pkgs; [
           autotiling
-          wl-clipboard
-          wlr-randr
-          xwayland
           libnotify
           jq
         ];

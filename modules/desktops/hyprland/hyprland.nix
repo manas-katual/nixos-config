@@ -20,105 +20,44 @@ with host; {
   config = mkIf (config.hyprland.enable) {
     wlwm.enable = true;
 
-    environment = let
-      exec = "exec dbus-launch Hyprland";
-    in {
-      loginShellInit = ''
-        if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-          ${exec}
-        fi
-      '';
-
-      systemPackages = with pkgs;
-        [
-          hyprcursor # Cursor
-          wl-clipboard # Clipboard
-          wlr-randr # Monitor Settings
-          xwayland # X session
-          hyprpolkitagent
-        ]
-        ++ (
-          if (userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs")
-          then [
-            pkgs.blueman
-          ]
-          else []
-        );
-    };
-
-    services.blueman.enable =
-      if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs"
-      then true
-      else false;
-
     programs.light.enable = true;
 
-    programs.hyprland = {
-      enable = true;
+    programs = {
+      hyprland = {
+        enable = true;
+        withUWSM = true;
+      };
+      uwsm.enable = true;
     };
 
     home-manager.users.${userSettings.username} = {
-      systemd.user.targets.hyprland-session.Unit.Wants = [
-        "xdg-desktop-autostart.target"
-      ];
       wayland.windowManager.hyprland = {
         enable = true;
-        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+        package = pkgs.hyprland;
+        portalPackage = pkgs.xdg-desktop-portal-hyprland;
         xwayland.enable = true;
-        systemd = {
-          enable = true;
-          enableXdgAutostart = true;
-          variables = ["--all"];
-        };
         settings = {
-          env = [
-            "NIXOS_OZONE_WL, 1"
-            "NIXPKGS_ALLOW_UNFREE, 1"
-            "XDG_CURRENT_DESKTOP, Hyprland"
-            "XDG_SESSION_TYPE, wayland"
-            "XDG_SESSION_DESKTOP, Hyprland"
-            # "GDK_BACKEND, wayland, x11"
-            "CLUTTER_BACKEND, wayland"
-            "QT_QPA_PLATFORM=wayland;xcb"
-            "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
-            "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
-            "SDL_VIDEODRIVER, x11"
-            "MOZ_ENABLE_WAYLAND, 1"
-            "GDK_SCALE,1"
-            "QT_SCALE_FACTOR,1"
-            "EDITOR,nvim"
-          ];
-
           exec-once =
             [
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-              "pgrep -x hyprpolkitagent || ${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent &"
-              "${pkgs.hyprlock}/bin/hyprlock"
-              "${pkgs.hypridle}/bin/hypridle"
-              # "ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr"
-              "pypr &"
-              "emacs --daemon"
-              "avizo-service"
+              "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent &"
+              "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprlock}/bin/hyprlock"
+              "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hypridle}/bin/hypridle"
+              "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.pyprland}/bin/pypr"
             ]
             ++ (
               if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs"
               then [
-                "pgrep -x waybar || ${pkgs.waybar}/bin/waybar &"
-                "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
-                "${pkgs.blueman}/bin/blueman-applet"
-                "${pkgs.eww}/bin/eww daemon"
-                # "$HOME/.config/eww/scripts/eww" # When running eww as a bar
-                "${pkgs.swaynotificationcenter}/bin/swaync"
-                "${pkgs.avizo}/bin/avizo-service"
+                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.waybar}/bin/waybar"
+                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.blueman}/bin/blueman-applet"
+                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.eww}/bin/eww daemon"
+                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.swaynotificationcenter}/bin/swaync"
+                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.avizo}/bin/avizo-service"
               ]
               else if userSettings.style == "hyprpanel"
               then [
-                "${inputs.hyprpanel.packages.${pkgs.system}.wrapper}/bin/hyprpanel"
-              ]
-              else if userSettings.style == "ags"
-              then [
-                "ags run --gtk4"
+                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprpanel}/bin/hyprpanel"
               ]
               else []
             );

@@ -14,10 +14,12 @@ with lib; {
           # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd Hyprland";
           command =
             if (config.hyprland.enable)
-            then "${config.programs.hyprland.package}/bin/Hyprland"
+            then "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop"
             else if (config.sway.enable)
             then "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway"
-            else "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri";
+            else if (config.niri.enable)
+            then "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri"
+            else "";
           user = "${userSettings.username}";
         };
       };

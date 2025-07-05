@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  userSettings,
+  ...
+}: {
   hardware.bluetooth = {
     enable = true;
     settings = {
@@ -15,4 +19,20 @@
     wantedBy = ["default.target"];
     serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
   };
+
+  environment.systemPackages = with pkgs;
+    [
+    ]
+    ++ (
+      if (userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs")
+      then [
+        blueman
+      ]
+      else []
+    );
+
+  services.blueman.enable =
+    if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs"
+    then true
+    else false;
 }

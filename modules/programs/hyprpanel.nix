@@ -2,15 +2,10 @@
   pkgs,
   config,
   lib,
-  inputs,
   userSettings,
   ...
 }: {
   config = lib.mkIf (config.wlwm.enable && userSettings.style == "hyprpanel") {
-    environment.systemPackages = with pkgs; [
-      inputs.hyprpanel.packages.${pkgs.system}.wrapper
-    ];
-
     home-manager.users.${userSettings.username} = let
       accent = "#${config.lib.stylix.colors.base0D}";
       accent-alt = "#${config.lib.stylix.colors.base03}";
@@ -19,14 +14,10 @@
       foreground = "#${config.lib.stylix.colors.base05}";
       rounding = 14;
     in {
-      imports = [
-        inputs.hyprpanel.homeManagerModules.hyprpanel
-      ];
-
       programs.hyprpanel = {
         enable = true;
-        hyprland.enable = true;
-        overwrite.enable = true;
+        package = pkgs.hyprpanel;
+        systemd.enable = true;
         settings = {
           layout = {
             "bar.layouts" = {
@@ -51,9 +42,7 @@
               };
             };
           };
-        };
 
-        override = {
           "tear" = true; # Screen Tearing
           "theme.font.size" = "0.8rem";
           "theme.bar.outer_spacing" = "1rem";
@@ -65,8 +54,8 @@
           "bar.workspaces.workspaces" = 1;
           "bar.workspaces.monitorSpecific" = false;
           "bar.workspaces.hideUnoccupied" = true;
-          # "bar.workspaces.showApplicationIcons" = true;
-          # "bar.workspaces.showWsIcons" = true;
+          "bar.workspaces.showApplicationIcons" = true;
+          "bar.workspaces.showWsIcons" = true;
           "bar.workspaces.show_icons" = true;
           "bar.workspaces.show_numbered" = false;
           "bar.workspaces.reverse_scroll" = true;

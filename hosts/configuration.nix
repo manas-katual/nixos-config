@@ -57,7 +57,10 @@
   };
 
   services = {
-    dbus.enable = true;
+    dbus = {
+      enable = true;
+      implementation = "broker";
+    };
   };
 
   nix = {
