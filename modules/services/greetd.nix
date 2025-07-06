@@ -6,7 +6,7 @@
   ...
 }:
 with lib; {
-  config = mkIf (config.wlwm.enable && config.gnome.enable == false) {
+  config = mkIf (config.wlwm.enable && config.gnome.enable == false && config.cosmic.enable == false) {
     services.greetd = {
       enable = true;
       settings = {

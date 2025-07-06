@@ -1,3 +1,5 @@
+# most of the times don't show on all workspaces lol
+#
 {
   config,
   pkgs,

@@ -8,7 +8,7 @@
   userSettings,
   ...
 }: {
-  config = lib.mkIf (config.x11wm.enable) {
+  config = lib.mkIf (config.x11wm.enable && config.bspwm.enable) {
     home-manager.users.${userSettings.username} = {
       services = {
         sxhkd = {

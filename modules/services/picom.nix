@@ -1,11 +1,14 @@
 #
 #  Compositor
 #
-
-{ config, lib, pkgs, userSettings, ... }:
-
 {
-  config = lib.mkIf (config.bspwm.enable) {
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  ...
+}: {
+  config = lib.mkIf (config.x11wm.enable && config.bspwm.enable) {
     home-manager.users.${userSettings.username} = {
       services.picom = {
         enable = true;

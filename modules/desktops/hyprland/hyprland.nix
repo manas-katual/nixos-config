@@ -49,7 +49,7 @@ with host; {
               "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent &"
               "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprlock}/bin/hyprlock"
               "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hypridle}/bin/hypridle"
-              "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.pyprland}/bin/pypr"
+              # "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.pyprland}/bin/pypr"
             ]
             ++ (
               if userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo"

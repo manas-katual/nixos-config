@@ -6,6 +6,7 @@
   ./lid.nix
   ./picom.nix
   ./polybar.nix
+  ./redshift.nix
   ./swaync/swaync-oglo.nix
   ./swaync/swaync-dynamic.nix
   ./sxhkd.nix
