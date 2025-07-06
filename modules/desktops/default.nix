@@ -6,7 +6,6 @@
   ./gnome.nix
   ./niri.nix
   ./options.nix
-  # ./sway.nix
   ./vm.nix
   ./wayland.nix
   ./x11.nix

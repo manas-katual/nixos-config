@@ -1,11 +1,11 @@
 [
   ./hyprbinds.nix
-  ./hyprenv.nix
+  # ./hyprenv.nix
   ./hypridle.nix
   ./hyprland.nix
   ./hyprlock.nix
   # ./hyprpaper.nix
   ./options.nix
-  # ./pyprland.nix
+  ./pyprland.nix
   ./windowrule.nix
 ]

@@ -90,7 +90,7 @@
       username = "manas";
       terminal = "kitty";
       editor = "nvim";
-      desktop = "bspwm";
+      desktop = "hyprland";
       style = "waybar-jerry";
       theme = "gruvbox-material-dark-soft";
       gitUsername = "manas-katual";

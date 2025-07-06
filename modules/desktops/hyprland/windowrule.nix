@@ -10,8 +10,7 @@ with lib; {
     wlwm.enable = true;
     home-manager.users.${userSettings.username} = {
       wayland.windowManager.hyprland.settings = {
-        windowrule = [];
-        windowrulev2 = [
+        windowrule = [
           "workspace 2, class:^(neovide|Emacs)$"
           "workspace 3, class:^(google-chrome|firefox)$"
           "workspace 4, class:^(pcmanfm|[Tt]hunar)$"
