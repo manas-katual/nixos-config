@@ -13,12 +13,10 @@
 with lib;
 with host; let
   monitor =
-    if hostName == "beelink"
-    then "${pkgs.xorg.xrandr}/bin/xrandr --output ${secondMonitor} --mode 1920x1080 --pos 0x0 --rotate normal --output ${mainMonitor} --primary --mode 1920x1080 --pos 1920x0 --rotate normal"
-    else if hostName == "work"
-    then "${pkgs.xorg.xrandr}/bin/xrandr --output ${mainMonitor} --mode 1920x1080 --pos 0x0 --rotate normal --primary --output ${secondMonitor} --mode 1920x1200 --pos 1920x0 --rotate normal --output ${thirdMonitor} --mode 1920x1200 --pos 3840x0 --rotate normal"
-    else if hostName == "vm" || hostName == "probook"
+    if hostName == "nokia"
     then "${pkgs.xorg.xrandr}/bin/xrandr --mode 1920x1080 --pos 0x0 --rotate normal"
+    else if hostName == "dell" || hostName == "hp"
+    then "${pkgs.xorg.xrandr}/bin/xrandr --mode 1366x768 --pos 0x0 --rotate normal"
     else "";
 
   extra = ''
@@ -41,7 +39,7 @@ with host; let
 
     #pgrep -x sxhkd > /dev/null || sxhkd &
 
-    feh --bg-tile $HOME/.config/wall.png
+    #feh --bg-tile $HOME/.config/wall.png
 
     polybar main & #2>~/log &
   '';
@@ -50,18 +48,9 @@ with host; let
     builtins.replaceStrings ["WORKSPACES"]
     [
       (
-        if hostName == "beelink" || hostName == "work"
+        if hostName == "nokia" || hostName == "dell" || hostName == "hp"
         then ''
-          bspc monitor ${mainMonitor} -d 1 2 3
-          bspc monitor ${secondMonitor} -d 4 5 6
-          bspc monitor ${thirdMonitor} -d 7 8 9
-          bspc wm -O ${mainMonitor} ${secondMonitor} ${thirdMonitor}
-          polybar sec &
-          polybar thi &
-        ''
-        else if hostName == "vm" || hostName == "probook" || hostName == "nokia"
-        then ''
-          bspc monitor -d 1 2 3 4 5
+          bspc monitor -d 1 2 3 4 5 6 7 8 9
         ''
         else ""
       )
@@ -103,7 +92,7 @@ in {
           displayManager = {
             lightdm = {
               enable = true;
-              background = pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath;
+              # background = pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath;
               greeters = {
                 gtk = {
                   theme = {
@@ -152,16 +141,6 @@ in {
           ];
         };
       };
-
-      programs.zsh.enable = true;
-
-      environment.systemPackages = with pkgs; [
-        xclip # Clipboard
-        xorg.xev # Event Viewer
-        xorg.xkill # Process Killer
-        xorg.xrandr # Monitor Settings
-        xterm # Terminal
-      ];
 
       home-manager.users.${userSettings.username} = {
         xsession = {

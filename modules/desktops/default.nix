@@ -9,6 +9,7 @@
   # ./sway.nix
   ./vm.nix
   ./wayland.nix
+  ./x11.nix
 ]
 ++ (import ./hyprland)
 ++ (import ./sway)

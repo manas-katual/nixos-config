@@ -1,17 +1,20 @@
 #
 #  Bar
 #
-
-{ config, lib, pkgs, userSettings, host, ... }:
-
-with host;
-let
+{
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  host,
+  ...
+}:
+with host; let
   polybar = pkgs.polybar.override {
     alsaSupport = true;
     pulseSupport = true;
   };
-in
-{
+in {
   config = lib.mkIf (config.x11wm.enable) {
     home-manager.users.${userSettings.username} = {
       services = {
@@ -26,7 +29,7 @@ in
           package = polybar;
           config = {
             "bar/main" = {
-              monitor = mainMonitor;
+              monitor = "${mainMonitor}";
               width = "100%";
               height = 30;
               background = "#00000000";
@@ -46,50 +49,6 @@ in
 
               tray-position = "right";
               tray-detached = "false";
-
-              wm-restack = "bspwm";
-            };
-            "bar/sec" = {
-              monitor = "${mainMonitor}";
-              width = "100%";
-              height = 30;
-              background = "#00000000";
-              foreground = "#ccffffff";
-
-              offset-y = 2;
-              spacing = "1.5";
-              padding-right = 2;
-              module-margin-left = 1;
-
-              font-0 = "SourceCodePro:size=10";
-              font-1 = "FontAwesome6Free:style=Solid:size=8";
-              font-2 = "FontAwesome6Free:style=Regular:size=8";
-              font-3 = "FontAwesome6Brands:style=Regular:size=8";
-              font-4 = "FiraCodeNerdFont:size=10";
-              modules-left = "logo bspwm";
-              modules-right = "memory cpu pad sink volume pad date";
-
-              wm-restack = "bspwm";
-            };
-            "bar/thi" = {
-              monitor = "${mainMonitor}";
-              width = "100%";
-              height = 30;
-              background = "#00000000";
-              foreground = "#ccffffff";
-
-              offset-y = 2;
-              spacing = "1.5";
-              padding-right = 2;
-              module-margin-left = 1;
-
-              font-0 = "SourceCodePro:size=10";
-              font-1 = "FontAwesome6Free:style=Solid:size=8";
-              font-2 = "FontAwesome6Free:style=Regular:size=8";
-              font-3 = "FontAwesome6Brands:style=Regular:size=8";
-              font-4 = "FiraCodeNerdFont:size=10";
-              modules-left = "logo bspwm";
-              modules-right = "memory cpu pad sink volume pad date";
 
               wm-restack = "bspwm";
             };

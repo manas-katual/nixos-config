@@ -1,8 +1,13 @@
-{ config, lib, pkgs, userSettings, host, ... }:
-
-with lib;
-with host;
 {
+  config,
+  lib,
+  pkgs,
+  userSettings,
+  host,
+  ...
+}:
+with lib;
+with host; {
   options = {
     dwl = {
       enable = mkOption {
@@ -18,7 +23,7 @@ with host;
     environment = {
       loginShellInit = ''
         if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-          exec dwl 
+          exec dwl
           dwl -s 'dwlb -font "monospace:size=16"'
         fi
       '';
@@ -29,11 +34,6 @@ with host;
       };
       systemPackages = with pkgs; [
         dwl # Window Manager
-        wev # Event Viewer
-        wl-clipboard # Clipboard
-        wlr-randr # Monitor Settings
-        xdg-desktop-portal-wlr # Wayland portal
-        xwayland # X for Wayland
         foot
         wlr-protocols
         dwlb
@@ -58,29 +58,26 @@ with host;
     #   };
     # };
 
-      # nixpkgs.overlays = [ 
-      #   ( final: prev: 
-      #     { dwl = prev.dwl.overrideAttrs 
-      #       { configH = [ ./dwl-config/dwl/config.h ]; 
-      #       }; 
-      #     }) 
-      # ];
+    # nixpkgs.overlays = [
+    #   ( final: prev:
+    #     { dwl = prev.dwl.overrideAttrs
+    #       { configH = [ ./dwl-config/dwl/config.h ];
+    #       };
+    #     })
+    # ];
 
-  nixpkgs.overlays = [
-    (
-      final: prev:
-        {
-          dwl = prev.dwl.override { configH = ./dwl-config/dwl/config.h; };
+    nixpkgs.overlays = [
+      (
+        final: prev: {
+          dwl = prev.dwl.override {configH = ./dwl-config/dwl/config.h;};
         }
-    )
+      )
 
-    # (final: prev: {
-    #   dwlb = prev.dwlb.overrideAttrs (old: {
-    #     src = ./dwl-config/dwlb; # your patched dwlb source dir
-    #   });
-    # })
-
-  ];
-
+      # (final: prev: {
+      #   dwlb = prev.dwlb.overrideAttrs (old: {
+      #     src = ./dwl-config/dwlb; # your patched dwlb source dir
+      #   });
+      # })
+    ];
   };
 }

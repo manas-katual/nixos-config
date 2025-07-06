@@ -51,7 +51,10 @@ in {
       inherit inputs system userSettings;
       host = {
         hostName = "nokia";
-        mainMonitor = "eDP-1";
+        mainMonitor =
+          if userSettings.desktop == "bspwm"
+          then "eDP1"
+          else "eDP-1";
       };
     };
     modules = [

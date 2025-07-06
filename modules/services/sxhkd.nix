@@ -1,10 +1,13 @@
 #
 #  Hotkey Daemon
 #
-
-{ config, lib, userSettings, ... }:
-
 {
+  pkgs,
+  config,
+  lib,
+  userSettings,
+  ...
+}: {
   config = lib.mkIf (config.x11wm.enable) {
     home-manager.users.${userSettings.username} = {
       services = {
@@ -13,8 +16,8 @@
           keybindings = {
             # Apps
             "super + Return" = "${userSettings.terminal}";
-            "super + space" = "rofi -show drun -show-icons";
-            "super + e" = "pcmanfm";
+            "super + space" = "${pkgs.rofi}/bin/rofi -display-history -show drun";
+            "super + e" = "${pkgs.pcmanfm}/bin/pcmanfm";
             "Print" = "flameshot gui";
 
             # Bspwm
@@ -29,9 +32,9 @@
             "super + g" = "bspc node -s biggest.window";
 
             # Alt - Move workspaces
-            "alt + {Left,Right}" = "bspc desktop -f {prev,next}.local";
-            "alt + {_,shift +}{1-9,0}" = "bspc {desktop -f,node -d} '{1-9,10}'";
-            "alt + shift + {Left,Right}" = "bspc node -d {prev,next}.local --follow";
+            "super + {Left,Right}" = "bspc desktop -f {prev,next}.local";
+            "super + {_,shift +}{1-9,0}" = "bspc {desktop -f,node -d} '{1-9,10}'";
+            "super + shift + {Left,Right}" = "bspc node -d {prev,next}.local --follow";
 
             # Control - Resize
             "control + {Left,Down,Up,Right}" = ''

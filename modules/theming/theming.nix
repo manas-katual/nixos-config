@@ -30,7 +30,6 @@
     };
   };
   environment.sessionVariables = {
-    QT_QPA_PLATFORM = "wayland";
     QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_STYLE_OVERRIDE = "kvantum";
   };

@@ -8,6 +8,9 @@
     environment = {
       variables = {
       };
+      sessionVariables = {
+        QT_QPA_PLATFORM = "wayland";
+      };
       systemPackages = with pkgs;
         [
           wev # Event Viewer
