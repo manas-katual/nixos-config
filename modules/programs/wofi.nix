@@ -8,7 +8,7 @@
   userSettings,
   ...
 }: {
-  config = lib.mkIf (config.wlwm.enable && config.sway.enable && (userSettings.style == "hyprpanel" || userSettings.style == "mithril")) {
+  config = lib.mkIf (config.wlwm.enable && config.sway.enable || userSettings.style == "hyprpanel" || userSettings.style == "mithril") {
     home-manager.users.${userSettings.username} = {
       home = {
         packages = with pkgs; [

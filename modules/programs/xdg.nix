@@ -21,10 +21,18 @@
           "text/csv" = "nvim.desktop";
         };
       };
-      portal = lib.mkIf (config.hyprland.enable) {
+      portal = lib.mkIf (!config.gnome.enable && !config.cosmic.enable) {
         enable = true;
-        extraPortals = [pkgs.xdg-desktop-portal-hyprland];
-        configPackages = [pkgs.hyprland];
+        extraPortals =
+          if config.hyprland.enable
+          then [pkgs.xdg-desktop-portal-hyprland]
+          else if config.sway.enable
+          then [pkgs.xdg.desktop-portal-wlr]
+          else [];
+        configPackages =
+          if config.hyprland.enable
+          then [pkgs.hyprland]
+          else [];
       };
     };
   };

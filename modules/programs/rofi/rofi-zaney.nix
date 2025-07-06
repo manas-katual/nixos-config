@@ -11,7 +11,7 @@
 }: let
   inherit (config.home-manager.users.${userSettings.username}.lib.formats.rasi) mkLiteral;
 in {
-  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs") {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-nekodyke") {
     home-manager.users.${userSettings.username} = {
       home = {
         packages = with pkgs; [

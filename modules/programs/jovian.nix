@@ -1,6 +1,8 @@
-{
-  jovian.steam.enable = true;
-  jovian.steam.autoStart = true;
-  jovian.steam.user = "manas";
-  jovian.steam.desktopSession = "hyprland-uwsm";
+{userSettings, ...}: {
+  jovian.steam = {
+    enable = true;
+    autoStart = true;
+    user = "${userSettings.username}";
+    desktopSession = "hyprland-uwsm";
+  };
 }

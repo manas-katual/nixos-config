@@ -30,13 +30,10 @@
           wlr-randr # Monitor Settings
         ]
         ++ (
-          if config.sway.enable
-          then [xdg-desktop-portal-wlr]
-          else []
-        )
-        ++ (
           if !config.hyprland.enable && !config.cosmic.enable && !config.sway.enable
-          then [xdg-desktop-portal-wlr xwayland]
+          then [
+            xwayland
+          ]
           else []
         );
     };

@@ -96,6 +96,8 @@
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
       cpu = "intel";
+      gaming = "off";
+      file-manager = "thunar";
     };
   in {
     nixosConfigurations = (
