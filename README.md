@@ -111,7 +111,7 @@ sudo nixos-rebuild switch --flake .
 
 ## Reference
 
-- Zaney [https://gitlab.com/Zaney]
-- Matthias [https://github.com/MatthiasBenaets]
+- Zaney https://gitlab.com/Zaney
+- Matthias https://github.com/MatthiasBenaets
 
 ## 🎉 Done! Enjoy Your System
