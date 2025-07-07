@@ -53,14 +53,23 @@ with host; {
             ]
             ++ (
               if userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo"
-              then [
-                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.waybar}/bin/waybar"
-                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
-                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.blueman}/bin/blueman-applet"
-                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.eww}/bin/eww daemon"
-                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.swaynotificationcenter}/bin/swaync"
-                "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.avizo}/bin/avizo-service"
-              ]
+              then
+                [
+                  "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.waybar}/bin/waybar"
+                  "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
+                  "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.blueman}/bin/blueman-applet"
+                  "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.eww}/bin/eww daemon"
+                  "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.swaynotificationcenter}/bin/swaync"
+                ]
+                ++ (
+                  if userSettings.style == "waybar-oglo"
+                  then [
+                    "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.swayosd}/bin/swayosd-server"
+                  ]
+                  else [
+                    "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.avizo}/bin/avizo-service"
+                  ]
+                )
               else if userSettings.style == "hyprpanel"
               then [
                 "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprpanel}/bin/hyprpanel"

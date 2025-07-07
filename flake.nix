@@ -50,12 +50,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # quickshell widgets
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # spotify
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -88,14 +82,15 @@
   }: let
     userSettings = {
       username = "manas";
+      gitUsername = "manas-katual";
+      gitEmail = "manaskatual19@gmail.com";
       terminal = "kitty";
       editor = "nvim";
       desktop = "hyprland";
-      style = "waybar-jerry";
-      theme = "gruvbox-material-dark-soft";
-      gitUsername = "manas-katual";
-      gitEmail = "manaskatual19@gmail.com";
+      style = "waybar-oglo";
+      theme = "everforest";
       cpu = "intel";
+      gpu = "intel";
       gaming = "off";
       file-manager = "thunar";
     };

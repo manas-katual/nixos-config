@@ -27,7 +27,7 @@
           if config.hyprland.enable
           then [pkgs.xdg-desktop-portal-hyprland]
           else if config.sway.enable
-          then [pkgs.xdg.desktop-portal-wlr]
+          then [pkgs.xdg-desktop-portal-wlr]
           else [];
         configPackages =
           if config.hyprland.enable

@@ -1,0 +1,4 @@
+[
+  ./amd.nix
+  ./intel.nix
+]

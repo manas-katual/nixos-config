@@ -1,3 +1,3 @@
 [
-  ./intel.nix
+  ./drivers.nix
 ]

@@ -1,4 +1,4 @@
 [
   ./broadcom.nix
-  ./intel-amd.nix
+  ./drivers.nix
 ]

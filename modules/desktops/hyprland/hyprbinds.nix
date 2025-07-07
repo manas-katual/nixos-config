@@ -75,7 +75,7 @@ with host; {
             ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
           ]
           ++ (
-            if userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo"
+            if userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo" || userSettings.style == "waybar-simple"
             then
               [
                 "$modifier,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -disable-history -show drun"
@@ -86,6 +86,14 @@ with host; {
                 if userSettings.style == "waybar-oglo"
                 then [
                   "ALT,F4,exec,${pkgs.eww}/bin/eww open --toggle powermenu-window --screen 0"
+                  ",XF86MonBrightnessDown,exec,${pkgs.swayosd}/bin/swayosd-client --brightness -10"
+                  ",XF86MonBrightnessUP,exec,${pkgs.swayosd}/bin/swayosd-client --brightness +10"
+
+                  ",XF86AudioLowerVolume,exec,${pkgs.swayosd}/bin/swayosd-client --output-volume -15"
+                  ",XF86AudioRaiseVolume,exec,${pkgs.swayosd}/bin/swayosd-client --output-volume 15"
+                  ",XF86AudioMute,exec,${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle"
+                  "$modifier_L,c,exec,${pkgs.swayosd}/bin/swayosd-client --input-volume mute-toggle"
+                  ",XF86AudioMicMute,exec,${pkgs.swayosd}/bin/swayosd-client --input-volume mute-toggle"
                 ]
                 else [
                   "ALT,F4,exec,${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell"

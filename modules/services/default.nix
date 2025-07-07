@@ -4,11 +4,13 @@
   ./flameshot.nix
   ./greetd.nix
   ./lid.nix
+  ./mako.nix
   ./picom.nix
   ./polybar.nix
   ./redshift.nix
   ./swaync/swaync-oglo.nix
   ./swaync/swaync-dynamic.nix
+  ./swayosd.nix
   ./sxhkd.nix
   ./syncthing.nix
   ./udiskie.nix

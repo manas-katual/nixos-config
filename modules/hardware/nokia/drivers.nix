@@ -1,20 +1,13 @@
-{pkgs, ...}: {
+{config, ...}: {
   boot.initrd.kernelModules = ["i915"];
   boot.kernelModules = ["kvm-intel"];
-  services.xserver.videoDrivers = [
-    "i915"
-    "intel"
-  ];
+  services.xserver.videoDrivers =
+    if (config.x11wm.enable)
+    then [
+      "modesetting"
+    ]
+    else [];
 
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      vpl-gpu-rt # or intel-media-sdk for QSV
-      intel-media-driver
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
   environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";};
 
   networking.networkmanager.wifi.powersave = false;
