@@ -6,9 +6,12 @@
 
 ![Hyprpanel Screenshot](./assets/hyprpanel.png)
 
-### Hyprland with Waybar
+### Hyprland with Waybar + Eww
 
 ![Waybar Screenshot](./assets/waybar.png)\
+
+### Hyprland with Waybar
+
 ![Waybar Alternate Screenshot](./assets/waybar2.png)
 
 </div>
@@ -111,7 +114,8 @@ sudo nixos-rebuild switch --flake .
 
 ## Reference
 
-- Zaney https://gitlab.com/Zaney
-- Matthias https://github.com/MatthiasBenaets
+- Tyler Kelley https://gitlab.com/Zaney
+- Matthias Benaets https://github.com/MatthiasBenaets
+- Jackson Novak https://gitlab.com/Oglo12
 
 ## 🎉 Done! Enjoy Your System
