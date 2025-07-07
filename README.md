@@ -15,7 +15,7 @@
 
 ## Note:
 
-> ⚠️Hyprland is the only fully configured desktop environment. If you want to
+> ⚠️ Hyprland is the only fully configured desktop environment. If you want to
 > use a different DE/WM, you’ll need to set it up manually.
 
 ---
@@ -70,7 +70,7 @@ Then edit `flake.nix` and update:
 
 ---
 
-### 5️⃣Generate Hardware Configuration
+### 5️⃣ Generate Hardware Configuration
 
 ```bash
 nixos-generate-config --show-hardware-config > hosts/<your-desired-hostname>/hardware-configuration.nix
