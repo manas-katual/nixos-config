@@ -1,4 +1,16 @@
+<div align="center">
 # ❄️ My NixOS Config
+
+### Hyprland with Hyprpanel
+
+![Hyprpanel Screenshot](./assets/hyprpanel.png)
+
+### Hyprland with Waybar
+
+![Waybar Screenshot](./assets/waybar.png)\
+![Waybar Alternate Screenshot](./assets/waybar2.png)
+
+</div>
 
 > ⚠️ **Note:** Hyprland is the only fully configured desktop environment. If you
 > want to use a different DE/WM, you’ll need to set it up manually.
@@ -87,20 +99,16 @@ sudo nixos-rebuild switch --flake .
 
 ---
 
-## 🎉 Done! Enjoy Your System
-
-### Hyprland with Hyprpanel
-
-![Hyprpanel Screenshot](./assets/hyprpanel.png)
-
-### Hyprland with Waybar
-
-![Waybar Screenshot](./assets/waybar.png)\
-![Waybar Alternate Screenshot](./assets/waybar2.png)
-
----
-
 ## ✅ To-Do
 
 - 🔄 Make this configuration more universal and user-friendly
 - 🖥️ Add support for other desktop environments/window managers
+
+---
+
+## Reference
+
+- Zaney [https://gitlab.com/Zaney]
+- Matthias [https://github.com/MatthiasBenaets]
+
+## 🎉 Done! Enjoy Your System
