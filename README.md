@@ -21,8 +21,6 @@
 > Hyprland is the only fully configured desktop environment. If you want to use
 > a different DE/WM, you’ll need to set it up manually.
 
----
-
 ## 🚀 Installation Steps
 
 ### 1️⃣ Install NixOS (Without Any Desktop Environment)
@@ -35,8 +33,6 @@ nix-shell -p git vim
 #Optionally: install htop and tmux for monitoring CPU/RAM usage
 ```
 
----
-
 ### 2️⃣ Clone This Repository
 
 ```bash
@@ -47,16 +43,12 @@ cd ~/setup
 > 📌 **Important:** Stay inside this folder throughout the rest of the
 > installation.
 
----
-
 ### 3️⃣ Create a Host Folder for Your Machine
 
 ```bash
 cp -r hosts/nokia hosts/<your-desired-hostname>
 # Replace <your-desired-hostname> with the hostname of your choice
 ```
-
----
 
 ### 4️⃣ Add Your Host
 
@@ -71,15 +63,11 @@ Then edit `flake.nix` and update:
 - Your **GitHub username**
 - Your **Git email address**
 
----
-
 ### 5️⃣ Generate Hardware Configuration
 
 ```bash
 nixos-generate-config --show-hardware-config > hosts/<your-desired-hostname>/hardware-configuration.nix
 ```
-
----
 
 ### 6️⃣ Enable Flakes and Build the System
 
@@ -89,8 +77,6 @@ Run the following command, replacing `hostname` with your chosen hostname:
 NIX_CONFIG="experimental-features = nix-command flakes"
 sudo nixos-rebuild switch --flake .#hostname
 ```
-
----
 
 ### 7️⃣ Reboot and Use the Alias to Rebuild (Optional)
 
@@ -103,14 +89,10 @@ cd ~/setup
 sudo nixos-rebuild switch --flake .
 ```
 
----
-
 ## ✅ To-Do
 
 - 🔄 Make this configuration more universal and user-friendly
 - 🖥️ Add support for other desktop environments/window managers
-
----
 
 ## Reference
 
