@@ -8,7 +8,7 @@
 
 ### Hyprland with Waybar + Eww
 
-![Waybar Screenshot](./assets/waybar.png)\
+![Waybar Screenshot](./assets/waybar.png)
 
 ### Hyprland with Waybar
 
