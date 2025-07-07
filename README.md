@@ -13,10 +13,10 @@
 
 </div>
 
-## Note:
+## ⚠️ Note:
 
-> ⚠️ Hyprland is the only fully configured desktop environment. If you want to
-> use a different DE/WM, you’ll need to set it up manually.
+> Hyprland is the only fully configured desktop environment. If you want to use
+> a different DE/WM, you’ll need to set it up manually.
 
 ---
 
