@@ -84,11 +84,11 @@
       username = "manas";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
-      terminal = "kitty";
+      terminal = "alacritty";
       editor = "nvim";
-      desktop = "hyprland";
-      style = "waybar-oglo";
-      theme = "everforest";
+      desktop = "sway";
+      style = "waybar-dwm";
+      theme = "atelier-dune";
       cpu = "intel";
       gpu = "intel";
       gaming = "off";

@@ -1,6 +1,7 @@
 {
   pkgs,
   userSettings,
+  config,
   ...
 }: {
   hardware.bluetooth = {
@@ -32,7 +33,7 @@
     );
 
   services.blueman.enable =
-    if userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs"
+    if !config.sway.enable && userSettings.style == "waybar-oglo" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-cool" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-ddubs"
     then true
     else false;
 }

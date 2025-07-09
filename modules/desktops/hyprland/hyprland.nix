@@ -58,13 +58,13 @@ with host; {
                   "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.waybar}/bin/waybar"
                   "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator"
                   "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.blueman}/bin/blueman-applet"
-                  "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.eww}/bin/eww daemon"
                   "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.swaynotificationcenter}/bin/swaync"
                 ]
                 ++ (
                   if userSettings.style == "waybar-oglo"
                   then [
                     "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.swayosd}/bin/swayosd-server"
+                    "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.eww}/bin/eww daemon"
                   ]
                   else [
                     "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.avizo}/bin/avizo-service"

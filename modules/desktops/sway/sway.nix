@@ -54,8 +54,8 @@ with host; {
               command = "${pkgs.autotiling}/bin/autotiling";
               always = true;
             }
-            {command = "${pkgs.blueman}/bin/blueman-applet";}
-            {command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";}
+            # {command = "${pkgs.blueman}/bin/blueman-applet";}
+            # {command = "${pkgs.networkmanagerapplet}/bin/nm-applet --indicator";}
           ];
 
           bars = [
@@ -90,8 +90,8 @@ with host; {
         extraConfig = ''
           exec ${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent
           for_window [title="Authentication Required"] floating enable, resize set 600 200
-          exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
-          exec ${pkgs.blueman}/bin/blueman-applet
+          # exec ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+          # exec ${pkgs.blueman}/bin/blueman-applet
           set $opacity 0.9
           for_window [class=".*"] opacity 0.95
           for_window [app_id=".*"] opacity 0.95

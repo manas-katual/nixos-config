@@ -18,6 +18,13 @@
     ];
 
     home-manager.users.${userSettings.username} = {
+      # programs.eww = {
+      #   enable = true;
+      #   package = pkgs.eww;
+      #   configDir = ./eww;
+      #   enableZshIntegration = true;
+      # };
+
       home.file.".config/eww" = {
         source = ./eww;
         recursive = true;

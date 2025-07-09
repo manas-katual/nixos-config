@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (config.sway.enable && userSettings.style == "waybar-simple") {
+  config = lib.mkIf (config.sway.enable && userSettings.style == "waybar-simple" || userSettings.style == "waybar-dwm") {
     home-manager.users.${userSettings.username} = {
       services.mako = {
         enable = true;

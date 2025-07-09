@@ -102,7 +102,7 @@ in {
       then "GoogleDot-Black"
       else "Bibata-Modern-Ice";
 
-    size = lib.mkForce 18;
+    size = lib.mkForce 20;
   };
 
   # stylix.homeManagerIntegration = {

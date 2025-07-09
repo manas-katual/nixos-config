@@ -25,7 +25,7 @@ in
               modules-left = [
                 "custom/startmenu"
                 "temperature"
-                "hyprland/window"
+                "custom/window_class"
                 "idle_inhibitor"
               ];
               modules-right = [
@@ -117,20 +117,21 @@ in
                     ""
                   ];
                 };
-                on-click = "sleep 0.1 && pavucontrol";
                 scroll-step = 2;
+                on-click = "${pkgs.avizo}/bin/volumectl toggle-mute";
+                on-click-right = "${pkgs.avizo}/bin/volumectl -m toggle-mute";
+                on-click-middle = "${pkgs.pavucontrol}/bin/pavucontrol";
+                on-click-middle-release = "sleep 0";
               };
               "custom/exit" = {
                 tooltip = false;
                 format = "";
-                on-click = "sleep 0.1 && wlogout";
+                on-click = "sleep 0.1 && ${pkgs.wlogout}/bin/wlogout";
               };
               "custom/startmenu" = {
                 tooltip = false;
                 format = "";
-                # exec = "rofi -show drun";
-                #on-click = "sleep 0.1 && rofi-launcher";
-                on-click = "sleep 0.1 && ${pkgs.nwg-drawer}/bin/nwg-drawer -mb 200 -mt 200 -mr 200 -ml 200";
+                on-click = "sleep 0.1 && ${pkgs.rofi-wayland}/bin/rofi -show drun";
               };
               "custom/hyprbindings" = {
                 tooltip = false;
@@ -185,6 +186,12 @@ in
                   "󰁹"
                 ];
                 on-click = "";
+                tooltip = false;
+              };
+              "custom/window_class" = {
+                exec = "window_class";
+                interval = 1;
+                format = "{}";
                 tooltip = false;
               };
             }
@@ -247,7 +254,7 @@ in
               tooltip label {
                 color: #${config.lib.stylix.colors.base08};
               }
-              #window, #pulseaudio, #temperature, #cpu, #memory, #idle_inhibitor, #disk {
+              #window, #pulseaudio, #temperature, #cpu, #memory, #idle_inhibitor, #disk, #custom-window_class {
                 font-weight: bold;
                 margin: 2px 0px;
                 margin-right: 7px;

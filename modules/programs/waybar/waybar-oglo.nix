@@ -75,7 +75,6 @@ in {
               on-click = "activate";
             };
             "hyprland/workspaces" = {
-              #format = "<span font='11'>{name}</span>";
               active-only = false;
               on-click = "activate";
               on-scroll-up = "hyprctl dispatch workspace e-1";
@@ -202,7 +201,7 @@ in {
               format = " ";
               # on-click = "${pkgs.rofi-wayland}/bin/rofi -show drun";
               # on-click = "${pkgs.eww}/bin/eww open --toggle bar-menu --screen 0";
-              on-click = "sleep 0.1; ${pkgs.eww}/bin/eww open --toggle bar-menu";
+              on-click = "${pkgs.eww}/bin/eww open --toggle bar-menu";
               # on-click-release = "sleep 0";
               tooltip = false;
             };
@@ -210,7 +209,7 @@ in {
             "custom/powermenu" = {
               format = "⏻ ";
               # on-click = "${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell";
-              on-click = "sleep 0.1; ${pkgs.eww}/bin/eww open --toggle powermenu-window";
+              on-click = "${pkgs.eww}/bin/eww open --toggle powermenu-window";
               # on-click-release = "sleep 1";
               tooltip = false;
             };
@@ -219,7 +218,7 @@ in {
         style = ''
 
           * {
-              font-family: JetBrainsMono Nerd Font, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+              font-family: JetBrainsMono Nerd Font Propo, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
               font-size: 14px;
               font-weight: bold;
           }

@@ -5,20 +5,20 @@
   userSettings,
   ...
 }: let
-  base00 = "0F1419";
-  base01 = "131721";
-  base03 = "3E4B59";
-  base05 = "E6E1CF";
-  base06 = "E6E1CF";
-  base07 = "F3F4F5";
-  base08 = "F07178";
-  base09 = "FF8F40";
-  base0A = "FFB454";
-  base0B = "B8CC52";
-  base0C = "95E6CB";
-  base0D = "59C2FF";
-  base0E = "D2A6FF";
-  base0F = "E6B673";
+  base00 = config.lib.stylix.colors.base00;
+  base01 = config.lib.stylix.colors.base01;
+  base03 = config.lib.stylix.colors.base03;
+  base05 = config.lib.stylix.colors.base05;
+  base06 = config.lib.stylix.colors.base06;
+  base07 = config.lib.stylix.colors.base07;
+  base08 = config.lib.stylix.colors.base08;
+  base09 = config.lib.stylix.colors.base09;
+  base0A = config.lib.stylix.colors.base0A;
+  base0B = config.lib.stylix.colors.base0B;
+  base0C = config.lib.stylix.colors.base0C;
+  base0D = config.lib.stylix.colors.base0D;
+  base0E = config.lib.stylix.colors.base0E;
+  base0F = config.lib.stylix.colors.base0F;
   modules-center = with config;
     if hyprland.enable == true
     then [
@@ -74,9 +74,9 @@ in {
             layer = "top";
             height = 30;
             spacing = 4;
-            modules-left = ["custom/menu" "tray" "hyprland/window"];
+            modules-left = ["custom/menu" "idle_inhibitor" "custom/window_class"];
             modules-center = modules-center;
-            modules-right = ["idle_inhibitor" "custom/notification" "pulseaudio" "battery" "clock" "custom/powermenu"];
+            modules-right = ["custom/notification" "pulseaudio" "tray" "battery" "clock" "custom/powermenu"];
             "sway/workspaces" = commonWorkspaces;
             "niri/workspaces" = commonWorkspaces;
             "wlr/workspaces" = {
@@ -219,6 +219,13 @@ in {
               on-click = "sleep 0.1 && ${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell";
               tooltip = false;
             };
+
+            "custom/window_class" = {
+              exec = "window_class";
+              interval = 1;
+              format = "{}";
+              tooltip = false;
+            };
           };
         };
         style = ''
@@ -295,7 +302,7 @@ in {
           tooltip label {
             color: #${base07};
           }
-          #window {
+          #window, #custom-window_class {
             /*
               Eternal
               color: #${base05};
