@@ -69,12 +69,14 @@ in {
     home-manager.users.${userSettings.username} = {
       programs.waybar = {
         enable = true;
+        package = pkgs.waybar;
         settings = {
           mainBar = {
             layer = "top";
-            height = 30;
-            spacing = 4;
-            modules-left = ["custom/menu" "idle_inhibitor" "custom/window_class"];
+            position = "top";
+            # height = 30;
+            # spacing = 4;
+            modules-left = ["custom/menu" "custom/window_class" "idle_inhibitor"];
             modules-center = modules-center;
             modules-right = ["custom/notification" "pulseaudio" "tray" "battery" "clock" "custom/powermenu"];
             "sway/workspaces" = commonWorkspaces;
@@ -85,9 +87,14 @@ in {
               on-click = "activate";
             };
             "hyprland/workspaces" = {
-              #format = "<span font='11'>{name}</span>";
-              active-only = false;
-              on-click = "activate";
+              format = "{name}";
+              format-icons = {
+                default = " ";
+                active = " ";
+                urgent = " ";
+              };
+              # active-only = false;
+              # on-click = "activate";
               on-scroll-up = "hyprctl dispatch workspace e-1";
               on-scroll-down = "hyprctl dispatch workspace e+1";
               disable-scroll = "false";
@@ -102,13 +109,14 @@ in {
             };
 
             "tray" = {
-              spacing = 8;
+              spacing = 12;
             };
 
             "clock" = {
               tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
               format = "󱑏 {:%H:%M}";
               format-alt = " {:%A, %B %d, %Y}";
+              tooltip = true;
             };
 
             "cpu" = {
@@ -132,22 +140,22 @@ in {
                 warning = "30";
                 critical = "15";
               };
-              format = "{capacity}% {icon}";
+              format = "{icon} {capacity}%";
               tooltip-format = "{timeTo} {capacity}%";
               format-charging = "{capacity}% ";
-              format-plugged = " ";
+              format-plugged = " {capacity}%";
               format-alt = "{time} {icon}";
-              format-icons = [" " " " " " " " " "];
+              format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+              on-click = "";
             };
 
             "network" = {
-              format-wifi = "󰒢 ";
-              format-ethernet = "{ifname}: {ipaddr}/{cidr}  ";
-              format-linked = "{ifname} (No IP)  ";
-              format-disconnected = "󰞃 ";
-              on-click = "kitty nmtui";
-              on-click-release = "sleep 0";
-              tooltip-format = "{essid} {signalStrength}%";
+              format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
+              format-ethernet = " {bandwidthDownBits}";
+              format-wifi = " {bandwidthDownBits}";
+              format-disconnected = "󰤮";
+              tooltip = false;
+              on-click = "${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal} -e btop";
             };
 
             "bluetooth" = {
@@ -165,19 +173,19 @@ in {
 
             "pulseaudio" = {
               format = "{icon} {volume}% {format_source}";
-              format-bluetooth = "{icon} {volume}%";
-              format-bluetooth-muted = "   {volume}%";
-              format-source = " ";
-              format-source-muted = " ";
-              format-muted = "  {format_source}";
+              format-bluetooth = "{volume}% {icon} {format_source}";
+              format-bluetooth-muted = " {icon} {format_source}";
+              format-source = " {volume}%";
+              format-source-muted = "";
+              format-muted = " {format_source}";
               format-icons = {
-                headphone = " ";
-                hands-free = " ";
-                headset = " ";
-                phone = " ";
-                portable = " ";
-                car = " ";
-                default = [" " " " " "];
+                headphone = "";
+                hands-free = "";
+                headset = "";
+                phone = "";
+                portable = "";
+                car = "";
+                default = ["" "" ""];
               };
               tooltip-format = "{desc} {volume}%";
               on-click = "${pkgs.pamixer}/bin/pamixer -t";
@@ -188,7 +196,7 @@ in {
 
             "custom/notification" = {
               tooltip = false;
-              format = "{icon} ";
+              format = "{icon} {}";
               format-icons = {
                 notification = "<span foreground='red'><sup></sup></span>";
                 none = "";
@@ -202,36 +210,39 @@ in {
               return-type = "json";
               exec-if = "which swaync-client";
               exec = "swaync-client -swb";
-              #on-click = "sleep 0.1 && task-waybar";
-              on-click = "sleep 0.1; swaync-client -t -sw";
-              on-click-right = "sleep 0.1; swaync-client -d -sw";
+              on-click = "sleep 0.1; swaync-client -t";
               escape = true;
             };
 
             "custom/menu" = {
-              format = " ";
+              format = "";
               on-click = "sleep 0.1 && ${pkgs.rofi-wayland}/bin/rofi -show drun";
               tooltip = false;
             };
 
             "custom/powermenu" = {
-              format = "⏻ ";
+              format = "⏻";
               on-click = "sleep 0.1 && ${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell";
               tooltip = false;
             };
 
             "custom/window_class" = {
-              exec = "window_class";
+              exec = "hypr_window";
               interval = 1;
               format = "{}";
               tooltip = false;
+            };
+
+            "hyprland/window" = {
+              max-length = 60;
+              separate-outputs = false;
             };
           };
         };
         style = ''
           * {
             font-size: 16px;
-            font-family: JetBrainsMono Nerd Font, Font Awesome, sans-serif;
+            font-family: JetBrainsMono Nerd Font Propo, Font Awesome, sans-serif;
             font-weight: bold;
           }
           window#waybar {

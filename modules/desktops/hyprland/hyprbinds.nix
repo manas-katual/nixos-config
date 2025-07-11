@@ -146,11 +146,14 @@ with host; {
             ",switch:on:Lid Switch,exec,${pkgs.hyprlock}/bin/hyprlock"
           ]
           else [];
-        layerrule = [
-          # "blur, waybar"
-          "blur, rofi"
-          "blur, gtk-layer-shell"
-        ];
+        layerrule =
+          if userSettings.style == "waybar-simple"
+          then [
+            "blur, waybar"
+            "blur, rofi"
+            "blur, gtk-layer-shell"
+          ]
+          else [];
       };
     };
   };

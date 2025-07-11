@@ -228,7 +228,12 @@ in {
             };
 
             "custom/window_class" = {
-              exec = "window_class";
+              exec =
+                if config.hyprland.enable
+                then "hypr_window"
+                else if config.sway.enable
+                then "sway_window"
+                else "";
               interval = 1;
               format = "{}";
               tooltip = false;

@@ -34,7 +34,7 @@
 
         shadow = false; # Shadows
         shadowOpacity = 0.75;
-        # fade = true;
+        fade = true;
         # fadeDelta = 10;
         opacityRules = [
           #"100:name = 'Picture in picture'"

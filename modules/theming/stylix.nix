@@ -16,7 +16,7 @@
     };
     "catppuccin-mocha" = {
       scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-      image = "${inputs.walls}/shaded.png";
+      image = "${inputs.walls}/space.jpg";
     };
     "cupertino" = {
       scheme = "${pkgs.base16-schemes}/share/themes/cupertino.yaml";

@@ -14,12 +14,6 @@
     # doom-emacs unstraightened
     # nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
 
-    # doom-emacs
-    doom-emacs = {
-      url = "github:hlissner/doom-emacs";
-      flake = false;
-    };
-
     # firefox declaritively
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -84,11 +78,11 @@
       username = "manas";
       gitUsername = "manas-katual";
       gitEmail = "manaskatual19@gmail.com";
-      terminal = "alacritty";
+      terminal = "kitty";
       editor = "nvim";
-      desktop = "sway";
-      style = "waybar-dwm";
-      theme = "atelier-dune";
+      desktop = "hyprland";
+      style = "waybar-ddubs";
+      theme = "catppuccin-mocha";
       cpu = "intel";
       gpu = "intel";
       gaming = "off";

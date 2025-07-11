@@ -67,22 +67,6 @@
         "type": "github"
       }
     },
-    "doom-emacs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1751372926,
-        "narHash": "sha256-K/CRHiYaeemgNFurkmxupRmPFn1r8UNhVZKUT9mVsIc=",
-        "owner": "hlissner",
-        "repo": "doom-emacs",
-        "rev": "6010b40247b8cb4b8a127a34361b99562ea81db9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hlissner",
-        "repo": "doom-emacs",
-        "type": "github"
-      }
-    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -631,7 +615,6 @@
     },
     "root": {
       "inputs": {
-        "doom-emacs": "doom-emacs",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "mithril-shell": "mithril-shell",
@@ -920,11 +903,11 @@
     "walls": {
       "flake": false,
       "locked": {
-        "lastModified": 1751603122,
-        "narHash": "sha256-lQx5qa6HvnR/b77GjIxZwiGyfaxGxbzfsZw8EgnrdKE=",
+        "lastModified": 1752127514,
+        "narHash": "sha256-S/2Y4yZPuiyPyMk6UhdMzXi6cX+/xfXsqZj3DzM0Pqk=",
         "ref": "refs/heads/main",
-        "rev": "aca433efca0d6ef827b84fac3a962a4b596fb0ca",
-        "revCount": 6,
+        "rev": "b9de85cf289eec90cfe3f51891c8143efb53abe3",
+        "revCount": 8,
         "type": "git",
         "url": "https://codeberg.org/manas-katual/walls"
       },
