@@ -12,7 +12,11 @@
     };
     "catppuccin-frappe" = {
       scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
-      image = "${inputs.walls}/monterey.jpg";
+      image = "${inputs.walls}/sonoma-hills.jpg";
+    };
+    "catppuccin-macchiato" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+      image = "${inputs.walls}/sonoma-hills.jpg";
     };
     "catppuccin-mocha" = {
       scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
@@ -65,6 +69,10 @@
     "rose-pine" = {
       scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
       image = "${inputs.walls}/uwu.jpg";
+    };
+    "rose-pine-moon" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+      image = "${inputs.walls}/sonoma-hills.jpg";
     };
     "sakura" = {
       scheme = "${pkgs.base16-schemes}/share/themes/sakura.yaml";

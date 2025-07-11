@@ -52,7 +52,7 @@ with host; {
               # "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.pyprland}/bin/pypr"
             ]
             ++ (
-              if userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo"
+              if userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-macos" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo"
               then
                 [
                   "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.waybar}/bin/waybar"

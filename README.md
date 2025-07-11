@@ -93,6 +93,8 @@ sudo nixos-rebuild switch --flake .
 
 - 🔄 Make this configuration more universal and user-friendly
 - 🖥️ Add support for other desktop environments/window managers
+- Fix waybar (currently only waybar-oglo and waybar-ddubs are in working
+  condition)
 
 ## Reference
 

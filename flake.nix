@@ -81,8 +81,8 @@
       terminal = "kitty";
       editor = "nvim";
       desktop = "hyprland";
-      style = "waybar-ddubs";
-      theme = "catppuccin-mocha";
+      style = "waybar-macos";
+      theme = "catppuccin-macchiato";
       cpu = "intel";
       gpu = "intel";
       gaming = "off";

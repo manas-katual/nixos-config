@@ -5,6 +5,7 @@
   ./waybar-dwm.nix
   ./waybar-jake.nix
   ./waybar-jerry.nix
+  ./waybar-macos.nix
   ./waybar-nekodyke.nix
   ./waybar-oglo.nix
   ./waybar-simple.nix
