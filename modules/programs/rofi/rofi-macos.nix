@@ -15,9 +15,6 @@ in {
     home-manager.users.${userSettings.username} = {
       home = {
         packages = with pkgs; [
-          # rofi-power-menu
-          # rofi-network-manager
-          # rofi-bluetooth
         ];
       };
 
@@ -26,7 +23,7 @@ in {
           enable = true;
           package = pkgs.rofi-wayland;
           extraConfig = {
-            modi = "drun,run";
+            modi = "drun";
             show-icons = true;
             icon-theme = "Papirus";
             location = 0;
@@ -34,10 +31,10 @@ in {
             disable-history = true;
             hide-scrollbar = true;
             drun-display-format = "{icon} {name}";
-            sidebar-mode = true;
-            display-drun = " 󰀘  Apps ";
-            display-run = "   Command ";
-            display-window = "   Window ";
+            sidebar-mode = false;
+            # display-drun = " 󰀘  Apps ";
+            # display-run = "   Command ";
+            # display-window = "   Window ";
           };
           terminal = "${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal}";
           theme = {

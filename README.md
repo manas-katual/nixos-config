@@ -22,8 +22,8 @@
 
 ## ⚠️ Note:
 
-> Hyprland is the only fully configured desktop environment. If you want to use
-> a different DE/WM, you’ll need to set it up manually.
+> For now Hyprland is the only fully configured/working window manager. If you
+> want to use a different DE/WM, you’ll need to set it up manually.
 
 ## 🚀 Installation Steps
 
@@ -61,11 +61,21 @@ Edit `hosts/default.nix`:
 - Copy an existing entry (like `dell`, `nokia`, etc.)
 - Modify the `hostName` and `mainMonitor` as needed
 
-Then edit `flake.nix` and update:
+Then edit `flake.nix` and update your:
 
-- Your **username**
-- Your **GitHub username**
-- Your **Git email address**
+- **username**
+- **git username**
+- **git email address**
+- **terminal** (alacritty or kitty right now only these 2 are avialable)
+- **editor** (for now only neovim is configured)
+- **desktop** (look at modules/desktop for available options)
+- **style** (hyprpanel, mithril and for waybar look at modules/programs/waybar)
+- **theme** (look at modules/theming/stylix.nix for avialable options)
+- **cpu** (intel or amd)
+- **gpu** (intel or amd for now only these 2 options are avialable)
+- **gaming** (off or on this will setup your gaming environment)
+- **file-manager** (thunar or pcmanfm for now only these 2 options are
+  avialable)
 
 ### 5️⃣ Generate Hardware Configuration
 

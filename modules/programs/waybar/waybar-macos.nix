@@ -177,10 +177,12 @@ in {
                 default = ["" "" ""];
               };
               tooltip-format = "{desc} {volume}%";
-              on-click = "${pkgs.pamixer}/bin/pamixer -t";
-              on-click-right = "${pkgs.pamixer}/bin/pamixer --default-source -t";
+              on-click = "${pkgs.avizo}/bin/volumectl toggle-mute";
+              on-click-right = "${pkgs.avizo}/bin/volumectl -m toggle-mute";
               on-click-middle = "${pkgs.pavucontrol}/bin/pavucontrol";
               on-click-middle-release = "sleep 0";
+              on-scroll-up = "${pkgs.avizo}/bin/volumectl -u up";
+              on-scroll-down = "${pkgs.avizo}/bin/volumectl -u down";
             };
 
             "custom/notification" = {
