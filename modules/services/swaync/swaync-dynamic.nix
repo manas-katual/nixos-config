@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-macos" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-simple") {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-dwm" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-macos" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-simple") {
     environment.systemPackages = with pkgs; [
       swaynotificationcenter
     ];

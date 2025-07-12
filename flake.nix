@@ -82,7 +82,7 @@
       editor = "nvim";
       desktop = "hyprland";
       style = "waybar-macos";
-      theme = "catppuccin-macchiato";
+      theme = "catppuccin-frappe";
       cpu = "intel";
       gpu = "intel";
       gaming = "off";

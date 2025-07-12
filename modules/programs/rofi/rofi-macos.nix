@@ -11,7 +11,7 @@
 }: let
   inherit (config.home-manager.users.${userSettings.username}.lib.formats.rasi) mkLiteral;
 in {
-  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-macos") {
+  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-macos" || userSettings.style == "waybar-dwm") {
     home-manager.users.${userSettings.username} = {
       home = {
         packages = with pkgs; [

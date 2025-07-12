@@ -65,9 +65,9 @@ in {
             position = "top";
             height = 30;
             spacing = 4;
-            modules-center = ["custom/window_class" "idle_inhibitor"];
+            modules-center = ["custom/window_class" "custom/notification"];
             modules-left = modules-left;
-            modules-right = ["custom/notification" "pulseaudio" "tray" "battery" "clock" "custom/powermenu"];
+            modules-right = ["idle_inhibitor" "pulseaudio" "clock" "battery" "tray" "custom/powermenu"];
             "sway/workspaces" = commonWorkspaces;
             "niri/workspaces" = commonWorkspaces;
             "wlr/workspaces" = {
@@ -161,12 +161,12 @@ in {
             };
 
             "pulseaudio" = {
-              format = "{icon} {volume}% {format_source}";
+              format = "{icon}";
               format-bluetooth = "{volume}% {icon} {format_source}";
               format-bluetooth-muted = " {icon} {format_source}";
               format-source = " {volume}%";
               format-source-muted = "";
-              format-muted = " {format_source}";
+              format-muted = "";
               format-icons = {
                 headphone = "";
                 hands-free = "";
@@ -232,14 +232,15 @@ in {
 
           * {
             font-family: JetBrainsMono Nerd Font Propo, Font Awesome, sans-serif, SF Pro Display;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: bold;
             color: #${config.lib.stylix.colors.base07};
-            background: transparent;
+            /*background: transparent;*/
           }
 
           window#waybar {
-            background-color: rgba(28, 28, 30, 0.45);
+            /*background: transparent;*/
+            background-color: rgba(28, 28, 30, 0);
             border-bottom: none;
             margin: 0;
             padding: 5px 10px;

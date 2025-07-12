@@ -72,7 +72,9 @@ in {
             modules-right =
               if config.sway.enable
               then ["tray" "backlight" "network" "bluetooth" "clock" "battery" "custom/powermenu"]
-              else ["idle_inhibitor" "clock" "custom/notification" "battery" "tray" "custom/powermenu"];
+              else if config.hyprland.enable
+              then ["custom/notification" "clock" "battery" "tray" "custom/powermenu"]
+              else [];
             "sway/workspaces" = commonWorkspaces;
             "niri/workspaces" = commonWorkspaces;
             "wlr/workspaces" = {
@@ -182,7 +184,7 @@ in {
               on-click-middle-release = "sleep 0";
             };
 
-            "custom/notification" = {
+            "custom/notification" = lib.mkIf config.hyprland.enable {
               tooltip = false;
               format = "{icon} ";
               format-icons = {
@@ -236,7 +238,7 @@ in {
                 margin: 0;
                 padding: 0;
                 border-radius: 7px;
-                font-family: "JetBrains Mono Nerd Font";
+                font-family: JetBrains Mono Nerd Font Propo;
                 font-size: 10pt;
                 font-weight: 700;
                 padding-bottom: 0px;
@@ -319,7 +321,8 @@ in {
                 color: #${config.lib.stylix.colors.base05};
               }
 
-              #idle_inhibitor {
+              #idle_inhibitor,
+              #custom-notification {
                 margin: 0;
                 padding-left: 10px;
                 padding-right: 12px;

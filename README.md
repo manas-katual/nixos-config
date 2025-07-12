@@ -2,17 +2,21 @@
 
 # ❄️ My NixOS Config
 
-### Hyprland with Hyprpanel
+### Hyprland + waybar
 
-![Hyprpanel Screenshot](./assets/hyprpanel.png)
+![Waybar Macos style Screenshot](./assets/waybar-macos.png)
 
 ### Hyprland with Waybar + Eww
 
-![Waybar Screenshot](./assets/waybar.png)
+![Waybar Screenshot](./assets/waybar-oglo.png)
 
 ### Hyprland with Waybar
 
-![Waybar Alternate Screenshot](./assets/waybar2.png)
+![Waybar Alternate Screenshot](./assets/waybar-jerry.png)
+
+### Hyprland with Hyprpanel
+
+![Hyprpanel Screenshot](./assets/hyprpanel.png)
 
 </div>
 
@@ -93,8 +97,6 @@ sudo nixos-rebuild switch --flake .
 
 - 🔄 Make this configuration more universal and user-friendly
 - 🖥️ Add support for other desktop environments/window managers
-- Fix waybar (currently only waybar-oglo and waybar-ddubs are in working
-  condition)
 
 ## Reference
 
