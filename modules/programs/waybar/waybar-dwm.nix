@@ -73,7 +73,7 @@ in {
               if config.sway.enable
               then ["tray" "backlight" "network" "bluetooth" "clock" "battery" "custom/powermenu"]
               else if config.hyprland.enable
-              then ["custom/notification" "clock" "battery" "tray" "custom/powermenu"]
+              then ["custom/notification" "pulseaudio" "clock" "battery" "tray" "custom/powermenu"]
               else [];
             "sway/workspaces" = commonWorkspaces;
             "niri/workspaces" = commonWorkspaces;
@@ -121,8 +121,8 @@ in {
             "backlight" = {
               format = "{icon}{percent}%";
               format-icons = ["󰃞 " "󰃟 " "󰃠 "];
-              on-scroll-down = "${pkgs.light}/bin/light -U 5";
-              on-scroll-up = "${pkgs.light}/bin/light -A 5";
+              on-scroll-up = "brightness --inc";
+              on-scroll-down = "brightness --dec";
             };
 
             "battery" = {
@@ -178,10 +178,12 @@ in {
                 default = [" " " " " "];
               };
               tooltip-format = "{desc} {volume}%";
-              on-click = "${pkgs.pamixer}/bin/pamixer -t";
-              on-click-right = "${pkgs.pamixer}/bin/pamixer --default-source -t";
+              on-click = "volume --toggle";
+              on-click-right = "volume --toggle-mic";
               on-click-middle = "${pkgs.pavucontrol}/bin/pavucontrol";
               on-click-middle-release = "sleep 0";
+              on-scroll-up = "volume --inc";
+              on-scroll-down = "volume --dec";
             };
 
             "custom/notification" = lib.mkIf config.hyprland.enable {
@@ -239,7 +241,7 @@ in {
                 padding: 0;
                 border-radius: 7px;
                 font-family: JetBrains Mono Nerd Font Propo;
-                font-size: 10pt;
+                font-size: 16px;
                 font-weight: 700;
                 padding-bottom: 0px;
               }

@@ -1,12 +1,15 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: {
   environment.systemPackages =
     [
       (import ./gamemode.nix {inherit pkgs;})
       (import ./screenshot.nix {inherit pkgs;})
+      (import ./volume.nix {inherit pkgs inputs;})
+      (import ./brightness.nix {inherit pkgs inputs;})
     ]
     ++ (
       if config.hyprland.enable
