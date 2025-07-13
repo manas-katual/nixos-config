@@ -25,8 +25,6 @@ in {
       syncthing
 
       # gui apps
-      # google-chrome # browser
-      firefox # browser
       image-roll # image viewer
       mpv # video player
       qbittorrent # torrent client

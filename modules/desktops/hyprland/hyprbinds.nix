@@ -15,14 +15,21 @@ with host; {
           "$modifier,mouse:272,movewindow"
           "$modifier,mouse:273,resizewindow"
         ];
-        bind =
+        bind = let
+          file =
+            if userSettings.file-manager == "thunar"
+            then "${pkgs.xfce.${userSettings.file-manager}}/bin/${userSettings.file-manager}"
+            else if userSettings.file-manager == "pcmanfm"
+            then "${pkgs.${userSettings.file-manager}}/bin/${userSettings.file-manager}"
+            else "";
+        in
           [
             "$modifier,Return,exec,${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal}"
             "$modifier,Q,killactive,"
             "$modifier,Escape,exit,"
             "$modifier,S,exec,${pkgs.systemd}/bin/systemctl suspend"
             "$modifier,L,exec,${pkgs.hyprlock}/bin/hyprlock"
-            "$modifier,E,exec,${pkgs.xfce.thunar}/bin/thunar"
+            "$modifier,E,exec,${file}"
             "$modifier,F,togglefloating,"
             "$modifierSHIFT,Return,exec,${pkgs.pyprland}/bin/pypr toggle term"
             "$modifier,P,pseudo,"
@@ -79,7 +86,7 @@ with host; {
             then
               [
                 "$modifier,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -disable-history -show drun"
-                "$modifier,TAB,exec,pkill -SIGUSR1 waybar"
+                "$modifierSHIFT,W,exec,pkill -SIGUSR1 waybar"
                 "$modifier, W, exec, pkill waybar && ${pkgs.waybar}/bin/waybar &"
               ]
               ++ (

@@ -234,7 +234,7 @@ in {
 
           * {
             font-family: JetBrainsMono Nerd Font Propo, Font Awesome, sans-serif, SF Pro Display;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             color: #${config.lib.stylix.colors.base07};
             /*background: transparent;*/

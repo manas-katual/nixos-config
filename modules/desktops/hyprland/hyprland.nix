@@ -46,7 +46,7 @@ with host; {
           exec-once =
             [
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-              "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent &"
+              "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"
               "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprlock}/bin/hyprlock"
               "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hypridle}/bin/hypridle"
               # "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.pyprland}/bin/pypr"

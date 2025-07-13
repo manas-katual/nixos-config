@@ -58,6 +58,10 @@
       scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
       image = "${inputs.walls}/berries.jpg";
     };
+    "macintosh" = {
+      scheme = "${pkgs.base16-schemes}/share/themes/macintosh.yaml";
+      image = "${inputs.walls}/sonoma-hills.jpg";
+    };
     "nord" = {
       scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
       image = "${inputs.walls}/nord_bridge.png";

@@ -17,6 +17,7 @@
           tmuxPlugins.vim-tmux-navigator
         ];
         extraConfig = ''
+          set-option -g status-position top
           set-option -sa terminal-overrides ",xterm*:Tc"
 
           set -g status on
