@@ -16,7 +16,7 @@
     };
     "catppuccin-macchiato" = {
       scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
-      image = "${inputs.walls}/sonoma-hills.jpg";
+      image = "${inputs.walls}/Mojave-Night.jpg";
     };
     "catppuccin-mocha" = {
       scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
@@ -32,7 +32,7 @@
     };
     "everforest" = {
       scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
-      image = "${inputs.walls}/forest.jpg";
+      image = "${inputs.walls}/everforest.jpg";
     };
     "gruvbox-dark-hard" = {
       scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
@@ -60,7 +60,7 @@
     };
     "macintosh" = {
       scheme = "${pkgs.base16-schemes}/share/themes/macintosh.yaml";
-      image = "${inputs.walls}/sonoma-hills.jpg";
+      image = "${inputs.walls}/Mojave-Night.jpg";
     };
     "nord" = {
       scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
@@ -76,7 +76,7 @@
     };
     "rose-pine-moon" = {
       scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
-      image = "${inputs.walls}/sonoma-hills.jpg";
+      image = "${inputs.walls}/samurai.jpg";
     };
     "sakura" = {
       scheme = "${pkgs.base16-schemes}/share/themes/sakura.yaml";
@@ -111,7 +111,7 @@ in {
 
     name =
       if userSettings.desktop == "hyprland"
-      then "GoogleDot-Black"
+      then "GoogleDot-Red"
       else "Bibata-Modern-Ice";
 
     size = lib.mkForce 20;
@@ -122,12 +122,12 @@ in {
   #   followSystem = true;
   # };
 
-  stylix.opacity = {
-    applications = lib.mkForce 0.9;
-    terminal = lib.mkForce 0.9;
-    desktop = lib.mkForce 0.9;
-    popups = lib.mkForce 0.9;
-  };
+  # stylix.opacity = {
+  #   applications = lib.mkForce 0.9;
+  #   terminal = lib.mkForce 0.9;
+  #   desktop = lib.mkForce 0.9;
+  #   popups = lib.mkForce 0.9;
+  # };
 
   stylix.fonts = {
     sizes = {
@@ -151,7 +151,7 @@ in {
   };
 
   stylix.polarity =
-    if userSettings.theme == "windows-10-ight"
+    if userSettings.theme == "cupertino" || userSettings.theme == "sakura" || userSettings.theme == "windows-10-light"
     then "light"
     else "dark";
 

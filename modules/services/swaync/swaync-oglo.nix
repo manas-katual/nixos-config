@@ -7,7 +7,7 @@
 }: let
   colors = import ../../theming/colors.nix;
 in {
-  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-oglo") {
+  config = lib.mkIf (config.wlwm.enable && !config.sway.enable && userSettings.style == "waybar-oglo") {
     environment.systemPackages = with pkgs; [
       swaynotificationcenter
     ];

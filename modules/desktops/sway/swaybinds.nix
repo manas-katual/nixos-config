@@ -64,13 +64,13 @@ with host; {
 
             "Print" = "exec screenshot";
 
-            "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 10";
-            "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 10";
-            "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t";
-            "XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --default-source -t";
+            "XF86AudioLowerVolume" = "exec volume --dec";
+            "XF86AudioRaiseVolume" = "exec volume --inc";
+            "XF86AudioMute" = "exec volume --toggle";
+            "XF86AudioMicMute" = "exec volume --toggle-mic";
 
-            "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%+";
-            "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl ser 5%-";
+            "XF86MonBrightnessDown" = "exec brightness --dec";
+            "XF86MonBrightnessUp" = "exec brightness --up";
           };
         };
       };

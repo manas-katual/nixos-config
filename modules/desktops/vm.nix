@@ -27,11 +27,19 @@
     libvirtd = {
       enable = true;
       qemu = {
+        vhostUserPackages = with pkgs; [virtiofsd];
         swtpm.enable = true;
         ovmf.packages = [pkgs.OVMFFull.fd];
       };
+      onBoot = "start";
     };
     spiceUSBRedirection.enable = true;
+  };
+
+  # nixos as guest
+  services = {
+    qemuGuest.enable = true;
+    spice-vdagentd.enable = true;
   };
 
   # Nested virtualization
@@ -45,4 +53,13 @@
     "intel_iommu=on"
     "iommu=pt"
   ];
+
+  home-manager.users.${userSettings.username} = {
+    dconf.settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
+      };
+    };
+  };
 }

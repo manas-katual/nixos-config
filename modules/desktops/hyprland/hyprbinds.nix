@@ -31,7 +31,7 @@ with host; {
             "$modifier,L,exec,${pkgs.hyprlock}/bin/hyprlock"
             "$modifier,E,exec,${file}"
             "$modifier,F,togglefloating,"
-            "$modifierSHIFT,Return,exec,${pkgs.pyprland}/bin/pypr toggle term"
+            "$modifierSHIFT,Return,exec,${pkgs.uwsm}/bin/uwsm app -- ${pkgs.pyprland}/bin/pypr toggle term"
             "$modifier,P,pseudo,"
             ",F11,fullscreen,"
             "$modifier,R,forcerendererreload"
@@ -82,7 +82,7 @@ with host; {
             ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
           ]
           ++ (
-            if userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-dwm" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-macos" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo" || userSettings.style == "waybar-simple"
+            if userSettings.style == "waybar-cool" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-dwm" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-macos" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo" || userSettings.style == "waybar-simple"
             then
               [
                 "$modifier,Space,exec, pkill rofi || ${pkgs.rofi-wayland}/bin/rofi -disable-history -show drun"

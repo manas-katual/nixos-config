@@ -5,6 +5,6 @@
   ./hyprlock.nix
   # ./hyprpaper.nix
   ./options.nix
-  # ./pyprland.nix
+  ./pyprland.nix
   ./windowrule.nix
 ]

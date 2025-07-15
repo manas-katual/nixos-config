@@ -8,7 +8,7 @@
   userSettings,
   ...
 }: {
-  config = lib.mkIf (config.wlwm.enable && userSettings.style == "waybar-oglo") {
+  config = lib.mkIf (config.wlwm.enable && !config.sway.enable && userSettings.style == "waybar-oglo") {
     environment.systemPackages = with pkgs; [
       eww # Widgets
       jq # JSON Processor

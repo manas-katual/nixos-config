@@ -1,7 +1,7 @@
 {
-  pkgs,
   lib,
   userSettings,
+  config,
   ...
 }: {
   home-manager.users.${userSettings.username} = {
@@ -13,7 +13,10 @@
         enable_audio_bell = "no";
         window_padding_width = 4;
         confirm_os_window_close = 0;
-        cursor_trail = 1;
+        cursor_trail =
+          if config.hyprland.enable
+          then 1
+          else 0;
         tab_bar_edge = "top";
         tab_bar_margin_width = 0;
         tab_bar_style = "powerline";

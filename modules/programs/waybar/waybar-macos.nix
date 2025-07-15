@@ -82,8 +82,8 @@ in {
                 active = " ";
                 urgent = " ";
               };
-              # active-only = false;
-              # on-click = "activate";
+              active-only = false;
+              on-click = "activate";
               on-scroll-up = "hyprctl dispatch workspace e-1";
               on-scroll-down = "hyprctl dispatch workspace e+1";
               disable-scroll = "false";
@@ -102,68 +102,57 @@ in {
             };
 
             "clock" = {
-              tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+              tooltip-format = "<tt><small>{calendar}</small></tt>";
               format = "󱑏 {:%H:%M}";
               format-alt = " {:%A, %B %d, %Y}";
               tooltip = true;
             };
 
-            "cpu" = {
-              format = " {usage}%";
-              tooltip = "false";
-            };
-
-            "memory" = {
-              format = " {}%";
-            };
-
-            "backlight" = {
-              format = "{icon}{percent}%";
-              format-icons = ["󰃞" "󰃟" "󰃠"];
-              on-scroll-down = "${pkgs.light}/bin/light -U 5";
-              on-scroll-up = "${pkgs.light}/bin/light -A 5";
-            };
-
-            "battery" = {
-              states = {
-                warning = "30";
-                critical = "15";
-              };
+            battery = {
               format = "{icon} {capacity}%";
-              tooltip-format = "{timeTo} {capacity}%";
-              format-charging = "{capacity}% ";
+              format-discharging = "{icon} {capacity}%";
+              format-charging = "{icon} {capacity}%";
               format-plugged = " {capacity}%";
-              format-alt = "{time} {icon}";
-              format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-              on-click = "";
-            };
-
-            "network" = {
-              format-icons = ["󰤯" "󰤟" "󰤢" "󰤥" "󰤨"];
-              format-ethernet = " {bandwidthDownBits}";
-              format-wifi = " {bandwidthDownBits}";
-              format-disconnected = "󰤮";
-              tooltip = false;
-              on-click = "${pkgs.${userSettings.terminal}}/bin/${userSettings.terminal} -e btop";
-            };
-
-            "bluetooth" = {
-              device = "intel_backlight";
-              format = "{icon}";
-              format-alt = "{status}";
-              interval = 30;
-              on-click-right = "${pkgs.blueberry}/bin/blueberry";
-              "format-icons" = {
-                enabled = "";
-                disabled = "󰂲";
+              format-icons = {
+                charging = [
+                  "󰢜"
+                  "󰂆"
+                  "󰂇"
+                  "󰂈"
+                  "󰢝"
+                  "󰂉"
+                  "󰢞"
+                  "󰂊"
+                  "󰂋"
+                  "󰂅"
+                ];
+                default = [
+                  "󰁺"
+                  "󰁻"
+                  "󰁼"
+                  "󰁽"
+                  "󰁾"
+                  "󰁿"
+                  "󰂀"
+                  "󰂁"
+                  "󰂂"
+                  "󰁹"
+                ];
               };
-              tooltip-format = "{status}";
+              format-full = "󰂅";
+              tooltip-format-discharging = "{timeTo} {capacity}%";
+              tooltip-format-charging = "{timeTo} {capacity}%";
+              interval = 3;
+              states = {
+                warning = 20;
+                critical = 10;
+              };
             };
 
             "pulseaudio" = {
               format = "{icon}";
-              format-bluetooth = "{icon}  {format_source}";
-              format-bluetooth-muted = " {icon} {format_source}";
+              format-bluetooth = "󱡏 {format_source}";
+              format-bluetooth-muted = "󱡐 {format_source}";
               format-source = " {volume}%";
               format-source-muted = "";
               format-muted = "";
@@ -220,6 +209,7 @@ in {
             "custom/window_class" = {
               exec = "hypr_window";
               interval = 1;
+              signal = 1;
               format = "{}";
               tooltip = false;
             };
@@ -236,7 +226,7 @@ in {
             font-family: JetBrainsMono Nerd Font Propo, Font Awesome, sans-serif, SF Pro Display;
             font-size: 18px;
             font-weight: bold;
-            color: #${config.lib.stylix.colors.base07};
+            color: #${config.lib.stylix.colors.base05};
             /*background: transparent;*/
           }
 
@@ -252,22 +242,19 @@ in {
             margin: 0 5px;
           }
 
-          /* Apple icon */
-          #custom-menu, custom-powermenu {
+          #custom-menu {
             font-size: 20px;
             padding: 0 10px 0 5px;
-            color: #${config.lib.stylix.colors.base07};
+            color: #${config.lib.stylix.colors.base0E};
           }
 
-          /* Window title */
           #custom-window_class, #window {
             font-weight: 500;
-            font-size: 13px;
-            color: #${config.lib.stylix.colors.base07};
+            font-size: 16px;
+            color: #${config.lib.stylix.colors.base0C};
             padding: 0 10px;
           }
 
-          /* Workspace block */
           #workspaces {
             background-color: rgba(255, 255, 255, 0.03);
             border-radius: 10px;
@@ -277,7 +264,7 @@ in {
 
           #workspaces button {
             background: transparent;
-            color: #${config.lib.stylix.colors.base07};
+            color: #${config.lib.stylix.colors.base05};
             border: none;
             margin: 3px 4px;
             padding: 2px 8px;
@@ -288,18 +275,16 @@ in {
 
           #workspaces button.active {
             background-color: rgba(255, 255, 255, 0.08);
-            color: #${config.lib.stylix.colors.base07};
+            color: #${config.lib.stylix.colors.base0A};
           }
 
           #workspaces button:hover {
             background-color: rgba(255, 255, 255, 0.05);
           }
 
-          /* Shared module style */
           #custom-notification,
           #idle_inhibitor,
           #pulseaudio,
-          #network,
           #battery,
           #clock,
           #tray {
@@ -310,23 +295,10 @@ in {
             transition: background 0.2s ease;
           }
 
-          /* Hover effects */
-          #custom-notification:hover,
-          #idle_inhibitor:hover,
-          #pulseaudio:hover,
-          #network:hover,
-          #battery:hover,
-          #clock:hover,
-          #tray:hover {
-            background-color: rgba(255, 255, 255, 0.08);
-          }
-
-          /* Tray specific */
           #tray {
             padding: 0 8px;
           }
 
-          /* Tooltip */
           tooltip {
             background: rgba(30, 30, 32, 0.95);
             border-radius: 8px;
@@ -344,12 +316,39 @@ in {
             border-radius: 10px;
             background-color: rgba(255, 255, 255, 0.03);
             transition: background 0.2s ease;
-            color: #${config.lib.stylix.colors.base0E};
+            color: #${config.lib.stylix.colors.base08};
           }
 
+          #custom-notification:hover,
+          #idle_inhibitor:hover,
+          #pulseaudio:hover,
+          #battery:hover,
+          #clock:hover,
+          #tray:hover,
           #custom-powermenu:hover {
             background-color: rgba(255, 255, 255, 0.08);
           }
+
+          #clock {
+            color: #${config.lib.stylix.colors.base0D};
+          }
+
+          #battery {
+            color: #${config.lib.stylix.colors.base0B};
+          }
+
+          #pulseaudio {
+            color: #${config.lib.stylix.colors.base0C};
+          }
+
+          #idle_inhibitor {
+            color: #${config.lib.stylix.colors.base09};
+          }
+
+          #custom-notification {
+            color: #${config.lib.stylix.colors.base0A};
+          }
+
         '';
       };
     };

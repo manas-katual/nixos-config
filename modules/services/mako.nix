@@ -4,16 +4,23 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (config.sway.enable && userSettings.style == "waybar-dwm") {
+  config = lib.mkIf (config.wlwm.enable && config.sway.enable && userSettings.style == "waybar-dwm") {
     home-manager.users.${userSettings.username} = {
       services.mako = {
         enable = true;
-        # backgroundColor = "#${config.lib.stylix.colors.base01}";
-        # borderColor = "#${config.lib.stylix.colors.base0E}";
-        borderRadius = 5;
-        borderSize = 2;
-        # textColor = "#${config.lib.stylix.colors.base04}";
-        layer = "overlay";
+        settings = {
+          layer = "overlay";
+          actions = true;
+          anchor = "top-right";
+          border-radius = 0;
+          default-timeout = 5000;
+          height = 100;
+          width = 300;
+          icons = true;
+          ignore-timeout = false;
+          margin = 10;
+          markup = true;
+        };
       };
     };
   };

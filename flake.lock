@@ -903,11 +903,11 @@
     "walls": {
       "flake": false,
       "locked": {
-        "lastModified": 1752344604,
-        "narHash": "sha256-Y9ddJexHRje8X8NvT5QEYZinUl95ge+Y3LCHiEv4Ezw=",
+        "lastModified": 1752591376,
+        "narHash": "sha256-OjLqj155VYr4FemtP1LUWzWR2W3CmS2iZj5/Cb4sKEU=",
         "ref": "refs/heads/main",
-        "rev": "06ed11934311298e14fedc6ad5c41ae9c10a021a",
-        "revCount": 10,
+        "rev": "4d992794b2445fda20ae3ad18008588f726cb12d",
+        "revCount": 15,
         "type": "git",
         "url": "https://codeberg.org/manas-katual/walls"
       },

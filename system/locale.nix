@@ -1,6 +1,7 @@
 {
   time.timeZone = "Asia/Kolkata";
-  time.hardwareClockInLocalTime = true;
+  time.hardwareClockInLocalTime = false;
+  services.timesyncd.enable = true;
 
   i18n = {
     defaultLocale = "en_US.UTF-8";

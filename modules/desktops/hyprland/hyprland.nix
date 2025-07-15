@@ -39,6 +39,7 @@ with host; {
     home-manager.users.${userSettings.username} = {
       wayland.windowManager.hyprland = {
         enable = true;
+        systemd.enable = false;
         package = pkgs.hyprland;
         portalPackage = pkgs.xdg-desktop-portal-hyprland;
         xwayland.enable = true;
@@ -49,10 +50,10 @@ with host; {
               "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent"
               "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hyprlock}/bin/hyprlock"
               "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.hypridle}/bin/hypridle"
-              # "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.pyprland}/bin/pypr"
+              "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.pyprland}/bin/pypr"
             ]
             ++ (
-              if userSettings.style == "waybar-cool" || userSettings.style == "waybar-curve" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jake" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-macos" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo"
+              if userSettings.style == "waybar-cool" || userSettings.style == "waybar-ddubs" || userSettings.style == "waybar-jerry" || userSettings.style == "waybar-macos" || userSettings.style == "waybar-nekodyke" || userSettings.style == "waybar-oglo"
               then
                 [
                   "${pkgs.uwsm}/bin/uwsm app -- ${pkgs.waybar}/bin/waybar"

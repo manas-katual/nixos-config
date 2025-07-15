@@ -9,20 +9,14 @@
     if hyprland.enable == true
     then [
       "hyprland/workspaces"
-      "custom/window_class"
-      "idle_inhibitor"
     ]
     else if sway.enable == true
     then [
       "sway/workspaces"
-      "custom/window_class"
-      "idle_inhibitor"
     ]
     else if niri.enable == true
     then [
       "niri/workspaces"
-      "custom/window_class"
-      "idle_inhibitor"
     ]
     else [];
 
@@ -66,12 +60,12 @@ in {
             layer = "top";
             position = "top";
             height = 30;
-            spacing = 4;
+            # spacing = 4;
             modules-left = modules-left;
-            modules-center = ["custom/spacer"];
+            modules-center = ["custom/window_class" "idle_inhibitor"];
             modules-right =
               if config.sway.enable
-              then ["tray" "backlight" "network" "bluetooth" "clock" "battery" "custom/powermenu"]
+              then ["network" "backlight" "bluetooth" "pulseaudio" "tray" "battery" "clock"]
               else if config.hyprland.enable
               then ["custom/notification" "pulseaudio" "clock" "battery" "tray" "custom/powermenu"]
               else [];
@@ -119,8 +113,8 @@ in {
             };
 
             "backlight" = {
-              format = "{icon}{percent}%";
-              format-icons = ["󰃞 " "󰃟 " "󰃠 "];
+              format = "{percent}% {icon}";
+              format-icons = ["󰃞" "󰃟" "󰃠"];
               on-scroll-up = "brightness --inc";
               on-scroll-down = "brightness --dec";
             };
@@ -139,10 +133,10 @@ in {
             };
 
             "network" = {
-              format-wifi = "󰒢 ";
+              format-wifi = "󰒢";
               format-ethernet = "{ifname}: {ipaddr}/{cidr}  ";
               format-linked = "{ifname} (No IP)  ";
-              format-disconnected = "󰞃 ";
+              format-disconnected = "󰞃";
               on-click = "kitty nmtui";
               on-click-release = "sleep 0";
               tooltip-format = "{essid} {signalStrength}%";
@@ -154,7 +148,7 @@ in {
               format-alt = "{status}";
               interval = 30;
               on-click-right = "${pkgs.blueberry}/bin/blueberry";
-              "format-icons" = {
+              format-icons = {
                 enabled = "";
                 disabled = "󰂲";
               };
@@ -162,20 +156,20 @@ in {
             };
 
             "pulseaudio" = {
-              format = "{icon} {volume}% {format_source}";
+              format = "{icon} {volume}%";
               format-bluetooth = "{icon} {volume}%";
-              format-bluetooth-muted = "   {volume}%";
-              format-source = " ";
-              format-source-muted = " ";
-              format-muted = "  {format_source}";
+              format-bluetooth-muted = "  {volume}%";
+              format-source = "";
+              format-source-muted = "";
+              format-muted = " {format_source}";
               format-icons = {
-                headphone = " ";
-                hands-free = " ";
-                headset = " ";
-                phone = " ";
-                portable = " ";
-                car = " ";
-                default = [" " " " " "];
+                headphone = "";
+                hands-free = "";
+                headset = "";
+                phone = "";
+                portable = "";
+                car = "";
+                default = ["" "" ""];
               };
               tooltip-format = "{desc} {volume}%";
               on-click = "volume --toggle";
@@ -208,13 +202,13 @@ in {
             };
 
             "custom/menu" = {
-              format = " ";
+              format = "";
               on-click = "sleep 0.1 && ${pkgs.rofi-wayland}/bin/rofi -show drun";
               tooltip = false;
             };
 
             "custom/powermenu" = {
-              format = "⏻ ";
+              format = "⏻";
               on-click = "sleep 0.1 && ${pkgs.wlogout}/bin/wlogout -b 2 --protocol layer-shell";
               tooltip = false;
             };
@@ -404,7 +398,6 @@ in {
               #pulseaudio {
                 margin-top: 5px;
                 margin-bottom: 2px;
-                color: #${config.lib.stylix.colors.base05};
                 background-color: #${config.lib.stylix.colors.base00};
                 border-top-right-radius: 0px;
                 border-bottom-right-radius: 0px;
@@ -472,6 +465,22 @@ in {
                 border-radius: 3px;
                 background-color: #${config.lib.stylix.colors.base00};
                 color: #${config.lib.stylix.colors.base09};
+              }
+
+              #backlight {
+                color: #${config.lib.stylix.colors.base0A};
+              }
+
+              #pulseaudio {
+                color: #${config.lib.stylix.colors.base0E};
+              }
+
+              #bluetooth {
+                color: #${config.lib.stylix.colors.base0C};
+              }
+
+              #battery {
+                color: #${config.lib.stylix.colors.base0D};
               }
             ''
           ]
