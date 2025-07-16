@@ -1,0 +1,4 @@
+[
+  ./emulators.nix
+  ./games.nix
+]

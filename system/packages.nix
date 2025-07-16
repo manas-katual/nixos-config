@@ -22,7 +22,6 @@ in {
       gvfs # samba
       nix-tree # browse nix store
       pulseaudio # audio controller
-      syncthing
 
       # gui apps
       image-roll # image viewer
@@ -37,18 +36,12 @@ in {
       mission-center # task manager for linux
       komikku # manga reader
       zathura # pdf reader
-      hplip # hp printing drivers
       onlyoffice-desktopeditors # office suite
       neovide # neovim gui
       hardinfo2 # shows hardware info
       # ciscoPacketTracer8 # networking emulation
       vesktop # discord client
       obsidian
-
-      # games and emulation
-      mcpelauncher-ui-qt # minecraft bedrock edition
-      ppsspp-sdl-wayland # psp emulator
-      dolphin-emu-primehack # gamecube and wii emulator
     ];
   };
 }

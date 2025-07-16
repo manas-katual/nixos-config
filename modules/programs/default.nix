@@ -11,14 +11,13 @@
   ./fastfetch.nix
   ./fhs.nix
   ./firefox.nix
-  ./games.nix
   ./htop.nix
   ./hyprpanel.nix
   # ./jovian.nix
   ./kdeconnect.nix
   ./kitty.nix
   ./mithril.nix
-  # ./pcmanfm.nix
+  ./pcmanfm.nix
   # ./soundwire.nix
   ./spicetify.nix
   ./swappy.nix

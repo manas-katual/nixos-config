@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   services = {
     printing = {
       enable = true;
@@ -12,4 +12,7 @@
       openFirewall = true;
     };
   };
+  environment.systemPackages = with pkgs; [
+    # hplip # hp printing drivers
+  ];
 }
